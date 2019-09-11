@@ -14,9 +14,9 @@ public class ATM {
 				menhGia = row[0];
 				for (i = soLuong; i > 0; i--) {
 					if (N >= i * menhGia) {
-						map.put(menhGia, i); 	// Đổi được i tờ menhGia
-						row[1] -= i; 			// Số tờ còn lại
-						N -= i * menhGia;		// Số tiền còn lại
+						map.put(menhGia, i); // Đổi được i tờ menhGia
+						row[1] -= i; // Số tờ còn lại
+						N -= i * menhGia; // Số tiền còn lại
 						break;
 					}
 				}
