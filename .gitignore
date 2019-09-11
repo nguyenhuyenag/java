@@ -6,3 +6,4 @@
 
 pom.properties
 .classpath
+*.prefs
