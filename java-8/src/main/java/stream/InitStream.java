@@ -29,11 +29,9 @@ public class InitStream {
 	}
 
 	public static void main(String[] args) {
-
 		// InitializeStream.getByStreamOf().forEach(System.out::println);
 		// InitializeStream.getByArraysStream().forEach(System.out::println);
 		// InitializeStream.getByCollection().forEach(System.out::println);
-
 		streamUsingGenerate();
 
 	}

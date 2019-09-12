@@ -8,3 +8,14 @@
 	float 		4 bytes	
 	double 		8 bytes
 	char		2 byte		0			2^16 (unsigned)
+
+# Generics (Java >= 5)
+	
+	- Không thể gọi Generics bằng kiểu dữ liệu Primitive
+	- Không thể tạo instances của kiểu dữ liệu Generics
+	- Không thể sử dụng static cho Generics
+	- Không thể ép kiểu hoặc sử dụng instanceof
+	- Không thể tạo mảng với parameterized types
+	- Không thể tạo, catch, throw đối tượng của parameterized types
+	- Không thể overload các hàm trong một lớp giống như
+	

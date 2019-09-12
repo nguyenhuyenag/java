@@ -1,35 +1,35 @@
 package xml;
 
-import java.io.IOException;
-import java.io.StringReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.NodeList;
 
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
+import util.file.FilesUtils;
 
 public class Read {
 
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+	public static void main(String[] args) {
 
-		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
-				+ "<soapenv:Envelope xmlns:t2bi=\"http://t2bi.traketqua.van.gdt.gov.vn/\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n"
-				+ "	<soapenv:Header/>\r\n" + "<soapenv:Body>\r\n"
-				+ "		<t2bi:maGDich>11420191000603887</t2bi:maGDich>\r\n" + "	</soapenv:Body>\r\n"
-				+ "</soapenv:Envelope>\r\n" + "";
+		Path filename = Paths.get("file/data.xml");
+		String xml = FilesUtils.readFileToString(filename).trim();
+		// System.out.println(xml);
 
-		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-		InputSource src = new InputSource();
-		src.setCharacterStream(new StringReader(xml));
+		// NodeList root = XmlUtils.asNoteList(xml, "TBaoThueDTu");
+		NodeList nodeTBaoThue = XmlUtils.asNoteList(xml, "TBaoThue");
+		// NodeList nodeNDungTBao = XmlUtils.ReadXMLStringFromNode(xml, "NDungTBao");
+		// NodeList nodeGDich = XmlUtils.ReadXMLStringFromNode(xml, "GDich");
+		//
+		// for (int i = 0; i < nodeNDungTBao.getLength(); i++) {
+		// if (nodeNDungTBao.item(i).getNodeName().equals("GDich")) {
+		// System.out.println(XmlUtils.getElementValue(nodeNDungTBao.item(i),
+		// "mtaLoiGDich"));
+		// }
+		// }
 
-		Document doc = builder.parse(src);
-		String age = doc.getElementsByTagName("soapenv:Body").item(0).getTextContent();
-		System.out.println("age: " + age);
-		// String name = doc.getElementsByTagName("name").item(0).getTextContent();
-		// System.out.println("name: " + name);
+		for (int i = 0; i < nodeTBaoThue.getLength(); i++) {
+			System.out.println(nodeTBaoThue.item(i).getNodeName());
+		}
 
 	}
 
