@@ -25,8 +25,8 @@ public class FilesUtils {
 	 * @param path
 	 * @return
 	 */
-	public static DataHandler getDataHandler(String path) {
-		return new DataHandler(new FileDataSource(path));
+	public static DataHandler asDataHandler(String filename) {
+		return new DataHandler(new FileDataSource(filename));
 	}
 
 }

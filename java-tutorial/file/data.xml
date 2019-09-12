@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TBaoThueDTu xmlns="http://kekhaithue.gdt.gov.vn/TBaoThue" xmlns:ns2="http://kekhaithue.gdt.gov.vn/TKhaiThue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<TBaoThue id="_NODE_TO_SIGN">
+		<TTinChung>
+			<CQT>
+				<maCQT>00000</maCQT>
+				<tenCQT>Tổng Cục Thuế</tenCQT>
+				<DVu>
+					<maDVu>ETAX</maDVu>
+					<tenDVu>ETAX</tenDVu>
+					<pbanDVu>3.1.0</pbanDVu>
+				</DVu>
+			</CQT>
+			<NNhanTBaoThue>
+				<maNNhan>0309478306-999</maNNhan>
+				<tenNNhan>MST test</tenNNhan>
+				<diaChiNNhan>Lo 4, 278 </diaChiNNhan>
+			</NNhanTBaoThue>
+			<TTinTBaoThue>
+				<maTBao>215</maTBao>
+				<tenTBao>KẾT QUẢ NỘP HỒ SƠ KHAI THUẾ QUA DỊCH VỤ T-VAN</tenTBao>
+				<pbanTBao>2.0.9</pbanTBao>
+				<soTBao>07-GD/T-VAN</soTBao>
+				<ngayTBao>2019-09-11</ngayTBao>
+			</TTinTBaoThue>
+		</TTinChung>
+		<NDungTBao>
+			<GDich>
+				<mauLoaiThongBao>07-GD/T-VAN</mauLoaiThongBao>
+				<tenLoaiThongBao>KẾT QUẢ NỘP HỒ SƠ KHAI THUẾ QUA DỊCH VỤ T-VAN</tenLoaiThongBao>
+				<ngayGDich>11/09/2019</ngayGDich>
+				<maGDich>11420191000781260</maGDich>
+				<maLoaiGDich>0007</maLoaiGDich>
+				<ndungGDich>Nộp hồ sơ đính kèm hồ sơ khai thuế qua dịch vụ VAN</ndungGDich>
+				<maKQuaGDich>03</maKQuaGDich>
+				<kquaGDich>Không chấp nhận</kquaGDich>
+				<maLoiGDich>IHTKK-9999</maLoiGDich>
+				<mtaLoiGDich>- Mã loại phụ lục không tồn tại trong hệ thống&#13;
+				</mtaLoiGDich>
+			</GDich>
+			<CTietGDich>
+				<tinCTietGDich>0309478306-999</tinCTietGDich>
+				<tenNNT>MST test</tenNNT>
+				<maHSo>572</maHSo>
+				<tenHSo/>
+				<maLoaiHSo>C</maLoaiHSo>
+				<tenLoaiHSo>Chính thức</tenLoaiHSo>
+				<kyKKhaiHThi>2018</kyKKhaiHThi>
+				<lanNop>0</lanNop>
+				<ngayNNTNopTKhai>11/09/2019 15:58:06</ngayNNTNopTKhai>
+				<tenCQTNoiNop>70100</tenCQTNoiNop>
+				<makquaCTietGDich>03</makquaCTietGDich>
+				<mtaKquaCTietGDich>Không chấp nhận</mtaKquaCTietGDich>
+				<maLoiCTietGDich>IHTKK-9999</maLoiCTietGDich>
+				<mtaLoiCTietGDich>- Mã loại phụ lục không tồn tại trong hệ thống&#13;
+				</mtaLoiCTietGDich>
+				<maGDC/>
+			</CTietGDich>
+		</NDungTBao>
+	</TBaoThue>
+	<CKyDTu>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+				<Reference URI="#_NODE_TO_SIGN">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+					<DigestValue>lyhyomvNMLG/TdYdarPj8AsYUQOdNO+/OSAyskTWtXU=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>EAkZd2zPe6e2RHszfhCv5v26V18xcX4aQ7wx9/e4njwR46a4DaXD9zPM8MLpvfM9HwtAaYoA5Tbr
+tVl1nIEqTMd1L5AZBD+nsxWMwz6yQC05lxF9RLhSlndWltZjs7wy6RycSIte1iA8Or8lbdM3sGke
+oF6/AmKl0b+M8E/6n/qwMMsq7I57t1+9lMoH7kUm2+n8ya0oe6eELX/xuTHk96PADrtd1JLu31g6
++xL84LpE06IDObQE1gzybPVO/BGoYrus9vIBkjrUZgs9OmXGl2BCGjbcFvqbob79bzxop5hfn8+z
+3kmqoXP+h96YpFOjr53Zejpa8xGjuD5PZdBroA==</SignatureValue>
+			<KeyInfo>
+				<KeyValue>
+					<RSAKeyValue>
+						<Modulus>iEI2JwbnVxCZSk5mbBcK6owcX7+/h0YMOJRDXilUmRiqCKSq6muZUr+qZXawVoduwmCAbJ63lXrS
+UMJXnoJ1An1Ib3spPyb8n5ASn55INQNonOMbrDtkimIKVTzdntbT4/dVyaCdyt6f3EzllvVmioGp
+Ame8djgXREg3c6CSWqGKmDEUYS7yftGHD8Wp7ZBj7NDaLGuctZhvbQQz8YFQMocq1Rxk+GErgieX
+uo9DZLfPWYffiwtUkmydPg8EpI/Nvb9jS7Sok7FxGKN99BpuUK4UYVG5a9LP2B+6Xp9Uc731Im5y
+SsoA3iSbCjowBqYTpSB/oClSOnEpuog0eaBPHw==</Modulus>
+						<Exponent>AQAB</Exponent>
+					</RSAKeyValue>
+				</KeyValue>
+				<X509Data>
+					<X509SubjectName>C=VN,ST=HANOI,O=TỔNG CỤC THUẾ,CN=TỔNG CỤC THUẾ TEST01 - SHA256,UID=MST:0100231226-998</X509SubjectName>
+					<X509Certificate>MIIFGTCCBAGgAwIBAgIQVAEBBQAAAABZpPu2HVQAajANBgkqhkiG9w0BAQsFADA6MRMwEQYDVQQD
+DApWaWV0dGVsLUNBMRYwFAYDVQQKDA1WaWV0dGVsIEdyb3VwMQswCQYDVQQGEwJWTjAeFw0xOTA2
+MTIwOTU3MDhaFw0yMDA2MTEwOTU3MDhaMIGNMSIwIAYKCZImiZPyLGQBAQwSTVNUOjAxMDAyMzEy
+MjYtOTk4MSwwKgYDVQQDDCNU4buUTkcgQ+G7pEMgVEhV4bq+IFRFU1QwMSAtIFNIQTI1NjEcMBoG
+A1UECgwTVOG7lE5HIEPhu6RDIFRIVeG6vjEOMAwGA1UECAwFSEFOT0kxCzAJBgNVBAYTAlZOMIIB
+IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiEI2JwbnVxCZSk5mbBcK6owcX7+/h0YMOJRD
+XilUmRiqCKSq6muZUr+qZXawVoduwmCAbJ63lXrSUMJXnoJ1An1Ib3spPyb8n5ASn55INQNonOMb
+rDtkimIKVTzdntbT4/dVyaCdyt6f3EzllvVmioGpAme8djgXREg3c6CSWqGKmDEUYS7yftGHD8Wp
+7ZBj7NDaLGuctZhvbQQz8YFQMocq1Rxk+GErgieXuo9DZLfPWYffiwtUkmydPg8EpI/Nvb9jS7So
+k7FxGKN99BpuUK4UYVG5a9LP2B+6Xp9Uc731Im5ySsoA3iSbCjowBqYTpSB/oClSOnEpuog0eaBP
+HwIDAQABo4IBxTCCAcEwNgYIKwYBBQUHAQEEKjAoMCYGCCsGAQUFBzABhhpodHRwOi8vb2NzcDIu
+dmlldHRlbC1jYS52bjAdBgNVHQ4EFgQU3fUmfZzvCaZ24/sz4CwhNrMYN60wDAYDVR0TAQH/BAIw
+ADAfBgNVHSMEGDAWgBRMA8IT5aaiOoiPD1Uz/Osyde+qRDCBrAYDVR0gBIGkMIGhMIGeBgorBgEE
+AYHtAwEFMIGPMEoGCCsGAQUFBwICMD4ePABUAGgAaQBzACAAaQBzACAAYQBjAGMAcgBlAGQAaQB0
+AGUAZAAgAGMAZQByAHQAaQBmAGkAYwBhAHQAZTBBBggrBgEFBQcCARY1aHR0cDovL3ZpZXR0ZWwt
+Y2Eudm4vdXBsb2Fkcy9maWxlL2Rvd25sb2FkL0NQLUNQUy5wZGYwegYDVR0fBHMwcTBvoC2gK4Yp
+aHR0cDovL2NybC52aWV0dGVsLWNhLnZuL1ZpZXR0ZWwtQ0EtMi5jcmyiPqQ8MDoxEzARBgNVBAMM
+ClZpZXR0ZWwtQ0ExFjAUBgNVBAoMDVZpZXR0ZWwgR3JvdXAxCzAJBgNVBAYTAlZOMA4GA1UdDwEB
+/wQEAwIF4DANBgkqhkiG9w0BAQsFAAOCAQEAo651rwzfs1b2tLxs+zk7GyL3qkFxrSyRNA06W09x
+rJGkwF2Ox3jhnefXjlIA75ddSGEgnX1FDGipmycfwwNt9UnY3aomzrB9/rot6spq8k0VvzQiY2w5
+hDibhX7FbdvEnVMuX26I41XkSKQ/f5sApQFo+Nh+qUrC5Vx0Dchg7gt8f9CAc/rqVGmLWN4pzrdF
+Bq3+hmTmZ3nYOIraKchcXFBEQa3ybFvEtPUADptD1dSpGTTDHxF5jyEEXUSkMmgqmxB/UUgyYURg
+G1rS2kogiH+T+cdGlahXR9fEqGHAZtxyn0IEviyWSdrBzuuZjEdL81MAJtvtw+Rkc/dqVTF4iA==</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</CKyDTu>
+</TBaoThueDTu>

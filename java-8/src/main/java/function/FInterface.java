@@ -1,7 +1,7 @@
 package function;
 
 @FunctionalInterface // optional
-interface FunInterf {
+interface FuncInterface {
 
 	// abstract method
 	void showName(String name);
@@ -14,10 +14,9 @@ interface FunInterf {
 	static void showStatic() {
 		System.out.println("I'm static method");
 	}
-
 }
 
-public class FuncInterface implements FunInterf {
+public class FInterface implements FuncInterface {
 
 	@Override
 	public void showName(String name) {
@@ -26,16 +25,16 @@ public class FuncInterface implements FunInterf {
 
 	public static void main(String[] args) {
 
-		FuncInterface fi = new FuncInterface();
-
+		FInterface f = new FInterface();
+		
 		// implements
-		fi.showName("Java");
-
+		f.showName("Java");
+		
 		// without implements
-		fi.show();
-
+		f.show();
+		
 		// static
-		FunInterf.showStatic();
+		FuncInterface.showStatic();
 
 	}
 
