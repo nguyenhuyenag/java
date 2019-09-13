@@ -1,7 +1,6 @@
 package algorithm.dynamic;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
 public class Fibonacci {
 
@@ -12,7 +11,7 @@ public class Fibonacci {
 		for (int i = 1; i < length; i++) {
 			arr[i] = BigInteger.valueOf(i).multiply(arr[i - 1]);
 		}
-		System.out.println(Arrays.toString(arr));
+		// System.out.println(Arrays.toString(arr));
 		System.out.println(n + "! = " + arr[n]);
 	}
 
@@ -30,13 +29,13 @@ public class Fibonacci {
 		for (int i = 2; i < F.length; i++) {
 			F[i] = F[i - 1].add(F[i - 2]);
 		}
-		System.out.println(Arrays.toString(F));
+		// System.out.println(Arrays.toString(F));
 		System.out.println("F(" + n + ") = " + F[n]);
 	}
 
 	public static void main(String[] args) {
-		int n = 333;
-		// factorial(n);
+		int n = 33;
+		factorial(n);
 		fibonacci(n);
 	}
 }

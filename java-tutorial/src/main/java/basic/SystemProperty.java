@@ -35,10 +35,8 @@ public class SystemProperty {
 	}
 
 	public static void main(String[] args) {
-		
 		Consumer<String> action = key -> System.out.println(key + " => " + System.getProperty(key));
 		Arrays.asList(keyArrays).stream().forEach(action);
-		
 	}
 
 }

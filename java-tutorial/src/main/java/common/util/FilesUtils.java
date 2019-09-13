@@ -17,7 +17,6 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 
-import common.util.PathUtils;
 import exception.FileException;
 
 public class FilesUtils {
