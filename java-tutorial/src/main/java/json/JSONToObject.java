@@ -15,14 +15,10 @@ import common.util.FilesUtils;
 public class JSONToObject {
 
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
-
 		String json = FilesUtils.readFileToString(Paths.get("file/user.json"));
 		ObjectMapper mapper = new ObjectMapper();
-		TypeReference<List<User>> type = //
-				new TypeReference<List<User>>() {
-				};
+		TypeReference<List<User>> type = new TypeReference<List<User>>() {};
 		List<User> details = mapper.readValue(json, type);
-
 		details.forEach(d -> System.out.println(d.toString()));
 	}
 
