@@ -1,11 +1,10 @@
 package common.util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -55,10 +54,22 @@ public class DateTimeUtils {
 		return formatDate(new Date(), null);
 	}
 
+	/**
+	 * Get later date
+	 * <pre>
+	 * getLaterDate(ONE_HOURS)		= 1 giờ sau
+	 * getLaterDate( ONE_DAYS )		= 1 ngày sau
+	 * </pre>
+	 * @param amounts là thời gian tính bằng mili giây
+	 * @return Date
+	 */
 	public static Date getLaterDate(long amounts) {
 		return new Date(System.currentTimeMillis() + amounts);
 	}
 
+	/**
+	 * Replace Date constructor warning @Deprecated
+	 */
 	public static Date asDate(int year, int month, int date) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.YEAR, year);
@@ -67,12 +78,16 @@ public class DateTimeUtils {
 		return calendar.getTime();
 	}
 	
-	@Deprecated
-	public static void get() {
-		Date date = new Date();
-		LocalDate local = LocalDate.from(date.toInstant().atZone(ZoneOffset.UTC));
-		String s = DateTimeFormatter.ISO_DATE.format(local); // yyyy-MM-dd
-		System.out.println(s);
+	/**
+	 * String to Date
+	 */
+	public static Date asDate(String date, String pattern) throws ParseException {
+		DateFormat sdf = new SimpleDateFormat(pattern != null ? pattern : YYYYMMDD_HHMMSS);
+		return sdf.parse(date);
 	}
 
+	public static Date asDate(String date) throws ParseException {
+		return asDate(date, YYYYMMDD_HHMMSS);
+	}
+	
 }
