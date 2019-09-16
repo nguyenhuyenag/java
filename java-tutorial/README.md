@@ -19,3 +19,5 @@
 	- Không thể tạo, catch, throw đối tượng của parameterized types
 	- Không thể overload các hàm trong một lớp giống như
 	
+# > mvn javadoc:javadoc
+	

@@ -1,4 +1,4 @@
-package basic;
+package learn.collection.stream;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,15 +8,12 @@ import java.util.stream.Stream;
 
 import common.util.PathUtils;
 
-public class AMain {
+public class StreamClose {
 
 	public static void main(String[] args) {
 
 		String s = PathUtils.toUnixSeparator("D:\\Java\\soapui");
 		Path path = Paths.get(s);
-		// List<String> list = FilesUtils.getAllFiles(path);
-		// list.forEach(System.out::println);
-		// System.out.println(list.size());
 
 		// Stream<Path> list = Files.list(path).onClose(() ->
 		// System.out.println("Closed"));
@@ -27,6 +24,6 @@ public class AMain {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }

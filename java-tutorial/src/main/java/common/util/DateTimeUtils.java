@@ -43,7 +43,7 @@ public class DateTimeUtils {
 	
 	/**
 	 * Get now
-	 * @param pattern
+	 * @param pattern is pattern
 	 * @return now string
 	 */
 	public static String now(String pattern) {
@@ -67,9 +67,6 @@ public class DateTimeUtils {
 		return new Date(System.currentTimeMillis() + amounts);
 	}
 
-	/**
-	 * Replace Date constructor warning @Deprecated
-	 */
 	public static Date asDate(int year, int month, int date) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.YEAR, year);
@@ -78,9 +75,6 @@ public class DateTimeUtils {
 		return calendar.getTime();
 	}
 	
-	/**
-	 * String to Date
-	 */
 	public static Date asDate(String date, String pattern) throws ParseException {
 		DateFormat sdf = new SimpleDateFormat(pattern != null ? pattern : YYYYMMDD_HHMMSS);
 		return sdf.parse(date);

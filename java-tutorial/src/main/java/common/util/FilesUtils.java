@@ -8,12 +8,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -27,7 +27,7 @@ public class FilesUtils {
 	
 	/**
 	 * Reads all the bytes from a file
-	 * @param file the path to the file
+	 * @param path file the path to the file
 	 * @return a byte array from the file
 	 */
 	public static byte[] toByteArray(Path path) {
@@ -161,10 +161,10 @@ public class FilesUtils {
 		return readFileToString(file, StandardCharsets.UTF_8);
 	}
 	
+	@Deprecated
 	public static String[][] lines(Path path, String regex) {
-		try {
-			return Files.lines(path) //
-					.map(s -> s.split(regex != null ? regex : "\\s+")) //
+		try (Stream<String> stream = Files.lines(path)) {
+			return stream.map(s -> s.split(regex != null ? regex : "\\s+")) //
 					.toArray(String[][]::new);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -297,9 +297,8 @@ public class FilesUtils {
 		if (!PathUtils.isExists(dir)) {
 			throw new FileException("Directory does't exists!");
 		}
-		try {
-			return Files.list(dir) //
-					.filter(PredicateUtils.not(Files::isDirectory)) //
+		try (Stream<Path> list = Files.list(dir)) {
+			return list.filter(PredicateUtils.not(Files::isDirectory)) //
 					.map(Path::toString) //
 					.collect(Collectors.toList()); //
 		} catch (IOException e) {
@@ -317,16 +316,11 @@ public class FilesUtils {
 		if (!PathUtils.isExists(dir)) {
 			throw new FileException("Directory does't exists!");
 		}
-		List<String> list = new ArrayList<>();
-		try {
-			Files.list(dir).forEach(p -> {
-				if (Files.isDirectory(p)) {
-					list.addAll(getAllFiles(p));
-				} else {
-					list.add(p.toString());
-				}
-			});
-			return list;
+		try (Stream<Path> walk = Files.walk(dir)) {
+			return walk.filter(Files::isRegularFile) //
+					// .filter(PredicateUtils.not(Files::isDirectory))
+					.map(Path::toString) //
+					.collect(Collectors.toList());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
