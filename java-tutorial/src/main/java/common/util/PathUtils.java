@@ -32,8 +32,10 @@ public class PathUtils {
 	 * To UNIX separator
 	 * @param filename the filename to normalize
 	 * @return the normalized filename
+	 * @see FilenameUtils#normalize
+	 * @see FilenameUtils#separatorsToUnix
 	 */
-	public static String clean(String filename) {
+	public static String toUnixSeparator(String filename) {
 		return FilenameUtils.normalize(filename, true);
 	}
 
@@ -43,7 +45,7 @@ public class PathUtils {
 	 */
 	public static String get(String first, String... more) {
 		String path = Paths.get(first, more).toString();
-		return clean(path);
+		return toUnixSeparator(path);
 	}
 	
 	/**

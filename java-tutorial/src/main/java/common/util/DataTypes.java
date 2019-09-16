@@ -1,6 +1,6 @@
 package common.util;
 
-public class Constant {
+public class DataTypes {
 
 	public static final byte MIN_BYTE 		=	-128;					//	-2^7
 	public static final byte MAX_BYTE 		= 	127; 					//	2^7 - 1

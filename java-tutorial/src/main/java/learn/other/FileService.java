@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
@@ -18,7 +17,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -343,6 +341,7 @@ public class FileService {
 		}
 	}
 
+	@Deprecated
 	public static List<String> getAllFile(Path dir) {
 		if (!isExists(dir)) {
 			throw new FileException("Directory does't exists!");
@@ -363,18 +362,24 @@ public class FileService {
 		return data;
 	}
 
+	@Deprecated
 	public static File[] getAllFileInDirectory(String dir) {
 		File file = new File(dir);
 		return file.listFiles();
 	}
 
-	public static List<String> loadAllFile(Path location) {
-		File dir = new File(location.toString());
-		File[] listFiles = dir.listFiles();
-		System.out.println(Arrays.toString(listFiles));
-		return Stream.of(listFiles).filter(file -> !file.isDirectory()).map(File::getName).collect(Collectors.toList());
+	@Deprecated
+	public static List<String> getFileName(Path path) {
+		// File dir = new File(path.toString());
+		// File dir = path.toFile();
+		File[] listFiles = path.toFile().listFiles();
+		return Stream.of(listFiles) //
+				.filter(file -> !file.isDirectory()) //
+				.map(File::getName) //
+				.collect(Collectors.toList());
 	}
 
+	@Deprecated
 	public static List<File> listFiles(String pathname) {
 		File directory = new File(pathname);
 		List<File> list = new ArrayList<File>();
@@ -391,18 +396,16 @@ public class FileService {
 		return list;
 	}
 
+	@Deprecated
 	public static List<File> listFiles(String pathname, String postfix) {
 		File directory = new File(pathname);
 		List<File> list = new ArrayList<File>();
-		/*
-		 * File[] listFiles = directory.listFiles((dir, name) ->
-		 * name.toLowerCase().endsWith(postfix));
-		 */
-		File[] listFiles = directory.listFiles(new FilenameFilter() {
-			public boolean accept(File dir, String name) {
-				return name.toLowerCase().endsWith(postfix);
-			}
-		});
+		File[] listFiles = directory.listFiles((dir, name) -> name.toLowerCase().endsWith(postfix));
+		// File[] listFiles = directory.listFiles(new FilenameFilter() {
+		// public boolean accept(File dir, String name) {
+		// return name.toLowerCase().endsWith(postfix);
+		// }
+		// });
 		if (listFiles != null) {
 			for (File file : listFiles) {
 				if (file.isFile()) {

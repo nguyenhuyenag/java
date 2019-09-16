@@ -8,10 +8,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -224,7 +226,7 @@ public class FilesUtils {
 
 	/**
 	 * Create and writes a string to a file. If the file exists, remove all content
-	 * and write to it.
+	 * and write to it
 	 * @param path the path to the file
 	 * @param data string content to write to the file
 	 * @return boolean
@@ -282,6 +284,71 @@ public class FilesUtils {
 	 */
 	public static boolean writeTextToFile(Path path, Collection<? extends CharSequence> data) {
 		return writeTextToFile(path, data, StandardCharsets.UTF_8, false);
+	}
+	
+	// TODO -> new
+	
+	/**
+	 * Get all elements in the directory (without subdirectory)
+	 * @param dir the path to the directory
+	 * @return the content of the directory
+	 */
+	public static List<String> getFiles(Path dir) {
+		if (!PathUtils.isExists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		try {
+			return Files.list(dir) //
+					.filter(PredicateUtils.not(Files::isDirectory)) //
+					.map(Path::toString) //
+					.collect(Collectors.toList()); //
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+
+	/**
+	 * Get all elements in the directory & subdirectory
+	 * @param dir the path to the directory
+	 * @return the content of the directory & subdirectory
+	 */
+	public static List<String> getAllFiles(Path dir) {
+		if (!PathUtils.isExists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		List<String> list = new ArrayList<>();
+		try {
+			Files.list(dir).forEach(p -> {
+				if (Files.isDirectory(p)) {
+					list.addAll(getAllFiles(p));
+				} else {
+					list.add(p.toString());
+				}
+			});
+			return list;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+
+	/**
+	 * Count the elements in directory
+	 * @param directory the path to the directory
+	 * @return the number of elements in this directory
+	 */
+	public static int count(Path directory) {
+		return getFiles(directory).size();
+	}
+
+	/**
+	 * Count the elements in directory & subdirectory
+	 * @param directory the path to the directory
+	 * @return the number of elements in this directory & subdirectory
+	 */
+	public static int countAll(Path directory) {
+		return getAllFiles(directory).size();
 	}
 	
 }
