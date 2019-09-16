@@ -1,4 +1,4 @@
-package common.string;
+package learn.string;
 
 import java.util.HashMap;
 import java.util.Map;

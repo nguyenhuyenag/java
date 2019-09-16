@@ -1,4 +1,4 @@
-package common.string;
+package learn.string;
 
 public class DeleteCharacter {
 

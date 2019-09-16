@@ -1,4 +1,4 @@
-package common.file;
+package learn.other;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

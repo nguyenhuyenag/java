@@ -1,4 +1,4 @@
-package common.util.list;
+package learn.collection.list;
 
 import java.util.Arrays;
 import java.util.List;

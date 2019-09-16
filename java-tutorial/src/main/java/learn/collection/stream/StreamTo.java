@@ -1,4 +1,4 @@
-package common.util.stream;
+package learn.collection.stream;
 
 import java.util.Arrays;
 import java.util.List;

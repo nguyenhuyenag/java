@@ -1,4 +1,4 @@
-package common.string;
+package learn.string;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;

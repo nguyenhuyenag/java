@@ -1,4 +1,4 @@
-package common.date;
+package learn.other;
 
 import java.text.DateFormatSymbols;
 import java.text.Format;
