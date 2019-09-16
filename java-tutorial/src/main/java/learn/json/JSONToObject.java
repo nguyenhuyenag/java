@@ -1,4 +1,4 @@
-package json;
+package learn.json;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -14,7 +14,8 @@ import common.util.FilesUtils;
 
 public class JSONToObject {
 
-	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
+	public static void main(String[] args) 
+			throws JsonParseException, JsonMappingException, IOException {
 		String json = FilesUtils.readFileToString(Paths.get("file/user.json"));
 		ObjectMapper mapper = new ObjectMapper();
 		TypeReference<List<User>> type = new TypeReference<List<User>>() {};

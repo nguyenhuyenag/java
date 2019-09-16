@@ -19,7 +19,7 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 
-import exception.FileException;
+import common.exception.FileException;
 
 public class FilesUtils {
 	
@@ -51,11 +51,21 @@ public class FilesUtils {
 		return toByteArray(file.toPath());
 	}
 	
+	/**
+	 * Get DataHandler from File
+	 * @param file the path to the file
+	 * @return DataHandler
+	 */
 	public static DataHandler asDataHandler(File file) {
 		DataSource source = new FileDataSource(file);
 		return new DataHandler(source);
 	}
 	
+	/**
+	 * Get DataHandler from Path
+	 * @param path the path to the file
+	 * @return DataHandler
+	 */
 	public static DataHandler asDataHandler(Path path) {
 		return asDataHandler(path.toFile());
 	}
@@ -286,14 +296,12 @@ public class FilesUtils {
 		return writeTextToFile(path, data, StandardCharsets.UTF_8, false);
 	}
 	
-	// TODO -> new
-	
 	/**
 	 * Get all elements in the directory (without subdirectory)
 	 * @param dir the path to the directory
 	 * @return the content of the directory
 	 */
-	public static List<String> getFiles(Path dir) {
+	public static List<String> listFiles(Path dir) {
 		if (!PathUtils.isExists(dir)) {
 			throw new FileException("Directory does't exists!");
 		}
@@ -312,7 +320,7 @@ public class FilesUtils {
 	 * @param dir the path to the directory
 	 * @return the content of the directory & subdirectory
 	 */
-	public static List<String> getAllFiles(Path dir) {
+	public static List<String> listAllFiles(Path dir) {
 		if (!PathUtils.isExists(dir)) {
 			throw new FileException("Directory does't exists!");
 		}
@@ -326,14 +334,56 @@ public class FilesUtils {
 		}
 		return Collections.emptyList();
 	}
-
+	
+	/**
+	 * Get all elements in the directory (without subdirectory)
+	 * @param dir the path to the directory
+	 * @param ext the extension filter
+	 * @return the content of the directory
+	 */
+	public static List<String> listFiles(Path dir, String ext) {
+		if (!PathUtils.isExists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		try (Stream<Path> list = Files.list(dir)) {
+			return list.filter(PredicateUtils.not(Files::isDirectory)) //
+					.filter(p -> p.toString().toLowerCase().endsWith(ext.toLowerCase())) //
+					.map(Path::toString) //
+					.collect(Collectors.toList()); //
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+	
+	/**
+	 * Get all elements in the directory & subdirectory by extention
+	 * @param dir the path to the directory
+	 * @param ext the extension filter
+	 * @return the content of the directory & subdirectory
+	 */
+	public static List<String> listAllFiles(Path dir, String ext) {
+		if (!PathUtils.isExists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		try (Stream<Path> walk = Files.walk(dir)) {
+			return walk.filter(Files::isRegularFile) //
+					.filter(p -> p.toString().toLowerCase().endsWith(ext.toLowerCase())) //
+					.map(Path::toString) //
+					.collect(Collectors.toList());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+	
 	/**
 	 * Count the elements in directory
 	 * @param directory the path to the directory
 	 * @return the number of elements in this directory
 	 */
 	public static int count(Path directory) {
-		return getFiles(directory).size();
+		return listFiles(directory).size();
 	}
 
 	/**
@@ -342,7 +392,7 @@ public class FilesUtils {
 	 * @return the number of elements in this directory & subdirectory
 	 */
 	public static int countAll(Path directory) {
-		return getAllFiles(directory).size();
+		return listAllFiles(directory).size();
 	}
 	
 }

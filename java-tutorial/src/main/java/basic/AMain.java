@@ -1,32 +1,8 @@
 package basic;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
-
-import common.util.PathUtils;
-
 public class AMain {
 
 	public static void main(String[] args) {
 
-		String s = PathUtils.toUnixSeparator("D:\\Java\\soapui");
-		Path path = Paths.get(s);
-		// List<String> list = FilesUtils.getAllFiles(path);
-		// list.forEach(System.out::println);
-		// System.out.println(list.size());
-
-		// Stream<Path> list = Files.list(path).onClose(() ->
-		// System.out.println("Closed"));
-		// list.forEach(System.out::println);
-
-		try (Stream<Path> list = Files.list(path).onClose(() -> System.out.println("Closed"))) {
-			list.forEach(System.out::println);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 	}
 }

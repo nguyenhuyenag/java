@@ -28,7 +28,7 @@ import javax.activation.DataHandler;
 
 import org.apache.commons.io.FileUtils;
 
-import exception.FileException;
+import common.exception.FileException;
 
 public class FileService {
 

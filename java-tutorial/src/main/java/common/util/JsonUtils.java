@@ -1,4 +1,4 @@
-package json;
+package common.util;
 
 import java.io.File;
 import java.lang.reflect.Type;
@@ -16,8 +16,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import common.util.FilesUtils;
 
 public class JsonUtils {
 
