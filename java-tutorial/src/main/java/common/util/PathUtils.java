@@ -53,7 +53,7 @@ public class PathUtils {
 	 * @param path the path to the file to test
 	 * @return {@code true} if the file exists, otherwise {@code false}
 	 */
-	public static boolean isExists(Path path) {
+	public static boolean exists(Path path) {
 		return Files.exists(path);
 	}
 

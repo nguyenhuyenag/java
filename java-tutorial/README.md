@@ -20,4 +20,30 @@
 	- Không thể overload các hàm trong một lớp giống như
 	
 # > mvn javadoc:javadoc
+
+# static
+	- Method
+		+ Phương thức static thuộc lớp chứ không thuộc đối tượng của lớp
+		+ Phương thức static chỉ có thể gọi một phương thức static
+		+ Phương thức static không thể sử dụng từ khóa this, super
+		+ Không thể override (ghi đè) phương thức static
+	- Class
+		+ Chỉ khai báo được static class khi nó nằm trong 1 class khác (nested class)
+		
+# final
+	- Method
+		+ Phương thức final có thể KẾ THỪA nhưng không thể ghi đè (override)
+	- Class
+		+ Không thể kế thừa class final
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	

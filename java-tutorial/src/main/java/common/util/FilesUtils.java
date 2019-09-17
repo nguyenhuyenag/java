@@ -31,7 +31,7 @@ public class FilesUtils {
 	 * @return a byte array from the file
 	 */
 	public static byte[] toByteArray(Path path) {
-		if (!PathUtils.isExists(path)) {
+		if (!PathUtils.exists(path)) {
 			throw new FileException("File does't exist!");
 		}
 		try {
@@ -92,7 +92,7 @@ public class FilesUtils {
 	 * @return the lines from the file
 	 */
 	public static List<String> readAllLines(Path path, Charset cs) {
-		if (!PathUtils.isExists(path)) {
+		if (!PathUtils.exists(path)) {
 			throw new FileException("File does't exist!");
 		}
 		try {
@@ -192,7 +192,7 @@ public class FilesUtils {
 	 */
 	public static boolean writeByteArrayToFile(Path path, byte[] bytes, boolean append) {
 		Path parent = path.getParent();
-		if (!(Objects.isNull(parent) || PathUtils.isExists(parent))) {
+		if (!(Objects.isNull(parent) || PathUtils.exists(parent))) {
 			throw new FileException("The path file doesn't exist");
 		}
 		try {
@@ -256,7 +256,7 @@ public class FilesUtils {
 	 */
 	public static boolean writeTextToFile(Path path, Collection<? extends CharSequence> data, Charset cs, boolean append) {
 		Path parent = path.getParent();
-		if (!(Objects.isNull(parent) || PathUtils.isExists(parent))) {
+		if (!(Objects.isNull(parent) || PathUtils.exists(parent))) {
 			throw new FileException("The path file doesn't exist");
 		}
 		try {
@@ -301,13 +301,32 @@ public class FilesUtils {
 	 * @param dir the path to the directory
 	 * @return the content of the directory
 	 */
-	public static List<String> listFiles(Path dir) {
-		if (!PathUtils.isExists(dir)) {
+	public static List<String> listFile(Path dir) {
+		if (!PathUtils.exists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		try (Stream<Path> list = Files.list(dir)) { // Get all elements in directory
+			return list.filter(Predicates.not(Files::isDirectory)) // without directory
+					.map(Path::toString) // path to string
+					.collect(Collectors.toList()); // to list
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+	
+	/**
+	 * Get all elements in the directory (without subdirectory)
+	 * @param dir the path to the directory
+	 * @return the content of the directory
+	 */
+	public static List<File> listFiles(Path dir) {
+		if (!PathUtils.exists(dir)) {
 			throw new FileException("Directory does't exists!");
 		}
 		try (Stream<Path> list = Files.list(dir)) {
-			return list.filter(PredicateUtils.not(Files::isDirectory)) //
-					.map(Path::toString) //
+			return list.filter(Predicates.not(Files::isDirectory)) //
+					.map(Path::toFile) //
 					.collect(Collectors.toList()); //
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -320,8 +339,8 @@ public class FilesUtils {
 	 * @param dir the path to the directory
 	 * @return the content of the directory & subdirectory
 	 */
-	public static List<String> listAllFiles(Path dir) {
-		if (!PathUtils.isExists(dir)) {
+	public static List<String> listAllFile(Path dir) {
+		if (!PathUtils.exists(dir)) {
 			throw new FileException("Directory does't exists!");
 		}
 		try (Stream<Path> walk = Files.walk(dir)) {
@@ -336,19 +355,61 @@ public class FilesUtils {
 	}
 	
 	/**
+	 * Get all elements in the directory & subdirectory
+	 * @param dir the path to the directory
+	 * @return the content of the directory & subdirectory
+	 */
+	public static List<File> listAllFiles(Path dir) {
+		if (!PathUtils.exists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		try (Stream<Path> walk = Files.walk(dir)) {
+			return walk.filter(Files::isRegularFile) //
+					.map(Path::toFile) //
+					.collect(Collectors.toList());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+	
+	/**
 	 * Get all elements in the directory (without subdirectory)
 	 * @param dir the path to the directory
-	 * @param ext the extension filter
+	 * @param extension the extension filter
 	 * @return the content of the directory
 	 */
-	public static List<String> listFiles(Path dir, String ext) {
-		if (!PathUtils.isExists(dir)) {
+	public static List<String> listFile(Path dir, String extension) {
+		if (!PathUtils.exists(dir)) {
 			throw new FileException("Directory does't exists!");
 		}
 		try (Stream<Path> list = Files.list(dir)) {
-			return list.filter(PredicateUtils.not(Files::isDirectory)) //
-					.filter(p -> p.toString().toLowerCase().endsWith(ext.toLowerCase())) //
+			String ext = extension.toLowerCase().trim();
+			return list.filter(Predicates.not(Files::isDirectory)) //
+					.filter(p -> p.toString().toLowerCase().endsWith(ext)) //
 					.map(Path::toString) //
+					.collect(Collectors.toList()); //
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+	
+	/**
+	 * Get all elements in the directory (without subdirectory)
+	 * @param dir the path to the directory
+	 * @param extension the extension filter
+	 * @return the content of the directory
+	 */
+	public static List<File> listFiles(Path dir, String extension) {
+		if (!PathUtils.exists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		try (Stream<Path> list = Files.list(dir)) {
+			String ext = extension.toLowerCase().trim();
+			return list.filter(Predicates.not(Files::isDirectory)) //
+					.filter(p -> p.toString().toLowerCase().endsWith(ext)) //
+					.map(Path::toFile) //
 					.collect(Collectors.toList()); //
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -359,17 +420,78 @@ public class FilesUtils {
 	/**
 	 * Get all elements in the directory & subdirectory by extention
 	 * @param dir the path to the directory
-	 * @param ext the extension filter
+	 * @param extension the extension filter
 	 * @return the content of the directory & subdirectory
 	 */
-	public static List<String> listAllFiles(Path dir, String ext) {
-		if (!PathUtils.isExists(dir)) {
+	public static List<String> listAllFile(Path dir, String extension) {
+		if (!PathUtils.exists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		try (Stream<Path> walk = Files.walk(dir)) {
+			String ext = extension.toLowerCase().trim();
+			return walk.filter(Files::isRegularFile) //
+					.filter(p -> p.toString().toLowerCase().endsWith(ext)) //
+					.map(Path::toString) //
+					.collect(Collectors.toList());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+	
+	/**
+	 * Get all elements in the directory & subdirectory by extention
+	 * @param dir the path to the directory
+	 * @param extension the extension filter
+	 * @return the content of the directory & subdirectory
+	 */
+	public static List<File> listAllFiles(Path dir, String extension) {
+		if (!PathUtils.exists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		try (Stream<Path> walk = Files.walk(dir)) {
+			String ext = extension.toLowerCase().trim();
+			return walk.filter(Files::isRegularFile) //
+					.filter(p -> p.toString().toLowerCase().endsWith(ext)) //
+					.map(Path::toFile) //
+					.collect(Collectors.toList());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+	
+	/**
+	 * Get all elements filename in the directory (without subdirectory)
+	 * @param dir the path to the directory
+	 * @return list filename
+	 */
+	public static List<String> listFileName(Path dir) {
+		if (!PathUtils.exists(dir)) {
+			throw new FileException("Directory does't exists!");
+		}
+		try (Stream<Path> list = Files.list(dir)) {
+			return list.filter(Predicates.not(Files::isDirectory)) //
+					.map(p -> p.getFileName().toString()) //
+					.collect(Collectors.toList()); //
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
+	
+	/**
+	 * Get all elements filename in the directory & subdirectory
+	 * @param dir the path to the directory
+	 * @return the content of the directory & subdirectory
+	 */
+	public static List<String> listFileNames(Path dir) {
+		if (!PathUtils.exists(dir)) {
 			throw new FileException("Directory does't exists!");
 		}
 		try (Stream<Path> walk = Files.walk(dir)) {
 			return walk.filter(Files::isRegularFile) //
-					.filter(p -> p.toString().toLowerCase().endsWith(ext.toLowerCase())) //
-					.map(Path::toString) //
+					.map(p -> p.getFileName().toString()) //
 					.collect(Collectors.toList());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -383,7 +505,7 @@ public class FilesUtils {
 	 * @return the number of elements in this directory
 	 */
 	public static int count(Path directory) {
-		return listFiles(directory).size();
+		return listFile(directory).size();
 	}
 
 	/**
@@ -392,7 +514,7 @@ public class FilesUtils {
 	 * @return the number of elements in this directory & subdirectory
 	 */
 	public static int countAll(Path directory) {
-		return listAllFiles(directory).size();
+		return listAllFile(directory).size();
 	}
 	
 }
