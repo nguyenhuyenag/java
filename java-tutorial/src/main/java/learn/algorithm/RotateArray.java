@@ -1,0 +1,44 @@
+package learn.algorithm;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class RotateArray {
+
+	static void rotate(int arr[], int k) {
+		// Chuyển k lần
+		for (int i = 1; i <= k; i++) {
+			move(arr);
+		}
+	}
+
+	static void move(int arr[]) {
+		int i, n, tmp;
+		n = arr.length;
+		tmp = arr[0];
+		for (i = 0; i < n - 1; i++) {
+			arr[i] = arr[i + 1];
+		}
+		arr[i] = tmp;
+	}
+
+	static <T> void moveByCollection(T[] arr, int k) {
+		List<T> list = Arrays.asList(arr);
+		System.out.println("Before: " + Arrays.toString(arr));
+		Collections.rotate(list, k);
+		System.out.println("After: " + Arrays.toString(list.toArray()));
+	}
+
+	/**
+	 * Chuyển k phần tử đầu tiên về cuối mảng
+	 */
+	public static void main(String[] args) {
+		int arr[] = { 1, 2, 3, 4, 5 };
+		int k = 3; // chuyển k ph
+		// [1, 2, 3, 4, 5]
+		rotate(arr, k);
+		// [4, 5, 1, 2, 3]
+	}
+
+}

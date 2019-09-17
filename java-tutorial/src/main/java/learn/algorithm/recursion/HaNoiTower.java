@@ -1,4 +1,4 @@
-package algorithm.recursion;
+package learn.algorithm.recursion;
 
 public class HaNoiTower {
 

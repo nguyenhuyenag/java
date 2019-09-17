@@ -1,4 +1,4 @@
-package algorithm.recursion;
+package learn.algorithm.recursion;
 
 import java.util.Arrays;
 import java.util.Collections;

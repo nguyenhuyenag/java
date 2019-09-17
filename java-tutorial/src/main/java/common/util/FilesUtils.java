@@ -19,6 +19,8 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import common.exception.FileException;
 
 public class FilesUtils {
@@ -39,7 +41,7 @@ public class FilesUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return ArrayUtils.EMPTY_BYTE_ARRAY;
 	}
 	
 	/**
