@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class RotateArray {
+public class Rotate {
 
 	static void rotate(int arr[], int k) {
 		// Chuyển k lần
@@ -34,11 +34,11 @@ public class RotateArray {
 	 * Chuyển k phần tử đầu tiên về cuối mảng
 	 */
 	public static void main(String[] args) {
-		int arr[] = { 1, 2, 3, 4, 5 };
 		int k = 3; // chuyển k ph
-		// [1, 2, 3, 4, 5]
+		int arr[] = { 1, 2, 3, 4, 5 };
+		System.out.println("Before:\t" + Arrays.toString(arr));
 		rotate(arr, k);
-		// [4, 5, 1, 2, 3]
+		System.out.println("After:\t" + Arrays.toString(arr));
 	}
 
 }
