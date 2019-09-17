@@ -1,4 +1,4 @@
-package basic;
+package learn;
 
 class A {
 	void show() {
@@ -6,7 +6,7 @@ class A {
 	}
 }
 
-public class AMain extends A {
+public class Main extends A {
 
 	// @Override
 	void show() {
@@ -23,7 +23,7 @@ public class AMain extends A {
 		// list.forEach(System.out::println);
 		// System.out.println(Arrays.toString(list.stream().toArray(String[]::new)));
 		
-		AMain a = new AMain();
+		Main a = new Main();
 		a.show();
 	}
 }

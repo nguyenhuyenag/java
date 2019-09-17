@@ -1,4 +1,4 @@
-package basic;
+package learn.basic.other;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

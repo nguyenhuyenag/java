@@ -1,4 +1,4 @@
-package basic;
+package learn.basic.other;
 
 public class HeCoSo {
 

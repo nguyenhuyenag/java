@@ -1,4 +1,4 @@
-package basic;
+package learn.basic.other;
 
 import java.util.concurrent.TimeUnit;
 
