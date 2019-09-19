@@ -1,14 +1,13 @@
-package patterns.creational.singleton;
+package patterns.creational.singleton.init;
 
 public class StaticBlock {
 
 	private static final StaticBlock INSTANCE;
 
 	private StaticBlock() {
-		
+
 	}
 
-	// Static block initialization for exception handling
 	static {
 		try {
 			INSTANCE = new StaticBlock();

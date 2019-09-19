@@ -1,4 +1,4 @@
-package patterns.creational.singleton;
+package patterns.creational.singleton.init;
 
 public class BillPugh {
 
@@ -6,12 +6,12 @@ public class BillPugh {
 
 	}
 
-	public static BillPugh getInstance() {
-		return SingletonHelper.INSTANCE;
-	}
-
 	private static class SingletonHelper {
 		private static final BillPugh INSTANCE = new BillPugh();
+	}
+
+	public static BillPugh getInstance() {
+		return SingletonHelper.INSTANCE;
 	}
 
 }

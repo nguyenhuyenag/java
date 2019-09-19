@@ -1,6 +1,8 @@
 package patterns.creational.singleton;
 
-public class SingletonTest {
+import patterns.creational.singleton.init.Eager;
+
+public class SingletonDemo {
 
 	public static void main(String[] args) {
 
