@@ -1,4 +1,4 @@
-package stream;
+package stream.init;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -29,10 +29,10 @@ public class InitStream {
 	}
 
 	public static void main(String[] args) {
-		// InitializeStream.getByStreamOf().forEach(System.out::println);
+		InitStream.getByStreamOf().forEach(System.out::println);
 		// InitializeStream.getByArraysStream().forEach(System.out::println);
 		// InitializeStream.getByCollection().forEach(System.out::println);
-		streamUsingGenerate();
+		// streamUsingGenerate();
 
 	}
 

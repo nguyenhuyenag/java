@@ -12,5 +12,6 @@ public class StreamExample {
 		List<String> filter = list.stream().filter(t -> !t.isEmpty()).collect(Collectors.toList());
 		System.out.println(filter);
 		filter.forEach(System.out::println);
+		
 	}
 }
