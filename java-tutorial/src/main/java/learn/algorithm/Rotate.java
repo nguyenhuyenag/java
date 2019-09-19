@@ -34,7 +34,7 @@ public class Rotate {
 	 * Chuyển k phần tử đầu tiên về cuối mảng
 	 */
 	public static void main(String[] args) {
-		int k = 3; // chuyển k ph
+		int k = 3; // chuyển k phần tử
 		int arr[] = { 1, 2, 3, 4, 5 };
 		System.out.println("Before:\t" + Arrays.toString(arr));
 		rotate(arr, k);

@@ -1,9 +1,8 @@
 package learn.algorithm;
 
-import java.util.Arrays;
+public class SmallPositive {
 
-public class SmallPositiveMiss {
-
+	// Mảng đánh dấu
 	public static int markArray(int[] arr) {
 		int n = arr.length;
 		boolean mark[] = new boolean[n + 2];
@@ -21,6 +20,19 @@ public class SmallPositiveMiss {
 		return 0;
 	}
 
+	// public static int find(int[] arr) {
+	// int result[] = { 1 };
+	// Arrays.stream(arr) //
+	// .filter(i -> i > 0) //
+	// .sorted() //
+	// .forEach(i -> {
+	// if (result[0] == i) {
+	// result[0]++;
+	// }
+	// });
+	// return result[0];
+	// }
+
 	/*-
 	 * Tìm số nguyên dương nhỏ nhất bị thiếu trong mảng
 	 * Input: {2, 3, 7, 6, 8, -1, -10, 15}
@@ -33,22 +45,8 @@ public class SmallPositiveMiss {
 	public static void main(String[] args) {
 		// int arr[] = { 2, 3, 7, 6, 8, -1, -10, 15 }; // => 1
 		// int arr[] = { 2, 3, -7, 6, 8, 1, -10, 15 }; // => 4
-		// int[] arr = { 1, 3, 6, 4, 5, 2 };
-		// System.out.println(search(arr));
 		int[] arr = { 1, 3, 6, 4, 5, 2 };
-		System.out.println(find(arr));
+		System.out.println(markArray(arr));
 	}
 
-	public static int find(int[] arr) {
-		int result[] = { 1 };
-		Arrays.stream(arr) //
-				.filter(i -> i > 0) //
-				.sorted() //
-				.forEach(i -> {
-					if (result[0] == i) {
-						result[0]++;
-					}
-				});
-		return result[0];
-	}
 }
