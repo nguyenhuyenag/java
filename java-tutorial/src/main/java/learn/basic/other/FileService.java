@@ -29,6 +29,7 @@ import javax.activation.DataHandler;
 import org.apache.commons.io.FileUtils;
 
 import common.exception.FileException;
+import common.util.FilesUtils;
 
 public class FileService {
 
@@ -36,6 +37,7 @@ public class FileService {
 
 	/**
 	 * Creates a directory by creating all non-existent parent directories first
+	 * 
 	 * @param dir the directory to create
 	 * @return the directory
 	 */
@@ -50,6 +52,7 @@ public class FileService {
 
 	/**
 	 * Test whether a file or directory exists
+	 * 
 	 * @param path the path to the file to test
 	 * @return {@code true} if the file exists, otherwise {@code false}
 	 */
@@ -60,6 +63,7 @@ public class FileService {
 
 	/**
 	 * Test whether a file exists
+	 * 
 	 * @param filePath the path to the file to test
 	 * @return {@code true} if the file exists, otherwise {@code false}
 	 */
@@ -71,6 +75,7 @@ public class FileService {
 
 	/**
 	 * Reads all the bytes from a file
+	 * 
 	 * @param file the path to the file
 	 * @return a byte array from the file
 	 */
@@ -89,6 +94,7 @@ public class FileService {
 
 	/**
 	 * Reads all the bytes from a file
+	 * 
 	 * @param filePath the path to the file
 	 * @return a byte array from the file
 	 */
@@ -100,6 +106,7 @@ public class FileService {
 
 	/**
 	 * Reads all the bytes from a file
+	 * 
 	 * @param path of file
 	 * @return byte array
 	 * @throws IOException
@@ -119,7 +126,8 @@ public class FileService {
 
 	/**
 	 * Read file to string with Charset
-	 * @param path of file
+	 * 
+	 * @param path    of file
 	 * @param Charset
 	 * @return the file contents
 	 */
@@ -131,6 +139,7 @@ public class FileService {
 
 	/**
 	 * Read file to string with UTF-8
+	 * 
 	 * @param path of file
 	 * @return the file contents
 	 */
@@ -141,6 +150,7 @@ public class FileService {
 
 	/**
 	 * Read file to list string with Charset
+	 * 
 	 * @param path    of file
 	 * @param charset is Charset
 	 * @return string content
@@ -160,6 +170,7 @@ public class FileService {
 
 	/**
 	 * Read file to list string with UTF-8
+	 * 
 	 * @param path of file
 	 * @return string content
 	 */
@@ -170,6 +181,7 @@ public class FileService {
 
 	/**
 	 * Read file to list string with Charset
+	 * 
 	 * @param path    of file
 	 * @param charset is Charset
 	 * @return string content
@@ -191,6 +203,7 @@ public class FileService {
 
 	/**
 	 * Read file to list string with UTF-8
+	 * 
 	 * @param path the path to the file
 	 * @return string content
 	 */
@@ -201,6 +214,7 @@ public class FileService {
 
 	/**
 	 * Read file to string by Apache Commons IO
+	 * 
 	 * @param file the file to read
 	 * @param cs   the encoding to use
 	 * @return the file contents
@@ -220,6 +234,7 @@ public class FileService {
 
 	/**
 	 * Read file to string by Apache Commons IO
+	 * 
 	 * @param file the file to read
 	 * @return the file contents
 	 * @throws IOException
@@ -231,6 +246,7 @@ public class FileService {
 
 	/**
 	 * Read file to string by Apache Commons IO
+	 * 
 	 * @param filePath the path to the file
 	 * @param cs       is Charset
 	 * @return the file contents
@@ -244,6 +260,7 @@ public class FileService {
 
 	/**
 	 * Read file to string by Apache Commons IO
+	 * 
 	 * @param filePath the path to the file
 	 * @return the file contents
 	 * @throws IOException
@@ -255,6 +272,7 @@ public class FileService {
 
 	/**
 	 * Read file to list string by Apache Commons IO
+	 * 
 	 * @param file the path to the file
 	 * @param cs   the encoding to use
 	 * @return the list of Strings representing each line in the file
@@ -278,6 +296,7 @@ public class FileService {
 
 	/**
 	 * Read file to list string by Apache Commons IO
+	 * 
 	 * @param filePath
 	 * @param cs       the path to the file
 	 * @return the list of Strings representing each line in the file
@@ -291,6 +310,7 @@ public class FileService {
 	/**
 	 * Create & write data to file If the file doesn't exists, create and write to
 	 * it If the file exists, remove all content and write to it
+	 * 
 	 * @param filePath the path to the file
 	 * @param lines    an object to iterate over the char sequences
 	 * @param cs       the charset to use for encoding
@@ -506,6 +526,15 @@ public class FileService {
 		} finally {
 			stream.close();
 		}
+	}
+
+	public static void setReadOnly() {
+		File file = new File("file/data.txt");
+		file.setReadOnly();
+		// file.canWrite();
+		System.out.println(Files.isWritable(file.toPath()));
+		System.out.println(FilesUtils.readFileToString(file));
+		FilesUtils.writeStringToFile(file.toPath(), "2019", StandardCharsets.UTF_8, false);
 	}
 
 }
