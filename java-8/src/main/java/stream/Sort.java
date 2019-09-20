@@ -11,7 +11,8 @@ import util.RandomUtils;
 public class Sort {
 
 	static void print(List<Integer> l1, List<Integer> l2) {
-		String format = String.format("%s\t>\t%s\n", Arrays.toString(l1.toArray()), Arrays.toString(l1.toArray()));
+		String format = String.format("%s > %s ", Arrays.toString(l1.toArray()), //
+				Arrays.toString(l1.toArray()));
 		System.out.println(format);
 	}
 

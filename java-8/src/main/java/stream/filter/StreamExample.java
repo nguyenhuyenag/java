@@ -1,4 +1,4 @@
-package stream;
+package stream.filter;
 
 import java.util.Arrays;
 import java.util.List;
