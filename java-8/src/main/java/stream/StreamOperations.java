@@ -10,33 +10,7 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-class Person {
-
-	private String name;
-	private int age;
-
-	public Person(String name, int age) {
-		this.name = name;
-		this.age = age;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-}
+import util.User;
 
 public class StreamOperations {
 
@@ -44,14 +18,14 @@ public class StreamOperations {
 
 		Consumer<Object> out = System.out::println;
 
-		List<Person> personList = new ArrayList<Person>();
-		personList.add(new Person("Rahul", 40));
-		personList.add(new Person("Shekhar", 10));
-		personList.add(new Person("Aman", 5));
-		personList.add(new Person("Amitabh", 20));
-		personList.add(new Person("Shahrukh", 8));
-		personList.add(new Person("Van", 50));
-		personList.add(new Person("Nguyen", 77));
+		List<User> personList = new ArrayList<User>();
+		personList.add(new User("Rahul", 40));
+		personList.add(new User("Shekhar", 10));
+		personList.add(new User("Aman", 5));
+		personList.add(new User("Amitabh", 20));
+		personList.add(new User("Shahrukh", 8));
+		personList.add(new User("Van", 50));
+		personList.add(new User("Nguyen", 77));
 
 		// Stream.filter()
 		personList.stream() //
@@ -63,14 +37,14 @@ public class StreamOperations {
 				.filter(p -> p.getName().startsWith("A")) //
 				.map(p -> p.getName().toUpperCase()).forEach(System.out::println);
 
-		Consumer<Person> action = p -> System.out.println(p.getName() + ", " + p.getAge());
+		Consumer<User> action = p -> System.out.println(p.getName() + ", " + p.getAge());
 
 		// List.sort()
-		personList.sort(Comparator.comparing(Person::getAge));
+		personList.sort(Comparator.comparing(User::getAge));
 		personList.stream().forEach(action);
 
 		// Stream.sorted()
-		personList.stream().sorted(Comparator.comparing(Person::getName).thenComparing(Person::getAge).reversed())
+		personList.stream().sorted(Comparator.comparing(User::getName).thenComparing(User::getAge).reversed())
 				.forEach(action);
 
 		Collections.reverse(personList);

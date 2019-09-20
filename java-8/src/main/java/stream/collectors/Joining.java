@@ -5,29 +5,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Joining {
-	
-	 /* 
-	  * - delimiter : chuỗi ký tự phân tách các phần tử.
-	  * - prefix : chuỗi ký tự được thêm vào đầu kết quả.
-	  * - suffix : chuỗi ký tự được thêm vào cuối kết quả.
+
+	/*-
+	 * - Delimiter	: chuỗi ký tự phân tách các phần tử
+	 * - Prefix 	: chuỗi ký tự được thêm vào đầu kết quả
+	 * - Suffix		: chuỗi ký tự được thêm vào cuối kết quả
 	 */
-	
+
 	public static void main(String[] args) {
-
-		List<String> list = Arrays.asList("Java", "C++", "C#", "PHP");
-
-		String result6 = list.stream().collect(Collectors.joining());
-
-		System.out.println(result6);
-
-		String result7 = list.stream().collect(Collectors.joining(" - "));
-
-		System.out.println(result7);
-
-		String result8 = list.stream().collect(Collectors.joining(" ", "PRE-", "-POST"));
-
-		System.out.println(result8);
-
+		List<String> list = Arrays.asList("public", "static", "void", "main");
+		System.out.println(list.stream().collect(Collectors.joining()));
+		System.out.println(list.stream().collect(Collectors.joining(" - ")));
+		System.out.println(list.stream().collect(Collectors.joining(" ", "PRE-", "-POST")));
 	}
 
 }

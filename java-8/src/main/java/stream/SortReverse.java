@@ -9,8 +9,9 @@ import java.util.stream.Collectors;
 import util.RandomUtils;
 
 public class SortReverse {
-	
-	static void x() {}
+
+	static void x() {
+	}
 
 	public static void main(String[] args) {
 
@@ -19,30 +20,28 @@ public class SortReverse {
 		// Stream sort reverse
 		System.out.println("Stream sort reverse \t\t"
 				+ list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList()));
-		
+
 		Collections.shuffle(list);
 
 		// lambda
 		List<Integer> lambda = list.stream().sorted((n1, n2) -> n2 - n1).collect(Collectors.toList());
 		System.out.println("Stream sort lambda \t\t" + lambda);
-		
+
 		Collections.shuffle(list);
 
 		// Collection sort
 		Collections.sort(list, Collections.reverseOrder());
 		System.out.println("Collections sort reverse \t" + list);
-		
+
 		Collections.shuffle(list);
 
 		// Array sort
 		Integer[] array = list.stream().toArray(Integer[]::new);
 		Arrays.sort(array, Collections.reverseOrder());
 		System.out.println("Arrays sort reverse \t\t" + Arrays.toString(array));
-		
-//		Collections.shuffle(list);
-//		
-//		Collections.shuffle(list);
-//		System.out.println(Arrays.toString(list.toArray()));
+
+		// Collections.shuffle(list);
+		// System.out.println(Arrays.toString(list.toArray()));
 
 	}
 

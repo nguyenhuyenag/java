@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class CountWord {
 
@@ -39,9 +41,16 @@ public class CountWord {
 		return map;
 	}
 
+	public static Map<String, Long> useGroupBy(String text) {
+		List<String> list = Arrays.asList(text.trim().split("\\s+"));
+		return list.stream() //
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+	}
+
 	public static void count(String text) {
 		// Map<String, Integer> map = useFrequency(text);
-		Map<String, Integer> map = useMap(text);
+		// Map<String, Integer> map = useMap(text);
+		Map<String, Long> map = useGroupBy(text);
 		map.forEach((k, v) -> System.out.println(k + " => " + v));
 	}
 

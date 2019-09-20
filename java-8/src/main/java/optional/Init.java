@@ -4,7 +4,7 @@ import java.util.Optional;
 
 public class Init {
 
-	/**
+	/*-
 	 * - Tạo một đối tượng Optional rỗng (emtpy):
 	 * 
 	 * 		Optional<String> optional = Optional.empty();

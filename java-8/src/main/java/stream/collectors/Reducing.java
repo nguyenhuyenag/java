@@ -8,39 +8,21 @@ import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 class Employee {
 	private String name;
 	private Integer age;
 	private String companyName;
 	private Integer salary;
-
-	public Employee(String name, Integer age, String companyName, Integer salary) {
-		this.name = name;
-		this.age = age;
-		this.companyName = companyName;
-		this.salary = salary;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public Integer getAge() {
-		return age;
-	}
-
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public Integer getSalary() {
-		return salary;
-	}
 }
 
 public class Reducing {
 
-	// sử dụng reducing() để tìm nhân viên lớn tuổi nhất theo từng company,
+	// Tìm nhân viên lớn tuổi nhất theo từng company,
 	// tính tổng lương phải trả cho tất cả nhân viên.
 
 	public static void main(String[] args) {
@@ -55,9 +37,9 @@ public class Reducing {
 		// Find employees with the maximum age of each company
 		Comparator<Employee> ageComparator = Comparator.comparing(Employee::getAge);
 
-		Map<String, Optional<Employee>> map = list.stream().collect(Collectors.groupingBy(Employee::getCompanyName,
-				Collectors.reducing(BinaryOperator.maxBy(ageComparator))));
-
+		Map<String, Optional<Employee>> map = list.stream() //
+				.collect(Collectors.groupingBy(Employee::getCompanyName,
+						Collectors.reducing(BinaryOperator.maxBy(ageComparator))));
 		map.forEach((k, v) -> System.out.println("Company: " + k + ", Age: " + ((Optional<Employee>) v).get().getAge()
 				+ ", Name: " + ((Optional<Employee>) v).get().getName()));
 

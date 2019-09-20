@@ -19,7 +19,7 @@ public class SortAndComparator {
 	}
 
 	// lambda
-	static void sortJava8(List<Integer> list) {
+	static void sortLambda(List<Integer> list) {
 		Collections.sort(list, (n1, n2) -> n1 - n2);
 		// Hoặc Collections.sort(list, (n1, n2) -> n1.compareTo(n2));
 		System.out.println(Arrays.toString(list.toArray()));
@@ -31,7 +31,7 @@ public class SortAndComparator {
 		preJava8(list);
 
 		List<Integer> listInt = Arrays.asList(1, -12, 0, 2, -11, 5);
-		sortJava8(listInt);
+		sortLambda(listInt);
 
 	}
 
