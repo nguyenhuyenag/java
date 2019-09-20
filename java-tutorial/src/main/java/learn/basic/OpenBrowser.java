@@ -1,4 +1,4 @@
-package learn.basic.other;
+package learn.basic;
 
 import java.awt.Desktop;
 import java.io.IOException;
