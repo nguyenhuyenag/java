@@ -14,16 +14,18 @@ public class Permute {
 	 * @param list
 	 */
 	public static void commonsPermute(List<?> list) {
-		CollectionUtils.permutations(list).stream() //
+		CollectionUtils.permutations(list) //
+				.stream() //
 				.forEachOrdered(System.out::println);
 	}
 
 	private static void permute(List<?> list, int left, int right) {
+		int j;
 		if (left == right) {
 			System.out.println(Arrays.toString(list.toArray()));
 			return;
 		}
-		for (int j = left; j <= right; j++) {
+		for (j = left; j <= right; j++) {
 			Collections.swap(list, left, j);
 			permute(list, left + 1, right);
 			Collections.swap(list, left, j); // backtrack

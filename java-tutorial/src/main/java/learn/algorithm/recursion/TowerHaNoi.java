@@ -1,6 +1,6 @@
 package learn.algorithm.recursion;
 
-public class HaNoiTower {
+public class TowerHaNoi {
 
 	static int total = 0;
 
@@ -20,13 +20,13 @@ public class HaNoiTower {
 		move(n - 1, b, a, c);
 	}
 
-	static void TowerHaNoi(int n) {
+	static void TowerHanoi(int n) {
 		move(n, 'A', 'B', 'C');
 	}
 
 	public static void main(String args[]) {
 		int n = 3;
-		TowerHaNoi(n);
+		TowerHanoi(n);
 		System.out.println("Total: " + total);
 	}
 }

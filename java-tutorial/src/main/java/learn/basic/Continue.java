@@ -3,18 +3,18 @@ package learn.basic;
 public class Continue {
 
 	public static void main(String[] args) {
-		StringBuilder builder = new StringBuilder("hello how are you?");
+		StringBuilder sb = new StringBuilder("hello how are you?");
 		int count = 0;
-		int length = builder.length();
+		int length = sb.length();
 		for (int i = 0; i < length; i++) {
-			if (builder.charAt(i) != 'h') {
+			if (sb.charAt(i) != 'h') {
 				continue;
 			}
 			count++;
-			builder.setCharAt(i, 'h');
+			sb.setCharAt(i, 'h');
 		}
 		System.out.println("Found " + count + " h's in the string.");
-		System.out.println(builder);
+		System.out.println(sb);
 
 	}
 }

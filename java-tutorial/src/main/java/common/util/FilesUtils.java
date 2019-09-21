@@ -248,6 +248,17 @@ public class FilesUtils {
 	}
 	
 	/**
+	 * Create and writes a string to a file. If the file exists, append content
+	 * and write to it
+	 * @param path the path to the file
+	 * @param data string content to write to the file
+	 * @return boolean
+	 */
+	public static boolean appendStringToFile(Path path, String data) {
+		return writeStringToFile(path, data, StandardCharsets.UTF_8, true);
+	}
+	
+	/**
 	 * Create (if it does't exist) and writes a text to a file
 	 * @param path the path to the file
 	 * @param data content to write to the file
@@ -296,6 +307,17 @@ public class FilesUtils {
 	 */
 	public static boolean writeTextToFile(Path path, Collection<? extends CharSequence> data) {
 		return writeTextToFile(path, data, StandardCharsets.UTF_8, false);
+	}
+	
+	/**
+	 * Create and writes a string to a file. If the file exists, append content
+	 * and write to it
+	 * @param path the path to the file
+	 * @param data content to write to the file
+	 * @return boolean
+	 */
+	public static boolean appendTextToFile(Path path, Collection<? extends CharSequence> data) {
+		return writeTextToFile(path, data, StandardCharsets.UTF_8, true);
 	}
 	
 	/**
@@ -517,6 +539,23 @@ public class FilesUtils {
 	 */
 	public static int countAll(Path directory) {
 		return listAllFile(directory).size();
+	}
+	
+	/**
+	 * Rename file
+	 * @param file the path to the directory
+	 * @param newname is new file name
+	 * @return boolean
+	 */
+	public static boolean rename(Path file, String newname) {
+		// return src.renameTo(dest);
+		try {
+			Files.move(file, file.resolveSibling(newname));
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 }

@@ -24,11 +24,8 @@ public class StreamTo {
 	}
 
 	public static void main(String[] args) {
-
 		getType(toArray());
-
 		getType(toList());
-
 	}
 
 }

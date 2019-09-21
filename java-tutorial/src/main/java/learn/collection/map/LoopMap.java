@@ -43,10 +43,12 @@ public class LoopMap {
 	}
 
 	public static void main(String[] args) {
+		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		for (int i = 0; i < 5; i++) {
 			map.put("0" + String.valueOf(i), i);
 		}
+		
 		// loopByEntry(map);
 		// loopByKeySet(map);
 		// loopByForEach(map);

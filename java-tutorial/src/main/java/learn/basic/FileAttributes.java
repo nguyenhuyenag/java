@@ -1,11 +1,11 @@
-package learn;
+package learn.basic;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.DosFileAttributes;
 
-public class UpdateDosFileAttributes {
+public class FileAttributes {
 
 	/**
 	 * Print the DosFileAttributes information

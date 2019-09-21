@@ -20,19 +20,6 @@ public class SmallPositive {
 		return 0;
 	}
 
-	// public static int find(int[] arr) {
-	// int result[] = { 1 };
-	// Arrays.stream(arr) //
-	// .filter(i -> i > 0) //
-	// .sorted() //
-	// .forEach(i -> {
-	// if (result[0] == i) {
-	// result[0]++;
-	// }
-	// });
-	// return result[0];
-	// }
-
 	/*-
 	 * Tìm số nguyên dương nhỏ nhất bị thiếu trong mảng
 	 * Input: {2, 3, 7, 6, 8, -1, -10, 15}
