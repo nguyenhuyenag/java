@@ -19,7 +19,6 @@ class Reflection {
 public class AccessPrivate {
 
 	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException {
-
 		int now, change;
 		Reflection ref = new Reflection();
 		// Method[] methods = Reflection.class.getMethods();

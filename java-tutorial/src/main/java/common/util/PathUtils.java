@@ -1,18 +1,43 @@
 package common.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import org.apache.commons.io.FilenameUtils;
 
 public class PathUtils {
 
 	// File.separator => '\'
+
+	private PathUtils() {
+
+	}
+
+	/**
+	 * Project directory
+	 */
+	public static String HOME = System.getProperty("user.dir");
 	
-	private PathUtils() {}
+	/**
+	 * Test whether a file or directory exists
+	 * @param path the path to the file to test
+	 * @return {@code true} if the file exists, otherwise {@code false}
+	 */
+	public static boolean exists(File file) {
+		return file != null && file.exists();
+	}
 	
+	/**
+	 * Test whether a file or directory exists
+	 * @param path the path to the file to test
+	 * @return {@code true} if the file exists, otherwise {@code false}
+	 */
+	public static boolean exists(Path path) {
+		return path != null && Files.exists(path);
+	}
+
 	/**
 	 * Creates a directory by creating all non-existent parent directories first
 	 * @param dir the directory to create
@@ -27,7 +52,7 @@ public class PathUtils {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * To UNIX separator
 	 * @param filename the filename to normalize
@@ -40,26 +65,34 @@ public class PathUtils {
 	}
 
 	/**
-	 * Converts the given URI to a path
-	 * @return the string path
+	 * Delete the supplied {@link File} - for directories, recursively delete any
+	 * nested directories or files as well.
+	 * @param dir the root {@code File} to delete
+	 * @return {@code true} if the {@code File} was deleted, otherwise {@code false}
 	 */
-	public static String get(String first, String... more) {
-		String path = Paths.get(first, more).toString();
-		return toUnixSeparator(path);
+	public static boolean deleteRecursively(File dir) {
+		if (dir != null && dir.exists()) {
+			if (dir.isDirectory()) {
+				File[] listFiles = dir.listFiles();
+				if (listFiles != null) {
+					for (File child : listFiles) {
+						deleteRecursively(child);
+					}
+				}
+			}
+			return dir.delete();
+		}
+		return false;
 	}
 	
 	/**
-	 * Test whether a file or directory exists
-	 * @param path the path to the file to test
-	 * @return {@code true} if the file exists, otherwise {@code false}
+	 * Delete the supplied {@link File} - for directories, recursively delete any
+	 * nested directories or files as well.
+	 * @param dir the root {@code Path} to delete
+	 * @return {@code true} if the {@code File} was deleted, otherwise {@code false}
 	 */
-	public static boolean exists(Path path) {
-		return Files.exists(path);
+	public static boolean deleteRecursively(Path path) {
+		return deleteRecursively(path.toFile());
 	}
-
-	/**
-	 * Project directory
-	 */
-	public static String HOME = System.getProperty("user.dir");
 
 }
