@@ -547,15 +547,12 @@ public class FilesUtils {
 	 * @param newname is new file name
 	 * @return boolean
 	 */
-	public static boolean rename(Path file, String newname) {
-		// return src.renameTo(dest);
-		try {
-			Files.move(file, file.resolveSibling(newname));
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return false;
+//	private static boolean rename(File file, File dest) {
+//		return file.renameTo(dest);
+//	}
+
+	public static boolean rename(File file, String newname) {
+		return file.renameTo(new File(newname));
 	}
 	
 }

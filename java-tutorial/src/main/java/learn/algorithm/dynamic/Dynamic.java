@@ -27,8 +27,8 @@ public class Dynamic {
 	}
 
 	public static void main(String[] args) {
-		int n = 33;
-		factorial(n);
+		int n = 10;
 		fibonacci(n);
+		factorial(n);
 	}
 }
