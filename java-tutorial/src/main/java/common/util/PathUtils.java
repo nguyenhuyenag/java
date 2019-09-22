@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 public class PathUtils {
@@ -93,6 +94,36 @@ public class PathUtils {
 	 */
 	public static boolean deleteRecursively(Path path) {
 		return deleteRecursively(path.toFile());
+	}
+	
+	/**
+	 * Show hierarchy
+	 * @param indent is tab
+	 * @param file the path to the file
+	 * @throws IOException
+	 */
+	public static void showHierarchy(int indent, File file) throws IOException {
+		if (indent != 1) {
+			for (int i = 0; i < indent; i++) {
+				System.out.print("-");
+			}
+		}
+		System.out.println(file.getName());
+		if (file.isDirectory()) {
+			File[] files = file.listFiles();
+			for (int i = 0; i < files.length; i++) {
+				showHierarchy(indent + 4, files[i]);
+			}
+		}
+	}
+	
+	/**
+	 * Counts the size of a directory recursively (sum of the length of all files).
+	 * @param dir the path to the directory
+	 * @return size of directory in bytes
+	 */
+	public static long sizeOfDirectory(File dir) {
+		return FileUtils.sizeOfDirectory(dir);
 	}
 
 }

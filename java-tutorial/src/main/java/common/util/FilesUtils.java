@@ -25,7 +25,9 @@ import common.exception.FileException;
 
 public class FilesUtils {
 	
-	private FilesUtils() {}
+	private FilesUtils() {
+	
+	}
 	
 	/**
 	 * Reads all the bytes from a file
@@ -551,6 +553,12 @@ public class FilesUtils {
 //		return file.renameTo(dest);
 //	}
 
+	/**
+	 * File rename
+	 * @param file current file
+	 * @param newname is new name
+	 * @return {@code boolean}
+	 */
 	public static boolean rename(File file, String newname) {
 		return file.renameTo(new File(newname));
 	}

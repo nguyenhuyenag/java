@@ -11,9 +11,9 @@ public class Predicates {
 		return t.negate();
 	}
 
-	public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+	public static <T> Predicate<T> distinctByKey(Function<? super T, ?> key) {
 		Set<Object> seen = ConcurrentHashMap.newKeySet();
-		return t -> seen.add(keyExtractor.apply(t));
+		return t -> seen.add(key.apply(t));
 	}
 
 }
