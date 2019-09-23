@@ -11,12 +11,11 @@ import java.util.List;
 public class MysqlConnect {
 
 	public static void main(String[] args) {
-		try {
+		String user = "root";
+		String password = "root";
+		String url = "jdbc:mysql://localhost:3306/world";
+		try (Connection connect = DriverManager.getConnection(url, user, password)) {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String user = "root";
-			String password = "root";
-			String url = "jdbc:mysql://localhost:3306/world";
-			Connection connect = DriverManager.getConnection(url, user, password);
 			Statement stmt = connect.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM countrylanguage;");
 			List<Object[]> records = new ArrayList<Object[]>();
@@ -29,7 +28,6 @@ public class MysqlConnect {
 				records.add(arr);
 			}
 			System.out.println(Arrays.toString(records.toArray()));
-			connect.close();
 		} catch (Exception e) {
 			System.out.println(e);
 		}

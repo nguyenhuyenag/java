@@ -50,6 +50,11 @@ public class DateTimeUtils {
 		return formatDate(new Date(), pattern);
 	}
 
+	/**
+	 * Get current date by pattern yyyy-MM-dd HH:mm:ss
+	 * @return {@code Date}
+	 * @throws DateTimeException
+	 */
 	public static String now() throws DateTimeException {
 		return formatDate(new Date(), null);
 	}
@@ -67,6 +72,13 @@ public class DateTimeUtils {
 		return new Date(System.currentTimeMillis() + amounts);
 	}
 
+	/**
+	 * Replace for Date constructor warning @Deprecated
+	 * @param year is year
+	 * @param month is month
+	 * @param date is date
+	 * @return {@code Date}
+	 */
 	public static Date asDate(int year, int month, int date) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.YEAR, year);
@@ -75,11 +87,24 @@ public class DateTimeUtils {
 		return calendar.getTime();
 	}
 	
+	/**
+	 * String to Date
+	 * @param date is string Date
+	 * @param pattern is patern of string Date
+	 * @return {@code Date}
+	 * @throws ParseException
+	 */
 	public static Date asDate(String date, String pattern) throws ParseException {
 		DateFormat sdf = new SimpleDateFormat(pattern != null ? pattern : YYYYMMDD_HHMMSS);
 		return sdf.parse(date);
 	}
 
+	/**
+	 * String to Date as yyyy-MM-dd HH:mm:ss
+	 * @param date is string Date
+	 * @return {@code Date}
+	 * @throws ParseException
+	 */
 	public static Date asDate(String date) throws ParseException {
 		return asDate(date, YYYYMMDD_HHMMSS);
 	}

@@ -1,8 +1,9 @@
 package learn.basic;
 
-public class Continue {
+public class ZOther {
 
-	public static void main(String[] args) {
+	// continue statement
+	static void continueStatement() {
 		StringBuilder sb = new StringBuilder("hello how are you?");
 		int count = 0;
 		int length = sb.length();
@@ -15,6 +16,9 @@ public class Continue {
 		}
 		System.out.println("Found " + count + " h's in the string.");
 		System.out.println(sb);
+	}
+
+	public static void main(String[] args) {
 
 	}
 }

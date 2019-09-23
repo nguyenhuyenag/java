@@ -80,6 +80,11 @@ public class JsonUtils {
 		return json.toString(4); // tab = 4
 	}
 
+	/**
+	 * XML to JSON
+	 * @param file the path of xml
+	 * @return JSON
+	 */
 	public static String xmlToJson(File file) {
 		return xmlToJson(file.toPath());
 	}
