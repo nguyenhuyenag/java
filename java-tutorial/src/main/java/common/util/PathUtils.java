@@ -9,7 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 public class PathUtils {
-
+	
 	// File.separator => '\'
 
 	private PathUtils() {
@@ -19,7 +19,7 @@ public class PathUtils {
 	/**
 	 * Project directory
 	 */
-	public static String HOME = System.getProperty("user.dir");
+	public static final String HOME = System.getProperty("user.dir");
 	
 	/**
 	 * Test whether a file or directory exists

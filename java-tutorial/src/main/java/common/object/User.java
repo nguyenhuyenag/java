@@ -18,15 +18,15 @@ import lombok.Setter;
 public class User {
 
 	private String name;
-	private Integer age;
+	private int age;
+
+	public boolean hasFieldNull() {
+		return Stream.of(name, age).anyMatch(Objects::isNull);
+	}
 
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
 	}
 
-	public boolean hasFieldNull() {
-		// return Stream.of(name, age).anyMatch(s -> s == null);
-		return Stream.of(name, age).anyMatch(Objects::isNull);
-	}
 }

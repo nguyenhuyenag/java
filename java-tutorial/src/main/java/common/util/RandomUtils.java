@@ -6,6 +6,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RandomUtils {
+	
+	private RandomUtils() {
+		
+	}
+
+	private static Random random = new Random();
 
 	/**
 	 * Random 1 số trong đoạn [min, max]
@@ -16,7 +22,6 @@ public class RandomUtils {
 		if (min >= max) {
 			throw new IllegalArgumentException("Max must be greater than min");
 		}
-		Random random = new Random();
 		return random.nextInt((max - min) + 1) + min;
 	}
 

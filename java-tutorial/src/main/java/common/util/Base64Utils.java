@@ -73,7 +73,7 @@ public class Base64Utils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String encode(DataHandler handler) throws IOException {
+	public static String encode(DataHandler handler) {
 		byte[] bytes = FilesUtils.toByteArray(handler);
 		return encodeToString(bytes);
 	}
@@ -84,7 +84,7 @@ public class Base64Utils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String encodeWithoutCharset(DataHandler handler) throws IOException {
+	public static String encodeWithoutCharset(DataHandler handler) {
 		byte[] bytes = FilesUtils.toByteArray(handler);
 		return Base64.getEncoder().encodeToString(bytes);
 	}
