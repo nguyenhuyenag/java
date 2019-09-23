@@ -6,16 +6,17 @@ import java.util.List;
 
 public class Rotate {
 
-	static void rotate(int arr[], int k) {
+	static void rotate(int[] arr, int k) {
 		// Chuyển k lần
 		for (int i = 1; i <= k; i++) {
 			move(arr);
 		}
 	}
 
-	static void move(int arr[]) {
-		int i, n, tmp;
-		n = arr.length;
+	static void move(int[] arr) {
+		int i;
+		int tmp;
+		int n = arr.length;
 		tmp = arr[0];
 		for (i = 0; i < n - 1; i++) {
 			arr[i] = arr[i + 1];
@@ -35,7 +36,7 @@ public class Rotate {
 	 */
 	public static void main(String[] args) {
 		int k = 3; // chuyển k phần tử
-		int arr[] = { 1, 2, 3, 4, 5 };
+		int[] arr = { 1, 2, 3, 4, 5 };
 		System.out.println("Before:\t" + Arrays.toString(arr));
 		rotate(arr, k);
 		System.out.println("After:\t" + Arrays.toString(arr));

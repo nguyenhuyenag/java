@@ -15,15 +15,15 @@ public class Dynamic {
 	}
 
 	static void fibonacci(int n) {
-		BigInteger[] F = new BigInteger[n + 1];
-		F[0] = BigInteger.ZERO;
+		BigInteger[] f = new BigInteger[n + 1];
+		f[0] = BigInteger.ZERO;
 		if (n > 0) {
-			F[1] = BigInteger.ONE;
+			f[1] = BigInteger.ONE;
 		}
-		for (int i = 2; i < F.length; i++) {
-			F[i] = F[i - 1].add(F[i - 2]);
+		for (int i = 2; i < f.length; i++) {
+			f[i] = f[i - 1].add(f[i - 2]);
 		}
-		System.out.println("F(" + n + ") = " + F[n]);
+		System.out.println("F(" + n + ") = " + f[n]);
 	}
 
 	public static void main(String[] args) {

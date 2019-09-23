@@ -4,7 +4,7 @@ public class TowerHaNoi {
 
 	static int total = 0;
 
-	static void move(int n, char a, char b, char c) {
+	static void move(int n, String a, String b, String c) {
 		if (n == 1) {
 			System.out.println(a + " -> " + c);
 			total++;
@@ -20,13 +20,13 @@ public class TowerHaNoi {
 		move(n - 1, b, a, c);
 	}
 
-	static void TowerHanoi(int n) {
-		move(n, 'A', 'B', 'C');
+	static void towerHanoi(int n) {
+		move(n, "A", "B", "C");
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		int n = 3;
-		TowerHanoi(n);
+		towerHanoi(n);
 		System.out.println("Total: " + total);
 	}
 }

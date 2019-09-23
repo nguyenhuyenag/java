@@ -10,8 +10,7 @@ class Reflections {
 
 public class ChangeFinal {
 
-	public static void main(String[] args) throws NoSuchFieldException, SecurityException, //
-			IllegalArgumentException, IllegalAccessException {
+	public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
 
 		Reflections ref = new Reflections();
 		Field field = Reflections.class.getDeclaredField("FIELD");

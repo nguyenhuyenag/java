@@ -1,8 +1,6 @@
 package learn.reflect;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.Arrays;
 
 @SuppressWarnings("unused")
 class Reflection {
@@ -18,10 +16,10 @@ class Reflection {
 
 public class AccessPrivate {
 
-	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException {
-		int now, change;
+	public static void main(String[] args) throws IllegalAccessException {
+		int now;
+		int change;
 		Reflection ref = new Reflection();
-		// Method[] methods = Reflection.class.getMethods();
 		Field[] fields = Reflection.class.getDeclaredFields();
 		for (Field field : fields) {
 			field.setAccessible(true);

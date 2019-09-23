@@ -8,6 +8,10 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.math3.util.CombinatoricsUtils;
 
 public class Permute {
+	
+	private Permute() {
+		
+	}
 
 	/*-
 	 * Apache commons

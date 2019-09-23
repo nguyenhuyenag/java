@@ -5,6 +5,6 @@ package learn.oop;
  * mối quan hệ is-a (là), còn khi implement một interface, thì ta đang thể hiện
  * mối quan hệ has-a (có, hay thực hiện)
  */
-public class AbstractInterface {
+public interface AbstractInterface {
 
 }
