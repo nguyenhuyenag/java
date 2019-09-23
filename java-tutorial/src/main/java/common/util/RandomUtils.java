@@ -6,36 +6,44 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RandomUtils {
-	
+
 	private RandomUtils() {
-		
+
 	}
 
-	private static Random random = new Random();
+	private static Random generator = new Random();
 
 	/**
-	 * Random 1 số trong đoạn [min, max]
-	 * @param min <= max
+	 * Random int number in [min, max]
+	 * @param min <= max is integer
 	 * @return number in [min, max]
 	 */
-	public static int getRandomInt(int min, int max) {
+	public static int randomInt(int min, int max) {
 		if (min >= max) {
 			throw new IllegalArgumentException("Max must be greater than min");
 		}
-		return random.nextInt((max - min) + 1) + min;
+		return generator.nextInt((max - min) + 1) + min;
+	}
+	
+	/**
+	 * Radom int number in [0, 99]
+	 * @return integer number in [0, 99]
+	 */
+	public static int randomInt() {
+		return randomInt(0, 99);
 	}
 
 	/**
-	 * Get radom Array Integer
+	 * Random int array
 	 * @param size
 	 * @param min
 	 * @param max
 	 * @return Array Integer
 	 */
-	public static Integer[] getRandomArrayInt(int size, int min, int max) {
-		Integer[] array = new Integer[size];
+	public static int[] randomArrayInt(int size, int min, int max) {
+		int[] array = new int[size];
 		for (int i = 0; i < size; i++) {
-			array[i] = getRandomInt(min, max);
+			array[i] = randomInt(min, max);
 		}
 		return array;
 	}
@@ -47,11 +55,20 @@ public class RandomUtils {
 	 * @param max
 	 * @return List Integer
 	 */
-	public static List<Integer> getRandomListInt(int size, int min, int max) {
+	public static List<Integer> randomListInt(int size, int min, int max) {
 		return IntStream.range(0, size) //
-				.map(t -> getRandomInt(min, max)) //
+				.map(t -> randomInt(min, max)) //
 				.boxed() //
 				.collect(Collectors.toList());
+	}
+
+	private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz"; // a-z
+	static String[] ALPHA_ARRAY = ALPHA.split("");
+	static int max = ALPHA.length();
+
+	public static String getRandomString() {
+		int intdex = randomInt(0, max - 1);
+		return ALPHA_ARRAY[intdex];
 	}
 
 }

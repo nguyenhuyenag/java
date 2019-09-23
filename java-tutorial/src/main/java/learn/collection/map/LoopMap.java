@@ -1,6 +1,7 @@
 package learn.collection.map;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -44,7 +45,7 @@ public class LoopMap {
 
 	public static void main(String[] args) {
 		
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < 5; i++) {
 			map.put("0" + String.valueOf(i), i);
 		}
@@ -54,6 +55,11 @@ public class LoopMap {
 		// loopByForEach(map);
 		// loopByCollection(map);
 		// checkKeyInMap(map, "00");
-		checkByContainsKey(map, "00");
+		// checkByContainsKey(map, "00");
+		System.out.println(Collections.max(map.keySet()));
+		System.out.println(Collections.min(map.keySet()));
+		
+		System.out.println(Collections.max(map.values()));
+		
 	}
 }
