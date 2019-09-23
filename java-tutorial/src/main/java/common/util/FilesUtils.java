@@ -19,6 +19,7 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
 import common.exception.FileException;
@@ -206,7 +207,6 @@ public class FilesUtils {
 			}
 			Files.write(path, bytes, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
 			return true;
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -544,16 +544,6 @@ public class FilesUtils {
 	}
 	
 	/**
-	 * Rename file
-	 * @param file the path to the directory
-	 * @param newname is new file name
-	 * @return boolean
-	 */
-//	private static boolean rename(File file, File dest) {
-//		return file.renameTo(dest);
-//	}
-
-	/**
 	 * File rename
 	 * @param file current file
 	 * @param newname is new name
@@ -561,6 +551,15 @@ public class FilesUtils {
 	 */
 	public static boolean rename(File file, String newname) {
 		return file.renameTo(new File(newname));
+	}
+	
+	/**
+	 * Get filename without extension
+	 * @param path the path to the file
+	 * @return filename
+	 */
+	public static String getFileName(Path path) {
+		return FilenameUtils.getBaseName(path.toFile().toString());
 	}
 	
 }
