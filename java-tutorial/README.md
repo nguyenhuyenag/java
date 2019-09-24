@@ -97,7 +97,20 @@
 		+ Phương thức final có thể KẾ THỪA nhưng không thể ghi đè (override)
 	- Class
 		+ Không thể kế thừa class final
+
+# TreeMap
+
+	- TreeMap lưu trữ dữ liệu dưới dạng cặp key và value
+	- TreeMap chỉ chứa các key duy nhất
+	- TreeMap KHÔNG cho phép bất kỳ key nào là null và nhưng có thể có nhiều giá trị null
+	- TreeMap tự động sắp xếp các phần tăng dần theo key 
 	
+# LinkedHashMap
+
+	- LinkedHashMap lưu trữ dữ liệu dưới dạng cặp key và value
+	- LinkedHashMap chỉ chứa các key duy nhất
+	- LinkedHashMap có thể có 1 key là null và nhiều giá trị null
+	- LinkedHashMap duy trì các phần tử theo thứ tự chèn
 	
 	
 	

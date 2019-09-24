@@ -1,6 +1,8 @@
 package common.util;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -60,6 +62,14 @@ public class RandomUtils {
 				.map(t -> randomInt(min, max)) //
 				.boxed() //
 				.collect(Collectors.toList());
+	}
+	
+	public static Map<String, Integer> randomMap() {
+		Map<String, Integer> map = new HashMap<>();
+		for (int i = 0; i < 9; i++) {
+			map.put(RandomUtils.getRandomString().toUpperCase(), RandomUtils.randomInt());
+		}
+		return map;
 	}
 
 	private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz"; // a-z
