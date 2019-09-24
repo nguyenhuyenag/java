@@ -15,8 +15,7 @@ class KeyValuePair<K, V> {
 public class ClassGeneric {
 
 	public static void main(String[] args) {
-		KeyValuePair<String, Integer> g = //
-				new KeyValuePair<String, Integer>("Java", 8);
+		KeyValuePair<String, Integer> g = new KeyValuePair<>("Java", 8);
 		System.out.println("Name = " + g.getKey() + ", Id = " + g.getValue());
 	}
 

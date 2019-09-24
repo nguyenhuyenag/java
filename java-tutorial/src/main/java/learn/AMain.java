@@ -1,7 +1,6 @@
 package learn;
 
 import java.util.Vector;
-import java.util.stream.IntStream;
 
 public class AMain {
 

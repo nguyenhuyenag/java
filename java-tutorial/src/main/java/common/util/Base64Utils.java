@@ -8,6 +8,10 @@ import java.util.Base64;
 import javax.activation.DataHandler;
 
 public class Base64Utils {
+	
+	private Base64Utils() {
+		
+	}
 
 	/**
 	 * Base64 encode

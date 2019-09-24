@@ -73,12 +73,12 @@ public class RandomUtils {
 	}
 
 	private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz"; // a-z
-	static String[] ALPHA_ARRAY = ALPHA.split("");
+	static String[] alphaArray = ALPHA.split("");
 	static int max = ALPHA.length();
 
 	public static String getRandomString() {
 		int intdex = randomInt(0, max - 1);
-		return ALPHA_ARRAY[intdex];
+		return alphaArray[intdex];
 	}
 
 }

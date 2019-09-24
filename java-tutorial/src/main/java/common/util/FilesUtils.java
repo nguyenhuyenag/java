@@ -176,7 +176,6 @@ public class FilesUtils {
 		return readFileToString(file, StandardCharsets.UTF_8);
 	}
 	
-	@Deprecated
 	public static String[][] lines(Path path, String regex) {
 		try (Stream<String> stream = Files.lines(path)) {
 			return stream.map(s -> s.split(regex != null ? regex : "\\s+")) //

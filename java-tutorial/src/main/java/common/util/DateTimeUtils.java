@@ -10,6 +10,10 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class DateTimeUtils {
+	
+	private DateTimeUtils() {
+		
+	}
 
 	public static final long ONE_SECONDS 			= 	Duration.ofSeconds(1).toMillis();
 	public static final long ONE_MINUTES 			= 	TimeUnit.MINUTES.toMillis(1);
@@ -55,7 +59,7 @@ public class DateTimeUtils {
 	 * @return {@code Date}
 	 * @throws DateTimeException
 	 */
-	public static String now() throws DateTimeException {
+	public static String now() {
 		return formatDate(new Date(), null);
 	}
 
