@@ -1,4 +1,4 @@
-package common.util;
+package learn.basic;
 
 // singleton
 public class DataTypes {
