@@ -1,10 +1,9 @@
 package learn.collection.map;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import common.util.RandomUtils;
+import common.util.MapsUtils;
 
 public class FindMap {
 
@@ -19,13 +18,14 @@ public class FindMap {
 	}
 
 	public static void main(String[] args) {
-		Map<String, Integer> map = new HashMap<>();
-		for (int i = 0; i < 9; i++) {
-			map.put(RandomUtils.getRandomString().toUpperCase(), RandomUtils.randomInt());
-		}
+		Map<String, Integer> map = MapsUtils.randomMap();
 		System.out.println(map);
-		maxByKey(map);
-		maxByValue(map);
+		// maxByKey(map);
+		// maxByValue(map);
+		// System.out.println(MapsUtils.sortByKey(map));
+		// System.out.println(MapsUtils.sortByKeyDesc(map));
+		// MapsUtils.sortByValue(map).forEach(e -> System.out.println(e.getKey() + " => " + e.getValue()));
+		MapsUtils.sortByValueDesc(map).forEach(e -> System.out.println(e.getKey() + " => " + e.getValue()));
 	}
 
 }
