@@ -19,13 +19,15 @@ public class FindMap {
 
 	public static void main(String[] args) {
 		Map<String, Integer> map = MapsUtils.randomMap();
-		System.out.println(map);
+		// System.out.println(map);
 		// maxByKey(map);
 		// maxByValue(map);
-		// System.out.println(MapsUtils.sortByKey(map));
+		System.out.println(MapsUtils.sortByKey(map));
 		// System.out.println(MapsUtils.sortByKeyDesc(map));
 		// MapsUtils.sortByValue(map).forEach(e -> System.out.println(e.getKey() + " => " + e.getValue()));
-		MapsUtils.sortByValueDesc(map).forEach(e -> System.out.println(e.getKey() + " => " + e.getValue()));
+		// MapsUtils.sortByValueDesc(map).forEach(e -> System.out.println(e.getKey() + " => " + e.getValue()));
+		System.out.println(MapsUtils.findMinByKey(map));
+		System.out.println(MapsUtils.findMaxByKey(map));
 	}
 
 }
