@@ -1,6 +1,6 @@
 package stream.filter;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,12 +36,14 @@ public class FilterByKey {
 	}
 
 	public static void main(String[] args) {
-		List<User> list = new ArrayList<>();
-		list.add(new User("A", 12));
-		list.add(new User("B", 13));
-		list.add(new User("C", 14));
-		list.add(new User("D", 12));
-		list.add(new User("A", 12));
+
+		List<User> list = Arrays.asList( //
+				new User("A", 12), //
+				new User("B", 13), //
+				new User("C", 14), //
+				new User("D", 12), //
+				new User("A", 12) //
+		);
 
 		// filterByName(list);
 		// filterByAge(list);

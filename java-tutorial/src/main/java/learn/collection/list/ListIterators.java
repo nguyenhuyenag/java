@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
-public class IteratorList {
+public class ListIterators {
 
 	public static void main(String[] args) throws Exception {
 		List<Integer> list = Arrays.asList(0, 1, 2, 3, 4, 5);

@@ -29,8 +29,10 @@ public class GroupingBy {
 				new Book(4, "D", 3), //
 				new Book(5, "E", 1) //
 		);
-		Map<Integer, Set<Book>> result = books.stream()
+
+		Map<Integer, Set<Book>> result = books.stream() //
 				.collect(Collectors.groupingBy(Book::getCagegoryId, Collectors.toSet()));
+
 		result.forEach((catId, booksInCat) -> System.out.println("Category " + catId + " : " + booksInCat.size()));
 	}
 

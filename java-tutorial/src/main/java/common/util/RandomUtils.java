@@ -64,7 +64,7 @@ public class RandomUtils {
 				.collect(Collectors.toList());
 	}
 	
-	public static Map<String, Integer> randomMap() {
+	public static Map<String, Integer> getMap() {
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < 9; i++) {
 			map.put(RandomUtils.randomString().toUpperCase(), RandomUtils.randomInt());

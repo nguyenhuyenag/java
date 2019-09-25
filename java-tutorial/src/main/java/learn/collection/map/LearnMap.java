@@ -8,6 +8,10 @@ import java.util.Optional;
 
 public class LearnMap {
 
+	private LearnMap() {
+
+	}
+
 	public static <K extends Comparable<K>, V> Comparator<Entry<K, V>> keyComparatorPreJava8() {
 		return new Comparator<Entry<K, V>>() {
 			@Override
@@ -58,37 +62,25 @@ public class LearnMap {
 		return Comparator.comparing(Entry::getValue, Comparator.reverseOrder());
 	}
 
-	public static <K extends Comparable<K>, V> Comparator<Entry<K, V>> maxKey() {
-		return (e1, e2) -> e1.getKey().compareTo(e2.getKey());
+	public static <K, V extends Comparable<V>> Entry<K, V> findMaxValue(Map<K, V> map) {
+		return Collections.max(map.entrySet(), valueComparator());
 	}
 
-	public static <K extends Comparable<K>, V> Comparator<Entry<K, V>> minKey() {
-		return (e1, e2) -> e2.getKey().compareTo(e1.getKey());
+	public static <K, V extends Comparable<V>> Entry<K, V> findMinValue(Map<K, V> map) {
+		return Collections.min(map.entrySet(), valueComparator());
 	}
 
-	// ----------------------------------------------------------------------- //
-
-	static <K, V extends Comparable<V>> Entry<K, V> findMaxByValueUsingCollectionsMaxAndLambda(Map<K, V> map) {
-		Entry<K, V> entry = Collections.max(map.entrySet(), (e1, e2) -> e1.getValue().compareTo(e2.getValue()));
-		return entry;
+	static <K extends Comparable<K>, V> Entry<K, V> findMinValuePreJava8(Map<K, V> map) {
+		return Collections.max(map.entrySet(), keyComparatorPreJava8());
 	}
 
-	static <K, V extends Comparable<V>> Entry<K, V> findminByValueUsingCollectionsMinAndLambda(Map<K, V> map) {
-		Entry<K, V> entry = Collections.min(map.entrySet(), (e1, e2) -> e1.getValue().compareTo(e2.getValue()));
-		return entry;
+	public static <K, V extends Comparable<V>> Entry<K, V> findMaxValueByStream(Map<K, V> map) {
+		Optional<Entry<K, V>> maxEntry = map.entrySet().stream().max(valueComparing());
+		return maxEntry.get();
 	}
 
-	static <K, V extends Comparable<V>> Entry<K, V> findMaxByValueUsingCollectionsMax(Map<K, V> map) {
-		Entry<K, V> entry = Collections.max(map.entrySet(), new Comparator<Entry<K, V>>() {
-			public int compare(Entry<K, V> e1, Entry<K, V> e2) {
-				return e1.getValue().compareTo(e2.getValue());
-			}
-		});
-		return entry;
-	}
-
-	static <K, V extends Comparable<V>> Entry<K, V> findMaxByValueUsingStreamAndMethodReference(Map<K, V> map) {
-		Optional<Entry<K, V>> maxEntry = map.entrySet().stream().max(Comparator.comparing(Map.Entry::getValue));
+	public static <K, V extends Comparable<V>> Entry<K, V> findMinValueByStream(Map<K, V> map) {
+		Optional<Entry<K, V>> maxEntry = map.entrySet().stream().min(valueComparing());
 		return maxEntry.get();
 	}
 

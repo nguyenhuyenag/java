@@ -13,10 +13,6 @@ public class MapsUtils {
 		
 	}
 	
-	public static <K extends Comparable<? super K>, V> Comparator<Entry<K, V>> keyComparator() {
-		return Map.Entry.<K, V>comparingByKey();
-	}
-	
 	/**
 	 * Sort a map by key
 	 * @param map the map to be sorted
