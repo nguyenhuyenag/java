@@ -3,9 +3,11 @@ package learn.basic;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
@@ -16,51 +18,30 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.DosFileAttributes;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
-import common.exception.FileException;
 import common.util.FilesUtils;
 
 public class FileService {
 
-	public static String readFileToStringByCommonsIO(File file, Charset cs) {
-		if (!file.exists()) {
-			throw new FileException("File does't exist!");
-		}
-		try {
-			return FileUtils.readFileToString(file, cs);
-		} catch (IOException e) {
-			throw new FileException("File exception!", e);
-		}
+	public static String readFileToStringCommonsIO(File file, Charset cs) throws IOException {
+		return FileUtils.readFileToString(file, cs);
 	}
 
-	public static List<String> readFileByCommonsIO(File file, Charset cs) {
-		if (!file.exists()) {
-			throw new FileException("File does't exist!");
-		}
-		try {
-			return FileUtils.readLines(file, cs);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return Collections.emptyList();
+	public static List<String> readLinesCommonsIO(File file, Charset cs) throws IOException {
+		return FileUtils.readLines(file, cs);
 	}
 
-	public static List<String> readFileByCommonsIO(File file) {
-		return readFileByCommonsIO(file, StandardCharsets.UTF_8);
-	}
-
-	public static List<File> listFiles(String pathname) {
-		File directory = new File(pathname);
-		List<File> list = new ArrayList<File>();
-		File[] listFiles = directory.listFiles(); // Get all files from a directory
-		if (listFiles != null) {
-			for (File file : listFiles) {
+	public static List<File> listFiles(String path) {
+		List<File> list = new ArrayList<>();
+		File[] arrFiles = Paths.get(path).toFile().listFiles(); // Get all files from a directory
+		if (ArrayUtils.isNotEmpty(arrFiles)) {
+			for (File file : arrFiles) {
 				if (file.isFile()) {
 					list.add(file);
 				} else if (file.isDirectory()) {
@@ -73,15 +54,17 @@ public class FileService {
 
 	public static List<File> listFiles(String pathname, String postfix) {
 		File directory = new File(pathname);
-		List<File> list = new ArrayList<File>();
-		File[] listFiles = directory.listFiles((dir, name) -> name.toLowerCase().endsWith(postfix));
-		// File[] listFiles = directory.listFiles(new FilenameFilter() {
-		// public boolean accept(File dir, String name) {
-		// return name.toLowerCase().endsWith(postfix);
-		// }
-		// });
-		if (listFiles != null) {
-			for (File file : listFiles) {
+		List<File> list = new ArrayList<>();
+		// File[] listFiles = directory.listFiles((dir, name) ->
+		// name.toLowerCase().endsWith(postfix));
+		File[] arrFiles = directory.listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.toLowerCase().endsWith(postfix);
+			}
+		});
+		if (ArrayUtils.isNotEmpty(arrFiles)) {
+			for (File file : arrFiles) {
 				if (file.isFile()) {
 					list.add(file);
 				} else if (file.isDirectory()) {
@@ -100,67 +83,60 @@ public class FileService {
 		}
 	}
 
-	public static void createBinaryFileUsingFileOutputStream(String filePath, String data, Charset cs)
-			throws IOException {
-		byte[] bytes = data.getBytes(cs);
-		FileOutputStream out = new FileOutputStream(filePath);
-		out.write(bytes);
-		out.close();
+	public static void fileUsingFileOutputStream(String path, String data, Charset cs) throws IOException {
+		try (FileOutputStream fot = new FileOutputStream(path)) {
+			byte[] bytes = data.getBytes(cs);
+			fot.write(bytes);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public static void createTextFileUsingBufferedWritter(String fileName, String data) throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, false));
-		writer.append(data);
-		writer.close();
-	}
-
-	public void createTextFileUuingPrintWriter(String fileName, String data) throws IOException {
-		FileWriter fileWriter = new FileWriter(fileName);
-		PrintWriter printWriter = new PrintWriter(fileWriter);
-		printWriter.printf(data);
-		printWriter.close();
-	}
-
-	public static String[][] readFileToMatrix(String filename) {
-		String line;
-		String[] arr;
-		List<String[]> list = new ArrayList<>();
-		BufferedReader br = null;
-		try {
-			br = new BufferedReader(new FileReader(filename));
-			while ((line = br.readLine()) != null) {
-				arr = line.trim().split("\\s");
-				list.add(arr);
-			}
-			br.close();
+	public static void createTextFileUsingBufferedWritter(String fileName, String data) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, false))) {
+			writer.append(data);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+	}
+
+	public void createTextFileUuingPrintWriter(String fileName, String data) {
+		try (FileWriter fileWriter = new FileWriter(fileName); //
+				PrintWriter printWriter = new PrintWriter(fileWriter)) {
+			printWriter.printf(data);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void readFileToMatrix(String filename) {
+		String[] arr;
+		String line = "";
+		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+			while ((line = br.readLine()) != null) {
+				arr = line.trim().split("\\s+");
+				System.out.println(Arrays.toString(arr));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void readLineByLine(String file) {
-		try {
-			BufferedReader br = Files.newBufferedReader(Paths.get(file));
-			Stream<String> lines = br.lines();
-			lines.forEach(System.out::println);
-			lines.close();
+		try (BufferedReader br = Files.newBufferedReader(Paths.get(file))) {
+			br.lines().forEach(System.out::println);
 		} catch (IOException io) {
 			io.printStackTrace();
 		}
 	}
 
-	public static void useScanner(String file) {
-		Scanner scanner = null;
-		try {
-			scanner = new Scanner(new File(file));
+	public static void readFileUseScanner(String file) {
+		try (Scanner scanner = new Scanner(new File(file))) {
 			while (scanner.hasNext()) {
 				System.out.println(scanner.nextLine());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			scanner.close();
 		}
 	}
 

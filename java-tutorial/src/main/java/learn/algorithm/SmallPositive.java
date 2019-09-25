@@ -20,7 +20,7 @@ public class SmallPositive {
 		return 0;
 	}
 
-	/**
+	/*-
 	 * Tìm số nguyên dương nhỏ nhất bị thiếu trong mảng
 	 * Input: {2, 3, 7, 6, 8, -1, -10, 15}
 	 * Output: 1

@@ -6,9 +6,7 @@ import java.util.Map;
 public class ATM {
 
 	static void atm(int[][] coins, int n) {
-		int i;
-		int menhGia;
-		int amounts;
+		int i, menhGia, amounts;
 		Map<Integer, Integer> map = new LinkedHashMap<>();
 		for (int[] row : coins) {
 			amounts = row[1];
