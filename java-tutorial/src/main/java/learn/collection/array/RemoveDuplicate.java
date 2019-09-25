@@ -13,7 +13,7 @@ public class RemoveDuplicate {
 
 	public static void main(String[] args) {
 
-		List<Integer> list = RandomUtils.randomListInt(10, 1, 20);
+		List<Integer> list = RandomUtils.getListInteger(10, 1, 20);
 		System.out.println("Before: " + Arrays.toString(list.toArray()));
 
 		// distinct()

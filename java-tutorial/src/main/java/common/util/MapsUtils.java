@@ -14,6 +14,26 @@ public class MapsUtils {
 	}
 	
 	/**
+	 * Comparator by value
+	 * @param <K> is key
+	 * @param <V> is value
+	 * @return Comparable generic
+	 */
+	public static <K, V extends Comparable<V>> Comparator<Entry<K, V>> valueComparing() {
+		return Comparator.comparing(e -> e.getValue());
+	}
+	
+	/**
+	 * Comparator reverse by value
+	 * @param <K> is key
+	 * @param <V> is value
+	 * @return Comparable generic
+	 */
+	public static <K, V extends Comparable<V>> Comparator<Entry<K, V>> valueComparingReverse() {
+		return Comparator.comparing(Entry::getValue, Comparator.reverseOrder());
+	}
+	
+	/**
 	 * Sort a map by key
 	 * @param map the map to be sorted
 	 * @return map sorted
@@ -41,11 +61,8 @@ public class MapsUtils {
 	 */
 	private static <K, V extends Comparable<V>> Map<K, V> sortByValue(Map<K, V> map, boolean asc) {
 		Map<K, V> linked = new LinkedHashMap<>();
-		Comparator<Entry<K, V>> sort = Comparator.comparing(Entry::getValue);
-		// Comparator.comparing(Entry::getValue, Collections.reverseOrder());
-		Comparator<Entry<K, V>> reverse = Entry.comparingByValue(Comparator.reverseOrder());
 		map.entrySet().stream() //
-				.sorted(asc == true ? sort : reverse) //
+				.sorted(asc == true ? valueComparing() : valueComparingReverse()) //
 				.forEach(e -> linked.put(e.getKey(), e.getValue()));
 		return linked;
 	}

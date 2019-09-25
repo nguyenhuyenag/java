@@ -28,7 +28,7 @@ public class ASCII {
 	}
 
 	public static void main(String[] args) {
-		// usingIntStream();
+		// usingStreamIterate();
 		// usingIntStream();
 		usingMapToObj();
 	}

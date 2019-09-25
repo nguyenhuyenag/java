@@ -8,19 +8,23 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RandomUtils {
+	
+	private static Random generator = new Random();
+	
+	private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz"; // a-z
+	static String[] alphaArray = ALPHA.split("");
+	static int max = ALPHA.length();
 
 	private RandomUtils() {
 
 	}
-
-	private static Random generator = new Random();
 
 	/**
 	 * Random int number in [min, max]
 	 * @param min <= max is integer
 	 * @return number in [min, max]
 	 */
-	public static int randomInt(int min, int max) {
+	public static int getInt(int min, int max) {
 		if (min >= max) {
 			throw new IllegalArgumentException("Max must be greater than min");
 		}
@@ -31,8 +35,8 @@ public class RandomUtils {
 	 * Radom int number in [0, 99]
 	 * @return integer number in [0, 99]
 	 */
-	public static int randomInt() {
-		return randomInt(0, 9);
+	public static int getInt() {
+		return getInt(0, 99);
 	}
 
 	/**
@@ -42,10 +46,10 @@ public class RandomUtils {
 	 * @param max
 	 * @return Array Integer
 	 */
-	public static int[] randomArrayInt(int size, int min, int max) {
+	public static int[] getIntArray(int size, int min, int max) {
 		int[] array = new int[size];
 		for (int i = 0; i < size; i++) {
-			array[i] = randomInt(min, max);
+			array[i] = getInt(min, max);
 		}
 		return array;
 	}
@@ -57,28 +61,24 @@ public class RandomUtils {
 	 * @param max
 	 * @return List Integer
 	 */
-	public static List<Integer> randomListInt(int size, int min, int max) {
+	public static List<Integer> getListInteger(int size, int min, int max) {
 		return IntStream.range(0, size) //
-				.map(t -> randomInt(min, max)) //
+				.map(t -> getInt(min, max)) //
 				.boxed() //
 				.collect(Collectors.toList());
 	}
-	
+
+	public static String getString() {
+		int intdex = getInt(0, max - 1);
+		return alphaArray[intdex];
+	}
+
 	public static Map<String, Integer> getMap() {
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < 9; i++) {
-			map.put(RandomUtils.randomString().toUpperCase(), RandomUtils.randomInt());
+			map.put(RandomUtils.getString().toUpperCase(), RandomUtils.getInt());
 		}
 		return map;
-	}
-
-	private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz"; // a-z
-	static String[] alphaArray = ALPHA.split("");
-	static int max = ALPHA.length();
-
-	public static String randomString() {
-		int intdex = randomInt(0, max - 1);
-		return alphaArray[intdex];
 	}
 
 }

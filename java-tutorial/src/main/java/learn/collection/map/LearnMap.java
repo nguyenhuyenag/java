@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 
+import common.util.MapsUtils;
+
 public class LearnMap {
 
 	private LearnMap() {
@@ -55,11 +57,11 @@ public class LearnMap {
 	}
 
 	public static <K, V extends Comparable<V>> Comparator<Entry<K, V>> valueComparing() {
-		return Comparator.comparing(e -> e.getValue());
+		return MapsUtils.valueComparing();
 	}
 
 	public static <K, V extends Comparable<V>> Comparator<Entry<K, V>> valueComparingReverse() {
-		return Comparator.comparing(Entry::getValue, Comparator.reverseOrder());
+		return MapsUtils.valueComparingReverse();
 	}
 
 	public static <K, V extends Comparable<V>> Entry<K, V> findMaxValue(Map<K, V> map) {
@@ -80,7 +82,7 @@ public class LearnMap {
 	}
 
 	public static <K, V extends Comparable<V>> Entry<K, V> findMinValueByStream(Map<K, V> map) {
-		Optional<Entry<K, V>> maxEntry = map.entrySet().stream().min(valueComparing());
+		Optional<Entry<K, V>> maxEntry = map.entrySet().stream().min(valueComparingReverse());
 		return maxEntry.get();
 	}
 
