@@ -32,7 +32,7 @@ public class RandomUtils {
 	 * @return integer number in [0, 99]
 	 */
 	public static int randomInt() {
-		return randomInt(0, 99);
+		return randomInt(0, 9);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class RandomUtils {
 	public static Map<String, Integer> randomMap() {
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < 9; i++) {
-			map.put(RandomUtils.getRandomString().toUpperCase(), RandomUtils.randomInt());
+			map.put(RandomUtils.randomString().toUpperCase(), RandomUtils.randomInt());
 		}
 		return map;
 	}
@@ -76,7 +76,7 @@ public class RandomUtils {
 	static String[] alphaArray = ALPHA.split("");
 	static int max = ALPHA.length();
 
-	public static String getRandomString() {
+	public static String randomString() {
 		int intdex = randomInt(0, max - 1);
 		return alphaArray[intdex];
 	}
