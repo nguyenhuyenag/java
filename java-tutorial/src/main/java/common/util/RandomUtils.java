@@ -9,15 +9,15 @@ import java.util.stream.IntStream;
 
 public class RandomUtils {
 	
-	private static Random generator = new Random();
-	
-	private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz"; // a-z
-	static String[] alphaArray = ALPHA.split("");
-	static int max = ALPHA.length();
-
 	private RandomUtils() {
 
 	}
+	
+	private static final Random RANDOM = new Random();
+	
+	private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz";
+	private static final String[] ARRAY_ALPHA = ALPHA.split("");
+	private static final int LENGTH = ALPHA.length();
 
 	/**
 	 * Random int number in [min, max]
@@ -28,7 +28,7 @@ public class RandomUtils {
 		if (min >= max) {
 			throw new IllegalArgumentException("Max must be greater than min");
 		}
-		return generator.nextInt((max - min) + 1) + min;
+		return RANDOM.nextInt((max - min) + 1) + min;
 	}
 	
 	/**
@@ -41,19 +41,19 @@ public class RandomUtils {
 
 	/**
 	 * Random int array
-	 * @param size
-	 * @param min
-	 * @param max
-	 * @return Array Integer
+	 * @param size of array
+	 * @param min value
+	 * @param max value
+	 * @return Array int
 	 */
-	public static int[] getIntArray(int size, int min, int max) {
+	public static int[] getArrayInt(int size, int min, int max) {
 		int[] array = new int[size];
 		for (int i = 0; i < size; i++) {
 			array[i] = getInt(min, max);
 		}
 		return array;
 	}
-
+	
 	/**
 	 * Get random List Integer
 	 * @param size
@@ -67,10 +67,14 @@ public class RandomUtils {
 				.boxed() //
 				.collect(Collectors.toList());
 	}
-
+	
+	/**
+	 * Random string
+	 * @return string
+	 */
 	public static String getString() {
-		int intdex = getInt(0, max - 1);
-		return alphaArray[intdex];
+		int i = getInt(0, LENGTH - 1);
+		return ARRAY_ALPHA[i];
 	}
 
 	public static Map<String, Integer> getMap() {
@@ -79,6 +83,12 @@ public class RandomUtils {
 			map.put(RandomUtils.getString().toUpperCase(), RandomUtils.getInt());
 		}
 		return map;
+	}
+	
+	@Deprecated
+	public static int[] pickRandom() {
+		int[] arr = new Random().ints(0, 5).distinct().limit(5).toArray();
+		return arr;
 	}
 
 }
