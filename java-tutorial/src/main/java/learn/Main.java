@@ -1,6 +1,6 @@
 package learn;
 
-public class AMain {
+public class Main {
 
 	public static void main(String[] args) {
 

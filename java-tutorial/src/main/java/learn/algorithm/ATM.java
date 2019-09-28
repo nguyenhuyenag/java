@@ -14,9 +14,9 @@ public class ATM {
 				menhGia = row[0];
 				for (i = amounts; i > 0; i--) {
 					if (n >= i * menhGia) {
-						map.put(menhGia, i); // Đổi được i tờ menhGia
-						row[1] -= i; // Số tờ còn lại
-						n -= i * menhGia; // Số tiền còn lại
+						map.put(menhGia, i);	// Đổi được i tờ menhGia
+						row[1] -= i; 			// Số tờ còn lại
+						n -= i * menhGia; 		// Số tiền còn lại
 						break;
 					}
 				}
@@ -29,11 +29,10 @@ public class ATM {
 		System.out.println("ATM không đủ tiền, còn thiếu " + n);
 	}
 
-	// [mệnh giá, số lượng]
-	static final int[][] ATMS = { //
-			{ 200, 1 }, //
-			{ 100, 5 }, //
-			{ 5, 0 } //
+	static final int[][] ATMS = {
+		{ 200, 1 }, //
+		{ 100, 5 }, //
+		{ 5, 0 } //
 	};
 
 	public static void main(String[] args) {

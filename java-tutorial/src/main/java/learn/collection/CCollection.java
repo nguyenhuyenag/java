@@ -8,6 +8,7 @@ import java.util.List;
 
 public class CCollection {
 
+	// check common elements
 	public static <T> void hasCommonElements(List<T> src, List<T> des) {
 		System.out.println(Collections.disjoint(src, des));
 	}
