@@ -36,7 +36,7 @@ public class RandomUtils {
 	 * @return integer number in [0, 99]
 	 */
 	public static int getInt() {
-		return getInt(0, 99);
+		return getInt(-99, 99);
 	}
 
 	/**
@@ -52,6 +52,10 @@ public class RandomUtils {
 			array[i] = getInt(min, max);
 		}
 		return array;
+	}
+	
+	public static int[] getArrayInt() {
+		return getArrayInt(10, -9, 9);
 	}
 	
 	/**

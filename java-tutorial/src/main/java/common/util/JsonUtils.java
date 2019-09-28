@@ -26,31 +26,13 @@ public class JsonUtils {
 	}
 
 	/**
-	 * Object to JSON
-	 * @param <T> generic type
-	 * @param object Java object
-	 * @return JSON
-	 */
-	public static <T> String objectToJson(T object) {
-		if (Objects.isNull(object)) {
-			return StringUtils.EMPTY;
-		}
-		try {
-			return MAPPER.writeValueAsString(object);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return StringUtils.EMPTY;
-	}
-
-	/**
 	 * JSON to object
 	 * @param <T> generic type
 	 * @param json
 	 * @param type
 	 * @return Java object
 	 */
-	public static <T> T jsonToObject(String json, Type type) {
+	public static <T> T toObject(String json, Type type) {
 		GsonBuilder builder = new GsonBuilder();
 		Gson gson = builder.enableComplexMapKeySerialization().create();
 		return gson.fromJson(json, type);
@@ -70,11 +52,29 @@ public class JsonUtils {
 	}
 	
 	/**
+	 * Object to JSON
+	 * @param <T> generic type
+	 * @param object Java object
+	 * @return JSON
+	 */
+	public static <T> String fromObject(T object) {
+		if (Objects.isNull(object)) {
+			return StringUtils.EMPTY;
+		}
+		try {
+			return MAPPER.writeValueAsString(object);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return StringUtils.EMPTY;
+	}
+	
+	/**
 	 * XML to JSON
 	 * @param path the path of xml
 	 * @return JSON
 	 */
-	public static String xmlToJson(Path path) {
+	public static String fromXml(Path path) {
 		String xml = FilesUtils.readFileToString(path).trim();
 		JSONObject json = XML.toJSONObject(xml);
 		return json.toString(4); // tab = 4
@@ -85,8 +85,8 @@ public class JsonUtils {
 	 * @param file the path of xml
 	 * @return JSON
 	 */
-	public static String xmlToJson(File file) {
-		return xmlToJson(file.toPath());
+	public static String fromXml(File file) {
+		return fromXml(file.toPath());
 	}
 
 }

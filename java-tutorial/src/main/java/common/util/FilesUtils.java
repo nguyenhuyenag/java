@@ -81,13 +81,13 @@ public class FilesUtils {
 	 * @return a byte array from the file
 	 */
 	public static byte[] toByteArray(DataHandler handler) {
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		try {
+		try (ByteArrayOutputStream os = new ByteArrayOutputStream();) {
 			handler.writeTo(os);
+			return os.toByteArray();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return os.toByteArray();
+		return ArrayUtils.EMPTY_BYTE_ARRAY;
 	}
 	
 	/**
