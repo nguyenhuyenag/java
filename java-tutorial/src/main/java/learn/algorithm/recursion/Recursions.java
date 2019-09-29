@@ -21,14 +21,18 @@ public class Recursions {
 
 	public static int lcm(int a, int b) {
 		// a * b = gcd(a, b) * lcm(a, b)
-		return a * b / gcd(a, b);
+		return (a * b) / gcd(a, b);
+	}
+
+	public static String toBinary(int n) {
+		if (n <= 1) {
+			return String.valueOf(n);
+		}
+		return toBinary(n / 2) + String.valueOf(n % 2);
 	}
 
 	public static void main(String[] args) {
-		int a = 6;
-		int b = 5;
-		System.out.println(gcd(a, b));
-		System.out.println(lcm(a, b));
+		System.out.println(toBinary(3));
 	}
 
 }

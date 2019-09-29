@@ -8,15 +8,8 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.math3.util.CombinatoricsUtils;
 
 public class Permute {
-	
-	private Permute() {
-		
-	}
 
-	/*-
-	 * Apache commons
-	 * @param list
-	 */
+	// Apache commons
 	public static void commonsPermute(List<?> list) {
 		CollectionUtils.permutations(list) //
 				.stream() //
