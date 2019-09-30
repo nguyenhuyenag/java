@@ -1,10 +1,11 @@
 package interfaces.statics.method;
 
-public interface Vehicle {
+interface Vehicle {
 
 	default void print() {
-		if (isValid())
+		if (isValid()) {
 			System.out.println("Vehicle printed");
+		}
 	}
 
 	static boolean isValid() {
@@ -22,5 +23,5 @@ class Car implements Vehicle {
 		print();
 		Vehicle.isValid();
 	}
-
+	
 }
