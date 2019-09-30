@@ -41,7 +41,7 @@ public class SortWithoutLambda {
 		Comparator<Human> comparator = (h1, h2) -> h1.getName().compareTo(h2.getName());
 		list.sort(comparator.reversed());
 
-		// multiple condition
+		// multi condition
 		list.sort(Comparator.comparing(Human::getName).thenComparing(Human::getAge));
 
 		list.forEach(h -> System.out.println(h.getName() + ", " + h.getAge()));

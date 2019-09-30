@@ -51,12 +51,12 @@ public class MethodReference {
 		System.out.println(a + " + " + b + " = " + sumOf);
 
 		// Class::instanceMethod
-		String[] stringArray = { "Java", "C++", "PHP", "C#", "Javascript" };
-		Arrays.sort(stringArray, (s1, s2) -> s1.compareToIgnoreCase(s2));
-		Arrays.sort(stringArray, String::compareToIgnoreCase);
-		
+		String[] arr = { "Java", "C++", "PHP", "C#", "Javascript" };
+		Arrays.sort(arr, (s1, s2) -> s1.compareToIgnoreCase(s2));
+		Arrays.sort(arr, String::compareToIgnoreCase);
+
 		// Class::new
-		
+
 	}
 
 }
