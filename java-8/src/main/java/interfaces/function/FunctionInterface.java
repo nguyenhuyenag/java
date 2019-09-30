@@ -5,7 +5,7 @@ interface StringProcessor {
 	public String process(String str);
 }
 
-public class StringProcess {
+public class FunctionInterface {
 
 	public static String getStr(String input, StringProcessor processor) {
 		return processor.process(input);
@@ -35,10 +35,10 @@ public class StringProcess {
 			s += " interface";
 			return s.toUpperCase();
 		}));
-		
+
 		// method reference
 		System.out.println(getStr("java", String::toUpperCase));
-
+		
 	}
 
 }
