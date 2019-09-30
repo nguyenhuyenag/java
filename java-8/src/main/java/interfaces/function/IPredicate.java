@@ -1,4 +1,4 @@
-package function;
+package interfaces.function;
 
 import java.util.Arrays;
 import java.util.List;

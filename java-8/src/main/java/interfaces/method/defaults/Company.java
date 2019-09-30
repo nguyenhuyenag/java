@@ -1,4 +1,4 @@
-package interfaces.defaults.method;
+package interfaces.method.defaults;
 
 public interface Company {
 

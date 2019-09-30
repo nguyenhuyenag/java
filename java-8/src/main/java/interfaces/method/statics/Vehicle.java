@@ -1,4 +1,4 @@
-package interfaces.statics.method;
+package interfaces.method.statics;
 
 interface Vehicle {
 

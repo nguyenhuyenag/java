@@ -1,13 +1,14 @@
 package base64;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 import javax.activation.DataHandler;
 
-import util.FilesUtils;
+import org.apache.commons.io.IOUtils;
 
 public class Base64Utils {
 
@@ -76,7 +77,8 @@ public class Base64Utils {
 	 * @throws IOException
 	 */
 	public static String encode(DataHandler handler) throws IOException {
-		byte[] bytes = FilesUtils.toBytes(handler);
+		final InputStream in = handler.getInputStream();
+		byte[] bytes = IOUtils.toByteArray(in);
 		return encodeToString(bytes);
 	}
 	
@@ -87,7 +89,8 @@ public class Base64Utils {
 	 * @throws IOException
 	 */
 	public static String encodeWithoutCharset(DataHandler handler) throws IOException {
-		byte[] bytes = FilesUtils.toBytes(handler);
+		final InputStream in = handler.getInputStream();
+		byte[] bytes = IOUtils.toByteArray(in);
 		return Base64.getEncoder().encodeToString(bytes);
 	}
 

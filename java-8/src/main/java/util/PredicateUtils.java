@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class Predicates {
+public class PredicateUtils {
 
 	public static <T> Predicate<T> distinctByKey(Function<? super T, ?> key) {
 		Set<Object> seen = ConcurrentHashMap.newKeySet();

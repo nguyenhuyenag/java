@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import util.Predicates;
+import util.PredicateUtils;
 import util.User;
 
 public class FilterByKey {
@@ -16,14 +16,14 @@ public class FilterByKey {
 
 	public static void filterByName(List<User> list) {
 		list.stream() //
-				.filter(Predicates.distinctByKey(User::getName)) //
+				.filter(PredicateUtils.distinctByKey(User::getName)) //
 				.collect(Collectors.toList()) // to list
 				.forEach(out);
 	}
 
 	public static void filterByAge(List<User> list) {
 		list.stream() //
-				.filter(Predicates.distinctByKey(User::getAge)) //
+				.filter(PredicateUtils.distinctByKey(User::getAge)) //
 				.forEach(out);
 	}
 
