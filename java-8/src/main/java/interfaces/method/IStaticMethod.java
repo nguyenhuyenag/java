@@ -1,6 +1,6 @@
-package interfaces.method.statics;
+package interfaces.method;
 
-interface Vehicle {
+interface IStaticMethod {
 
 	default void print() {
 		if (isValid()) {
@@ -16,12 +16,12 @@ interface Vehicle {
 	void showLog();
 }
 
-class Car implements Vehicle {
+class Car implements IStaticMethod {
 
 	@Override
 	public void showLog() {
 		print();
-		Vehicle.isValid();
+		IStaticMethod.isValid();
 	}
 	
 }

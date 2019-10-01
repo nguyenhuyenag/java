@@ -1,7 +1,10 @@
 package learn.algorithm;
 
-public class Test {
+public class KhuDeQuy {
 
+	/**
+	 * @see learn.algorithm.recursion.Recursions#digitSum
+	 */
 	public static String toBinary(int n) {
 		String str = "";
 		while (n != 0) {

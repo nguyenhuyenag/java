@@ -5,7 +5,7 @@ interface StringProcessor {
 	public String process(String str);
 }
 
-public class FunctionInterface {
+public class FuncInterface {
 
 	public static String getStr(String input, StringProcessor processor) {
 		return processor.process(input);
