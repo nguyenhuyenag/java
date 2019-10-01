@@ -1,4 +1,4 @@
-package lambda;
+package lambda.sort;
 
 import java.util.Arrays;
 import java.util.Collections;

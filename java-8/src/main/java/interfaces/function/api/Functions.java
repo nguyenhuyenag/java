@@ -6,7 +6,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 /*-
- * - R apply(T t): Method này nhận đầu vào là 1 tham số và trả về một giá trị
+ * - R apply(T t): Phương thức này nhận đầu vào là 1 tham số và trả về một giá trị
  * - Thường dùng khai thay đổi giá trị của phần tử
  */
 public class Functions {

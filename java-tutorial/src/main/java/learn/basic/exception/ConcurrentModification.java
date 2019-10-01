@@ -81,13 +81,13 @@ public class ConcurrentModification {
 		List<Integer> list = new ArrayList<>();
 		list.addAll(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
 
-		// removeByForGetException(list); // => Exception
-		// removeByIteratorGetException(list); // => Exception
+		// removeByForGetException(list); 		// => Exception
+		// removeByIteratorGetException(list); 	// => Exception
 
-		// removeByIndex(list); // => OK
-		removeByIterator(list); // OK
-		// removeAfterLoop(list); // OK
-		// removeByRemoveIf(list); // OK
-		// removeByFilter(list); // OK
+		// removeByIndex(list);		// => OK
+		removeByIterator(list); 	// OK
+		// removeAfterLoop(list); 	// OK
+		// removeByRemoveIf(list); 	// OK
+		// removeByFilter(list); 	// OK
 	}
 }

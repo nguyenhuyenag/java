@@ -4,7 +4,7 @@ package learn.collection.generic;
 class AGeneric<T> {
 
 	/*-
-	 * Có thể khai báo một mảng Generic, nhưng không thể khởi tạo một mảng Generic
+	 * Có thể khai báo một mảng generic, nhưng không thể khởi tạo một mảng generic
 	 * T[] arr; 			// Ok
 	 * T[] arr2 = new T[5];	// Error
 	 */

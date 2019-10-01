@@ -38,7 +38,7 @@ public class FunctionInterface {
 
 		// method reference
 		System.out.println(getStr("java", String::toUpperCase));
-		
+
 	}
 
 }

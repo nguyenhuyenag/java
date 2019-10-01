@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /*-
- * - T get(): method này không có tham số nhưng trả về một kết quả
+ * - T get(): Phương thức này không có tham số nhưng trả về một kết quả
  */
 public class Suppliers {
 
@@ -18,9 +18,8 @@ public class Suppliers {
 			public Integer get() {
 				return random.nextInt(10);
 			}
-		}).limit(5) //
-				.forEach(t -> System.out.print(t + " "));
-		
+		}).limit(5).forEach(t -> System.out.print(t + " "));
+
 		System.out.println();
 
 		// lambda
