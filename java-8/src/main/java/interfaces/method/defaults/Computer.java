@@ -1,7 +1,7 @@
-package interfaces.method.idefault;
+package interfaces.method.defaults;
 
-import interfaces.method.idefault.Company.Asus;
-import interfaces.method.idefault.Company.Samsung;
+import interfaces.method.defaults.Company.Asus;
+import interfaces.method.defaults.Company.Samsung;
 
 /**
  * Without override default method

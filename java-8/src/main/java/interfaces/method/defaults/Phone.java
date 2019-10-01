@@ -1,6 +1,6 @@
-package interfaces.method.idefault;
+package interfaces.method.defaults;
 
-import interfaces.method.idefault.Company.Samsung;
+import interfaces.method.defaults.Company.Samsung;
 
 class LG {
 
@@ -17,7 +17,7 @@ public class Phone extends LG implements Samsung {
 
 	}
 
-	/**
+	/*-
 	 * - Khi Super class & Interface có cùng phương thức thì class con sẽ lấy phương
 	 * thức của super class
 	 */
