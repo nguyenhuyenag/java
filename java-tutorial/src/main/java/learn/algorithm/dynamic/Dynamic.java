@@ -14,7 +14,7 @@ public class Dynamic {
 		System.out.println(n + "! = " + arr[n]);
 	}
 
-	static void fibonacci(int n) {
+	public static BigInteger fibonacci(int n) {
 		BigInteger[] f = new BigInteger[n + 1];
 		f[0] = BigInteger.ZERO;
 		if (n > 0) {
@@ -23,12 +23,8 @@ public class Dynamic {
 		for (int i = 2; i < f.length; i++) {
 			f[i] = f[i - 1].add(f[i - 2]);
 		}
-		System.out.println("F(" + n + ") = " + f[n]);
+		// System.out.println("F(" + n + ") = " + f[n]);
+		return f[n];
 	}
 
-	public static void main(String[] args) {
-		int n = 10;
-		fibonacci(n);
-		factorial(n);
-	}
 }
