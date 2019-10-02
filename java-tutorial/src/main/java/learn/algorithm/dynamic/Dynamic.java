@@ -23,7 +23,6 @@ public class Dynamic {
 		for (int i = 2; i < f.length; i++) {
 			f[i] = f[i - 1].add(f[i - 2]);
 		}
-		// System.out.println("F(" + n + ") = " + f[n]);
 		return f[n];
 	}
 

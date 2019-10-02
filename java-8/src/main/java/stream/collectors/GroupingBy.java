@@ -23,11 +23,11 @@ public class GroupingBy {
 
 	public static void main(String[] args) {
 		List<Book> books = Arrays.asList(//
-				new Book(1, "A", 1), //
-				new Book(2, "B", 1), //
-				new Book(3, "C", 2), //
-				new Book(4, "D", 3), //
-				new Book(5, "E", 1) //
+			new Book(1, "A", 1), //
+			new Book(2, "B", 1), //
+			new Book(3, "C", 2), //
+			new Book(4, "D", 3), //
+			new Book(5, "E", 1) //
 		);
 
 		Map<Integer, Set<Book>> result = books.stream() //

@@ -13,7 +13,7 @@ public class Functions {
 
 	public static void main(String[] args) {
 
-		List<String> list = Arrays.asList("stack", "JAVA", "demo", "Function");
+		List<String> list = Arrays.asList("Stack", "Java", "Demo", "Function");
 		Stream<String> stream = list.stream();
 
 		// chuyển tất cả các phần tử của stream thành chữ in hoa
@@ -22,11 +22,11 @@ public class Functions {
 			public String apply(String t) {
 				return t.toUpperCase();
 			}
-		}).forEach(t -> System.out.println(t));
+		}).forEach(System.out::println);
 
 		// chuyển tất cả các phần tử của stream thành chữ thường
 		stream = list.stream();// lưu ý là stream ko thể dùng lại nên phải khởi tạo lại
-		stream.map(t -> t.toLowerCase()).forEach(System.out::println);
+		stream.map(String::toLowerCase).forEach(System.out::println);
 
 	}
 
