@@ -9,7 +9,13 @@ public class MapToInt {
 
 		List<String> list = Arrays.asList("Geeks", "for", "gfg", "GeeksforGeeks", "GeeksQuiz");
 
-		int[] array = list.stream().mapToInt(s -> s.length()).toArray();
+		list.stream().mapToInt(String::length).boxed().toArray(Integer[]::new);
+
+		int[] array = list.stream() 			// -> Stream<String>
+				.mapToInt(String::length) 		// -> IntStream
+				.boxed() 						// -> Stream<Integer>
+				.mapToInt(Integer::intValue) 	// -> IntStream
+				.toArray(); 					// -> int[]
 
 		System.out.println(Arrays.toString(array));
 

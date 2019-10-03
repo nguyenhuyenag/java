@@ -1,5 +1,7 @@
 package lambda.function;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -19,7 +21,10 @@ public class BiFunctions {
 		Function<Integer, Integer> squared = n -> n * n;
 		BiFunction<Integer, Integer, Integer> andThen = add.andThen(squared);
 		System.out.println("AndThen: " + andThen.apply(5, 2));
-		
+
+		Map<String, String> map = new HashMap<>();
+		map.forEach((k, v) -> System.out.println(k + v));
+
 	}
 
 }
