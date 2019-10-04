@@ -112,7 +112,8 @@
 	- LinkedHashMap có thể có 1 key là null và nhiều giá trị null
 	- LinkedHashMap duy trì các phần tử theo thứ tự chèn
 	
-	
+# Exception
+	là runtime exception và checked exception, runtime exception là lỗi trong lúc mình thực thi ct, còn checked exception là lỗi trong quá trình biên dịch	
 	
 	
 	
