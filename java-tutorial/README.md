@@ -115,11 +115,34 @@
 # Exception
 	là runtime exception và checked exception, runtime exception là lỗi trong lúc mình thực thi ct, còn checked exception là lỗi trong quá trình biên dịch	
 	
+# Abstract Class
+
+	- Có thể có các phương thức abstract hoặc non-abstract
+
+	- Có thể khai báo 0, 1 hoặc nhiều abstract method
+
+	- Không thể khởi tạo trực tiếp một lớp trừu tượng
+
+	- Lớp con bắt buộc phải cài đặt (implement) tất cả các phương thức trừu tượng của lớp cha
 	
+	- Access modifier mặc định của abstract methods là protected
+
+# Interface 
+
+	- Luôn luôn có modifier là public interface, cho dù bạn có khai báo rõ hay không
 	
+	- Các field đều là public static final, cho dù bạn có khai báo rõ hay không
 	
+	- Method đều có modifier là public abstract, cho dù bạn có khai báo hay không
 	
+	- Interface không có hàm khởi tạo (constructor)
 	
-	
-	
-	
+	- Một class mô tả thuộc tính và hành vi của một đối tượng. Một interface chứa các hành vi mà một class triển khai
+
+
+
+
+
+
+
+
