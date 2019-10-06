@@ -6,14 +6,20 @@ import java.io.InputStreamReader;
 
 public class ReadConsole {
 
-	public static void main(String[] args) {
-		try {
-			BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
-			System.out.print("Enter: ");
+	public static boolean isNumeric(String str) {
+		return str.matches("-?\\d+(\\.\\d+)?");
+	}
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
+		while (true) {
+			System.out.print("Nhập vào một số: ");
 			String input = buff.readLine();
-			System.out.println(input);
-		} catch (IOException e) {
-			e.printStackTrace();
+			if (isNumeric(input)) {
+				System.out.println("OK :D");
+				return;
+			}
+			System.out.println("Sai rồi!");
 		}
 	}
 

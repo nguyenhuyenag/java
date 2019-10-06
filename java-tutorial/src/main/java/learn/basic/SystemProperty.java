@@ -7,13 +7,13 @@ import java.util.function.Consumer;
 
 public class SystemProperty {
 
-	static String[] keyArrays = { // 
+	static String[] keyArrays = {
 		"file.separator", 	// 	Dấu cách thư mục, windows => '\' hay Unix/Mac => '/'
 		"java.class.path",	//
 		"java.home",		// 	Đường dẫn của thư mục JRE
 		"java.vendor",		//
 		"java.vendor.url",	//
-		"java.version",		// 	Phiên bản Java
+		"java.version",		// 	Java version
 		"os.arch",			//	x86, x64
 		"os.name",			//	Tên hệ điều hành
 		"os.version",		//	Phiên bản hệ điều hành
