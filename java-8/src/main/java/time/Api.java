@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Api {
 
-	public static void LocalDateTimeApi() {
+	public static void TimeApi() {
 
 		// the current date
 		LocalDate date = LocalDate.now();
@@ -41,7 +41,7 @@ public class Api {
 	}
 
 	public static void main(String[] args) {
-		LocalDateTimeApi();
+		TimeApi();
 	}
 
 }
