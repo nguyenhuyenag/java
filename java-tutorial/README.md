@@ -133,11 +133,15 @@
 	
 	- Các field đều là public static final, cho dù bạn có khai báo rõ hay không
 	
+	- Một interface không thể kế thừa từ lớp, nó được triển khai bởi một lớp.
+
+	- Một interface có thể kế thừa từ nhiều interface khác.
+	
 	- Method đều có modifier là public abstract, cho dù bạn có khai báo hay không
 	
 	- Interface không có hàm khởi tạo (constructor)
 	
-	- Một class mô tả thuộc tính và hành vi của một đối tượng. Một interface chứa các hành vi mà một class triển khai
+	- Class mô tả thuộc tính và hành vi của đối tượng. Interface chứa các hành vi mà một class triển khai
 
 
 
