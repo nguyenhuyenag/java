@@ -31,8 +31,28 @@ public class Recursions {
 		return toBinary(n / 2) + String.valueOf(n % 2);
 	}
 
+	private static long count = 0;
+
+	public static int collatzConjecture(int n) {
+		boolean even = n % 2 == 0;
+		System.out.print(n + " ");
+		if (n == 1) {
+			return n;
+		}
+		count++;
+		if (even) {
+			return collatzConjecture(n / 2);
+		} else {
+			return collatzConjecture(3 * n + 1);
+		}
+	}
+
 	public static void main(String[] args) {
-		System.out.println(toBinary(3));
+		int n = 27;
+		// count = 0;
+		collatzConjecture(n);
+		System.out.println();
+		System.out.println(count);
 	}
 
 }
