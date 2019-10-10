@@ -9,20 +9,17 @@ import org.apache.commons.math3.util.CombinatoricsUtils;
 
 public class Permute {
 
-	// Apache commons
-	public static void commonsPermute(List<?> list) {
-		CollectionUtils.permutations(list) //
-				.stream() //
-				.forEachOrdered(System.out::println);
+	public static void showAllPermuteByCommons(List<?> list) {
+		CollectionUtils.permutations(list).stream() //
+				.forEach(System.out::println);
 	}
 
 	private static void permute(List<?> list, int left, int right) {
-		int j;
 		if (left == right) {
 			System.out.println(Arrays.toString(list.toArray()));
 			return;
 		}
-		for (j = left; j <= right; j++) {
+		for (int j = left; j <= right; j++) {
 			Collections.swap(list, left, j);
 			permute(list, left + 1, right);
 			Collections.swap(list, left, j); // backtrack
@@ -31,7 +28,7 @@ public class Permute {
 
 	public static void showAllPermute(List<?> list) {
 		int size = list.size();
-		permute(list, 0, size - 1);
+		permute(list, 0, list.size() - 1);
 		System.out.println("Total: " + CombinatoricsUtils.factorial(size));
 	}
 
