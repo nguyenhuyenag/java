@@ -2,11 +2,11 @@ package learn.algorithm.recursion;
 
 public class Recursions {
 
-	public static int digitSum(int n) {
+	public static int sumDigit(int n) {
 		if (n == 0) {
 			return n;
 		}
-		return digitSum(n / 10) + n % 10;
+		return sumDigit(n / 10) + n % 10;
 	}
 
 	public static int gcd(int a, int b) {
