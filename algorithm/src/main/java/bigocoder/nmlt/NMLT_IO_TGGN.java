@@ -3,8 +3,7 @@ package bigocoder.nmlt;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
-public class TinhThuong {
-
+public class NMLT_IO_TGGN {
 	public static void main(String[] args) {
 		try (Scanner io = new Scanner(System.in);) {
 			int a = io.nextInt();
