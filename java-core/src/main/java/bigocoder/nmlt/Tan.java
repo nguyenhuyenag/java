@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 
-public class IOTan {
+public class Tan {
 	
 	static float pi = (float) 3.14;
 

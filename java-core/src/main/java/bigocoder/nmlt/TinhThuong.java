@@ -1,20 +1,18 @@
 package bigocoder.nmlt;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 import java.text.DecimalFormat;
 
 public class TinhThuong {
-	
-//	static float pi = (float) 3.14;
 
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		BufferedReader io = new BufferedReader(new InputStreamReader(System.in));
-		int a = Integer.valueOf(io.readLine());
-		int b = Integer.valueOf(io.readLine());
-		// float b = (float) ((float) (pi * a) / 180.0);
-		DecimalFormat df = new DecimalFormat("0.0000");
-		System.out.print(df.format(a / b));
+	public static void main(String[] args) {
+		try (Scanner io = new Scanner(System.in);) {
+			int a = io.nextInt();
+			int b = io.nextInt();
+			float div = (float) a / b;
+			div = (float) (Math.round(div * 100)) / 100;
+			DecimalFormat df = new DecimalFormat("0.00");
+			System.out.print(a + " / " + b + " = " + df.format(div));
+		}
 	}
 }
