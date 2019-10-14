@@ -82,6 +82,6 @@ public class AlgNumber {
 		return a; // a hay b cũng được
 	}
 	
-	// Bài 88
+	// 155
 
 }
