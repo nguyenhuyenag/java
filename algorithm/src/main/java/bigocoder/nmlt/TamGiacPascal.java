@@ -2,7 +2,7 @@ package bigocoder.nmlt;
 
 import java.util.Scanner;
 
-public class Pascal {
+public class TamGiacPascal {
 
 	static int C(int k, int n) {
 		if (k == 0 || k == n)
