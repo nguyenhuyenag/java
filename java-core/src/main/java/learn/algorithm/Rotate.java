@@ -14,9 +14,8 @@ public class Rotate {
 	}
 
 	static void move(int[] arr) {
-		int i;
+		int i, n = arr.length;
 		int tmp = arr[0];
-		int n = arr.length;
 		for (i = 0; i < n - 1; i++) {
 			arr[i] = arr[i + 1];
 		}
