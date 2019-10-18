@@ -16,11 +16,14 @@ public class MatcherFind {
 		Matcher matcher = pattern.matcher(TEXT);
 
 		while (matcher.find()) {
-			System.out.println("start: " + matcher.start() + ", end: " + matcher.end() + ", group: " + matcher.group());
+			System.out.println("start: " + matcher.start() //
+					+ ", end: " + matcher.end() //
+					+ ", group: " + matcher.group());
 		}
 
 		System.out.println(TEXT.substring(5, 6));
 		System.out.println(TEXT.substring(10, 11));
+		
 	}
 
 }

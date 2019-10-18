@@ -1,17 +1,29 @@
 package learn;
 
-import java.util.Arrays;
+class Course {
 
-import org.apache.commons.lang3.StringUtils;
+	public double average = 0;
+
+	public Course(double... vars) {
+		if (vars.length > 0) {
+			double sum = 0;
+			for (double d : vars) {
+				sum += d;
+			}
+			this.average = sum / vars.length;
+		}
+	}
+}
 
 public class Main {
 
 	public static void main(String[] args) {
-		// String word = "Đế Bá";
-		String str = "Đế Bá truyện tàng thư viện Đế Bá Lý Thất Đế    Bá Hoặc không Đế";
-		// System.out.println(StringUtils.countMatches(text, word));
 
-		System.out.println(Arrays.toString(StringUtils.split(str, "\\s+")));
+		Course course = new Course(60, 10, 80);
+		System.out.println(course.average);
+
+		Course course1 = new Course(50, 40, 30);
+		System.out.println(course1.average);
 	}
 
 }
