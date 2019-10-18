@@ -1,13 +1,16 @@
 package learn;
 
-import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Main {
+
 	public static void main(String[] args) {
-		try (Scanner io = new Scanner(System.in)) {
-			String s = io.nextLine();
-			String s2 = io.nextLine();
-			System.out.println(s.replaceAll(s2, ""));
-		}
+		long max = 9223372036854L;
+		Date date = new Date(max);
+		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println(sdf.format(date));
 	}
+
 }

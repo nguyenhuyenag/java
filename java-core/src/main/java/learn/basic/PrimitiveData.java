@@ -21,7 +21,7 @@ public class PrimitiveData {
 	public final short 	SHORT_MAX 		= 	32767; 					//	2^15 - 1
 	public final int 	INT_MIN 		= 	-2147483648; 			//	-2^31
 	public final int 	INT_MAX 		= 	2147483647; 			//	2^31 - 1
-	public final long 	LONG_MIN 		= 	-9223372036854775808l;	//	-2^63
-	public final long 	LONG_MAX 		= 	9223372036854775807l;	//	2^63 - 1
+	public final long 	LONG_MIN 		= 	-9223372036854775808L;	//	-2^63
+	public final long 	LONG_MAX 		= 	9223372036854775807L;	//	2^63 - 1
 
 }
