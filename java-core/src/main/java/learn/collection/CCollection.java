@@ -13,6 +13,7 @@ public class CCollection {
 		System.out.println(Collections.disjoint(src, des));
 	}
 
+	// collection read-only
 	public static void unmodifiable() {
 		List<String> list = Collections.nCopies(5, "Java");
 		Collection<String> collection = Collections.unmodifiableCollection(list);

@@ -1,10 +1,10 @@
-package learn;
+package learn.basic.string;
 
 import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Main {
+public class StringComparator {
 
 	public static void main(String[] args) {
 		String[] coins = { "Penny", "nickel", "dime", "Quarter", "dollar" };
