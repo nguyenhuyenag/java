@@ -9,6 +9,7 @@ public class DayNhiPhan {
 
 	static int n;
 	static int[] arr;
+	static final int[] binary = { 0, 1 };
 
 	static void output() {
 		for (int i = 0; i < n; i++) {
@@ -18,12 +19,12 @@ public class DayNhiPhan {
 	}
 
 	static void find(int i) {
-		for (int j = 0; j <= 1; j++) { // j = {0, 1}
-			arr[i] = j;
-			if (i == n - 1) {
-				output(); // nếu tìm đến i cuối cùng thì in ra kết quả
-			} else {
-				find(i + 1); // chưa tìm đến i cuối thì tăng i
+		for (int k : binary) {
+			arr[i] = k;
+			if (i == n - 1) { // nếu tìm đến i cuối cùng thì in ra kết quả hiện tại
+				output();
+			} else { // chưa tìm đến i cuối thì tăng i
+				find(i + 1);
 			}
 		}
 	}
