@@ -37,6 +37,12 @@ public class CCollection {
 
 		// Tao collection khong the thay doi
 		// unmodifiable();
+
+		// Rotate
+		List<String> rotate = Arrays.asList("One Two Three Four Five Six".split("\\s"));
+		System.out.println("List :" + rotate);
+		Collections.rotate(rotate, 3);
+		System.out.println("Rotate: " + rotate);
 	}
 
 }
