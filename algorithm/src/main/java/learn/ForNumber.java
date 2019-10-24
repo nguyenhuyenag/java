@@ -1,6 +1,6 @@
-package learn.algorithm;
+package learn;
 
-public class AlgNumber {
+public class ForNumber {
 
 	/**
 	 * @see learn.algorithm.recursion.Recursions#digitSum

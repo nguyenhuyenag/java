@@ -1,4 +1,4 @@
-package learn.reflect;
+package learn.reflection;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -8,7 +8,7 @@ class Reflections {
 	private static final int FIELD = 50;
 }
 
-public class ChangeFinal {
+public class ChangeFinalValue {
 
 	public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
 

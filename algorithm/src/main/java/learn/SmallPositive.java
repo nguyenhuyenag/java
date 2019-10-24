@@ -1,4 +1,4 @@
-package learn.algorithm;
+package learn;
 
 public class SmallPositive {
 

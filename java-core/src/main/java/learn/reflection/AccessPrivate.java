@@ -1,4 +1,4 @@
-package learn.reflect;
+package learn.reflection;
 
 import java.lang.reflect.Field;
 
@@ -17,11 +17,10 @@ class Reflection {
 public class AccessPrivate {
 
 	public static void main(String[] args) throws IllegalAccessException {
-		int now;
-		int change;
+		int now, change;
 		Reflection ref = new Reflection();
-		Field[] fields = Reflection.class.getDeclaredFields();
-		for (Field field : fields) {
+		Field[] allField = Reflection.class.getDeclaredFields();
+		for (Field field : allField) {
 			field.setAccessible(true);
 			System.out.println("Field name: `" + field.getName() + "`");
 			// get private value
@@ -29,7 +28,7 @@ public class AccessPrivate {
 			field.setInt(ref, 30);
 			// change private value
 			change = field.getInt(ref);
-			System.out.println("Change value from " + now + " to " + change + "\n");
+			System.out.println("Change value from `" + now + "` to `" + change + "`\n");
 		}
 
 	}

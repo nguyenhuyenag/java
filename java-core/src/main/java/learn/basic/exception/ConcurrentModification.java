@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 /**
  * ConcurrentModificationException: Xóa phần tử khỏi List khi đang duyệt
  */
+@SuppressWarnings("unused")
 public class ConcurrentModification {
 
 	/**
@@ -36,7 +37,7 @@ public class ConcurrentModification {
 	}
 
 	// => OK
-	static void useGetIndex(List<Integer> list) {
+	private static void useGetIndex(List<Integer> list) {
 		// Lưu ý IndexOutOfBoundsException
 		for (int i = 0; i < list.size(); i++) {
 			int el = list.get(i);
@@ -47,7 +48,7 @@ public class ConcurrentModification {
 	}
 
 	// => OK
-	static void useIterator(List<Integer> list) {
+	private static void useIterator(List<Integer> list) {
 		Iterator<Integer> iterator = list.iterator();
 		while (iterator.hasNext()) {
 			int el = iterator.next();
@@ -58,7 +59,7 @@ public class ConcurrentModification {
 	}
 
 	// => OK
-	static void useRemoveAll(List<Integer> list) {
+	private static void useRemoveAll(List<Integer> list) {
 		List<Integer> willRemove = new ArrayList<>();
 		for (int x : list) {
 			if (x == 1 || x == 2) {
@@ -69,19 +70,19 @@ public class ConcurrentModification {
 	}
 
 	// => OK (Java 8+)
-	static void useRemoveIf(List<Integer> list) {
+	private static void useRemoveIf(List<Integer> list) {
 		list.removeIf(t -> (t.equals(1) || t.equals(2))); // remove 1 & 2
 	}
 
 	// => OK
 	// Cách này tạo ra 1 list mới, không thay đổi list ban đầu
-	static List<Integer> useStreamFilter(List<Integer> list) {
+	private static List<Integer> useStreamFilter(List<Integer> list) {
 		return list.stream() //
 				.filter(t -> !(t.equals(1) || t.equals(2))) // filter
 				.collect(Collectors.toList());
 	}
 
-	public static void exceptionWhenRemove() {
+	private static void exceptionWhenRemove() {
 		List<Integer> list = new ArrayList<>();
 		list.addAll(Arrays.asList(0, 1, 2, 3, 4, 5));
 
@@ -94,7 +95,7 @@ public class ConcurrentModification {
 		useRemoveIf(list); // => OK
 	}
 
-	static public void exceptionWhenModifySubList() {
+	static void exceptionWhenModifySubList() {
 		List<String> list = new ArrayList<>();
 		list.addAll(Arrays.asList("Java", "PHP", "SQL", "Angular"));
 		List<String> subs = list.subList(0, 2);
@@ -102,7 +103,7 @@ public class ConcurrentModification {
 		System.out.println(subs); // this line throws exception
 	}
 
-	public static void exceptionWhenSubList() {
+	static void exceptionWhenSubList() {
 		List<Integer> list = new ArrayList<>();
 		list.addAll(Arrays.asList(0, 1, 2, 3, 4, 5));
 		List<Integer> subs = list.subList(0, 2); // => From here

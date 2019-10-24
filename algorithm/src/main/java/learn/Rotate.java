@@ -1,4 +1,4 @@
-package learn.algorithm;
+package learn;
 
 import java.util.Arrays;
 import java.util.Collections;
