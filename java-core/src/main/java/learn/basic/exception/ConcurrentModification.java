@@ -6,88 +6,117 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * ConcurrentModificationException: Xóa phần tử khỏi List khi đang duyệt
+ */
 public class ConcurrentModification {
 
-	/*-
-	 * - ConcurrentModificationException
-	 * - Khi xóa phần tử khỏi ArrayList bằng vòng lặp for
-	 * - Note: Không nên remove trong khi duyệt các phần tử
+	/**
+	 * ConcurrentModificationException
 	 */
-
-	// Get ConcurrentModificationException
-	static void removeByForGetException(List<Integer> list) {
-		for (Integer x : list) {
-			if (x.equals(1)) {
+	static void showException(List<Integer> list) {
+		for (int x : list) {
+			if (x == 1) {
 				list.remove(x); // => Exception
 			}
 		}
 	}
 
-	static void removeByIteratorGetException(List<Integer> list) {
+	/**
+	 * ConcurrentModificationException
+	 */
+	static void getException(List<Integer> list) {
 		Iterator<Integer> iterator = list.iterator();
 		while (iterator.hasNext()) {
-			Integer language = iterator.next();
-			if (language.equals(1)) {
-				list.remove(language); // => Exception
+			int el = iterator.next();
+			if (el == 1) {
+				list.remove(el); // => Exception
 			}
 		}
 	}
 
-	// Fix ConcurrentModificationException
-	static void removeByIndex(List<Integer> list) {
-		// Lưu ý lỗi IndexOutOfBoundsException
+	// => OK
+	static void useGetIndex(List<Integer> list) {
+		// Lưu ý IndexOutOfBoundsException
 		for (int i = 0; i < list.size(); i++) {
-			Integer x = list.get(i);
-			if (x.equals(1)) {
-				list.remove(x);
+			int el = list.get(i);
+			if (el == 1) {
+				list.remove(el);
 			}
 		}
 	}
 
-	static void removeByIterator(List<Integer> list) {
+	// => OK
+	static void useIterator(List<Integer> list) {
 		Iterator<Integer> iterator = list.iterator();
 		while (iterator.hasNext()) {
-			Integer x = iterator.next();
-			if (x.equals(1)) {
+			int el = iterator.next();
+			if (el == 1) {
 				iterator.remove();
 			}
 		}
 	}
 
-	static void removeAfterLoop(List<Integer> list) {
-		List<Integer> toRemove = new ArrayList<>();
-		for (Integer x : list) {
-			if (x.equals(1) || x.equals(2)) {
-				toRemove.add(x);
+	// => OK
+	static void useRemoveAll(List<Integer> list) {
+		List<Integer> willRemove = new ArrayList<>();
+		for (int x : list) {
+			if (x == 1 || x == 2) {
+				willRemove.add(x);
 			}
 		}
-		list.removeAll(toRemove); // remove here
+		list.removeAll(willRemove); // => remove here
 	}
 
-	static void removeByRemoveIf(List<Integer> list) {
-		list.removeIf(t -> (t.equals(1) || t.equals(2))); // remove if t = 1 or t = 2
-		list.forEach(System.out::println);
+	// => OK (Java 8+)
+	static void useRemoveIf(List<Integer> list) {
+		list.removeIf(t -> (t.equals(1) || t.equals(2))); // remove 1 & 2
 	}
 
-	static List<Integer> removeByFilter(List<Integer> list) {
-		// Cách này tạo ra 1 list mới sau khi filter, không làm thay đổi list ban đầu
+	// => OK
+	// Cách này tạo ra 1 list mới, không thay đổi list ban đầu
+	static List<Integer> useStreamFilter(List<Integer> list) {
 		return list.stream() //
 				.filter(t -> !(t.equals(1) || t.equals(2))) // filter
 				.collect(Collectors.toList());
 	}
 
-	public static void main(String[] args) {
-
+	public static void exceptionWhenRemove() {
 		List<Integer> list = new ArrayList<>();
-		list.addAll(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+		list.addAll(Arrays.asList(0, 1, 2, 3, 4, 5));
 
-		// removeByForGetException(list); 		// => Exception
-		// removeByIteratorGetException(list); 	// => Exception
+		// showException(list); // => Exception
+		// getException(list); // => Exception
 
-		// removeByIndex(list);		// => OK
-		removeByIterator(list); 	// OK
-		// removeAfterLoop(list); 	// OK
-		// removeByRemoveIf(list); 	// OK
-		// removeByFilter(list); 	// OK
+		// useGetIndex(list); // => OK
+		// useIterator(list); // => OK
+		// useRemoveAll(list); // => OK
+		useRemoveIf(list); // => OK
+	}
+
+	static public void exceptionWhenModifySubList() {
+		List<String> list = new ArrayList<>();
+		list.addAll(Arrays.asList("Java", "PHP", "SQL", "Angular"));
+		List<String> subs = list.subList(0, 2);
+		list.add("NodeJS"); // Modify the list size and get exception
+		System.out.println(subs); // this line throws exception
+	}
+
+	public static void exceptionWhenSubList() {
+		List<Integer> list = new ArrayList<>();
+		list.addAll(Arrays.asList(0, 1, 2, 3, 4, 5));
+		List<Integer> subs = list.subList(0, 2); // => From here
+
+		// List<Integer> toReverse = new ArrayList<>(list.subList(start, end + 1));
+		// = list.stream().skip(0).limit(2).collect(Collectors.toList());
+
+		list.removeAll(subs);
+		list.addAll(subs); // => will show Exception
+	}
+
+	public static void main(String[] args) {
+		// exceptionWhenRemove();
+		exceptionWhenSubList();
+		// exceptionWhenModifySubList();
 	}
 }

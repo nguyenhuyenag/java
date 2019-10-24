@@ -2,7 +2,7 @@ package learn.generation;
 
 import java.util.Arrays;
 
-public class PhuongPhapSinh {
+public class DayNhiPhans {
 
 	static void output(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {

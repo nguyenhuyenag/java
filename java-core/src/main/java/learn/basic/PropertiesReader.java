@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
 
-public class Propertiess {
+public class PropertiesReader {
 
 	public static void main(String[] args) throws IOException {
 		try (OutputStream output = new FileOutputStream("file/config.properties");) {

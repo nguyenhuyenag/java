@@ -28,8 +28,8 @@ public class Sleep {
 	}
 
 	public static void main(String[] args) {
-		useThread();
-		// useTimeUnit();
+		// useThread();
+		useTimeUnit();
 	}
 
 }

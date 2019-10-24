@@ -27,12 +27,10 @@ public class PatternUtils {
 	public static final String SPEACIE 			= "\\.[{(*+?^$|";	// => \\
 	
 	public static void main(String[] args) {
-		
 		String str = "This is  my   text";
 		String newText = str.trim().replaceAll("\\s+", " ");
 		System.out.println(newText);
 		System.out.println(StringUtils.normalizeSpace(str));
-		
 	}
 	
 
