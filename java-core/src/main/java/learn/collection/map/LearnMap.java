@@ -10,10 +10,6 @@ import common.util.MapsUtils;
 
 public class LearnMap {
 
-	private LearnMap() {
-
-	}
-
 	public static <K extends Comparable<K>, V> Comparator<Entry<K, V>> keyComparatorPreJava8() {
 		return new Comparator<Entry<K, V>>() {
 			@Override
