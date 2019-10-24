@@ -1,4 +1,4 @@
-package learn.basic.string;
+package learn.basic.regex;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,11 +18,9 @@ public class FindIndexOfSubs {
 	}
 
 	public static void main(String[] args) {
-
 		String text = "NNT NNT không thuộc đối, NNT tượng nộp loại HSKT này";
 		String sub = "NNT";
 		find(text, sub).forEach((k, v) -> System.out.println("[" + k + "-" + v + "]"));
-
 	}
 
 }

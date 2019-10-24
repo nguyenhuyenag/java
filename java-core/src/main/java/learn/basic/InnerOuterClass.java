@@ -1,6 +1,6 @@
-package learn.basic.innerclass;
+package learn.basic;
 
-public class Outer {
+public class InnerOuterClass {
 
 	public class Inner {
 		void show() {
@@ -17,18 +17,18 @@ public class Outer {
 	public static void main(String[] args) {
 
 		// Non-static
-		Outer o = new Outer();
+		InnerOuterClass o = new InnerOuterClass();
 		Inner inner1 = o.new Inner();
 		inner1.show();
 
-		Inner inner2 = new Outer().new Inner();
+		Inner inner2 = new InnerOuterClass().new Inner();
 		inner2.show();
 
 		// Static
-		Outer.StaticInner sInner1 = new Outer.StaticInner();
+		InnerOuterClass.StaticInner sInner1 = new InnerOuterClass.StaticInner();
 		sInner1.show();
 
-		StaticInner sInner2 = new Outer.StaticInner();
+		StaticInner sInner2 = new InnerOuterClass.StaticInner();
 		sInner2.show();
 
 	}
