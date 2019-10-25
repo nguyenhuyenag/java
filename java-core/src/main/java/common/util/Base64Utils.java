@@ -15,11 +15,11 @@ public class Base64Utils {
 
 	/**
 	 * Base64 encode
-	 * @param src the byte array to encode
+	 * @param byteArr the byte array to encode
 	 * @return byte array encoded
 	 */
-	public static byte[] encode(byte[] src) {
-		return Base64.getEncoder().encode(src);
+	public static byte[] encode(byte[] byteArr) {
+		return Base64.getEncoder().encode(byteArr);
 	}
 	
 	/**
@@ -27,8 +27,8 @@ public class Base64Utils {
 	 * @param src the byte array to decode
 	 * @return byte array decoded
 	 */
-	public static byte[] decode(byte[] src) {
-		return Base64.getDecoder().decode(src);
+	public static byte[] decode(byte[] byteArr) {
+		return Base64.getDecoder().decode(byteArr);
 	}
 
 	/**
@@ -38,8 +38,8 @@ public class Base64Utils {
 	 * @return byte array encoded
 	 */
 	public static byte[] encode(String src, Charset charset) {
-		byte[] bytes = src.getBytes(charset);
-		return encode(bytes);
+		byte[] byteArr = src.getBytes(charset);
+		return encode(byteArr);
 	}
 
 	/**
@@ -53,22 +53,22 @@ public class Base64Utils {
 
 	/**
 	 * Base64 encode to string with Charset
-	 * @param src the byte array to encode
+	 * @param byteArr the byte array to encode
 	 * @param charset is Charset
 	 * @return string encoded
 	 */
-	public static String encodeToString(byte[] src, Charset charset) {
-		byte[] bytes = encode(src);
-		return new String(bytes, charset);
+	public static String encodeToString(byte[] byteArr, Charset charset) {
+		byte[] arr = encode(byteArr);
+		return new String(arr, charset);
 	}
 
 	/**
 	 * Base64 encode to string with UTF-8
-	 * @param src the byte array to encode
+	 * @param byteArr the byte array to encode
 	 * @return string encoded
 	 */
-	public static String encodeToString(byte[] src) {
-		return encodeToString(src, StandardCharsets.UTF_8);
+	public static String encodeToString(byte[] byteArr) {
+		return encodeToString(byteArr, StandardCharsets.UTF_8);
 	}
 	
 	/**
@@ -78,8 +78,8 @@ public class Base64Utils {
 	 * @throws IOException
 	 */
 	public static String encode(DataHandler handler) {
-		byte[] bytes = FilesUtils.toByteArray(handler);
-		return encodeToString(bytes);
+		byte[] byteArr = FilesUtils.toByteArray(handler);
+		return encodeToString(byteArr);
 	}
 	
 	/**
@@ -89,8 +89,8 @@ public class Base64Utils {
 	 * @throws IOException
 	 */
 	public static String encodeWithoutCharset(DataHandler handler) {
-		byte[] bytes = FilesUtils.toByteArray(handler);
-		return Base64.getEncoder().encodeToString(bytes);
+		byte[] byteArr = FilesUtils.toByteArray(handler);
+		return Base64.getEncoder().encodeToString(byteArr);
 	}
 
 	/**
@@ -100,8 +100,8 @@ public class Base64Utils {
 	 * @return byte array decoded
 	 */
 	public static byte[] decode(String src, Charset charset) {
-		byte[] bytes = src.getBytes(charset);
-		return decode(bytes);
+		byte[] byteArr = src.getBytes(charset);
+		return decode(byteArr);
 	}
 
 	/**
@@ -120,8 +120,8 @@ public class Base64Utils {
 	 * @return string decoded
 	 */
 	public static String decodeToString(String src, Charset charset) {
-		byte[] bytes = decode(src, charset);
-		return new String(bytes, charset);
+		byte[] byteArr = decode(src, charset);
+		return new String(byteArr, charset);
 	}
 
 	/**
