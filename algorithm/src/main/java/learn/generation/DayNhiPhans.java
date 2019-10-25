@@ -17,12 +17,12 @@ public class DayNhiPhans {
 		int[] arr = new int[n];
 		// in ra dãy đầu tiên
 		output(arr);
-		for (int i = n - 1; i >= 0; i--) { // duyệt từ phần tử cuối -> phần tử đầu tiên
-			if (arr[i] == 0) { // nếu gặp số 0
-				arr[i] = 1; // đổi nó thành 1
-				Arrays.fill(arr, i + 1, n, 0); // gán toàn bộ phần tử phía sau nó thành 0
-				output(arr); // in ra dãy vừa sinh
-				i = n; // Gán i = n (độ dài của chuỗi) để quay về cuối dãy và duyệt lên lại
+		for (int i = n - 1; i >= 0; i--) { 	// duyệt từ phần tử cuối -> phần tử đầu tiên
+			if (arr[i] == 0) { 				// nếu gặp số 0
+				arr[i] = 1; 				// đổi nó thành 1
+				Arrays.fill(arr, i + 1, n, 0); 	// gán toàn bộ phần tử phía sau nó thành 0
+				output(arr); 					// in ra dãy vừa sinh
+				i = n; 							// Gán i = n (độ dài của chuỗi) để quay về cuối dãy và duyệt lên lại
 			}
 		}
 	}
