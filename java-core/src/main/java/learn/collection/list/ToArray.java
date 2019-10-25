@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ToArray {
 
-	static <T> void getType(T object) {
+	private static <T> void getType(T object) {
 		System.out.println(object.getClass().getSimpleName());
 	}
 

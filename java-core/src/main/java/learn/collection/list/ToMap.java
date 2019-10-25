@@ -8,8 +8,7 @@ import java.util.stream.Collectors;
 public class ToMap {
 
 	public static void listToMap(List<String> list) {
-		list.stream() //
-				.collect(Collectors.toMap(Function.identity(), String::length)) //
+		list.stream().collect(Collectors.toMap(Function.identity(), String::length)) //
 				.forEach((k, v) -> System.out.println(k + ", " + v));
 	}
 

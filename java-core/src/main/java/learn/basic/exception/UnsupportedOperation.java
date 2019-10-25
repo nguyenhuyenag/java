@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Arrays.asList returning a fixed-size list.
+ * Arrays.asList trả về List có kích thước cố định (fixed-size list)
  * 
- * So can't ADD to it, can't REMOVE from it, can't structurally modify the List.
+ * => Không thể ADD, REMOVE, MODIFY List này được
  */
 public class UnsupportedOperation {
 

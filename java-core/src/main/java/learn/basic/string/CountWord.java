@@ -18,7 +18,7 @@ public class CountWord {
 		List<String> list = Arrays.asList(arr);
 		Set<String> set = new HashSet<>(list);
 		for (String word : set) {
-			// StringUtils.countMatches(text, word)
+			// StringUtils.countMatches(text, word);
 			System.out.println(word + " => " + Collections.frequency(list, word));
 		}
 	}

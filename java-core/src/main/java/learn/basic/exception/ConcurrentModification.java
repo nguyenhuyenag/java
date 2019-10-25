@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * ConcurrentModificationException: Xóa phần tử khỏi List khi đang duyệt
+ * ConcurrentModificationException: Xảy ra khi xóa phần tử khỏi List lúc đang duyệt
  */
 @SuppressWarnings("unused")
 public class ConcurrentModification {

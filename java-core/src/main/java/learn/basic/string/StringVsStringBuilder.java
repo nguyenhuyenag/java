@@ -1,8 +1,8 @@
 package learn.basic.string;
 
+@SuppressWarnings("unused")
 public class StringVsStringBuilder {
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		String s = "";

@@ -1,3 +1,0 @@
-00023, Dr. Haneen,  artificial intelligent, data mining, pattern recognition#
-00013, Dr. Manar, database, network#
-00011, Dr. Hajar, software engineering, games#

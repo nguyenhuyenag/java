@@ -16,16 +16,16 @@ public class RemoveDuplicate {
 		List<Integer> list = RandomUtils.getListInteger(10, 1, 20);
 		System.out.println("Before: " + Arrays.toString(list.toArray()));
 
-		// distinct()
+		// stream distinct
 		List<Integer> distinct = list.stream().distinct().collect(Collectors.toList());
 		System.out.println("After: " + Arrays.toString(distinct.toArray()));
 
-		// use set
+		// set
 		Set<Integer> set = new HashSet<>(list);
 		ArrayList<Integer> arrList = new ArrayList<>(set);
 		System.out.println("After: " + Arrays.toString(arrList.toArray()));
 
-		// removeIf()
+		// removeIf
 		Set<Integer> setInt = new HashSet<>();
 		list.removeIf(t -> !setInt.add(t));
 		System.out.println("After: " + Arrays.toString(list.toArray()));
