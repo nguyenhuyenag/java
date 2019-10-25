@@ -7,10 +7,6 @@ import java.util.stream.Stream;
 
 public class StreamTo {
 
-	// static <T> void getType(T object) {
-	// System.out.println(object.getClass().getSimpleName());
-	// }
-
 	static Stream<Integer> initStream() {
 		return Arrays.stream(new Integer[] { 0, 1, 2, 3, 4, 5 });
 	}
