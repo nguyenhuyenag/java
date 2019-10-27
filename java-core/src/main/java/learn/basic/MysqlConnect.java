@@ -18,7 +18,7 @@ public class MysqlConnect {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Statement stmt = connect.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM countrylanguage;");
-			List<Object[]> records = new ArrayList<Object[]>();
+			List<Object[]> records = new ArrayList<>();
 			while (rs.next()) {
 				int cols = rs.getMetaData().getColumnCount();
 				Object[] arr = new Object[cols];

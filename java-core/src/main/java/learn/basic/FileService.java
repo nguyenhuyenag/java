@@ -57,18 +57,18 @@ public class FileService {
 		List<File> list = new ArrayList<>();
 		// File[] listFiles = directory.listFiles((dir, name) ->
 		// name.toLowerCase().endsWith(postfix));
-		File[] arrFiles = directory.listFiles(new FilenameFilter() {
+		File[] files = directory.listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
 				return name.toLowerCase().endsWith(postfix);
 			}
 		});
-		if (ArrayUtils.isNotEmpty(arrFiles)) {
-			for (File file : arrFiles) {
-				if (file.isFile()) {
-					list.add(file);
-				} else if (file.isDirectory()) {
-					list.addAll(listFiles(file.getAbsolutePath()));
+		if (ArrayUtils.isNotEmpty(files)) {
+			for (File f : files) {
+				if (f.isFile()) {
+					list.add(f);
+				} else if (f.isDirectory()) {
+					list.addAll(listFiles(f.getAbsolutePath()));
 				}
 			}
 		}

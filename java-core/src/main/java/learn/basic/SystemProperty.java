@@ -9,19 +9,19 @@ public class SystemProperty {
 
 	static String[] keyArrays = {
 		"file.separator", 	// 	Dấu cách thư mục, windows => '\' hay Unix/Mac => '/'
-		"java.class.path",	//
+		"java.class.path",
 		"java.home",		// 	Đường dẫn của thư mục JRE
-		"java.vendor",		//
-		"java.vendor.url",	//
+		"java.vendor",
+		"java.vendor.url",
 		"java.version",		// 	Java version
 		"os.arch",			//	x86, x64
 		"os.name",			//	Tên hệ điều hành
 		"os.version",		//	Phiên bản hệ điều hành
-		"path.separator",	//
+		"path.separator",
 		"user.dir",			// 	Đường dẫn của dự án
-		"user.home",		//
+		"user.home",
 		"user.name",		// 	Tên người dùng
-		"line.separator"	//
+		"line.separator"
 	};
 	
 	// print all

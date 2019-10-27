@@ -11,6 +11,7 @@ public class NumberCollection {
 		System.out.println(value + ": \t" + pattern + "	\t= " + output);
 	}
 
+	// Decimal Format
 	static public void formatDecimal() {
 		customFormat("###,###.###", 123456.789);
 		customFormat("###.##", 123456.789); // làm tròn nếu bên phải nhiều hơn 2 chữ số
