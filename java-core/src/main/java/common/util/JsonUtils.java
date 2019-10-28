@@ -58,13 +58,12 @@ public class JsonUtils {
 	 * @return JSON
 	 */
 	public static <T> String fromObject(T object) {
-		if (Objects.isNull(object)) {
-			return StringUtils.EMPTY;
-		}
-		try {
-			return MAPPER.writeValueAsString(object);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+		if (Objects.nonNull(object)) {
+			try {
+				return MAPPER.writeValueAsString(object);
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+			}
 		}
 		return StringUtils.EMPTY;
 	}
