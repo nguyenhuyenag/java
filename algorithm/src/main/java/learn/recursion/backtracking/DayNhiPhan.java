@@ -3,9 +3,15 @@ package learn.recursion.backtracking;
 import java.util.Scanner;
 
 /**
- * Sinh các dãy nhị phân có độ dài n. Ví dụ n = 2, ta có các dãy: 00, 01, 10, 11
+ * Sinh các dãy nhị phân có độ dài n.
+ * 
+ * Ví dụ n = 2, ta có các dãy: 00, 01, 10, 11
+ * 
+ * Có tất cả 2^n trường hợp
  * 
  * @see Integer#toBinaryString
+ * 
+ * @see https://i.imgur.com/nQOPC1I.png
  */
 public class DayNhiPhan {
 
@@ -17,28 +23,13 @@ public class DayNhiPhan {
 		System.out.println(builder.toString());
 	}
 
-	/*-
-	 * n = 2
-	 * 
-	 * i = 0	j = 0	=>	a[0] = 0		=>	Đệ quy
-	 * 
-	 *	  					i = 1	j = 0	=>	a[1] = 0	=>	00
-	 *
-	 *						  		j = 1	=>	a[1] = 1	=>	01
-	 *
-	 *			j = 1	=>	a[0] = 1		=>	Đệ quy
-	 *
-	 *						i = 1	j = 0	=>	a[1] = 0	=>	10
-	 *			
-	 *								j = 1	=>	a[1] = 1	=>	11
-	 */
-	static void quaylui(int i) {
+	static void backtrack(int i) {
 		for (int j = 0; j <= 1; j++) { // j = {0, 1}
 			arr[i] = j;
 			if (i == (n - 1)) { // Nếu i nằm ở cuối mảng => in ra cấu hình tìm được
 				output();
 			} else {
-				quaylui(i + 1); // ngược lại, thử các giá trị cho vị trí tiếp theo
+				backtrack(i + 1); // ngược lại, thử các giá trị cho vị trí tiếp theo
 			}
 		}
 	}
@@ -48,9 +39,9 @@ public class DayNhiPhan {
 
 	public static void main(String[] args) {
 		try (Scanner io = new Scanner(System.in)) {
-			n = 2; // io.nextInt();
+			n = 3; // io.nextInt();
 			arr = new int[n];
-			quaylui(0);
+			backtrack(0);
 		}
 	}
 
