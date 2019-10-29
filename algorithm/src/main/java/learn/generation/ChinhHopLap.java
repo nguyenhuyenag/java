@@ -2,10 +2,8 @@ package learn.generation;
 
 import java.util.Arrays;
 
-/**
- * Sinh các chỉnh hợp lặp chập k của n.
- * 
- * Cho x = {1, 2,..., n}, liệt kê các chỉnh hợp lặp chập k của n.
+/*-
+ * Cho A = {1, 2,..., n}, liệt kê các chỉnh hợp lặp chập k của n của A
  * 
  * Với n = 2, k = 3 thì ta được (111), (112), (121), (122), (211), (212), (221), (222).
  */
