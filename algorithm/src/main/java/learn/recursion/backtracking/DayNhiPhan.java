@@ -1,7 +1,5 @@
 package learn.recursion.backtracking;
 
-import java.util.Scanner;
-
 /**
  * Sinh các dãy nhị phân có độ dài n.
  * 
@@ -38,11 +36,9 @@ public class DayNhiPhan {
 	static int[] arr;
 
 	public static void main(String[] args) {
-		try (Scanner io = new Scanner(System.in)) {
-			n = 3; // io.nextInt();
-			arr = new int[n];
-			backtrack(0);
-		}
+		n = 2;
+		arr = new int[n];
+		backtrack(0);
 	}
 
 }

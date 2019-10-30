@@ -54,7 +54,7 @@ public class ToHop {
 
 	public static void main(String[] args) {
 		k = 3;
-		n = 4;
+		n = 3;
 		arr = new int[k];
 		backtrack(0);
 	}

@@ -3,10 +3,9 @@ package learn.recursion.backtracking;
 /**
  * Cho chuỗi S, liệt kê tất cả các hoán vị của S
  */
-public class ChuoiHoanVi {
+public class HoanViChuoi {
 
 	static void show(char[] arr) {
-		// String.copyValueOf(arr)
 		System.out.print(new String(arr) + " ");
 	}
 
@@ -29,7 +28,7 @@ public class ChuoiHoanVi {
 	}
 
 	public static void main(String[] args) {
-		String str = "abc";
+		String str = "abcd";
 		char[] arr = str.toCharArray();
 		int n = arr.length;
 		permute(arr, 0, n - 1);
