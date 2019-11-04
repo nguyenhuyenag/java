@@ -22,6 +22,8 @@ public class CollectionTo {
 		// Streams API
 		Supplier<LinkedList<Integer>> supplier = () -> new LinkedList<>();
 		LinkedList<Integer> linkedList = collection.stream().collect(Collectors.toCollection(supplier));
+		// Streams API
+		LinkedList<Integer> linkedList2 = collection.stream().collect(Collectors.toCollection(LinkedList::new));
 	}
 
 }
