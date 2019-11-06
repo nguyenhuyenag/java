@@ -9,15 +9,11 @@ import java.util.stream.IntStream;
 
 public class RandomUtils {
 	
-	private RandomUtils() {
-
-	}
-	
 	private static final Random RANDOM = new Random();
 	
-	private static final String ALPHA = "abcdefghijklmnopqrstuvwxyz";
-	private static final String[] ARRAY_ALPHA = ALPHA.split("");
-	private static final int LENGTH = ALPHA.length();
+	private static final String ALPHA 			= 	"abcdefghijklmnopqrstuvwxyz";
+	private static final String[] ARRAY_ALPHA	=	ALPHA.split("");
+	private static final int LEN 				= 	ALPHA.length();
 
 	/**
 	 * Random int number in [min, max]
@@ -76,15 +72,15 @@ public class RandomUtils {
 	 * Random string
 	 * @return string
 	 */
-	public static String getString() {
-		int i = getInt(0, LENGTH - 1);
+	public static String getAlphabet() {
+		int i = getInt(0, LEN - 1);
 		return ARRAY_ALPHA[i];
 	}
 
 	public static Map<String, Integer> getMap() {
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < 9; i++) {
-			map.put(RandomUtils.getString().toUpperCase(), RandomUtils.getInt());
+			map.put(RandomUtils.getAlphabet().toUpperCase(), RandomUtils.getInt());
 		}
 		return map;
 	}

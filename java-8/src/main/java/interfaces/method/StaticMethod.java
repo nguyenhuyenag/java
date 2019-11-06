@@ -23,5 +23,5 @@ class Car implements StaticMethod {
 		print();
 		StaticMethod.isValid();
 	}
-	
+
 }
