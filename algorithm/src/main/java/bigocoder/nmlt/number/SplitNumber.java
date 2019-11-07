@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SplitNumber {
+	
 	public static void byWhileLoop() {
 		try (Scanner io = new Scanner(System.in)) {
 			String s = io.nextLine();

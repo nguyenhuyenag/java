@@ -3,6 +3,7 @@ package bigocoder.nmlt.number;
 import java.util.Scanner;
 
 public class Power3 {
+	
 	public static void main(String[] args) {
 		try (Scanner io = new Scanner(System.in)) {
 			int n = io.nextInt();
@@ -16,4 +17,5 @@ public class Power3 {
 			System.out.println("NO");
 		}
 	}
+	
 }

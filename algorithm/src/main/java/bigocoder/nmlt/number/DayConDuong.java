@@ -14,6 +14,7 @@ import java.util.Scanner;
  * 
  */
 public class DayConDuong {
+	
 	public static void main(String[] args) {
 		try (Scanner io = new Scanner(System.in)) {
 			int n = io.nextInt();
@@ -37,4 +38,5 @@ public class DayConDuong {
 			System.out.println(Math.max(res, cnt));
 		}
 	}
+	
 }

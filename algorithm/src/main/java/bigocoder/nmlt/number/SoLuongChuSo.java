@@ -7,6 +7,7 @@ import java.util.TreeMap;
  * Số lượng của chữ số lớn nhất
  */
 public class SoLuongChuSo {
+	
 	public static void main(String[] args) {
 		try (Scanner io = new Scanner(System.in)) {
 			int n = io.nextInt();
@@ -29,4 +30,5 @@ public class SoLuongChuSo {
 			// System.out.println(map.lastEntry().getValue());
 		}
 	}
+	
 }

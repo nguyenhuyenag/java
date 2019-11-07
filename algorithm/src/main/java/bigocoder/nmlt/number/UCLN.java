@@ -1,12 +1,14 @@
 package bigocoder.nmlt.number;
 
 import java.util.Scanner;
-
+/**
+ * Ước chung lớn nhất của 2 số
+ */
 public class UCLN {
+
 	public static void main(String[] args) {
-		try (Scanner io = new Scanner(System.in)) {
-			int a = io.nextInt();
-			int b = io.nextInt();
+		try (Scanner io = new Scanner(System.in);) {
+			int a = io.nextInt(), b = io.nextInt();
 			while (a != b) {
 				if (a > b) {
 					a = a - b;
@@ -14,7 +16,8 @@ public class UCLN {
 					b = b - a;
 				}
 			}
-			System.out.println(a);
+			System.out.println(a); // hay b cũng được
 		}
 	}
+
 }
