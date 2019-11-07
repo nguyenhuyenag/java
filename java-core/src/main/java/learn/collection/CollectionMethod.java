@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class ForCollection {
+public class CollectionMethod {
 
 	private static List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
 
