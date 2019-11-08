@@ -2,9 +2,6 @@ package learn;
 
 public class ForNumber {
 
-	/**
-	 * @see learn.algorithm.recursion.Recursions#digitSum
-	 */
 	public static String toBinary(int n) {
 		String str = "";
 		while (n != 0) {
@@ -81,7 +78,5 @@ public class ForNumber {
 		}
 		return a; // a hay b cũng được
 	}
-	
-	// 155
 
 }

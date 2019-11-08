@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Rotate {
 
+	// Chuyển k lần
 	static void rotate(int[] arr, int k) {
-		// Chuyển k lần
 		for (int i = 1; i <= k; i++) {
 			move(arr);
 		}
