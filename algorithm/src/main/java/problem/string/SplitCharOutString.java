@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 /**
  * Tách ký tự chữ ra khỏi chuỗi
  */
-public class NMLT_SPLITSTRING2 {
+public class SplitCharOutString {
+
 	static public void main(String[] args) {
 		try (Scanner io = new Scanner(System.in);) {
 			String s = io.nextLine();
@@ -17,4 +18,5 @@ public class NMLT_SPLITSTRING2 {
 			}
 		}
 	}
+
 }
