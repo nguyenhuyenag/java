@@ -141,4 +141,4 @@
 	
 	- Interface không có hàm khởi tạo (constructor)
 	
-	- Class mô tả thuộc tính và hành vi của đối tượng. Interface chứa các hành vi mà một class triển khai
+	- Class mô tả thuộc tính, hành vi của đối tượng. Interface chứa hành vi mà một class triển khai
