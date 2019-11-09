@@ -11,8 +11,8 @@ public class PreparedStatements {
 	public static void main(String[] args) throws SQLException {
 		String sqlInsert = "INSERT INTO user(username, password, created_date) VALUE(?, ?, ?);";
 		try ( //
-				Connection con = ConnectionUtils.openConnection();
-				PreparedStatement pstm = con.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS); //
+			Connection con = ConnectionUtils.openConnection();
+			PreparedStatement pstm = con.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS); //
 		) {
 			// Set parameter values
 			pstm.setString(1, "gpcoder-test-1");

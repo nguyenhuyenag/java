@@ -24,32 +24,23 @@ import java.sql.Statement;
  *
  * Một số phương thức được hỗ trợ bởi ResultSet:
  * 
- * - next() : được sử dụng để di chuyển con trỏ đến một hàng tiếp theo từ vị trí
- * hiện tại.
+ * - next(): Di chuyển con trỏ đến một hàng tiếp theo.
  * 
- * - previous() : được sử dụng để di chuyển con trỏ đến một hàng trước đó từ vị
- * trí hiện tại.
+ * - previous(): Di chuyển con trỏ đến hàng trước đó.
  * 
- * - first() : được sử dụng để di chuyển con trỏ đến hàng đầu tiên trong đối tượng
- * thiết lập kết quả.
+ * - first(): Di chuyển con trỏ đến hàng đầu tiên.
  * 
- * - last() : được sử dụng để di chuyển con trỏ đến hàng cuối cùng trong đối tượng
- * thiết lập kết quả.
+ * - last(): Di chuyển con trỏ đến hàng cuối cùng.
  * 
- * - absolute(int row) : được sử dụng để di chuyển con trỏ đến số hàng được chỉ
- * định trong đối tượng ResultSet.
+ * - absolute(int row): Di chuyển con trỏ đến số hàng được chỉ định.
  * 
- * - relative(int row) : được sử dụng để di chuyển con trỏ đến số hàng tương đối
- * trong đối tượng ResultSet, nó có thể là dương hoặc âm. Số âm nghĩa là di
- * chuyển về hàng trước đó. Số dương nghĩa là di chuyển đến hàng tiếp theo.
+ * - relative(int row): Số âm di chuyển về hàng trước đó. Số dương di chuyển đến hàng tiếp theo.
  * 
- * - getInt(int columnIndex) : được sử dụng để lấy kết quả tại dựa vào chỉ mục của
- * một cột được chỉ định. Kết quả là một giá trị kiểu int.
+ * - getInt(int columnIndex): Lấy kết quả dựa vào chỉ mục.
  * 
- * - getInt(String columnName) : được sử dụng để lấy kết quả dựa vào tên của một
- * cột được chỉ định. Kết quả là một giá trị kiểu int.
+ * - getInt(String columnName): Lấy kết quả dựa vào tên của một cột được chỉ định.
  * 
- * Tương tự như getInt(), chúng ta có thể getString(), getDouble() ,..
+ * - Tương tự như getInt(), chúng ta có thể getString(), getDouble() ,..
  */
 public class StatementExecuteQuery {
 
@@ -63,14 +54,14 @@ public class StatementExecuteQuery {
 			while (rs.next()) {
 				showUserInfo(rs);
 			}
-			System.out.println("\n=== Move to previous row ===");
+			System.out.println("Move to previous row");
 			while (rs.previous()) {
 				showUserInfo(rs);
 			}
-			System.out.println("\n=== Move to last row ===");
+			System.out.println("Move to last row");
 			rs.last();
 			showUserInfo(rs);
-			System.out.println("\n=== Move to first row ===");
+			System.out.println("Move to first row");
 			rs.first();
 			showUserInfo(rs);
 		}
@@ -81,7 +72,7 @@ public class StatementExecuteQuery {
 		System.out.println("UserName: " + rs.getString(2));
 		System.out.println("Password: " + rs.getString("password"));
 		System.out.println("CreatedDate: " + rs.getDate("created_date"));
-		System.out.println("---");
+		System.out.println();
 	}
 
 }
