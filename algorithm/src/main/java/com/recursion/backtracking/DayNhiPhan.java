@@ -1,4 +1,4 @@
-package learn.recursion.backtracking;
+package com.recursion.backtracking;
 
 /**
  * Sinh các dãy nhị phân có độ dài n.

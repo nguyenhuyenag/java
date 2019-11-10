@@ -1,4 +1,4 @@
-package learn.recursion;
+package com.recursion;
 
 public class TowerHaNoi {
 

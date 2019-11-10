@@ -1,4 +1,4 @@
-package learn.recursion.backtracking;
+package com.recursion.backtracking;
 
 /**
  * Cho chuỗi S, liệt kê tất cả các hoán vị của S
