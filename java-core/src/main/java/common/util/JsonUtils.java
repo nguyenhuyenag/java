@@ -4,6 +4,7 @@ import java.io.File;
 import java.lang.reflect.Type;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,6 +20,7 @@ import com.google.gson.GsonBuilder;
 
 public class JsonUtils {
 
+	private static final Gson GSON = new Gson();
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 
 	private JsonUtils() {
@@ -47,8 +49,7 @@ public class JsonUtils {
 	 * @return
 	 */
 	public static <T> List<T> toList(String json, Class<T[]> array) {
-		Gson gson = new Gson();
-		return Arrays.asList(gson.fromJson(json, array));
+		return Arrays.asList(GSON.fromJson(json, array));
 	}
 	
 	/**
@@ -66,6 +67,16 @@ public class JsonUtils {
 			}
 		}
 		return StringUtils.EMPTY;
+	}
+	
+	/**
+	 * Colection to JSON
+	 * @param <T>
+	 * @param Colection
+	 * @return JSON
+	 */
+	public static <T> String fromCollection(Collection<T> list) {
+		return GSON.toJson(list);
 	}
 	
 	/**

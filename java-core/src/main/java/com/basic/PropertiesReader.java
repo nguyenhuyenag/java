@@ -9,14 +9,12 @@ public class PropertiesReader {
 
 	public static void main(String[] args) throws IOException {
 		try (OutputStream output = new FileOutputStream("file/config.properties");) {
-			// create properties object
 			Properties prop = new Properties();
-			// set the properties value
 			prop.setProperty("database", "localhost");
-			prop.setProperty("dbuser", "java");
-			prop.setProperty("dbpassword", "123456");
+			prop.setProperty("user", "java");
+			prop.setProperty("password", "123456");
 			// save properties to a file
-			prop.store(output, "Config Database connection");
+			prop.store(output, "Config Database connection"); // comment
 		} catch (IOException io) {
 			io.printStackTrace();
 		}
