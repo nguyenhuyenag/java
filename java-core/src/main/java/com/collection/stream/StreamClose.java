@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-public class CloseStream {
+public class StreamClose {
 
 	static Path path = Paths.get("D:/TS24Corp");
 
