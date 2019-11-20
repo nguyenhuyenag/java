@@ -5,18 +5,18 @@ import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
 /*-
- * Có hai class triển khai interface Queue
- * 	- LinkedList
- * 	- PriorityQueue
+ * - Queue (hàng đợi): First in first out.
+ * 
+ * - Có hai class triển khai interface Queue: LinkedList và PriorityQueue (hàng đợi ưu tiên)
  */
 public class QueueLinkedList {
 
 	public static void deleteQueue(Queue<String> queue) throws InterruptedException {
 		System.out.println("From " + queue + "\n");
-		while (queue.size() > 0) {
-			// Lấy ra và loại bỏ phần tử đầu tiên
-			String name = queue.poll(); 		// Trả về null nếu không còn phần tử nào
-			// String name = queue.remove(); 	// Throws nếu hàng đợi không còn phần tử
+		while (!queue.isEmpty()) {
+			// Lấy ra và xóa phần tử đầu tiên, trả về null nếu queue rỗng
+			String name = queue.poll();
+			// queue.remove(); => Throws nếu queue rỗng
 			System.out.println("Get & remove " + name + " => " + queue + "\n");
 			TimeUnit.SECONDS.sleep(1);
 		}

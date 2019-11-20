@@ -3,24 +3,24 @@ package com;
 public class ForNumber {
 
 	public static String toBinary(int n) {
-		String str = "";
+		String s = "";
 		while (n != 0) {
-			str = n % 2 + str;
+			s = n % 2 + s;
 			n = n / 2;
 		}
-		return str;
+		return s;
 	}
 
 	/**
 	 * Tổng các chữ số
 	 */
 	public static int sumDigit(int n) {
-		int sum = 0;
+		int s = 0;
 		while (n != 0) {
-			sum += n % 10;
+			s += n % 10;
 			n /= 10;
 		}
-		return sum;
+		return s;
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class ForNumber {
 				b = b - a;
 			}
 		}
-		return a; // a hay b cũng được
+		return a; // hay b cũng được vì lúc này a = b
 	}
 
 }

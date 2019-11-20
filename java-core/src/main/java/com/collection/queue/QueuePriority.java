@@ -38,7 +38,6 @@ public class QueuePriority {
 		queue.add("X");
 		// call delete
 		deleteQueue(queue);
-
 	}
 
 }
