@@ -15,8 +15,7 @@ public class SinhDayNhiPhan {
 	public static void main(String[] args) {
 		int n = 2;
 		int[] arr = new int[n];
-		// in ra dãy đầu tiên
-		output(arr);
+		output(arr);							// in ra dãy đầu tiên
 		for (int i = n - 1; i >= 0; i--) { 		// duyệt từ phần tử cuối -> phần tử đầu tiên
 			if (arr[i] == 0) { 					// nếu gặp số 0
 				arr[i] = 1; 					// đổi nó thành 1

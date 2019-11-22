@@ -22,12 +22,12 @@ public class DayNhiPhan {
 	}
 
 	static void backtrack(int i) {
-		for (int j = 0; j <= 1; j++) { // j = {0, 1}
+		for (int j = 0; j <= 1; j++) {	// j = {0, 1}
 			arr[i] = j;
-			if (i == (n - 1)) { // Nếu i nằm ở cuối mảng => in ra cấu hình tìm được
+			if (i == (n - 1)) { 		// Nếu i nằm ở cuối mảng => in ra cấu hình tìm được
 				output();
 			} else {
-				backtrack(i + 1); // ngược lại, thử các giá trị cho vị trí tiếp theo
+				backtrack(i + 1); 		// ngược lại, thử các giá trị cho vị trí tiếp theo
 			}
 		}
 	}
