@@ -90,5 +90,11 @@ public class RandomUtils {
 		int[] arr = new Random().ints(0, 5).distinct().limit(5).toArray();
 		return arr;
 	}
-
+	
+	public static double rand(double min, double max) {
+		// double min = 0.85;
+		// double max = 1.0;
+		return Math.random() * (max - min) + min;
+	}
+	
 }
