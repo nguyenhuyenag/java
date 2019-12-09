@@ -7,7 +7,6 @@ interface Addable {
 public class MultiParameters {
 
 	public static void main(String[] args) {
-
 		// with return keyword
 		Addable addable = (a, b) -> {
 			return a + b;
