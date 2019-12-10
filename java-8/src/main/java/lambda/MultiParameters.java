@@ -14,9 +14,8 @@ public class MultiParameters {
 		System.out.println(addable.add(1, 2));
 
 		// without return keyword
-		Addable iAdd = (a, b) -> (a + b);
+		Addable iAdd = (a, b) -> a + b;
 		System.out.println(iAdd.add(1, 2));
-
 	}
 
 }

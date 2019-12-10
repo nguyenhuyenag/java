@@ -12,7 +12,7 @@ public class Consumers {
 
 	public static void main(String[] args) {
 
-		List<String> list = Arrays.asList("stack", "java", "stackjava.com");
+		List<String> list = Arrays.asList("stack", "java", "stackjava");
 
 		// Sử dụng List.forEach(Consumer) để in ra giá trị của các phần tử trong list
 		list.forEach(new Consumer<String>() {

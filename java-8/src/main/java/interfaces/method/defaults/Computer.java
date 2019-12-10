@@ -40,9 +40,8 @@ class PC implements Samsung {
 /**
  * - Duplicate default method
  * 
- * - Không thể triển khai 2 interface mà chúng có phương thức trùng tên nhưng
- * khác kiểu trả về
- * 
+ * - Không thể triển khai 2 interface có phương thức trùng tên nhưng khác kiểu
+ * trả về
  */
 public class Computer implements Samsung, Asus {
 
