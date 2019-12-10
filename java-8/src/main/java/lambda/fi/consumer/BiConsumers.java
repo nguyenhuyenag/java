@@ -1,4 +1,4 @@
-package lambda.consumer;
+package lambda.fi.consumer;
 
 import java.util.HashMap;
 import java.util.Map;

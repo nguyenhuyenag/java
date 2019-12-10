@@ -1,30 +1,26 @@
-package interfaces.function.api;
+package lambda.fi.consumer;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 /*-
- * - void accept(T t): Phương thức chấp nhận một tham số đầu vào và không trả về gì cả
+ * - void accept(T t): Chấp nhận một tham số đầu vào và không trả về gì cả
+ * - default andThen(): Giúp thực hiện nhiều thao tác cùng lúc
  * - Thường dùng để xử lý phần tử
  */
-public class Consumers {
+public class ConsumerFI {
 
 	public static void main(String[] args) {
-
 		List<String> list = Arrays.asList("stack", "java", "stackjava");
-
-		// Sử dụng List.forEach(Consumer) để in ra giá trị của các phần tử trong list
 		list.forEach(new Consumer<String>() {
 			@Override
 			public void accept(String t) {
 				System.out.println(t);
 			}
 		});
-
-		// Sử dụng List.forEach(Consumer) với cú pháp lambda expression
+		// hoặc
 		// list.forEach(System.out::println);
-		list.forEach(t -> System.out.println(t));
 	}
 
 }

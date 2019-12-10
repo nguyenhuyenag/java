@@ -1,4 +1,4 @@
-package interfaces.function;
+package lambda.fi;
 
 /**
  * Functional Interface: Là interface có duy nhất một phương thức abstract.
