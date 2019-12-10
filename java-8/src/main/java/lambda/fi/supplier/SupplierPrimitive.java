@@ -27,7 +27,7 @@ class NumberUtils {
 public class SupplierPrimitive {
 
 	/**
-	 * @see lambda.fi.supplier.Suppliers0
+	 * @see lambda.fi.supplier.SupplierFI
 	 */
 	public static void main(String[] args) {
 		

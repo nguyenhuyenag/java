@@ -1,5 +1,7 @@
 package lambda.fi.supplier;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Supplier;
 
 public class Suppliers {
@@ -7,10 +9,13 @@ public class Suppliers {
 	/**
 	 * T get(): Phương thức get() sẽ return một giá trị cụ thể
 	 */
+	private static void print(Supplier<?> supplier) {
+		System.out.println(supplier.get());
+	}
+
 	public static void main(String[] args) {
-		Supplier<String> supplier = () -> "Welcome to gpcoder.com";
-		String hello = supplier.get();
-		System.out.println(hello);
+		List<String> list = Arrays.asList("Java", "Oracle", "Sun");
+		list.stream().forEach(x -> print(() -> x));
 	}
 
 }
