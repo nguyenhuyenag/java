@@ -1,4 +1,4 @@
-package lambda.supplier;
+package lambda.fi.supplier;
 
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
@@ -27,7 +27,7 @@ class NumberUtils {
 public class SupplierPrimitive {
 
 	/**
-	 * @see interfaces.function.api.Suppliers
+	 * @see lambda.fi.supplier.Suppliers0
 	 */
 	public static void main(String[] args) {
 		

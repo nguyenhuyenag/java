@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
-public class BiConsumers {
+/**
+ * Tương tự Consumer nhưng có hai tham số
+ */
+public class BiConsumerFI {
 
 	public static void main(String[] args) {
 		Map<String, Integer> map = new HashMap<>();

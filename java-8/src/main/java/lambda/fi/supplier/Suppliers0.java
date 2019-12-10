@@ -1,4 +1,4 @@
-package interfaces.function.api;
+package lambda.fi.supplier;
 
 import java.util.Random;
 import java.util.function.Supplier;
@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 /*-
  * - T get(): Phương thức này không có tham số nhưng trả về một kết quả
  */
-public class Suppliers {
+public class Suppliers0 {
 
 	public static void main(String[] args) {
 

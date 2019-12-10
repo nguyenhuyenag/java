@@ -9,14 +9,14 @@ public class AndThen {
 	static Consumer<Integer> isOdd    = t -> System.out.println(t % 2 == 1);
 
 	public static void withoutAndThen() {
-		times.accept(5); // 10
-		squared.accept(5); // 25
-		isOdd.accept(5); // true
+		times.accept(5);	// 10
+		squared.accept(5); 	// 25
+		isOdd.accept(5); 	// true
 	}
 
 	public static void andThen1() {
 		Consumer<Integer> combineConsumer = times.andThen(squared).andThen(isOdd);
-		combineConsumer.accept(5); // 10 25 true
+		combineConsumer.accept(5); // 10, 25, true
 	}
 
 	public static void andThen2() {
