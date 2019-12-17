@@ -1,4 +1,4 @@
-package util;
+package lambda.fi.predicate;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;

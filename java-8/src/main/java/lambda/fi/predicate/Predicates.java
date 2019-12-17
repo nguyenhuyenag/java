@@ -1,4 +1,4 @@
-package interfaces.function.api;
+package lambda.fi.predicate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +38,6 @@ public class Predicates {
 
 	// filter() = !removeIf()
 	public static void main(String[] args) {
-
 		List<Integer> list = new ArrayList<>();
 		list.addAll(Arrays.asList(-1, 2, 0, 3, 8, 4 - 9, 11, -3, 10, -22, 27));
 
@@ -52,7 +51,6 @@ public class Predicates {
 		// removeWithLambda(list, t -> t < 0); // remove negative numbers
 		// removeWithLambda(list, t -> t > 0); // remove positive numbers
 		// removeWithLambda(list, t -> t % 2 != 0); // remove odd numbers
-
 	}
 
 }

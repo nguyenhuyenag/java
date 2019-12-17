@@ -23,7 +23,7 @@ class MathUtils {
 }
 
 /*-
- * Đây chính là lập trình hướng hàm, mục đích của nó là đưa hành vi vào hàm. Hay
+ * Là kỹ thuật lập trình hướng hàm, mục đích của nó là đưa hành vi vào hàm. Hay
  * nói cách khác là đưa thêm các đoạn code vào hàm như là một parameter.
  * => Lập trình hướng hàm là đưa hành vi vào hàm.
  */
@@ -34,9 +34,7 @@ public class MethodReference {
 	}
 
 	public static void main(String[] args) {
-
-		int a = 4;
-		int b = 3;
+		int a = 4, b = 3;
 
 		// Class::staticMethod
 		int sum = doAction(a, b, MathUtils::sum); // doAction(a, b, (x, y) -> x + y);
@@ -56,7 +54,6 @@ public class MethodReference {
 		Arrays.sort(arr, String::compareToIgnoreCase);
 
 		// Class::new
-
 	}
 
 }

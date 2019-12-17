@@ -1,4 +1,4 @@
-package lambda.predicate;
+package lambda.fi.predicate;
 
 import java.util.function.BiPredicate;
 
