@@ -2,18 +2,18 @@ package lambda.fi.predicate;
 
 import java.util.function.Predicate;
 
+/**
+ * test(): Trả về true nếu đối số đầu vào khớp với biến predicate (điều kiện
+ * kiểm tra), nếu không trả về false
+ * 
+ * - Thường dùng trong stream filter
+ */
 public class TestMethod {
 
 	public static <T> void test(Predicate<T> p, T s) {
 		System.out.println(p.test(s));
 	}
 
-	/**
-	 * test(): Trả về true nếu đối số đầu vào khớp với biến predicate (điều kiện
-	 * kiểm tra), nếu không trả về false
-	 * 
-	 * @see lambda.fi.predicate.Predicates
-	 */
 	public static void main(String[] args) {
 		Predicate<String> p = s -> s.equals("java");
 

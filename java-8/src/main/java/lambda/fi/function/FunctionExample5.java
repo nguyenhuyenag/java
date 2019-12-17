@@ -1,4 +1,4 @@
-package lambda.function;
+package lambda.fi.function;
 
 import java.util.function.DoubleFunction;
 import java.util.function.IntFunction;

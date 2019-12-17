@@ -1,4 +1,4 @@
-package lambda.function;
+package lambda.fi.function;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  *
  * - Thường dùng để chuyển kiểu dữ liệu này sang kiểu dữ liệu khác
  *  
- *  @see interfaces.function.api.Functions
+ *  @see lambda.fi.function.Functions2
  */
 public class Functions {
 

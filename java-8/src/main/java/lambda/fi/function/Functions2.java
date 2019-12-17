@@ -1,4 +1,4 @@
-package interfaces.function.api;
+package lambda.fi.function;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.stream.Stream;
  * - R apply(T t): Phương thức này nhận đầu vào là 1 tham số và trả về một giá trị
  * - Thường dùng khai thay đổi giá trị của phần tử
  */
-public class Functions {
+public class Functions2 {
 
 	public static void main(String[] args) {
 

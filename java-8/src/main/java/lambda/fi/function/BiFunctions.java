@@ -1,4 +1,4 @@
-package lambda.function;
+package lambda.fi.function;
 
 import java.util.HashMap;
 import java.util.Map;

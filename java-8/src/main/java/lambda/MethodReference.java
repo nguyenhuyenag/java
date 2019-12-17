@@ -1,4 +1,4 @@
-package lambda.method.reference;
+package lambda;
 
 import java.util.Arrays;
 
