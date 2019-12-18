@@ -7,6 +7,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Collection;
 import java.util.Collections;
@@ -26,8 +27,10 @@ import common.exception.FileException;
 
 public class FilesUtils {
 	
-	private FilesUtils() {
-	
+	public static void validateFile(Path file) {
+		if (!PathUtils.exists(file)) {
+			throw new FileException("Directory does't exists!");
+		}
 	}
 	
 	/**
@@ -36,9 +39,7 @@ public class FilesUtils {
 	 * @return a byte array from the file
 	 */
 	public static byte[] toByteArray(Path path) {
-		if (!PathUtils.exists(path)) {
-			throw new FileException("File does't exist!");
-		}
+		validateFile(path);
 		try {
 			return Files.readAllBytes(path);
 		} catch (IOException e) {
@@ -97,9 +98,7 @@ public class FilesUtils {
 	 * @return the lines from the file
 	 */
 	public static List<String> readAllLines(Path path, Charset cs) {
-		if (!PathUtils.exists(path)) {
-			throw new FileException("File does't exist!");
-		}
+		validateFile(path);
 		try {
 			return Files.readAllLines(path, cs);
 		} catch (IOException e) {
@@ -176,6 +175,7 @@ public class FilesUtils {
 		return readFileToString(file, StandardCharsets.UTF_8);
 	}
 	
+	@Deprecated
 	public static String[][] lines(Path path, String regex) {
 		try (Stream<String> stream = Files.lines(path)) {
 			return stream.map(s -> s.split(regex != null ? regex : "\\s+")) //
@@ -327,9 +327,7 @@ public class FilesUtils {
 	 * @return the content of the directory
 	 */
 	public static List<String> listFile(Path dir) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> list = Files.list(dir)) { // Get all elements in directory
 			return list.filter(Predicates.not(Files::isDirectory)) // without directory
 					.map(Path::toString) // path to string
@@ -346,9 +344,7 @@ public class FilesUtils {
 	 * @return the content of the directory
 	 */
 	public static List<File> listFiles(Path dir) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> list = Files.list(dir)) {
 			return list.filter(Predicates.not(Files::isDirectory)) //
 					.map(Path::toFile) //
@@ -365,9 +361,7 @@ public class FilesUtils {
 	 * @return the content of the directory & subdirectory
 	 */
 	public static List<String> listAllFile(Path dir) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> walk = Files.walk(dir)) {
 			return walk.filter(Files::isRegularFile) //
 					// .filter(PredicateUtils.not(Files::isDirectory))
@@ -385,9 +379,7 @@ public class FilesUtils {
 	 * @return the content of the directory & subdirectory
 	 */
 	public static List<File> listAllFiles(Path dir) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> walk = Files.walk(dir)) {
 			return walk.filter(Files::isRegularFile) //
 					.map(Path::toFile) //
@@ -405,9 +397,7 @@ public class FilesUtils {
 	 * @return the content of the directory
 	 */
 	public static List<String> listFile(Path dir, String extension) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> list = Files.list(dir)) {
 			String ext = extension.toLowerCase().trim();
 			return list.filter(Predicates.not(Files::isDirectory)) //
@@ -427,9 +417,7 @@ public class FilesUtils {
 	 * @return the content of the directory
 	 */
 	public static List<File> listFiles(Path dir, String extension) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> list = Files.list(dir)) {
 			String ext = extension.toLowerCase().trim();
 			return list.filter(Predicates.not(Files::isDirectory)) //
@@ -449,9 +437,7 @@ public class FilesUtils {
 	 * @return the content of the directory & subdirectory
 	 */
 	public static List<String> listAllFile(Path dir, String extension) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> walk = Files.walk(dir)) {
 			String ext = extension.toLowerCase().trim();
 			return walk.filter(Files::isRegularFile) //
@@ -471,9 +457,7 @@ public class FilesUtils {
 	 * @return the content of the directory & subdirectory
 	 */
 	public static List<File> listAllFiles(Path dir, String extension) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> walk = Files.walk(dir)) {
 			String ext = extension.toLowerCase().trim();
 			return walk.filter(Files::isRegularFile) //
@@ -492,9 +476,7 @@ public class FilesUtils {
 	 * @return list filename
 	 */
 	public static List<String> listFileName(Path dir) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> list = Files.list(dir)) {
 			return list.filter(Predicates.not(Files::isDirectory)) //
 					.map(p -> p.getFileName().toString()) //
@@ -511,9 +493,7 @@ public class FilesUtils {
 	 * @return the content of the directory & subdirectory
 	 */
 	public static List<String> listFileNames(Path dir) {
-		if (!PathUtils.exists(dir)) {
-			throw new FileException("Directory does't exists!");
-		}
+		validateFile(dir);
 		try (Stream<Path> walk = Files.walk(dir)) {
 			return walk.filter(Files::isRegularFile) //
 					.map(p -> p.getFileName().toString()) //
@@ -547,9 +527,19 @@ public class FilesUtils {
 	 * @param file current file
 	 * @param newname is new name
 	 * @return {@code boolean}
+	 * @see File#renameTo
 	 */
-	public static boolean rename(File file, String newname) {
-		return file.renameTo(new File(newname));
+	public static boolean rename(Path file, String newname) {
+		validateFile(file);
+		try {
+			Path newfile = Paths.get(file.getParent().toString(), newname + "." + getFileExtension(file.toFile()));
+			System.out.println(newfile.toString());
+			Files.move(file, file.resolveSibling(newfile));
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	/**
@@ -557,8 +547,12 @@ public class FilesUtils {
 	 * @param path the path to the file
 	 * @return filename
 	 */
-	public static String getFileName(Path path) {
+	public static String getFilename(Path path) {
 		return FilenameUtils.getBaseName(path.toFile().toString());
+	}
+	
+	public static String getFileExtension(File file) {
+		return FilenameUtils.getExtension(file.getName());
 	}
 	
 }
