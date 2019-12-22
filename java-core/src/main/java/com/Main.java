@@ -8,10 +8,19 @@ import common.util.FilesUtils;
 public class Main {
 
 	public static void main(String[] args) {
-		Path path = Paths.get("D:\\Note\\test\\1a.jpg");
-		// System.out.println(Arrays.toString(FilesUtils.toByteArray(path)));
-		// System.out.println(FilesUtils.getFileExtension(path.toFile()));
-		System.out.println(FilesUtils.rename(path, "pic"));
+		Path dir = Paths.get("F:\\NHAC\\Nhac_Tre");
+//		List<String> fileAccept = Arrays.asList("mp4", "mp3", "m4a");
+//		FilesUtils.listAllFiles(dir).stream().forEach(file -> {
+//			if (fileAccept.contains(FilesUtils.getFileExtension(file))) {
+//				long size = FileUtils.sizeOf(file);
+//				// System.out.println((float) size / 1000000);
+//				if (size <= 5000000) {
+//					System.out.println(file.getName());
+//				}
+//			}
+//		});
+		// System.out.println(FilesUtils.getAllExtension(Paths.get("F:\\NHAC\\Nhac_Tre")));
+		FilesUtils.getAllExtension(dir).forEach(System.out::println);
 	}
 
 }

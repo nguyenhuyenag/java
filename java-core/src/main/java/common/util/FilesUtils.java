@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,6 +23,7 @@ import javax.activation.FileDataSource;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import common.exception.FileException;
 
@@ -544,15 +546,37 @@ public class FilesUtils {
 	
 	/**
 	 * Get filename without extension
-	 * @param path the path to the file
+	 * @param file the path to the file
 	 * @return filename
 	 */
-	public static String getFilename(Path path) {
-		return FilenameUtils.getBaseName(path.toFile().toString());
+	public static String getFilename(Path file) {
+		return FilenameUtils.getBaseName(file.toFile().toString());
 	}
 	
+	/**
+	 * Get file extension
+	 * @param filename
+	 * @return extension (pdf, doc, ...)
+	 */
 	public static String getFileExtension(File file) {
 		return FilenameUtils.getExtension(file.getName());
+	}
+	
+	/**
+	 * Get all file extension in folder
+	 * @param dir the path
+	 * @return all file extension
+	 */
+	public static Set<String> getAllExtension(Path dir) {
+		validateFile(dir);
+		try (Stream<Path> list = Files.list(dir)) {
+			return list.map(f -> FilenameUtils.getExtension(f.toFile().getName())) //
+					.filter(StringUtils::isNotEmpty)
+					.collect(Collectors.toSet()); //
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Collections.emptySet();
 	}
 	
 }
