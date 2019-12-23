@@ -20,7 +20,7 @@ public class MapsUtils {
 	 * @return Comparable generic
 	 */
 	public static <K, V extends Comparable<V>> Comparator<Entry<K, V>> valueComparing() {
-		return Comparator.comparing(e -> e.getValue());
+		return Comparator.comparing(Entry::getValue);
 	}
 	
 	/**

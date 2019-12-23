@@ -9,10 +9,6 @@ import javax.activation.DataHandler;
 
 public class Base64Utils {
 	
-	private Base64Utils() {
-		
-	}
-
 	/**
 	 * Base64 encode
 	 * @param byteArr the byte array to encode

@@ -12,10 +12,6 @@ public class PathUtils {
 	
 	// File.separator => '\'
 
-	private PathUtils() {
-
-	}
-
 	/**
 	 * Project directory
 	 */
@@ -27,7 +23,7 @@ public class PathUtils {
 	 * @return {@code true} if the file exists, otherwise {@code false}
 	 */
 	public static boolean exists(File file) {
-		return file != null && file.exists();
+		return (file != null && file.exists());
 	}
 	
 	/**
@@ -36,7 +32,7 @@ public class PathUtils {
 	 * @return {@code true} if the file exists, otherwise {@code false}
 	 */
 	public static boolean exists(Path path) {
-		return path != null && Files.exists(path);
+		return (path != null && Files.exists(path));
 	}
 
 	/**

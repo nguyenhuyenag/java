@@ -12,7 +12,6 @@ import common.util.FilesUtils;
 public class ByJsoup {
 
 	public static void main(String[] args) {
-
 		Path path = Paths.get("file/data.xml");
 		String xml = FilesUtils.readFileToString(path);
 		Document doc = Jsoup.parse(xml, "", Parser.xmlParser());
@@ -21,7 +20,6 @@ public class ByJsoup {
 		// System.out.println(doc.select("Envelope").outerHtml());
 		// System.out.println(doc.select("Envelope").first());
 		System.out.println(doc.select("mtaLoiGDich").text());
-
 	}
 
 }

@@ -79,7 +79,7 @@ public class FileService {
 		try {
 			Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
-			System.err.format("I/O Error when copying file");
+			System.err.format("I/O error when copying file");
 		}
 	}
 
@@ -186,7 +186,7 @@ public class FileService {
 			double exabytes = (petabytes / 1024);
 			double zettabytes = (exabytes / 1024);
 			double yottabytes = (zettabytes / 1024);
-
+			// console
 			System.out.println("bytes : " + bytes);
 			System.out.println("kilobytes : " + kilobytes);
 			System.out.println("megabytes : " + megabytes);

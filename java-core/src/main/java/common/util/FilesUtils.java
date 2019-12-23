@@ -29,10 +29,11 @@ import common.exception.FileException;
 
 public class FilesUtils {
 	
-	public static void validateFile(Path file) {
-		if (!PathUtils.exists(file)) {
-			throw new FileException("Directory does't exists!");
+	public static Path validateFile(Path path) {
+		if (!PathUtils.exists(path)) {
+			throw new FileException("Path does't exists!");
 		}
+		return path;
 	}
 	
 	/**

@@ -10,7 +10,6 @@ import common.util.FilesUtils;
 public class ReadXml {
 
 	public static void main(String[] args) {
-
 		Path filename = Paths.get("file/data.xml");
 		String xml = FilesUtils.readFileToString(filename).trim();
 

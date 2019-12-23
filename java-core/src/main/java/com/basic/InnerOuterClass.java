@@ -15,7 +15,6 @@ public class InnerOuterClass {
 	}
 
 	public static void main(String[] args) {
-
 		// Non-static
 		InnerOuterClass o = new InnerOuterClass();
 		Inner inner1 = o.new Inner();
@@ -30,7 +29,6 @@ public class InnerOuterClass {
 
 		StaticInner sInner2 = new InnerOuterClass.StaticInner();
 		sInner2.show();
-
 	}
 
 }

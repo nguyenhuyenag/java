@@ -21,7 +21,7 @@ public class RandomUtils {
 	 * @return number in [min, max]
 	 */
 	public static int getInt(int min, int max) {
-		if (min >= max) {
+		if (max <= min) {
 			throw new IllegalArgumentException("Max must be greater than min");
 		}
 		return RANDOM.nextInt((max - min) + 1) + min;

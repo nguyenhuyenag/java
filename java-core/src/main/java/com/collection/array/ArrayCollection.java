@@ -36,7 +36,7 @@ public class ArrayCollection {
 
 	private static String print(String[]... args) {
 		return Arrays.stream(args) //
-				.map(t -> Arrays.deepToString(t)) //
+				.map(Arrays::deepToString) //
 				.collect(Collectors.joining(" + "));
 	}
 
