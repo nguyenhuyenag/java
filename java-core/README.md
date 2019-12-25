@@ -142,3 +142,28 @@
 	- Interface không có hàm khởi tạo (constructor)
 	
 	- Class mô tả thuộc tính, hành vi của đối tượng. Interface chứa hành vi mà một class triển khai
+
+# Throw vs Throws
+
+		throw											throws
+	
+	- Ném ra một ngoại lệ							- Khai báo một ngoại lệ
+	
+	- Checked exception không được ném ra 		- Ném ra checked exception ngay cả khi chỉ sử dụng throws
+	  nếu chỉ sử dụng throw
+	  
+	- Sau throw là một new instance				- Sau throws là một hoặc nhiều class
+	
+	- Không thể throw nhiều exception			- Có thể throw nhiều exception (dùng dấu phẩy)
+
+
+
+
+
+
+
+
+
+
+
+
