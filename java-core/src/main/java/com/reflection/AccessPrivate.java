@@ -4,14 +4,12 @@ import java.lang.reflect.Field;
 
 @SuppressWarnings("unused")
 class Reflection {
-
 	private int age = 20;
 	private int level = 100;
 
 	public void hello(String name) {
 		System.out.println("Hello " + name);
 	}
-
 }
 
 public class AccessPrivate {

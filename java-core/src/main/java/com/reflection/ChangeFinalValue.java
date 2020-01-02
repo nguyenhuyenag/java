@@ -11,7 +11,6 @@ class Reflections {
 public class ChangeFinalValue {
 
 	public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
-
 		Reflections ref = new Reflections();
 		Field field = Reflections.class.getDeclaredField("FIELD");
 		field.setAccessible(true);
