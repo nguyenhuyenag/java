@@ -156,8 +156,7 @@
 	
 	- Không thể throw nhiều exception			- Có thể throw nhiều exception (dùng dấu phẩy)
 
-
-
+# compare() & compareTo()
 
 
 
