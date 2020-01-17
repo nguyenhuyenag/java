@@ -10,23 +10,11 @@ public class MatcherFind {
 	}
 
 	public static void main(String[] args) {
-
-		String data = "This 1 is 2 a 234 String";
-
-		// Khoảng trắng xuất hiện 1 hoặc nhiều lần
-		Pattern pattern = Pattern.compile("\\d+");
-		Matcher matcher = pattern.matcher(data);
-
+		String s = ":ajsdkjh12837hdqh8923yehwđ823327uash";
+		Matcher matcher = Pattern.compile("\\d+").matcher(s);
 		while (matcher.find()) {
-			System.out.println( //
-					  "start: " + matcher.start() //
-					+ ", end: " + matcher.end() //
-					+ ", group: " + matcher.group());
+			System.out.println(matcher.group());
 		}
-
-		System.out.println(data.substring(5, 6));
-		System.out.println(data.substring(10, 11));
-
 	}
 
 }
