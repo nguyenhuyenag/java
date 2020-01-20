@@ -536,13 +536,23 @@ public class FilesUtils {
 		validateFile(file);
 		try {
 			Path newfile = Paths.get(file.getParent().toString(), newname + "." + getFileExtension(file.toFile()));
-			System.out.println(newfile.toString());
 			Files.move(file, file.resolveSibling(newfile));
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	/**
+	 * File rename
+	 * @param file current file
+	 * @param newname is new name
+	 * @return {@code boolean}
+	 * @see File#renameTo
+	 */
+	public static boolean rename(File file, String newname) {
+		return rename(file.toPath(), newname);
 	}
 	
 	/**

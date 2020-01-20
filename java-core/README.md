@@ -156,6 +156,11 @@
 	
 	- Không thể throw nhiều exception			- Có thể throw nhiều exception (dùng dấu phẩy)
 
+# valueOf() & parseInt()
+
+	- Integer.valueOf("");	=>	Integer
+	- Integer.parseInt("");	=>	int
+
 # compare() & compareTo()
 
 
