@@ -11,8 +11,8 @@ import java.io.ObjectOutputStream;
  * byte stream) để lưu trữ hoặc truyển qua mạng.
  * 
  * - serialVersionUID là giá trị dùng để định nghĩa thứ tự data của object khi
- * serialize. Chỉ deserialize object chỉ khi serialVersionUID của class
- * đúng với serialVersionUID của instance được lưu trữ.
+ * serialize. Chỉ deserialize object chỉ khi serialVersionUID của class đúng với
+ * serialVersionUID của instance được lưu trữ.
  * 
  * - Nếu superclass implements Serializable thì subclass không cần implement
  * 

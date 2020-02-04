@@ -3,18 +3,17 @@ package com.basic;
 public class PrimitiveData {
 
 	/**
-	 * Everything in a Java program not explicitly set to something by the
-	 * programmer, is initialized to a zero value.
+	 * Giá trị khởi tạo
 	 * 
-	 * For references (anything that holds an object) that is NULL.
+	 * 		object				=>	NULL
 	 * 
-	 * For int/short/byte/long that is a 0.
+	 * 		int/short/byte/long => 	0
 	 * 
-	 * For float/double that is a 0.0
+	 * 		float/double 		=> 	0.0
 	 * 
-	 * For booleans that is a false.
+	 * 		boolean 			=> 	false
 	 * 
-	 * For char that is the null character '\u0000' (whose decimal equivalent is 0).
+	 * 		char				=>	'\u0000'
 	 */
 
 	private static class Helper {
@@ -25,7 +24,7 @@ public class PrimitiveData {
 		return Helper.INSTANCE;
 	}
 
-	public final byte	BYTE_MIN 	= -128; 					// -2^7
+	public final byte	BYTE_MIN 	= -128;						// -2^7
 	public final byte 	BYTE_MAX 	= 127; 						// 2^7 - 1
 	public final short	SHORT_MIN 	= -32768; 					// -2^15
 	public final short 	SHORT_MAX 	= 32767; 					// 2^15 - 1
@@ -33,5 +32,16 @@ public class PrimitiveData {
 	public final int 	INT_MAX 	= 2147483647; 				// 2^31 - 1
 	public final long 	LONG_MIN 	= -9223372036854775808L;	// -2^63
 	public final long 	LONG_MAX 	= 9223372036854775807L; 	// 2^63 - 1
+	
+	/**
+	 * Nếu 2 số integer giá trị 127 thì là true, còn 128 là false vì kiểu
+	 * wrap này từ -128 tới 127 là range lưu trên memory. Ngoài khoảng này thì nó
+	 * lại so sánh kiểu object
+	 */
+	public static void test() {
+		Integer x = 128;
+		Integer y = 128;
+		System.out.println(x == y); // false
+	}
 
 }
