@@ -23,7 +23,7 @@ public class ChinhHopLap {
 		output(arr);
 		for (int i = n - 1; i >= 0; i--) { // Xét từ cuối dãy về đầu
 			if (arr[i] < n) { // chữ số có giá trị chưa bằng n
-				arr[i] += 1;  // tăng lên 1
+				arr[i] += 1; // tăng lên 1
 				Arrays.fill(arr, i + 1, n, 1); // Gán tất cả phần tử sau vị trí đó = 1
 				output(arr);
 				i = n;
