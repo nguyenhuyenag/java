@@ -142,6 +142,8 @@
 	- Interface không có hàm khởi tạo (constructor)
 	
 	- Class mô tả thuộc tính, hành vi của đối tượng. Interface chứa hành vi mà một class triển khai
+	
+	- Interface implement là những object can do. Còn abstract class là what object is
 
 # Throw vs Throws
 
