@@ -1,6 +1,10 @@
-package com;
+package com.basic;
 
-public class Main {
+/**
+ * https://stackoverflow.com/questions/3158730/java-3-dots-in-parameters
+ *
+ */
+public class ArbitraryNumberArguments {
 
 	public static void X(int... args) {
 		for (int val : args) {
