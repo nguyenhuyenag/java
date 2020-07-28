@@ -6,19 +6,35 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 import common.object.User;
 import common.util.RandomUtils;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
-@SuppressWarnings("unused")
 class Book implements Comparable<Book> {
 
 	private int id;
 	private String name;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Book(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	@Override
 	public int compareTo(Book b) {

@@ -1,21 +1,49 @@
 package com.jdbc;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-@Data
-@AllArgsConstructor
 class User {
 	String username;
 	String password;
 	java.sql.Date createdDate;
+
+	public User(String username, String password, Date createdDate) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.createdDate = createdDate;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public java.sql.Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(java.sql.Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
 }
 
 public class BatchProcessing {
@@ -23,8 +51,8 @@ public class BatchProcessing {
 	public static void main(String[] args) throws SQLException {
 		String sql = "INSERT INTO user(username, password, created_date) VALUE(?, ?, ?);";
 		try ( //
-			Connection con = ConnectionUtils.openConnection();
-			PreparedStatement pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); //
+				Connection con = ConnectionUtils.openConnection();
+				PreparedStatement pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); //
 		) {
 			try {
 				con.setAutoCommit(false);
