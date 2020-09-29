@@ -77,19 +77,15 @@ public class JsonUtils {
 		return null;
 	}
 
+	
 	/**
 	 * JSON to List Object
 	 * @param <T>
 	 * @param json
 	 * @param array
-	 * List<User> list = JsonUtils.toList(json, User[].class);
 	 * @return
 	 */
-	public static <T> List<T> toList(String json, Class<T[]> array) {
-		return Arrays.asList(GSON.fromJson(json, array));
-	}
-	
-	public static <T> List<T> toListWithoutLibrary(String json) {
+	public static <T> List<T> toList(String json) {
 		try {
 			return MAPPER.readValue(json, new TypeReference<List<T>>() {});
 		} catch (JsonMappingException e) {
@@ -101,12 +97,21 @@ public class JsonUtils {
 	}
 	
 	/**
+	 * JSON to List Object with GSON
+	 * 
+	 * List<User> list = JsonUtils.toList(json, User[].class);
+	 */
+	public static <T> List<T> toListWithoutCommon(String json, Class<T[]> array) {
+		return Arrays.asList(GSON.fromJson(json, array));
+	}
+	
+	/**
 	 * Colection to JSON
 	 * @param <T>
 	 * @param Colection
 	 * @return JSON
 	 */
-	public static <T> String fromCollection(Collection<T> list) {
+	public static <T> String collectionToJSON(Collection<T> list) {
 		return GSON.toJson(list);
 	}
 	
@@ -115,7 +120,7 @@ public class JsonUtils {
 	 * @param path the path of xml
 	 * @return JSON
 	 */
-	public static String fromXml(Path path) {
+	public static String xmlToJSON(Path path) {
 		String xml = FilesUtils.readFileToString(path).trim();
 		JSONObject json = XML.toJSONObject(xml);
 		return json.toString(4); // tab = 4
@@ -126,8 +131,8 @@ public class JsonUtils {
 	 * @param file the path of xml
 	 * @return JSON
 	 */
-	public static String fromXml(File file) {
-		return fromXml(file.toPath());
+	public static String xmlToJSON(File file) {
+		return xmlToJSON(file.toPath());
 	}
 
 }
