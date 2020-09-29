@@ -10,12 +10,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.json.XML;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,7 +49,7 @@ public class JsonUtils {
 	 * @param object Java object
 	 * @return JSON
 	 */
-	public static <T> String fromObject(T object) {
+	public static <T> String toJSON(T object) {
 		if (Objects.nonNull(object)) {
 			try {
 				return MAPPER.writeValueAsString(object);
@@ -56,11 +57,11 @@ public class JsonUtils {
 				e.printStackTrace();
 			}
 		}
-		return StringUtils.EMPTY;
+		return "";
 	}
 	
 	/**
-	 * Convert InputStream to Object
+	 * InputStream to Object
 	 * @param is InputStream
 	 * @param type class type
 	 * @return object
@@ -77,7 +78,7 @@ public class JsonUtils {
 	}
 
 	/**
-	 * JSON to List object
+	 * JSON to List Object
 	 * @param <T>
 	 * @param json
 	 * @param array
@@ -86,6 +87,17 @@ public class JsonUtils {
 	 */
 	public static <T> List<T> toList(String json, Class<T[]> array) {
 		return Arrays.asList(GSON.fromJson(json, array));
+	}
+	
+	public static <T> List<T> toListWithoutLibrary(String json) {
+		try {
+			return MAPPER.readValue(json, new TypeReference<List<T>>() {});
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	/**
