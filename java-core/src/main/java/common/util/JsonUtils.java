@@ -1,6 +1,8 @@
 package common.util;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -28,7 +30,7 @@ public class JsonUtils {
 	}
 
 	/**
-	 * JSON to object
+	 * JSON to Object
 	 * @param <T> generic type
 	 * @param json
 	 * @param type
@@ -38,18 +40,6 @@ public class JsonUtils {
 		GsonBuilder builder = new GsonBuilder();
 		Gson gson = builder.enableComplexMapKeySerialization().create();
 		return gson.fromJson(json, type);
-	}
-
-	/**
-	 * JSON to List object
-	 * @param <T>
-	 * @param json
-	 * @param array
-	 * List<User> list = JsonUtils.toList(json, User[].class);
-	 * @return
-	 */
-	public static <T> List<T> toList(String json, Class<T[]> array) {
-		return Arrays.asList(GSON.fromJson(json, array));
 	}
 	
 	/**
@@ -67,6 +57,35 @@ public class JsonUtils {
 			}
 		}
 		return StringUtils.EMPTY;
+	}
+	
+	/**
+	 * Convert InputStream to Object
+	 * @param is InputStream
+	 * @param type class type
+	 * @return object
+	 */
+	public static <T> T readValue(InputStream is, Class<T> type) {
+		if (Objects.nonNull(is)) {
+			try {
+				return MAPPER.readValue(is, type);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * JSON to List object
+	 * @param <T>
+	 * @param json
+	 * @param array
+	 * List<User> list = JsonUtils.toList(json, User[].class);
+	 * @return
+	 */
+	public static <T> List<T> toList(String json, Class<T[]> array) {
+		return Arrays.asList(GSON.fromJson(json, array));
 	}
 	
 	/**
