@@ -9,6 +9,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.directory.api.util.GeneralizedTime;
+
 public class DateTimeUtils {
 	
 	private DateTimeUtils() {
@@ -21,9 +23,18 @@ public class DateTimeUtils {
 	public static final long ONE_DAYS 				= 	24 * ONE_HOURS;
 	public static final long ONE_MONTHS 			= 	30 * ONE_DAYS;
 
-	public static final String HHMMSS 			=	"HH:mm:ss";
-	public static final String YYYYMMDD			=	"yyyy-MM-dd";
-	public static final String YYYYMMDD_HHMMSS	=	"yyyy-MM-dd HH:mm:ss";
+	public static final String HHMMSS 				=	"HH:mm:ss";
+	public static final String YYYYMMDD				=	"yyyy-MM-dd";
+	public static final String YYYYMMDDHHMMSS		=	"yyyy-MM-dd HH:mm:ss";
+	
+	/**
+	 * Get current date by pattern yyyy-MM-dd HH:mm:ss
+	 * @return {@code Date}
+	 * @throws DateTimeException
+	 */
+	public static String now() {
+		return dateToString(new Date(), null);
+	}
 	
 	/**
 	 * Date format
@@ -31,51 +42,28 @@ public class DateTimeUtils {
 	 * @param pattern the pattern describing the date and time format
 	 * @return the formatted time string
 	 */
-	public static String formatDate(Date date, String pattern) {
-		SimpleDateFormat sdf = new SimpleDateFormat(pattern != null ? pattern : YYYYMMDD_HHMMSS);
+	public static String dateToString(Date date, String pattern) {
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern != null ? pattern : YYYYMMDDHHMMSS);
 		return sdf.format(date);
 	}
 
 	/**
-	 * Date format
-	 * @param date the time value to be formatted into a time string
-	 * @return the formatted time string
+	 * String to Date
+	 * @param date is string Date
+	 * @param pattern is patern of string Date
+	 * @return {@code Date}
+	 * @throws ParseException
 	 */
-	public static String formatDate(Date date) {
-		return formatDate(date, null);
+	public static Date stringToDate(String date, String pattern) {
+		try {
+			DateFormat sdf = new SimpleDateFormat(pattern != null ? pattern : YYYYMMDDHHMMSS);
+			return sdf.parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	/**
-	 * Get now
-	 * @param pattern is pattern
-	 * @return now string
-	 */
-	public static String now(String pattern) {
-		return formatDate(new Date(), pattern);
-	}
-
-	/**
-	 * Get current date by pattern yyyy-MM-dd HH:mm:ss
-	 * @return {@code Date}
-	 * @throws DateTimeException
-	 */
-	public static String now() {
-		return formatDate(new Date(), null);
-	}
-
-	/**
-	 * Get later date
-	 * <pre>
-	 * getLaterDate(ONE_HOURS)		= 1 giờ sau
-	 * getLaterDate( ONE_DAYS )		= 1 ngày sau
-	 * </pre>
-	 * @param amounts là thời gian tính bằng mili giây
-	 * @return Date
-	 */
-	public static Date getLaterDate(long amounts) {
-		return new Date(System.currentTimeMillis() + amounts);
-	}
-
 	/**
 	 * Replace for Date constructor warning @Deprecated
 	 * @param year is year
@@ -90,27 +78,33 @@ public class DateTimeUtils {
 		calendar.set(Calendar.DATE, date);
 		return calendar.getTime();
 	}
-	
-	/**
-	 * String to Date
-	 * @param date is string Date
-	 * @param pattern is patern of string Date
-	 * @return {@code Date}
-	 * @throws ParseException
-	 */
-	public static Date asDate(String date, String pattern) throws ParseException {
-		DateFormat sdf = new SimpleDateFormat(pattern != null ? pattern : YYYYMMDD_HHMMSS);
-		return sdf.parse(date);
-	}
 
 	/**
-	 * String to Date as yyyy-MM-dd HH:mm:ss
-	 * @param date is string Date
-	 * @return {@code Date}
-	 * @throws ParseException
+	 * Get later date
+	 * <pre>
+	 * getLaterDate(ONE_HOURS)		= 1 giờ sau
+	 * getLaterDate( ONE_DAYS )		= 1 ngày sau
+	 * </pre>
+	 * @param amounts là thời gian
+	 * @return Date
 	 */
-	public static Date asDate(String date) throws ParseException {
-		return asDate(date, YYYYMMDD_HHMMSS);
+	public static Date getLaterDate(int amount) {
+		// return new Date(System.currentTimeMillis() + amounts);
+		Calendar calendar = Calendar.getInstance();
+		// calendar.add(Calendar.MILLISECOND, amount);
+		// calendar.add(Calendar.MINUTE, amount);
+		calendar.add(Calendar.HOUR, amount);
+		// calendar.add(Calendar.MONTH, amount);
+		return calendar.getTime();
+	}
+	
+	/**
+	 * {@link org.apache.directory.api.util.GeneralizedTime}
+	 */
+	public static String LDAPDateTime() {
+		GeneralizedTime gt = new GeneralizedTime(Calendar.getInstance());
+		return gt.toGeneralizedTime(GeneralizedTime.Format.YEAR_MONTH_DAY_HOUR_MIN_SEC,
+				GeneralizedTime.FractionDelimiter.DOT, 1, GeneralizedTime.TimeZoneFormat.Z);
 	}
 	
 }
