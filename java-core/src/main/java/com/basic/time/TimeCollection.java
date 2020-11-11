@@ -1,4 +1,4 @@
-package com.basic;
+package com.basic.time;
 
 import java.text.ParseException;
 import java.util.Calendar;
