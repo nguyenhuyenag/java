@@ -509,20 +509,20 @@ public class FilesUtils {
 	
 	/**
 	 * Count the elements in directory
-	 * @param directory the path to the directory
+	 * @param dir the path to the directory
 	 * @return the number of elements in this directory
 	 */
-	public static int count(Path directory) {
-		return listFile(directory).size();
+	public static int count(Path dir) {
+		return listFile(dir).size();
 	}
 
 	/**
 	 * Count the elements in directory & subdirectory
-	 * @param directory the path to the directory
+	 * @param dir the path to the directory
 	 * @return the number of elements in this directory & subdirectory
 	 */
-	public static int countAll(Path directory) {
-		return listAllFile(directory).size();
+	public static int countAll(Path dir) {
+		return listAllFile(dir).size();
 	}
 	
 	/**
