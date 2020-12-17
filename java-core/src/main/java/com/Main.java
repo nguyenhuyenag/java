@@ -2,6 +2,7 @@ package com;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import common.util.FilesUtils;
@@ -12,10 +13,16 @@ public class Main {
 		long time = unit.toMillis(limit);
 		System.out.println(time);
 	}
+	
+	public static List<String> listAllFile(Path dir, String fileIgnores) {
+		return null;
+	}
 
 	public static void main(String[] args) {
 		// start(TimeUnit.HOURS, 2);
 		Path dir = Paths.get("D:\\GDrive\\ToCompany\\latex\\my-problems");
+		String fileIfnores = ".ini";
+		listAllFile(dir, fileIfnores);
 		System.out.println("Files: " + FilesUtils.count(dir));
 		// FilesUtils.listAllFile(dir).forEach(t -> System.out.println(t));
 		// FilesUtils.getAllExtension(dir).forEach(t -> System.out.println(t));
