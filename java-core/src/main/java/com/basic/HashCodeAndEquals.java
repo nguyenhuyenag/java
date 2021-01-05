@@ -9,7 +9,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
+@SuppressWarnings("unused")
 class Student {
+	
 	private String id;
 	private String name;
 	private String email;
