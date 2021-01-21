@@ -2,7 +2,7 @@ package problem.number;
 
 import java.util.Random;
 
-public class RadnomNonDuplicate {
+public class RandomNonDuplicate {
 
 	public static void rand() {
 		Random ran = new Random();
@@ -15,6 +15,10 @@ public class RadnomNonDuplicate {
 			pre = cur;
 			System.out.println(cur);
 		}
+	}
+	
+	public static void main(String[] args) {
+		rand();
 	}
 
 }

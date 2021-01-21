@@ -9,6 +9,7 @@ public class ForNumber {
 			n = n / 2;
 		}
 		return s;
+		// return Integer.toBinaryString(n);
 	}
 
 	/**
