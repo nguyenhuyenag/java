@@ -1,4 +1,4 @@
-package codewars;
+package codewars.number;
 
 // Bình phương từng chữ số
 public class SquareDigit {

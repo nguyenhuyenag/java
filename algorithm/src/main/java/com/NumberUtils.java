@@ -1,6 +1,6 @@
 package com;
 
-public class ForNumber {
+public class NumberUtils {
 
 	public static String toBinary(int n) {
 		String s = "";
