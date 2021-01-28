@@ -1,13 +1,24 @@
 package com;
 
-import java.util.Arrays;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+import codewars.string.ConvertStringToCamelCase;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Integer[] arr = { 1, 1, 1, 2, 1, 1 };
-		Arrays.sort(arr, (x, y) -> x - y);
-		System.out.println(Arrays.toString(arr));
+	@Test
+	public void testSomeUnderscoreLowerStart() {
+		String input = "the_Stealth_Warrior";
+		System.out.println("input: " + input);
+		assertEquals("theStealthWarrior", ConvertStringToCamelCase.toCamelCase(input));
+	}
+
+	@Test
+	public void testSomeDashLowerStart() {
+		String input = "the-Stealth-Warrior";
+		System.out.println("input: " + input);
+		assertEquals("theStealthWarrior", ConvertStringToCamelCase.toCamelCase(input));
 	}
 
 }
