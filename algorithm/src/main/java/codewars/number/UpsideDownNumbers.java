@@ -16,7 +16,6 @@ public class UpsideDownNumbers {
 		for (int i = 0; i < n.length(); i++) {
 			str = n.charAt(i) + str; // Đảo chuỗi
 		}
-		System.out.println(str);
 		str = str.replaceAll("6", "t") //
 				.replaceAll("9", "6") //
 				.replaceAll("t", "9");
@@ -25,7 +24,7 @@ public class UpsideDownNumbers {
 
 	public static int solve(int x, int y) {
 		int count = 0;
-		for (int i = x; i <= y; i++) {
+		for (int i = x; i < y; i++) {
 			if (check(i)) {
 				count++;
 			}
