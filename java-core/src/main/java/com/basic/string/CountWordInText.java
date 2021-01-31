@@ -11,7 +11,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class CountWord {
+public class CountWordInText {
 
 	public static void useSet(String text) {
 		String[] arr = text.trim().split("\\s+");
