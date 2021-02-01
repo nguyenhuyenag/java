@@ -1,39 +1,26 @@
 package codewars.number;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TheMillionthFibonacciKata {
 
-	public static BigInteger fib(BigInteger n) {
-		BigInteger NE_ONE = new BigInteger("-1");
-		// < 0
-		if (n.toString().charAt(0) == '-') {
-			n = NE_ONE.multiply(n);
-			if (n.mod(new BigInteger("2")).equals(BigInteger.ZERO)) {
-				return NE_ONE.multiply(fib(n));
-			}
-			return fib(n);
-		}
-		// n >= 0
-		if (n.intValue() < 2) {
-			return n;
-		}
-		int count = 1;
-		BigInteger c = null;
-		BigInteger a = BigInteger.ZERO, b = BigInteger.ONE;
-		int vn = n.intValue();
-		while (count < vn) {
-			c = a.add(b);
-			a = b;
-			b = c;
-			count++;
-		}
-		return c;
+	private static Map<String, BigInteger> list = new HashMap<>();
+
+	public static BigInteger init(BigInteger n) {
+		list.put("0", BigInteger.ZERO);
+		list.put("1", BigInteger.ONE);
+		
+		return list.get(n.toString());
+	}
+
+	public static BigInteger fib(BigInteger fb) {
+		return null;
 	}
 
 	public static void main(String[] args) {
-		BigInteger big = new BigInteger("-6");
-		System.out.println(fib(big));
+		
 	}
 
 }

@@ -7,7 +7,7 @@ import org.junit.Test;
 public class HumanReadableTime {
 
 	public static String format(int n) {
-		if (n < 9) {
+		if (n < 10) {
 			return "0" + n;
 		}
 		return String.valueOf(n);
@@ -24,6 +24,13 @@ public class HumanReadableTime {
 		return format(h) + ":" + format(m) + ":" + format(n);
 	}
 
+	public static String _makeReadable(int seconds) {
+		int h = seconds / 60 / 60;
+		int min = seconds / 60 % 60;
+		int sec = seconds % 60;
+		return String.format("%02d:%02d:%02d", h, min, sec);
+	}
+
 	@Test
 	public void Tests() {
 		assertEquals("makeReadable(0)", "00:00:00", HumanReadableTime.makeReadable(0));
@@ -34,8 +41,8 @@ public class HumanReadableTime {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(makeReadable(86399));
-		// System.out.println(249609 / 3600);
+		System.out.println(makeReadable(157209));
+		System.out.println(format(9));
 	}
 
 }
