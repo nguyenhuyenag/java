@@ -1,4 +1,4 @@
-package codewars.number;
+package codewars.test;
 
 // https://www.codewars.com/kata/5a057ec846d843c81a0000ad
 public class Cycle1N {

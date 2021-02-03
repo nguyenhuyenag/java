@@ -1,4 +1,4 @@
-package codewars.number;
+package codewars.test;
 
 import java.math.BigInteger;
 import java.util.HashMap;
