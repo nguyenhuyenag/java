@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TheMillionthFibonacciKata {
+public class TheMillionthFibonacci {
 
 	private static Map<String, BigInteger> list = new HashMap<>();
 

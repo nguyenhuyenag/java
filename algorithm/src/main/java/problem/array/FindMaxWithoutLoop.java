@@ -3,11 +3,10 @@ package problem.array;
 public class FindMaxWithoutLoop {
 
 	public static int findMax(int[] arr, int len) {
-		int max;
 		if (len == 0) {
 			return arr[0];
 		}
-		max = arr[len - 1];
+		int max = arr[len - 1];
 		return Math.max(max, findMax(arr, len - 1));
 	}
 
