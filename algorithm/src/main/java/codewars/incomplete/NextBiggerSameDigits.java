@@ -1,22 +1,19 @@
-package com.recursion;
+package codewars.incomplete;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.math3.util.CombinatoricsUtils;
-
-public class Permute {
-
-	public static void showAllPermuteByCommons(List<?> list) {
-		CollectionUtils.permutations(list).stream() //
-				.forEach(System.out::println);
-	}
-
+// https://www.codewars.com/kata/55983863da40caa2c900004e
+public class NextBiggerSameDigits {
+	
+	List<Long> list = new ArrayList<>();
+	
 	private static void permute(List<?> list, int left, int right) {
 		if (left == right) {
 			System.out.println(Arrays.toString(list.toArray()));
+			// String.join(",", list);
 			return;
 		}
 		for (int j = left; j <= right; j++) {
@@ -29,11 +26,16 @@ public class Permute {
 	public static void showAllPermute(List<?> list) {
 		int size = list.size();
 		permute(list, 0, list.size() - 1);
-		System.out.println("Total: " + CombinatoricsUtils.factorial(size));
 	}
-
+	
+	public static long nextBiggerNumber(long n) {
+		return n;
+	}
+	
 	public static void main(String[] args) {
-		showAllPermute(Arrays.asList(2, 0, 1, 7));
+		long n = 123456;
+		int[] arr = Arrays.stream(String.valueOf(n).split("")).mapToInt(Integer::parseInt).toArray();
+		// int max = new StringBui
 	}
-
+	
 }

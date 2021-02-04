@@ -1,4 +1,4 @@
-package codewars.incomplete;
+package codewars.number;
 
 import static org.junit.Assert.assertEquals;
 
