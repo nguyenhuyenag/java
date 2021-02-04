@@ -40,9 +40,4 @@ public class HumanReadableTime {
 		assertEquals("makeReadable(359999)", "99:59:59", HumanReadableTime.makeReadable(359999));
 	}
 
-	public static void main(String[] args) {
-		System.out.println(makeReadable(157209));
-		System.out.println(format(9));
-	}
-
 }

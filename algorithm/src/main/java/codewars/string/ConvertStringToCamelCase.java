@@ -10,8 +10,8 @@ import org.junit.Test;
 public class ConvertStringToCamelCase {
 
 	public static String toCamelCase(String str) {
-		boolean flag = false;
 		String res = "";
+		boolean flag = false;
 		for (String s : str.split("")) {
 			if ("-".equals(s) || "_".equals(s)) {
 				flag = true;

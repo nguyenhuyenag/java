@@ -1,4 +1,4 @@
-package codewars.test;
+package codewars.string;
 
 import static org.junit.Assert.assertArrayEquals;
 

@@ -12,10 +12,7 @@ public class UpsideDownNumbers {
 		if (nem.length() > 0) {
 			return false;
 		}
-		String str = "";
-		for (int i = 0; i < n.length(); i++) {
-			str = n.charAt(i) + str; // Đảo chuỗi
-		}
+		String str = new StringBuilder(n).reverse().toString();
 		str = str.replaceAll("6", "t") //
 				.replaceAll("9", "6") //
 				.replaceAll("t", "9");
@@ -42,11 +39,6 @@ public class UpsideDownNumbers {
 		assertEquals(9, UpsideDownNumbers.solve(15000, 20000));
 		assertEquals(15, UpsideDownNumbers.solve(60000, 70000));
 		assertEquals(55, UpsideDownNumbers.solve(60000, 130000));
-	}
-
-	public static void main(String[] args) {
-		// solve(0, 10);
-		check(1169);
 	}
 
 }

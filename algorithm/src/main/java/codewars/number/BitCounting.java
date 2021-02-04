@@ -26,10 +26,4 @@ public class BitCounting {
 		return count;
 	}
 
-	public static void main(String[] args) {
-		int n = 12111134;
-		System.out.println(countBits(n));
-		System.out.println(_countBits(n));
-	}
-
 }
