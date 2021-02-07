@@ -15,10 +15,10 @@ public class NextBiggerSameDigits {
 		arr[j] = temp;
 	}
 
-	public static long findNext(long n) {
+	public static long nextBiggerNumber(long n) {
 		char[] arr = String.valueOf(n).toCharArray();
 		int i, len = arr.length;
-		// I) Start from the right most digit and find the
+		// Start from the right most digit and find the
 		// first digit that is smaller than the digit next to it.
 		for (i = len - 1; i > 0; i--) {
 			if (arr[i] > arr[i - 1]) {
@@ -29,25 +29,20 @@ public class NextBiggerSameDigits {
 		// order means there cannot be a greater number with same set of digits
 		if (i == 0) {
 			return n;
-		} else {
-			int x = arr[i - 1], min = i;
-			// II) Find the smallest digit on right side of (i-1)'th digit that is greater
-			// than number[i-1]
-			for (int j = i + 1; j < len; j++) {
-				if (arr[j] > x && arr[j] < arr[min]) {
-					min = j;
-				}
-			}
-			// III) Swap the above found smallest digit with number[i-1]
-			swap(arr, i - 1, min);
-			// IV) Sort the digits after (i-1) in ascending order
-			Arrays.sort(arr, i, len);
-			return Long.parseLong(new String(arr));
 		}
-	}
-
-	public static long nextBiggerNumber(long n) {
-		return findNext(n);
+		int min = i, x = arr[i - 1];
+		// Find the smallest digit on right side of (i - 1)'th digit that is greater
+		// than number[i-1]
+		for (int j = i + 1; j < len; j++) {
+			if (arr[j] > x && arr[j] < arr[min]) {
+				min = j;
+			}
+		}
+		// Swap the above found smallest digit with number[i-1]
+		swap(arr, i - 1, min);
+		// Sort the digits after (i-1) in ascending order
+		Arrays.sort(arr, i, len);
+		return Long.parseLong(new String(arr));
 	}
 
 	@Test
