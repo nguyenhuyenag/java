@@ -1,11 +1,6 @@
 package com;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import common.util.FilesUtils;
 
 public class Main {
 
@@ -14,18 +9,11 @@ public class Main {
 		System.out.println(time);
 	}
 	
-	public static List<String> listAllFile(Path dir, String fileIgnores) {
-		return null;
-	}
-
 	public static void main(String[] args) {
 		// start(TimeUnit.HOURS, 2);
-		Path dir = Paths.get("D:\\GDrive\\ToCompany\\latex\\my-problems");
-		String fileIfnores = ".ini";
-		listAllFile(dir, fileIfnores);
-		System.out.println("Files: " + FilesUtils.count(dir));
-		// FilesUtils.listAllFile(dir).forEach(t -> System.out.println(t));
-		// FilesUtils.getAllExtension(dir).forEach(t -> System.out.println(t));
+		String str = "Bài toán nghiên cứu. Ta có thể dựng được các n giác đều nào bằng thước, com-pa và trisector? Các trường hợp riêng: n = 7, 13, 19, 37.\r\n" + 
+				"Bài toán nghiên cứu. Xây dựng thuật toán tìm bậc của mỗi số đại số từ mở rộng trường \\[\\mathbb{Q}(\\sqrt[k]{{{p}_{1}}},...,\\sqrt[k]{{{p}_{n}}})\\] với \\[{{p}_{1}},...,{{p}_{n}}\\] là các số nguyên tố phân biệt. Các trường hợp đặc biệt: \\[k=2\\], k là số nguyên tố. \r\n";
+		System.out.println(str.replace("\\[", "$").replace("\\]", "$").replace("$,", ",$").replace("$.", ".$"));
 	}
 
 }
