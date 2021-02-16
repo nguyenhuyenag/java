@@ -8,8 +8,11 @@ public class NumberUtils {
 			s = n % 2 + s;
 			n = n / 2;
 		}
-		return s;
-		// return Integer.toBinaryString(n);
+		return s; // return Integer.toBinaryString(n);
+	}
+	
+	public static int binaryToDecimal(String binary) {
+		return Integer.parseInt(binary, 2);
 	}
 
 	/**
