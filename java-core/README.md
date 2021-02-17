@@ -160,11 +160,16 @@
 
 # valueOf() & parseInt()
 
-	- Integer.valueOf("");	=>	Integer
-	- Integer.parseInt("");	=>	int
+	- Integer.parseInt()	=>	int
+	- Integer.valueOf()	=>	Integer
 
 # compare() & compareTo()
 
+# This (đối tượng hiện tại của class)
+
+	- Không thể dùng this hay super trong phương thức static do phương thức static không gắn
+	
+	  với đối tượng, nên không có this.
 
 
 
