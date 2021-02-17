@@ -8,25 +8,32 @@ import org.junit.Test;
 public class LongestSubstring {
 
 	public static int lengthOfLongestSubstring(String s) {
-		char[] arr = s.toCharArray();
-		int len = arr.length;
-		if (len < 2) {
-			return len;
+		int n, len = 0, max = 0;
+		String[] arr = s.split("");
+		n = arr.length;
+		if (s.length() < 2) {
+			return s.length();
 		}
-		int count, max = 0;
-		for (int i = 0; i < len; i++) {
-			count = 1;
-			for (int j = i + 1; j < len; j++) {
-				if (arr[i] == arr[j]) {
-					if (max < count) {
-						max = count;
-					}
-					break;
+		StringBuilder str = new StringBuilder();
+		for (int i = 0; i < n; i++) {
+			str.append(arr[i]); // chèn chuỗi tại vị trí i vào str
+			for (int j = i + 1; j < n; j++) { // từ vị trí 'i + 1'
+				if (str.indexOf(arr[j]) == -1) { // nếu không có trong str
+					str.append(arr[j]); // thì chèn nó vào str
+				} else { // nếu đã có
+					break; // thoát
 				}
-				count++;
 			}
+			len = str.length(); // tính độ dài str hiện tại
+			if (max < len) { // so sánh với max
+				max = len;
+			}
+			str.setLength(0); // xóa str
 		}
-		return max;
+		if (max > 0) {
+			return max;
+		}
+		return str.length();
 	}
 
 	@Test
@@ -36,7 +43,7 @@ public class LongestSubstring {
 		assertEquals(3, lengthOfLongestSubstring("pwwkew"));
 		assertEquals(1, lengthOfLongestSubstring(" "));
 		assertEquals(0, lengthOfLongestSubstring(""));
-		// assertEquals(2, lengthOfLongestSubstring("au"));
+		assertEquals(2, lengthOfLongestSubstring("au"));
 	}
 
 }
