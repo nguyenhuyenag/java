@@ -1,7 +1,7 @@
 package leetcode;
 
 // https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/
-public class P1304 {
+public class UniqueSumUpZero {
 
 	public static int[] sumZero(int n) {
 		int[] arr = new int[n];

@@ -6,7 +6,8 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-public class P1 {
+// https://leetcode.com/problems/two-sum/
+public class TwoSum {
 
 	public int[] twoSum(int[] nums, int target) {
 		int len = nums.length;

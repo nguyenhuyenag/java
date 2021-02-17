@@ -7,7 +7,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 // https://leetcode.com/problems/latest-time-by-replacing-hidden-digits/
-public class P1736 {
+public class MaximumTime {
 
 	public static String maximumTime(String time) {
 		char c = '?';

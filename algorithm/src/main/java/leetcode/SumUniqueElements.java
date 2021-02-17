@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // https://leetcode.com/problems/sum-of-unique-elements/
-public class P1748 {
+public class SumUniqueElements {
 
 	public static boolean isUnique(int[] arr, int key) {
 		int count = 0;
