@@ -1,0 +1,37 @@
+package leetcode;
+
+import static org.junit.Assert.assertArrayEquals;
+
+import java.util.Arrays;
+
+import org.junit.Test;
+
+public class P1 {
+
+	public int[] twoSum(int[] nums, int target) {
+		int len = nums.length;
+		int[] result = new int[2];
+		for (int i = 0; i < len; i++) {
+			for (int j = i + 1; j < len; j++) {
+				if (nums[i] + nums[j] == target) {
+					return new int[] { i, j };
+				}
+			}
+		}
+		return result;
+	}
+
+	public static void doTest(int[] arr1, int[] arr2) {
+		Arrays.sort(arr1);
+		Arrays.sort(arr2);
+		assertArrayEquals(arr1, arr2);
+	}
+
+	@Test
+	public void test() {
+		doTest(twoSum(new int[] { 3, 3 }, 6), new int[] { 1, 0 });
+		doTest(twoSum(new int[] { 3, 2, 4 }, 6), new int[] { 1, 2 });
+		doTest(twoSum(new int[] { 2, 7, 11, 15 }, 9), new int[] { 1, 0 });
+	}
+
+}

@@ -3,8 +3,8 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
-// https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/
-public class SumOfUniqueElements {
+// https://leetcode.com/problems/sum-of-unique-elements/
+public class P1748 {
 
 	public static boolean isUnique(int[] arr, int key) {
 		int count = 0;
