@@ -6,20 +6,24 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-// https://leetcode.com/problems/two-sum/
+/*-
+ * - Tim vi tri cua 2 phan tu trong mang, sao cho tong cua chung = n
+ *
+ * https://leetcode.com/problems/two-sum/
+ */
 public class TwoSum {
 
-	public int[] twoSum(int[] nums, int target) {
+	public int[] twoSum(int[] nums, int n) {
 		int len = nums.length;
-		int[] result = new int[2];
+		int[] arr = new int[2];
 		for (int i = 0; i < len; i++) {
 			for (int j = i + 1; j < len; j++) {
-				if (nums[i] + nums[j] == target) {
+				if (nums[i] + nums[j] == n) {
 					return new int[] { i, j };
 				}
 			}
 		}
-		return result;
+		return arr;
 	}
 
 	public static void doTest(int[] arr1, int[] arr2) {

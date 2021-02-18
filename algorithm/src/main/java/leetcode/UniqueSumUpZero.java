@@ -1,26 +1,27 @@
 package leetcode;
 
-// https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/
+import java.util.Arrays;
+
+/*-
+ * - Tao 1 mang n so nguyen khong giong nhau co tong = 0
+ * 
+ * https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/
+ */
 public class UniqueSumUpZero {
 
 	public static int[] sumZero(int n) {
+		int sum = 0;
 		int[] arr = new int[n];
-		if (n % 2 == 0) {
-			int i = 0;
-			while (i < n) {
-				arr[i] = (i + 1);
-				arr[i + 1] = -arr[i];
-				i = i + 2;
-			}
-		} else {
-			int i = 1;
-			while (i < n) {
-				arr[i] = (i + 1);
-				arr[i + 1] = -arr[i];
-				i = i + 2;
-			}
+		for (int i = 0; i < arr.length - 1; i++) {
+			arr[i] = i;
+			sum += i;
 		}
+		arr[n - 1] = -sum;
 		return arr;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(Arrays.toString(sumZero(7)));
 	}
 
 }

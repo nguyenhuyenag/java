@@ -8,32 +8,25 @@ import org.junit.Test;
 public class LongestSubstring {
 
 	public static int lengthOfLongestSubstring(String s) {
-		int n, len = 0, max = 0;
-		String[] arr = s.split("");
-		n = arr.length;
 		if (s.length() < 2) {
 			return s.length();
 		}
+		int len, max = 0;
+		String[] arr = s.split("");
+		len = arr.length;
 		StringBuilder str = new StringBuilder();
-		for (int i = 0; i < n; i++) {
-			str.append(arr[i]); // chèn chuỗi tại vị trí i vào str
-			for (int j = i + 1; j < n; j++) { // từ vị trí 'i + 1'
-				if (str.indexOf(arr[j]) == -1) { // nếu không có trong str
-					str.append(arr[j]); // thì chèn nó vào str
-				} else { // nếu đã có
-					break; // thoát
+		for (int i = 0; i < len; i++) {
+			str.append(arr[i]); 					// chèn chuỗi tại vị trí i vào str
+			for (int j = i + 1; j < len; j++) { 	// từ vị trí 'i + 1'
+				if (str.indexOf(arr[j]) != -1) {	// nếu đã có trong str thì dừng
+					break;
 				}
+				str.append(arr[j]); 				// nếu chưa thì chèn vào str
 			}
-			len = str.length(); // tính độ dài str hiện tại
-			if (max < len) { // so sánh với max
-				max = len;
-			}
-			str.setLength(0); // xóa str
+			max = Math.max(max, str.length());		// chạy hết chuỗi hoặc bị thoát, so sánh str với max
+			str.setLength(0);
 		}
-		if (max > 0) {
-			return max;
-		}
-		return str.length();
+		return max; // > 0 ? max : str.length();
 	}
 
 	@Test

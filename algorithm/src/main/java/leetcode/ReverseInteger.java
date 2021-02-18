@@ -23,10 +23,10 @@ public class ReverseInteger {
 
 	@Test
 	public void test() {
-		assertEquals(reverse(0), 0);
-		assertEquals(reverse(120), 21);
-		assertEquals(reverse(123), 321);
-		assertEquals(reverse(-123), -321);
+		assertEquals(0, reverse(0));
+		assertEquals(21, reverse(120));
+		assertEquals(321, reverse(123));
+		assertEquals(-321, reverse(-123));
 	}
 
 }

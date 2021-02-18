@@ -3,6 +3,7 @@ package com.basic.time;
 import java.text.ParseException;
 import java.util.Calendar;
 
+// Xem thêm time trong Java 8
 public class TimeCollection {
 
 	public static void main(String[] args) throws ParseException {

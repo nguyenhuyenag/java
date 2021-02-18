@@ -2,8 +2,6 @@ package leetcode;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-
 import org.junit.Test;
 
 // https://leetcode.com/problems/latest-time-by-replacing-hidden-digits/
@@ -50,10 +48,6 @@ public class MaximumTime {
 	public void test() {
 		assertEquals("23:50", maximumTime("2?:?0"));
 		assertEquals("14:03", maximumTime("?4:03"));
-	}
-
-	public static void main(String[] args) {
-		System.out.println(Arrays.toString("23:50".toCharArray()));
 	}
 
 }
