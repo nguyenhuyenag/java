@@ -80,8 +80,6 @@
 	- Không thể tạo mảng với parameterized types
 	- Không thể tạo, catch, throw đối tượng của parameterized types
 	- Không thể overload các hàm trong một lớp giống như
-	
-# > mvn javadoc:javadoc
 
 # static
 	- Method
@@ -149,7 +147,7 @@
 
 		throw											throws
 	
-	- Ném ra một ngoại lệ							- Khai báo một ngoại lệ
+	- Ném ra một ngoại lệ						- Khai báo một ngoại lệ
 	
 	- Checked exception không được ném ra 		- Ném ra checked exception ngay cả khi chỉ sử dụng throws
 	  nếu chỉ sử dụng throw
@@ -161,7 +159,8 @@
 # valueOf() & parseInt()
 
 	- Integer.parseInt()	=>	int
-	- Integer.valueOf()	=>	Integer
+	
+	- Integer.valueOf()		=>	Integer
 
 # compare() & compareTo()
 
@@ -171,10 +170,4 @@
 	
 	  với đối tượng, nên không có this.
 
-
-
-
-
-
-
-
+# > mvn javadoc:javadoc

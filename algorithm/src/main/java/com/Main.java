@@ -1,7 +1,7 @@
 package com;
 
 public class Main {
-	
+
 	public static int toDecimal(String str) {
 		int n = 0, incr = 1;
 		String[] arr = str.split("");
@@ -12,12 +12,6 @@ public class Main {
 		}
 		return n;
 	}
-
-//	public static String addBinary(String a, String b) {
-//		int a1 = toDecimal(a);
-//		int a2 = toDecimal(b);
-//		return Integer.toBinaryString(a1 + a2);
-//	}
 
 	public static String addBinary(String a, String b) {
 		int x = Integer.parseInt(a, 2);

@@ -14,7 +14,6 @@ public class ApachePOI {
 	private static final String FILE_NAME = "file/MyFirstExcel.xlsx";
 
 	public static void main(String[] args) {
-
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		XSSFSheet sheet = workbook.createSheet("Datatypes in Java");
 		Object[][] datatypes = { //
@@ -25,10 +24,8 @@ public class ApachePOI {
 			{ "char", "Primitive", 1 }, //
 			{ "String", "Non-Primitive", "No fixed size" } //
 		};
-
 		int rowNum = 0;
 		System.out.println("Creating excel");
-
 		for (Object[] datatype : datatypes) {
 			Row row = sheet.createRow(rowNum++);
 			int colNum = 0;
@@ -41,7 +38,6 @@ public class ApachePOI {
 				}
 			}
 		}
-
 		try {
 			FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
 			workbook.write(outputStream);
@@ -51,7 +47,6 @@ public class ApachePOI {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		System.out.println("Done");
 	}
 
