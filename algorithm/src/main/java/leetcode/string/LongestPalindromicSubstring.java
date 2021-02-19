@@ -1,36 +1,39 @@
-package leetcode.incomplete;
+package leetcode.string;
 
-import static org.hamcrest.CoreMatchers.anyOf;
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-// https://leetcode.com/problems/longest-palindromic-substring/
 // Chuỗi đối xứng dài nhất
+// https://leetcode.com/problems/longest-palindromic-substring/
 public class LongestPalindromicSubstring {
 
-	public static String getMax(String s1, String s2) {
-		return s1.length() > s2.length() ? s1 : s2;
-	}
-
+	// Kiểm tra chuỗi đối xứng
 	public static boolean isPalindromic(String str) {
-		return str.equals(new StringBuilder(str).reverse().toString());
+		int i = 0, j = str.length() - 1;
+		while (i < j) {
+			if (str.charAt(i) != str.charAt(j)) {
+				return false;
+			}
+			i++;
+			j--;
+		}
+		return true;
 	}
 
-	public static String longestPalindrome(String s) {
-		if (isPalindromic(s)) {
-			return s;
+	public static String longestPalindrome(String str) {
+		if (isPalindromic(str)) {
+			return str;
 		}
 		String max = "";
-		int n = s.length();
+		int n = str.length();
 		for (int i = 0; i < n; i++) {
 			StringBuilder sb = new StringBuilder();
 			for (int j = i; j < n; j++) {
-				sb.append(s.charAt(j));
-				if (isPalindromic(sb.toString())) {
-					max = getMax(max, sb.toString());
+				sb.append(str.charAt(j));
+				String s = sb.toString();
+				if (isPalindromic(s)) {
+					max = (s.length() > max.length() ? s : max);
 				}
 			}
 		}
@@ -46,7 +49,7 @@ public class LongestPalindromicSubstring {
 		assertEquals("bb", longestPalindrome("bb"));
 		assertEquals("bb", longestPalindrome("abb"));
 		assertEquals("aca", longestPalindrome("aacabdkacaa"));
-		assertThat(longestPalindrome("ac"), anyOf(is("a"), is("c")));
+		// assertThat(longestPalindrome("ac"), anyOf(is("a"), is("c")));
 		// assertEquals(longestPalindrome("babad"), anyOf(is("bab"), is("aba")));
 	}
 

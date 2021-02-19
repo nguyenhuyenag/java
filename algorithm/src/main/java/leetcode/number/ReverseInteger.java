@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.number;
 
 import static org.junit.Assert.assertEquals;
 

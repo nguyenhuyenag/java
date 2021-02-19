@@ -1,9 +1,10 @@
-package leetcode;
+package leetcode.string;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+// Chuỗi dài nhất không có ký tự trùng nhau
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/
 public class LongestSubstring {
 
@@ -11,17 +12,17 @@ public class LongestSubstring {
 		if (s.length() < 2) {
 			return s.length();
 		}
-		int len, max = 0;
+		int max = 0;
 		String[] arr = s.split("");
-		len = arr.length;
+		int n = arr.length;
 		StringBuilder str = new StringBuilder();
-		for (int i = 0; i < len; i++) {
-			str.append(arr[i]); 					// chèn chuỗi tại vị trí i vào str
-			for (int j = i + 1; j < len; j++) { 	// từ vị trí 'i + 1'
-				if (str.indexOf(arr[j]) != -1) {	// nếu đã có trong str thì dừng
+		for (int i = 0; i < n; i++) {
+			str.append(arr[i]); 					// thêm vào str
+			for (int j = i + 1; j < n; j++) { 	// từ vị trí 'i + 1'
+				if (str.indexOf(arr[j]) != -1) {	// nếu đã có trong str thì thoát
 					break;
 				}
-				str.append(arr[j]); 				// nếu chưa thì chèn vào str
+				str.append(arr[j]); 				// nếu chưa thì thêm vị trí 'i + 1' vào str
 			}
 			max = Math.max(max, str.length());		// chạy hết chuỗi hoặc bị thoát, so sánh str với max
 			str.setLength(0);
