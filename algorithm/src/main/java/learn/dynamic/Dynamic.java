@@ -1,4 +1,4 @@
-package com.dynamic;
+package learn.dynamic;
 
 import java.math.BigInteger;
 

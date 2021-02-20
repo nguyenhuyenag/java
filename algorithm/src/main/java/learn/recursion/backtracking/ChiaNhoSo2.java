@@ -1,4 +1,4 @@
-package com.recursion.backtracking;
+package learn.recursion.backtracking;
 
 /*
 	Tìm tất cả các cách để cộng ra một số nguyên bằng 4 số nguyên dương a <= b <= c <= d

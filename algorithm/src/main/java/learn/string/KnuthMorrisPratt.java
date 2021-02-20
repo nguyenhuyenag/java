@@ -1,4 +1,4 @@
-package com.string;
+package learn.string;
 
 public class KnuthMorrisPratt {
 

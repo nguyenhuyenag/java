@@ -1,4 +1,4 @@
-package com.string;
+package learn.string;
 
 import static org.junit.Assert.assertEquals;
 

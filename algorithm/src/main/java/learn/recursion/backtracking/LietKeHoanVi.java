@@ -1,4 +1,4 @@
-package com.recursion.backtracking;
+package learn.recursion.backtracking;
 
 /**
  * Liệt kê hoán vị của n phần tử của một tập gồm các số từ 1 -> n

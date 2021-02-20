@@ -1,4 +1,4 @@
-package com.recursion;
+package learn.recursion;
 
 import java.util.Arrays;
 import java.util.Collections;
