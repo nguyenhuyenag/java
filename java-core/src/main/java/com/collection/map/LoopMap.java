@@ -44,7 +44,6 @@ public class LoopMap {
 	}
 
 	public static void main(String[] args) {
-		
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < 5; i++) {
 			map.put("0" + String.valueOf(i), i);
@@ -58,8 +57,6 @@ public class LoopMap {
 		// checkByContainsKey(map, "00");
 		System.out.println(Collections.max(map.keySet()));
 		System.out.println(Collections.min(map.keySet()));
-		
 		System.out.println(Collections.max(map.values()));
-		
 	}
 }

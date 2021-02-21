@@ -8,6 +8,11 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import lombok.AllArgsConstructor;
 
+/**
+ * 
+ * @author huyennv
+ *
+ */
 @AllArgsConstructor
 @SuppressWarnings("unused")
 class Student {
@@ -41,7 +46,6 @@ class Student {
 public class HashCodeAndEquals {
 
 	public static void main(String[] args) {
-		
 		Student student1 = new Student("123", "Cong", "cong@gmail.com");
 		Student student2 = new Student("123", "Cong", "cong@gmail.com");
 		Student student3 = new Student("456", "Dung", "dung@gmail.com");

@@ -1,64 +1,64 @@
 # Regular Expression
 
-	Biểu thức					Mô tả
+	Biểu thức				Mô tả
 	
-		.				-		Khớp với 1 kí tự bất kỳ, ngoại trừ ký tự xuống dòng `\n`
+		.			-		Khớp với 1 kí tự bất kỳ, ngoại trừ ký tự xuống dòng `\n`
 		
-		^				-		Khớp với phần bắt đầu của dòng
+		^			-		Khớp với phần bắt đầu của dòng
 	   
-		$				-		Kết thúc dòng phải thỏa mãn mẫu phía trước $
+		$			-		Kết thúc dòng phải thỏa mãn mẫu phía trước $
 	   
-	   [...]			-		Khớp với 1 kí tự bất kỳ có trong dấu ngoặc vuông
+	   [...]		-		Khớp với 1 kí tự bất kỳ có trong dấu ngoặc vuông
 	   
 	   							Nếu [] chứa . thì nó biểu diễn ký tự `.`
 	   
-	   [^...]			-		Khớp với 1 ký tự bất kỳ không có trong dấu ngoặc vuông
+	   [^...]		-		Khớp với 1 ký tự bất kỳ không có trong dấu ngoặc vuông
 								
 								Dấu ^ (dấu mũ) nằm trong dấu ngoặc vuông là một dấu phủ định
 	   
-	   [a-d]			-		Khớp với 1 kí tự nằm giữa a và d, dùng dấu `-` làm dấu ngăn cách
+	   [a-d]		-		Khớp với 1 kí tự nằm giữa a và d, dùng dấu `-` làm dấu ngăn cách
 	   
-		|				-		Phép toán or
+		|			-		Phép toán or
 	   
-	   \d				-		Kí tự số, viết ngắn gọn của [0-9]
+	   \d			-		Kí tự số, viết ngắn gọn của [0-9]
 	   
-	   \D				-		Ký tự không phải là số, viết gọn của [^\d] hoặc [^0-9]
+	   \D			-		Ký tự không phải là số, viết gọn của [^\d] hoặc [^0-9]
 	   
-	   \s				-		Ký tự khoảng trắng, bao gồm cả tab
+	   \s			-		Ký tự khoảng trắng, bao gồm cả tab
 	   
-	   \S				-		Ký tự không phải khoảng trắng, viết gọn của [^\s]
+	   \S			-		Ký tự không phải khoảng trắng, viết gọn của [^\s]
 	   
-	   \w				-		Ký tự từ (chữ cái, số, dấu gạch dưới _ ), viết gọn của [a-zA-Z_0-9]
+	   \w			-		Ký tự từ (chữ cái, số, dấu gạch dưới _ ), viết gọn của [a-zA-Z_0-9]
 	   
-	   \W				-		Ký tự không phải chữ, viết gọn của [^\w] hoặc [^a-zA-Z_0-9]
+	   \W			-		Ký tự không phải chữ, viết gọn của [^\w] hoặc [^a-zA-Z_0-9]
 	   
-		\b				- 		Khớp với toàn bộ ký tự đứng trước nó
+		\b			- 		Khớp với toàn bộ ký tự đứng trước nó
 		
-		\B				-		[^\b]
+		\B			-		[^\b]
 	   
-		*				-		Xuất hiện 0 hoặc nhiều lần, viết gọn của {0,}
+		*			-		Xuất hiện 0 hoặc nhiều lần, viết gọn của {0,}
 	   
-	   +				-		Xuất hiện 1 hoặc nhiều lần, viết gọn của {1,}
+	   +			-		Xuất hiện 1 hoặc nhiều lần, viết gọn của {1,}
 	   
-	   ?				-		Xuất hiện 0 hoặc 1 lần (có hay không cũng được), viết gọn của {0,1}
+	   ?			-		Xuất hiện 0 hoặc 1 lần (có hay không cũng được), viết gọn của {0,1}
 	   
-	   ?=				- 		Phần đầu của biểu thức phải được tiếp nối bởi biểu thức (lookahead)
+	   ?=			- 		Phần đầu của biểu thức phải được tiếp nối bởi biểu thức (lookahead)
 	   	
-	   	?!				-		Lấy kết quả mà đi sau nó không có chuỗi lookahead
+	   	?!			-		Lấy kết quả mà đi sau nó không có chuỗi lookahead
 	   
-		{n}				-		Xuất hiện đúng n lần, với n là số
+		{n}			-		Xuất hiện đúng n lần, với n là số
 		
-		{n,}			-		Xuất hiện ít nhất n lần
+		{n,}		-		Xuất hiện ít nhất n lần
 	   
-	   {m,n}			-		Xuất hiện từ m đến n lần
+	   {m,n}		-		Xuất hiện từ m đến n lần
 	   
-	   \uxxxx			-		Khớp với 1 ký tự unicode
+	   \uxxxx		-		Khớp với 1 ký tự unicode
 	   
-	   \pL				- 		Khớp với một ký tự unicode bất kỳ ngoại trừ dấu cách
+	   \pL			- 		Khớp với một ký tự unicode bất kỳ ngoại trừ dấu cách
 	   
-	   ()				-		Biểu diễn 1 nhóm
+	   ()			-		Biểu diễn 1 nhóm
 	 
-		\				-		Biểu diễn ký tự đặc biệt: [ ] ( ) { } . * + ? ^ $ \ |
+		\			-		Biểu diễn ký tự đặc biệt: [ ] ( ) { } . * + ? ^ $ \ |
 
 # Primitive Data Types
 
