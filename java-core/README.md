@@ -147,7 +147,7 @@
 
 		throw											throws
 	
-	- Ném ra một ngoại lệ						- Khai báo một ngoại lệ
+	- Ném ra một ngoại lệ							- Khai báo một ngoại lệ
 	
 	- Checked exception không được ném ra 		- Ném ra checked exception ngay cả khi chỉ sử dụng throws
 	  nếu chỉ sử dụng throw
