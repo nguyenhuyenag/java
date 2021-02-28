@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -27,14 +28,13 @@ public class RandomUtils {
 		return RANDOM.nextInt((max - min) + 1) + min;
 	}
 	
-	/**
-	 * Radom int number in [0, 99]
-	 * @return integer number in [0, 99]
-	 */
-	public static int getInt() {
-		return getInt(-99, 99);
+	public static int getIntFrom(int min, int max) {
+		if (max <= min) {
+			throw new IllegalArgumentException("Max must be greater than min");
+		}
+		return ThreadLocalRandom.current().nextInt(min, max + 1);
 	}
-
+	
 	/**
 	 * Random int array
 	 * @param size of array
@@ -80,21 +80,33 @@ public class RandomUtils {
 	public static Map<String, Integer> getMap() {
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < 9; i++) {
-			map.put(RandomUtils.getAlphabet().toUpperCase(), RandomUtils.getInt());
+			map.put(RandomUtils.getAlphabet().toUpperCase(), RandomUtils.getInt(-99, 99));
 		}
 		return map;
 	}
 	
 	@Deprecated
 	public static int[] pickRandom() {
-		int[] arr = new Random().ints(0, 5).distinct().limit(5).toArray();
-		return arr;
+		return new Random().ints(0, 5).distinct().limit(5).toArray();
 	}
 	
 	public static double rand(double min, double max) {
 		// double min = 0.85;
 		// double max = 1.0;
 		return Math.random() * (max - min) + min;
+	}
+	
+	public static void rand() {
+		Random ran = new Random();
+		int cur, pre = ran.nextInt(4);
+		for (int i = 0; i < 10; i++) {
+			cur = ran.nextInt(4);
+			while (cur == pre) {
+				cur = ran.nextInt(4);
+			}
+			pre = cur;
+			System.out.println(cur);
+		}
 	}
 	
 }
