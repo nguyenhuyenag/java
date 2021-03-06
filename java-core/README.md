@@ -111,7 +111,9 @@
 	- LinkedHashMap duy trì các phần tử theo thứ tự chèn
 	
 # Exception
-	là runtime exception và checked exception, runtime exception là lỗi trong lúc mình thực thi ct, còn checked exception là lỗi trong quá trình biên dịch	
+	- Có 2 loại là: Runtime exception và Checked exception
+	
+	- Runtime exception là lỗi trong lúc mình thực thi chương trình, còn Checked exception là lỗi trong quá trình biên dịch.	
 	
 # Abstract Class
 
@@ -156,12 +158,6 @@
 	
 	- Không thể throw nhiều exception			- Có thể throw nhiều exception (dùng dấu phẩy)
 
-# valueOf() & parseInt()
-
-	- Integer.parseInt()	=>	int
-	
-	- Integer.valueOf()		=>	Integer
-
 # compare() & compareTo()
 
 # This (đối tượng hiện tại của class)
@@ -170,4 +166,4 @@
 	
 	  với đối tượng, nên không có this.
 
-# > mvn javadoc:javadoc
+# mvn javadoc:javadoc
