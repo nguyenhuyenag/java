@@ -4,17 +4,21 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
-/*-
- * PriorityQueue lưu trữ phần tử theo trật tự nhiên của nó (nếu các phần tử đó
- * so sánh được với nhau – implements Comparable) hoặc một bộ so sánh Comparator
- * được cung cấp cho PriorityQueue
+/**
+ * - PriorityQueue (hàng đợi ưu tiên) lưu trữ phần tử theo trật tự nhiên của nó
+ * (kiểu dữ liệu của phần tử implements Comparable) hoặc một bộ so sánh
+ * Comparator được cung cấp cho PriorityQueue.
+ * 
+ * - Mặc định capacity = 11.
+ * 
+ * - Lấy ra và xóa phần tử đầu tiên (lớn nhất, nhỏ nhất) trong hàng đợi.
  */
 public class QueuePriority {
 
-	public static void deleteQueue(Queue<String> queue) throws InterruptedException {
+	public static void deleteQueue(Queue<Integer> queue) throws InterruptedException {
 		System.out.println("From " + queue + "\n");
 		while (queue.size() > 0) {
-			String name = queue.poll();
+			int name = queue.poll(); // lấy và loại bỏ phần tử đầu hàng
 			System.out.println("Get & remove " + name + " => " + queue + "\n");
 			TimeUnit.SECONDS.sleep(1);
 		}
@@ -23,19 +27,21 @@ public class QueuePriority {
 
 	public static void main(String[] args) throws InterruptedException {
 		// String implements Comparable nên Queue tự động sắp xếp theo bảng chữ cái
-		Queue<String> queue = new PriorityQueue<>();
+		// Queue<Integer> queue = new PriorityQueue<>();
+		Queue<Integer> queue = new PriorityQueue<>(5);
 		// Trả về false nếu hàng đợi không còn chỗ
-		queue.offer("E");
-		queue.offer("A");
-		queue.offer("M");
-		queue.add("G");
-		queue.add("B");
-		// Ném ra ngoại lệ nếu hàng đợi không còn chỗ IllegalStateException
-		queue.add("F");
-		queue.add("T");
-		queue.add("L");
-		queue.add("K");
-		queue.add("X");
+		queue.offer(3);
+		queue.offer(3);
+		queue.offer(0);
+		queue.offer(-1);
+		queue.add(12);
+		queue.add(7);
+		// Ném ra ngoại lệ (IllegalStateException) nếu hàng đợi không còn chỗ
+		queue.add(9);
+		queue.add(33);
+		queue.add(22);
+		queue.add(5);
+		queue.add(1);
 		// call delete
 		deleteQueue(queue);
 	}

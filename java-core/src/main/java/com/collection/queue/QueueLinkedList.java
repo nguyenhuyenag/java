@@ -4,11 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
-/*-
- * - Queue (hàng đợi): First in first out.
- * 
- * - Có hai class triển khai interface Queue: LinkedList và PriorityQueue (hàng đợi ưu tiên)
- */
 public class QueueLinkedList {
 
 	public static void deleteQueue(Queue<String> queue) throws InterruptedException {
