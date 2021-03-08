@@ -3,6 +3,9 @@ package com.collection.stack;
 import java.util.Arrays;
 import java.util.Stack;
 
+/**
+ * Stack (ngăn xếp): Hoạt động theo cơ chế LIFO (last in first out)
+ */
 public class StackApi {
 
 	public static void stackApi() {

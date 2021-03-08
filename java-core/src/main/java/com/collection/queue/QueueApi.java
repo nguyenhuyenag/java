@@ -18,7 +18,7 @@ import java.util.Queue;
  * 												|
  * 		- add(e)								|	- offer(e)
  * 												|
- * 			+ Exception nếu hàng đợi hết chỗ	|		+ Trả về false nếu hàng đợi không còn chỗ
+ * 			+ Exception nếu hàng đợi hết chỗ	|		+ Trả về false nếu hàng đợi hết chỗ
  * 												|
  * 		- remove()								|	- poll()
  * 												|
@@ -28,8 +28,7 @@ import java.util.Queue;
  * 												|
  * 		- element()								|	- peek()
  * 												|	
- * 			+ Lấy ra nhưng không xóa phần tử	|		+ //
- *            đầu hàng							|
+ * 			+ Lấy ra nhưng không xóa			|		+ //
 												|
  *          + Exception nếu hàng đợi rỗng		|		+ Trả về null nếu hàng đợi rỗng
  *   											|
