@@ -9,7 +9,7 @@ import java.util.Set;
 @SuppressWarnings("unused")
 public class SetTo {
 
-	static Set<String> set = new HashSet<>(Arrays.asList("a", "b", "c", "d"));
+	private static Set<String> set = new HashSet<>(Arrays.asList("a", "b", "c", "d"));
 
 	public static void toArray() {
 		String[] arr = set.stream().toArray(String[]::new);

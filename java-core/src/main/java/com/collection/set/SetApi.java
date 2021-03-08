@@ -10,7 +10,7 @@ import java.util.TreeSet;
 
 import common.util.RandomUtils;
 
-public class ISet {
+public class SetApi {
 
 	static List<Integer> list = RandomUtils.getListInteger(5, 0, 5);
 
