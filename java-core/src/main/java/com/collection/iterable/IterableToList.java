@@ -8,9 +8,8 @@ import java.util.stream.StreamSupport;
 public class IterableToList {
 
 	public static void main(String[] args) {
-		Iterable<String> iterable = Arrays.asList("Iterable", "to", "List");
-		List<String> list = StreamSupport//
-				.stream(iterable.spliterator(), false) //
+		Iterable<String> itr = Arrays.asList("Iterable", "to", "List");
+		List<String> list = StreamSupport.stream(itr.spliterator(), false) //
 				.collect(Collectors.toList());
 		list.forEach(t -> System.out.println(t));
 	}
