@@ -1,4 +1,4 @@
-package com.basic;
+package com.collection.array;
 
 /**
  * https://stackoverflow.com/questions/3158730/java-3-dots-in-parameters
