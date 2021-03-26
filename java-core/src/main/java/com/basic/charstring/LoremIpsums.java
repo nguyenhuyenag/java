@@ -1,4 +1,4 @@
-package com.basic.charandstring;
+package com.basic.charstring;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
