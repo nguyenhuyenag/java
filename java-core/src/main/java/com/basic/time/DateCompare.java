@@ -18,7 +18,6 @@ public class DateCompare {
 
 		// System.out.println(d1.after(d2));
 		//System.out.println(d1.before(d2));
-
 	}
 
 }

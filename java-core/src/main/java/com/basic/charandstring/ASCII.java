@@ -1,4 +1,4 @@
-package com.basic.string;
+package com.basic.charandstring;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;

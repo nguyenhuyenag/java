@@ -1,4 +1,4 @@
-package com.basic.string;
+package com.basic.charandstring;
 
 import java.text.MessageFormat;
 import java.time.LocalDate;

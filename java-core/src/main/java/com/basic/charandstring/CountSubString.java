@@ -1,4 +1,4 @@
-package com.basic.string;
+package com.basic.charandstring;
 
 public class CountSubString {
 
