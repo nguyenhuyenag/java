@@ -17,7 +17,11 @@ public class CheckUnicode {
 
 	public static void main(String[] args) {
 		System.out.println(isUnicode('ã'));
-		System.out.println(isUnicode("nguyễn"));
+		System.out.println(isUnicode("ä"));
+		System.out.println(isUnicode("☹"));
+		System.out.println(isUnicode("+"));
+		System.out.println(isUnicode("@"));
+		System.out.println(isUnicode("]"));
 	}
 
 }
