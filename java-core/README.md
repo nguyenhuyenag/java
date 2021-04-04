@@ -123,27 +123,25 @@
 
 	- Không thể khởi tạo trực tiếp một lớp trừu tượng
 
-	- Lớp con bắt buộc phải cài đặt (implement) tất cả các phương thức trừu tượng của lớp cha
+	- Lớp con bắt buộc phải implement tất cả các phương thức trừu tượng của lớp cha
 	
 	- Access modifier mặc định của abstract methods là protected
 
 # Interface 
 
-	- Luôn luôn có modifier là public interface, cho dù bạn có khai báo rõ hay không
-	
 	- Các field đều là public static final, cho dù bạn có khai báo rõ hay không
+
+	- Method đều có modifier là public abstract, cho dù bạn có khai báo hay không
 	
 	- Một interface không thể kế thừa từ lớp, nó được triển khai bởi một lớp.
 
 	- Một interface có thể kế thừa từ nhiều interface khác.
 	
-	- Method đều có modifier là public abstract, cho dù bạn có khai báo hay không
-	
-	- Interface không có hàm khởi tạo (constructor)
+	- Interface không có constructor
 	
 	- Class mô tả thuộc tính, hành vi của đối tượng. Interface chứa hành vi mà một class triển khai
 	
-	- Interface implement là những object can do. Còn abstract class là what object is
+	- Abstract class là what object is. Interface là những object can do.
 
 # Throw vs Throws
 
