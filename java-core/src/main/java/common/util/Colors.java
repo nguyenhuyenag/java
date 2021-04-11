@@ -1,4 +1,3 @@
-
 package common.util;
 
 public enum Colors {

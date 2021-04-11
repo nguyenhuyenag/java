@@ -11,7 +11,6 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -145,8 +144,8 @@ public class FileService {
 		file.setReadOnly();
 		// file.canWrite();
 		System.out.println(Files.isWritable(file.toPath()));
-		System.out.println(FilesUtils.readFileToString(file));
-		FilesUtils.writeStringToFile(file.toPath(), "2019", StandardCharsets.UTF_8, false);
+		System.out.println(FilesUtils.readFileToString(file.toPath()));
+		FilesUtils.writeByteArrayToFile(file.toPath(), "2019".getBytes(), false);
 	}
 
 	// file attributes

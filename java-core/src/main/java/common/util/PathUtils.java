@@ -9,36 +9,34 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 public class PathUtils {
-	
+
 	// File.separator => '\'
 
 	/**
 	 * Project directory
 	 */
 	public static final String HOME = System.getProperty("user.dir");
-	
+
 	/**
 	 * Test whether a file or directory exists
-	 * @param path the path to the file to test
-	 * @return {@code true} if the file exists, otherwise {@code false}
-	 */
-	public static boolean exists(File file) {
-		return (file != null && file.exists());
-	}
-	
-	/**
-	 * Test whether a file or directory exists
-	 * @param path the path to the file to test
-	 * @return {@code true} if the file exists, otherwise {@code false}
 	 */
 	public static boolean exists(Path path) {
 		return (path != null && Files.exists(path));
 	}
+	
+	public static boolean isNotExists(Path path) {
+		return !exists(path);
+	}
+
+//	/**
+//	 * Test whether a file or directory exists
+//	 */
+//	public static boolean exists(File file) {
+//		return (file != null && file.exists());
+//	}
 
 	/**
-	 * Creates a directory by creating all non-existent parent directories first
-	 * @param dir the directory to create
-	 * @return the directory
+	 * Tạo thư mục
 	 */
 	public static boolean createDirectories(Path dir) {
 		try {
@@ -51,11 +49,7 @@ public class PathUtils {
 	}
 
 	/**
-	 * To UNIX separator
-	 * @param filename the filename to normalize
-	 * @return the normalized filename
-	 * @see FilenameUtils#normalize
-	 * @see FilenameUtils#separatorsToUnix
+	 * Chuyển {@code project\\github\\java} thành {@code project/github/java}
 	 */
 	public static String toUnixSeparator(String filename) {
 		return FilenameUtils.normalize(filename, true);
@@ -64,6 +58,7 @@ public class PathUtils {
 	/**
 	 * Delete the supplied {@link File} - for directories, recursively delete any
 	 * nested directories or files as well.
+	 * 
 	 * @param dir the root {@code File} to delete
 	 * @return {@code true} if the {@code File} was deleted, otherwise {@code false}
 	 */
@@ -81,24 +76,22 @@ public class PathUtils {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Delete the supplied {@link File} - for directories, recursively delete any
 	 * nested directories or files as well.
+	 * 
 	 * @param dir the root {@code Path} to delete
 	 * @return {@code true} if the {@code File} was deleted, otherwise {@code false}
 	 */
 	public static boolean deleteRecursively(Path path) {
 		return deleteRecursively(path.toFile());
 	}
-	
+
 	/**
-	 * Show hierarchy
-	 * @param indent is tab
-	 * @param file the path to the file
-	 * @throws IOException
+	 * Hiển thị cây thư mục
 	 */
-	public static void showHierarchy(int indent, File file) throws IOException {
+	public static void showHierarchy(File file, int indent) {
 		if (indent != 1) {
 			for (int i = 0; i < indent; i++) {
 				System.out.print("-");
@@ -108,15 +101,13 @@ public class PathUtils {
 		if (file.isDirectory()) {
 			File[] files = file.listFiles();
 			for (int i = 0; i < files.length; i++) {
-				showHierarchy(indent + 4, files[i]);
+				showHierarchy(files[i], indent + 4);
 			}
 		}
 	}
-	
+
 	/**
-	 * Counts the size of a directory recursively (sum of the length of all files).
-	 * @param dir the path to the directory
-	 * @return size of directory in bytes
+	 * Kích thước thư mực
 	 */
 	public static long sizeOfDirectory(File dir) {
 		return FileUtils.sizeOfDirectory(dir);

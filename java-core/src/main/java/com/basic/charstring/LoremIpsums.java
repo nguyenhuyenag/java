@@ -1,12 +1,7 @@
 package com.basic.charstring;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import com.thedeanda.lorem.Lorem;
 import com.thedeanda.lorem.LoremIpsum;
-
-import common.util.FilesUtils;
 
 public class LoremIpsums {
 
@@ -14,8 +9,8 @@ public class LoremIpsums {
 		Lorem lorem = LoremIpsum.getInstance();
 		String text = lorem.getWords(10);
 		// String text = lorem.getParagraphs(1, 15);
-		Path path = Paths.get("file/lorem.txt");
-		FilesUtils.appendStringToFile(path, text);
+		// Path path = Paths.get("file/lorem.txt");
+		//FilesUtils.appendStringToFile(path, text);
 		System.out.println(text);
 	}
 
