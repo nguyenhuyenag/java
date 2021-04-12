@@ -87,6 +87,13 @@ public class PathUtils {
 	public static boolean deleteRecursively(Path path) {
 		return deleteRecursively(path.toFile());
 	}
+	
+	/**
+	 * Kích thước thư mực
+	 */
+	public static long sizeOfDirectory(File dir) {
+		return FileUtils.sizeOfDirectory(dir);
+	}
 
 	/**
 	 * Hiển thị cây thư mục
@@ -104,13 +111,6 @@ public class PathUtils {
 				showHierarchy(files[i], indent + 4);
 			}
 		}
-	}
-
-	/**
-	 * Kích thước thư mực
-	 */
-	public static long sizeOfDirectory(File dir) {
-		return FileUtils.sizeOfDirectory(dir);
 	}
 
 }
