@@ -1,11 +1,8 @@
 package com;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
-
-import common.util.FilesUtils;
 
 public class Main {
 
@@ -14,7 +11,7 @@ public class Main {
 		//List<String> list = FilesUtils.readAllLines(path);
 		//System.out.println(list);
 		// Path path = Paths.get("C:\\Users\\nguye\\Desktop\\test\\data.txt");
-		Path path = Paths.get("D:\\GDrive\\ToCompany\\maple\\api\\src");
+		//Path path = Paths.get("D:\\GDrive\\ToCompany\\maple\\api\\src");
 		//byte[] arr = "Java 7".getBytes();
 //		boolean append = true;
 //		for (int i = 1; i < 16; i++) {
@@ -26,9 +23,21 @@ public class Main {
 //		list.add("Văn");
 //		list.add("Huyện");
 //		FilesUtils.writeTextToFile(path, list, false);
-		List<String> list = FilesUtils.listFile(path);
-		System.out.println(list.size());
-		System.out.println("OK");
+		//List<String> list = FilesUtils.listFile(path);
+		//System.out.println(list.size());
+		//System.out.println(StringUtils.isEmpty(""));
+		//System.out.println("OK");
+		
+//		Path path = Paths.get("C:\\Users\\huyennv\\Desktop\\text.txt");
+//		System.out.println(StringUtils.capitalize("abc"));
+//		FilesUtils.readAllLines(path).forEach(t -> {
+//			System.out.println("if (LDAPAttribute.hasAttribute(entry, FieldThongTinCongTy." + t.toUpperCase() + ")) {");
+//			System.out.println("\tcongty.set"+StringUtils.capitalize(t)+"(LDAPAttribute.getAttributeValue(entry, FieldThongTinCongTy."+t.toUpperCase()+"));");
+//			System.out.println("}");
+//		});
+		
+		List<String> list = new ArrayList<>();
+		System.out.println(list.isEmpty());
 	}
 
 }
