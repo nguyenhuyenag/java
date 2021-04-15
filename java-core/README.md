@@ -156,12 +156,20 @@
 	
 	- Không thể throw nhiều exception			- Có thể throw nhiều exception (dùng dấu phẩy)
 
-# compare() & compareTo()
-
 # This (đối tượng hiện tại của class)
 
 	- Không thể dùng this hay super trong phương thức static do phương thức static không gắn
 	
 	  với đối tượng, nên không có this.
 
+# For loop vs Iterator
+
+	- Iterator có khả năng thêm/ xoá những phần từ tập hợp trong quá trình duyệt.
+	
+	- Sử dụng for-each bạn không thể làm được điều này, sẽ phát sinh lỗi ConcurrentModificationException.
+	
+	- Sử dụng for-index có thể thêm/ xóa được, nhưng có thể sẽ gặp lỗi khác là IndexOutOfBoundsException.
+
 # mvn javadoc:javadoc
+
+# compare() & compareTo()
