@@ -121,7 +121,7 @@ public class JsonUtils {
 	 * @return JSON
 	 */
 	public static String xmlToJSON(Path path) {
-		String xml = FilesUtils.readFileToString(path).trim();
+		String xml = FilesUtils.readFile(path).trim();
 		JSONObject json = XML.toJSONObject(xml);
 		return json.toString(4); // tab = 4
 	}

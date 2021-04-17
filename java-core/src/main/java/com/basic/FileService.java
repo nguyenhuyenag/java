@@ -144,7 +144,7 @@ public class FileService {
 		file.setReadOnly();
 		// file.canWrite();
 		System.out.println(Files.isWritable(file.toPath()));
-		System.out.println(FilesUtils.readFileToString(file.toPath()));
+		System.out.println(FilesUtils.readFile(file.toPath()));
 		FilesUtils.writeByteArrayToFile(file.toPath(), "2019".getBytes(), false);
 	}
 

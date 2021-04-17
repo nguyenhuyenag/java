@@ -13,7 +13,7 @@ public class ByJsoup {
 
 	public static void main(String[] args) {
 		Path path = Paths.get("file/data.xml");
-		String xml = FilesUtils.readFileToString(path);
+		String xml = FilesUtils.readFile(path);
 		Document doc = Jsoup.parse(xml, "", Parser.xmlParser());
 		// System.out.println(doc.select("Body").html());
 		// System.out.println(doc.select("Body").text());

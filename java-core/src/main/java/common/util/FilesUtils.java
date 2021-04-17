@@ -38,7 +38,7 @@ class FileException extends RuntimeException {
 public class FilesUtils {
 
 	public static Path validateFile(Path path) {
-		if (!PathUtils.exists(path)) {
+		if (PathUtils.isNotExist(path)) {
 			throw new FileException("Path does't exists!");
 		}
 		return path;
@@ -54,7 +54,7 @@ public class FilesUtils {
 			return false;
 		}
 		Path parent = path.getParent();
-		if (!PathUtils.exists(parent)) {
+		if (PathUtils.isNotExist(parent)) {
 			PathUtils.createDirectories(parent);
 		}
 		try {
@@ -82,7 +82,10 @@ public class FilesUtils {
 	 * Read file to bytes array
 	 */
 	public static byte[] toByteArray(File file) {
-		return toByteArray(file.toPath());
+		if (file != null) {
+			return toByteArray(file.toPath());
+		}
+		return null;
 	}
 
 	/**
@@ -109,9 +112,14 @@ public class FilesUtils {
 	/**
 	 * Read a file into a String
 	 */
-	public static String readFileToString(Path path) {
-		byte[] bytes = toByteArray(path);
-		return new String(bytes, StandardCharsets.UTF_8);
+	public static String readFile(Path path) {
+		if (path != null) {
+			byte[] bytes = toByteArray(path);
+			if (bytes != null) {
+				return new String(bytes, StandardCharsets.UTF_8);
+			}
+		}
+		return "";
 	}
 
 	/**
@@ -124,7 +132,7 @@ public class FilesUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return Collections.emptyList();
 	}
 
 //	@Deprecated
@@ -145,7 +153,7 @@ public class FilesUtils {
 	 *               {@code false} thì ghi đè lên nội dung cũ.
 	 */
 	public static boolean writeByteArrayToFile(Path path, byte[] bytes, boolean append) {
-		if (PathUtils.isNotExists(path)) {
+		if (PathUtils.isNotExist(path)) {
 			FilesUtils.createFile(path);
 		}
 		try {
@@ -159,6 +167,19 @@ public class FilesUtils {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	/**
+	 * Tạo (nếu file chưa có) và ghi nội dung cho file
+	 * 
+	 * @param append bằng {@code true} thì thêm nội dung vào cuối file, nếu bằng
+	 *               {@code false} thì ghi đè lên nội dung cũ.
+	 */
+	public static boolean writeStringToFile(Path path, String content, boolean append) {
+		if (content == null) {
+			throw new FileException("Content is NULL!");
+		}
+		return writeByteArrayToFile(path, content.getBytes(), append);
 	}
 
 //	/**
@@ -216,7 +237,7 @@ public class FilesUtils {
 	 * 
 	 */
 	public static boolean writeTextToFile(Path path, Collection<? extends CharSequence> contents, boolean append) {
-		if (PathUtils.isNotExists(path)) {
+		if (PathUtils.isNotExist(path)) {
 			FilesUtils.createFile(path);
 		}
 		try {
@@ -269,6 +290,8 @@ public class FilesUtils {
 //	public static boolean appendTextToFile(Path path, Collection<? extends CharSequence> data) {
 //		return writeTextToFile(path, data, StandardCharsets.UTF_8, true);
 //	}
+	
+	// TODO
 
 	/**
 	 * Get all elements in the directory (without subdirectory)

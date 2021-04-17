@@ -11,7 +11,7 @@ public class ReadXml {
 
 	public static void main(String[] args) {
 		Path filename = Paths.get("file/data.xml");
-		String xml = FilesUtils.readFileToString(filename).trim();
+		String xml = FilesUtils.readFile(filename).trim();
 
 		// NodeList root = XmlUtils.asNoteList(xml, "TBaoThueDTu");
 		// NodeList root = XmlUtils.asNoteList(xml, "TBaoThueDTu");

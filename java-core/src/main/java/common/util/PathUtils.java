@@ -20,12 +20,12 @@ public class PathUtils {
 	/**
 	 * Test whether a file or directory exists
 	 */
-	public static boolean exists(Path path) {
+	public static boolean exist(Path path) {
 		return (path != null && Files.exists(path));
 	}
 	
-	public static boolean isNotExists(Path path) {
-		return !exists(path);
+	public static boolean isNotExist(Path path) {
+		return !exist(path);
 	}
 
 //	/**
