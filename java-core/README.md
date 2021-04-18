@@ -164,11 +164,11 @@
 
 # For loop vs Iterator
 
-	- Iterator có khả năng thêm/ xoá những phần từ tập hợp trong quá trình duyệt.
+	- Iterator có khả năng thêm/xoá những phần từ tập hợp trong quá trình duyệt.
 	
 	- Sử dụng for-each bạn không thể làm được điều này, sẽ phát sinh lỗi ConcurrentModificationException.
 	
-	- Sử dụng for-index có thể thêm/ xóa được, nhưng có thể sẽ gặp lỗi khác là IndexOutOfBoundsException.
+	- Sử dụng for-index có thể thêm/xóa được, nhưng có thể sẽ gặp lỗi khác là IndexOutOfBoundsException.
 
 # mvn javadoc:javadoc
 
