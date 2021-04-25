@@ -1,9 +1,5 @@
+
 package com;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import common.util.FilesUtils;
 
 public class Main {
 
@@ -18,12 +14,7 @@ public class Main {
 //	}
 
 	public static void main(String[] args) {
-		// String from = "C:\\Users\\nguye\\Desktop\\pepe";
-		Path path = Paths.get("D:\\GDrive\\ToCompany\\latex\\cv-latex");
 		
-		FilesUtils.listFile(path).forEach(t->System.out.println(t));
-		
-		// System.out.println("OK");
 	}
 
 }

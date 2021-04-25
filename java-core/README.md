@@ -89,6 +89,8 @@
 		+ Không thể override (ghi đè) phương thức static
 	- Class
 		+ Chỉ khai báo được static class khi nó nằm trong 1 class khác (nested class)
+	
+	- Với Java < 7 có thể thực thi chương trình mà không cần phương thức main()
 		
 # final
 	- Method
