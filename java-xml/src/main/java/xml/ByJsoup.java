@@ -1,4 +1,4 @@
-package com.xml;
+package xml;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

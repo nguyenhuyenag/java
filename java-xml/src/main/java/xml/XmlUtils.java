@@ -1,4 +1,4 @@
-package com.xml;
+package xml;
 
 import java.io.File;
 import java.io.StringReader;
