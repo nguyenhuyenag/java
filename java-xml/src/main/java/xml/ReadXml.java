@@ -15,14 +15,15 @@ public class ReadXml {
 
 		// NodeList root = XmlUtils.asNoteList(xml, "TBaoThueDTu");
 		// NodeList root = XmlUtils.asNoteList(xml, "TBaoThueDTu");
-		NodeList NDungTBao = XmlUtils.asNoteList(xml, "NDungTBao");
+		NodeList node = XmlUtils.asNoteList(xml, "bookstore");
 		// NodeList GDich = XmlUtils.asNoteList(xml, "GDich");
 
-		for (int i = 0; i < NDungTBao.getLength(); i++) {
-			if ("GDich".equals(NDungTBao.item(i).getNodeName())) {
-				String data = XmlUtils.getText(NDungTBao.item(i), "mtaLoiGDich");
-				System.out.println(data);
-			}
+		for (int i = 0; i < node.getLength(); i++) {
+//			if ("GDich".equals(node.item(i).getNodeName())) {
+//				String data = XmlUtils.getText(node.item(i), "mtaLoiGDich");
+//				System.out.println(data);
+//			}
+			System.out.println(node.item(i).getNodeName());
 		}
 
 	}

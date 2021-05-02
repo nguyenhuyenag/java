@@ -1,4 +1,4 @@
-package xml;
+package xml.jsoup;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,12 +14,15 @@ public class ByJsoup {
 	public static void main(String[] args) {
 		Path path = Paths.get("file/data.xml");
 		String xml = FilesUtils.readFile(path);
+		// Document doc = Jsoup.parse(xml);
 		Document doc = Jsoup.parse(xml, "", Parser.xmlParser());
-		// System.out.println(doc.select("Body").html());
+		// Lấy ra tất cả các nội dung, thẻ
+		System.out.println(doc.select("book[category='web']").html());
 		// System.out.println(doc.select("Body").text());
 		// System.out.println(doc.select("Envelope").outerHtml());
 		// System.out.println(doc.select("Envelope").first());
-		System.out.println(doc.select("mtaLoiGDich").text());
+		// String el = doc.select("book").attr("cooking");
+		// System.out.println(el);
 	}
 
 }
