@@ -28,7 +28,6 @@ public class AccessPrivate {
 			change = field.getInt(ref);
 			System.out.println("Change value from `" + now + "` to `" + change + "`\n");
 		}
-
 	}
 
 }

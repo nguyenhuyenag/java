@@ -47,9 +47,9 @@ public class StatementExecuteQuery {
 	public static void main(String[] args) throws SQLException {
 		String sqlSelect = "SELECT * FROM user";
 		try ( //
-				Connection con = ConnectionUtils.openConnection();
-				Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-				ResultSet rs = st.executeQuery(sqlSelect); //
+			Connection con = ConnectionUtils.openConnection();
+			Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = st.executeQuery(sqlSelect); //
 		) {
 			while (rs.next()) {
 				showUserInfo(rs);

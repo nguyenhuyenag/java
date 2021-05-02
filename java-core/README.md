@@ -147,7 +147,7 @@
 
 # Throw vs Throws
 
-		throw											throws
+		Throw											Throws
 	
 	- Ném ra một ngoại lệ							- Khai báo một ngoại lệ
 	
@@ -171,6 +171,12 @@
 	- Sử dụng for-each bạn không thể làm được điều này, sẽ phát sinh lỗi ConcurrentModificationException.
 	
 	- Sử dụng for-index có thể thêm/xóa được, nhưng có thể sẽ gặp lỗi khác là IndexOutOfBoundsException.
+	
+# Overloading (nạp chồng) & Overriding (ghi đè)
+
+	- Nạp chồng phương thức là ví dụ về đa hình lúc biên dịch.
+	
+	- Ghi đè phương thức là ví dụ về đa hình lúc runtime.
 
 # mvn javadoc:javadoc
 

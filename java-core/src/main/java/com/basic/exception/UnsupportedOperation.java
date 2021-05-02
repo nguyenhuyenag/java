@@ -3,10 +3,12 @@ package com.basic.exception;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Arrays.asList trả về List có kích thước cố định (fixed-size list)
+/*-
+ * - Do Arrays.asList() tạo ra List có kích thước cố định (fixed-size list)
  * 
  * => Không thể ADD, REMOVE, MODIFY List này được
+ * 
+ * => Dùng phương thức addAll(), hoặc ArrayList<>(Arrays.asList(...)); constructor
  */
 public class UnsupportedOperation {
 
