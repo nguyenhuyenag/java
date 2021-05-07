@@ -129,7 +129,7 @@
 	
 	- Access modifier mặc định của abstract methods là protected
 
-# Interface 
+# Interface
 
 	- Các field đều là public static final, cho dù bạn có khai báo rõ hay không
 
