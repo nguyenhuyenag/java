@@ -18,6 +18,13 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- apache commons -->
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.9</version>
@@ -43,19 +50,30 @@
 			<version>3.6.1</version>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-text</artifactId>
+			<version>1.9</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>4.1.0</version>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.directory.api</groupId>
+			<artifactId>api-util</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<!-- JSON -->
+		<dependency>
+			<groupId>javax.json</groupId>
+			<artifactId>javax.json-api</artifactId>
+			<version>1.1.4</version>
+		</dependency>
+		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.10.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20180813</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -78,37 +96,10 @@
 			<version>2.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.directory.api</groupId>
-			<artifactId>api-util</artifactId>
-			<version>2.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.21</version>
-		</dependency>
-		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.12</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.7.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.caliper</groupId>
-			<artifactId>caliper</artifactId>
-			<version>0.5-rc1</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-text -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-text</artifactId>
-			<version>1.9</version>
 		</dependency>
 	</dependencies>
 

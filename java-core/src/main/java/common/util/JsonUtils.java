@@ -1,17 +1,15 @@
 package common.util;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
-import org.json.JSONObject;
-import org.json.XML;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -24,10 +22,10 @@ import com.google.gson.GsonBuilder;
 public class JsonUtils {
 
 	private static final Gson GSON = new Gson();
-	private static final ObjectMapper MAPPER = new ObjectMapper();
+	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
 	private JsonUtils() {
-		MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
 	/**
@@ -50,9 +48,9 @@ public class JsonUtils {
 	 * @return JSON
 	 */
 	public static <T> String toJSON(T object) {
-		if (Objects.nonNull(object)) {
+		if (object != null) {
 			try {
-				return MAPPER.writeValueAsString(object);
+				return OBJECT_MAPPER.writeValueAsString(object);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}
@@ -67,16 +65,30 @@ public class JsonUtils {
 	 * @return object
 	 */
 	public static <T> T readValue(InputStream is, Class<T> type) {
-		if (Objects.nonNull(is)) {
+		if (is != null) {
 			try {
-				return MAPPER.readValue(is, type);
+				return OBJECT_MAPPER.readValue(is, type);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		return null;
 	}
-
+	
+	/**
+	 * InputStream to JsonObject
+	 * @param	is InputStream
+	 * @return 	JsonObject
+	 * @see    	{@link JsonObject#getBoolean("fieldname")}
+	 */
+	public static JsonObject readValue(InputStream is) {
+		if (is != null) {
+			try (JsonReader jsonReader = Json.createReader(is)) {
+				return jsonReader.readObject();
+			}
+		}
+		return null;
+	}
 	
 	/**
 	 * JSON to List Object
@@ -87,7 +99,7 @@ public class JsonUtils {
 	 */
 	public static <T> List<T> toList(String json) {
 		try {
-			return MAPPER.readValue(json, new TypeReference<List<T>>() {});
+			return OBJECT_MAPPER.readValue(json, new TypeReference<List<T>>() {});
 		} catch (JsonMappingException e) {
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
@@ -115,24 +127,24 @@ public class JsonUtils {
 		return GSON.toJson(list);
 	}
 	
-	/**
-	 * XML to JSON
-	 * @param path the path of xml
-	 * @return JSON
-	 */
-	public static String xmlToJSON(Path path) {
-		String xml = FilesUtils.readFile(path).trim();
-		JSONObject json = XML.toJSONObject(xml);
-		return json.toString(4); // tab = 4
-	}
-
-	/**
-	 * XML to JSON
-	 * @param file the path of xml
-	 * @return JSON
-	 */
-	public static String xmlToJSON(File file) {
-		return xmlToJSON(file.toPath());
-	}
+//	/**
+//	 * XML to JSON
+//	 * @param path the path of xml
+//	 * @return JSON
+//	 */
+//	public static String xmlToJSON(Path path) {
+//		String xml = FilesUtils.readFile(path).trim();
+//		JSONObject json = XML.toJSONObject(xml);
+//		return json.toString(4); // tab = 4
+//	}
+//
+//	/**
+//	 * XML to JSON
+//	 * @param file the path of xml
+//	 * @return JSON
+//	 */
+//	public static String xmlToJSON(File file) {
+//		return xmlToJSON(file.toPath());
+//	}
 
 }
