@@ -1,25 +1,17 @@
 
 package com;
 
-import java.util.Arrays;
-import java.util.List;
+import org.json.JSONObject;
 
-import org.apache.commons.text.CaseUtils;
+import common.util.JsonUtils;
 
 public class Main {
 
-	private static String toCamel(String str) {
-		return CaseUtils.toCamelCase(str, false, new char[] { '_' });
-	}
-
 	public static void main(String[] args) {
-		List<String> keys = Arrays.asList("opened_by", "ticket_owner", "close_reason", "full_name");
-		List<String> fields = Arrays.asList("openedBy", "ticketOwner", "closeReason");
-		keys.forEach(t -> {
-			if (fields.contains(toCamel(t))) {
-				System.out.println(t);
-			}
-		});
+		String jsonString = "{\"record\": {\"sample\": \"Hello World\",\"sample_2\": \"Hello World_2\"},  \"metadata\": {\"id\": \"value\",\"private\": \"true\"}}";
+		System.out.println(jsonString);
+		JSONObject json = JsonUtils.toJSONObject(jsonString);
+		System.out.println(json.get("record"));
 	}
 
 }

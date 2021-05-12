@@ -11,6 +11,8 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import org.json.JSONObject;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -42,12 +44,12 @@ public class JsonUtils {
 	}
 	
 	/**
-	 * Object to JSON
+	 * Object to JSON String
 	 * @param <T> generic type
 	 * @param object Java object
 	 * @return JSON
 	 */
-	public static <T> String toJSON(T object) {
+	public static <T> String toJsonString(T object) {
 		if (object != null) {
 			try {
 				return OBJECT_MAPPER.writeValueAsString(object);
@@ -76,18 +78,28 @@ public class JsonUtils {
 	}
 	
 	/**
-	 * InputStream to JsonObject
+	 * Convert InputStream to JsonObject
 	 * @param	is InputStream
 	 * @return 	JsonObject
 	 * @see    	{@link JsonObject#getBoolean("fieldname")}
 	 */
-	public static JsonObject readValue(InputStream is) {
+	public static JsonObject toJsonObject(InputStream is) {
 		if (is != null) {
 			try (JsonReader jsonReader = Json.createReader(is)) {
 				return jsonReader.readObject();
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Convert JSON string to JSONObject
+	 * @param	jsonString is a JSON string
+	 * @return 	JSONObject
+	 * @see 	{@link JSONObject#get("fieldname")}}
+	 */
+	public static JSONObject toJSONObject(String jsonString) {
+		return new JSONObject(jsonString);
 	}
 	
 	/**
