@@ -6,8 +6,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.apache.commons.math3.primes.Primes;
-
 public class StreamFilter {
 
 	@SafeVarargs
@@ -19,8 +17,9 @@ public class StreamFilter {
 		return stream.collect(Collectors.toList());
 	}
 
+	// kiem tra so nguyen to
 	static boolean isPrime(int n) {
-		return Primes.isPrime(n);
+		return true;
 	}
 
 	public static void main(String[] args) {

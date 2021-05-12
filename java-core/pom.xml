@@ -34,41 +34,29 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
-		<dependency>
-			<groupId>commons-validator</groupId>
-			<artifactId>commons-validator</artifactId>
-			<version>1.7</version>
-		</dependency>
+		<!-- <dependency> <groupId>commons-validator</groupId> <artifactId>commons-validator</artifactId> 
+			<version>1.7</version> </dependency> -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
 			<version>4.4</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-math3</artifactId>
-			<version>3.6.1</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-math3</artifactId> 
+			<version>3.6.1</version> </dependency> -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-text</artifactId>
 			<version>1.9</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>4.1.0</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.apache.poi</groupId> <artifactId>poi-ooxml</artifactId> 
+			<version>4.1.0</version> </dependency> -->
 		<dependency>
 			<groupId>org.apache.directory.api</groupId>
 			<artifactId>api-util</artifactId>
 			<version>2.0.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>fluent-hc</artifactId>
-			<version>4.5.5</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.apache.httpcomponents</groupId> <artifactId>fluent-hc</artifactId> 
+			<version>4.5.5</version> </dependency> -->
 		<!-- JSON -->
 		<dependency>
 			<groupId>javax.json</groupId>
@@ -96,16 +84,10 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.15</version>
 		</dependency>
-		<dependency>
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.11.3</version>
-		</dependency>
-		<dependency>
-			<groupId>com.thedeanda</groupId>
-			<artifactId>lorem</artifactId>
-			<version>2.1</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.jsoup</groupId> <artifactId>jsoup</artifactId> 
+			<version>1.11.3</version> </dependency> -->
+		<!-- <dependency> <groupId>com.thedeanda</groupId> <artifactId>lorem</artifactId> 
+			<version>2.1</version> </dependency> -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
