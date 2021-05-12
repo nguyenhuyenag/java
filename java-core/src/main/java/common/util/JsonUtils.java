@@ -3,8 +3,6 @@ package common.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import javax.json.Json;
@@ -16,14 +14,13 @@ import org.json.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class JsonUtils {
 
-	private static final Gson GSON = new Gson();
+	// private static final Gson GSON = new Gson();
 	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
 	private JsonUtils() {
@@ -32,15 +29,12 @@ public class JsonUtils {
 
 	/**
 	 * JSON to Object
-	 * @param <T> generic type
-	 * @param json
-	 * @param type
 	 * @return Java object
 	 */
-	public static <T> T toObject(String json, Type type) {
+	public static <T> T toObject(String jsonString, Type type) {
 		GsonBuilder builder = new GsonBuilder();
 		Gson gson = builder.enableComplexMapKeySerialization().create();
-		return gson.fromJson(json, type);
+		return gson.fromJson(jsonString, type);
 	}
 	
 	/**
@@ -49,7 +43,7 @@ public class JsonUtils {
 	 * @param object Java object
 	 * @return JSON
 	 */
-	public static <T> String toJsonString(T object) {
+	public static String toJsonString(Object object) {
 		if (object != null) {
 			try {
 				return OBJECT_MAPPER.writeValueAsString(object);
@@ -112,32 +106,28 @@ public class JsonUtils {
 	public static <T> List<T> toList(String json) {
 		try {
 			return OBJECT_MAPPER.readValue(json, new TypeReference<List<T>>() {});
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
-	/**
-	 * JSON to List Object with GSON
-	 * 
-	 * List<User> list = JsonUtils.toList(json, User[].class);
-	 */
-	public static <T> List<T> toListWithoutCommon(String json, Class<T[]> array) {
-		return Arrays.asList(GSON.fromJson(json, array));
-	}
+//	/**
+//	 * JSON to List Object with GSON
+//	 * 
+//	 * List<User> list = JsonUtils.toList(json, User[].class);
+//	 */
+//	public static <T> List<T> toListWithoutCommon(String json, Class<T[]> array) {
+//		return Arrays.asList(GSON.fromJson(json, array));
+//	}
 	
-	/**
-	 * Colection to JSON
-	 * @param <T>
-	 * @param Colection
-	 * @return JSON
-	 */
-	public static <T> String collectionToJSON(Collection<T> list) {
-		return GSON.toJson(list);
-	}
+//	/**
+//	 * Colection to JSON
+//	 * @return JSON
+//	 */
+//	public static <T> String collectionToJSON(Collection<T> list) {
+//		return GSON.toJson(list);
+//	}
 	
 //	/**
 //	 * XML to JSON
