@@ -6,8 +6,8 @@ public class NumberCollection {
 
 	// Decimal Format
 	static void customFormat(String pattern, double value) {
-		DecimalFormat myFormatter = new DecimalFormat(pattern);
-		String output = myFormatter.format(value);
+		DecimalFormat format = new DecimalFormat(pattern);
+		String output = format.format(value);
 		System.out.println(value + ": \t" + pattern + "	\t= " + output);
 	}
 
@@ -29,8 +29,8 @@ public class NumberCollection {
 	}
 
 	public static void main(String[] args) {
-		// formatDecimal();
-		doiHeCoSo();
+		formatDecimal();
+		// doiHeCoSo();
 	}
 
 }

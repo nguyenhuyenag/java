@@ -25,7 +25,7 @@ public class SystemProperty {
 	};
 	
 	// print all
-	void printAllProperties() {
+	public void printAllProperties() {
 		Properties properties = System.getProperties();
 		Enumeration<Object> enumeration = properties.keys();
 		for (int i = 0; i < properties.size(); i++) {
