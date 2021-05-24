@@ -48,7 +48,7 @@ class Book implements Comparable<Book> {
 
 }
 
-public class QueueObject {
+public class QueueWithObject {
 
 	public static void comparing() throws InterruptedException {
 		Comparator<User> cpr = Comparator.comparing(User::getName); // auto sort by name

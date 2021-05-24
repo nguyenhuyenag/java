@@ -39,7 +39,7 @@ public class CollectionMethod {
 		Collections.rotate(list, -1); // xoay thuận đầu về cuối
 		// Collections.copy(null, null);
 		// Collections.fill(list, obj);
-		// Collections.frequency(c, o);
+		// Collections.frequency(c, o);  // trả về số lần một phần tử có mặt trong tập hợp
 		// Collections.indexOfSubList(source, target);
 		// Collections.lastIndexOfSubList(source, target);
 		// Collections.shuffle(list);
