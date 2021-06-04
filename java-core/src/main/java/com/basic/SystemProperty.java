@@ -21,7 +21,8 @@ public class SystemProperty {
 		"user.dir",			// 	Đường dẫn của dự án
 		"user.home",
 		"user.name",		// 	Tên người dùng
-		"line.separator"
+		"line.separator",
+		"user.timezone"
 	};
 	
 	// print all

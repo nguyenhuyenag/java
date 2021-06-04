@@ -1,77 +1,39 @@
 package common.util;
 
-import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.Base64;
 
 public class Base64Utils {
-	
+
 	/**
 	 * Base64 encode
+	 * 
 	 * @param byteArr the byte array to encode
 	 * @return byte array encoded
 	 */
 	public static byte[] encode(byte[] byteArr) {
 		return Base64.getEncoder().encode(byteArr);
 	}
-	
+
 	public static String encodeToString(byte[] byteArr) {
 		byte[] arr = encode(byteArr);
 		return new String(arr, StandardCharsets.UTF_8);
 	}
-	
+
 	public static String encodeToString(String str) {
 		byte[] byteArr = str.getBytes(StandardCharsets.UTF_8);
 		return encodeToString(byteArr);
 	}
-	
-	public static String encodeToString(File file) {
-		byte[] byteArr = FileUtils.toByteArray(file);
+
+	public static String encodeToString(Path path) {
+		byte[] byteArr = FileUtils.toByteArray(path);
 		return encodeToString(byteArr);
 	}
-	
-//	/**
-//	 * Base64 encode with UTF-8
-//	 * @param src the string to encode
-//	 * @return byte array encoded
-//	 */
-//	public static byte[] encode(String src) {
-//		return encode(src, StandardCharsets.UTF_8);
-//	}
 
-//	/**
-//	 * Base64 encode to string with UTF-8
-//	 * @param byteArr the byte array to encode
-//	 * @return string encoded
-//	 */
-//	public static String encodeToString(byte[] byteArr) {
-//		return encodeToString(byteArr, StandardCharsets.UTF_8);
-//	}
-	
-//	/**
-//	 * Base64 encode DataHandler
-//	 * @param path of file
-//	 * @return
-//	 * @throws IOException
-//	 */
-//	public static String encode(DataHandler handler) {
-//		byte[] byteArr = FilesUtils.toByteArray(handler);
-//		return encodeToString(byteArr);
-//	}
-	
-//	/**
-//	 * Base64 encode DataHandler without Charset
-//	 * @param path of file
-//	 * @return
-//	 * @throws IOException
-//	 */
-//	public static String encodeWithoutCharset(DataHandler handler) {
-//		byte[] byteArr = FilesUtils.toByteArray(handler);
-//		return Base64.getEncoder().encodeToString(byteArr);
-//	}
-	
 	/**
 	 * Base64 decode
+	 * 
 	 * @param src the byte array to decode
 	 * @return byte array decoded
 	 */
@@ -81,6 +43,7 @@ public class Base64Utils {
 
 	/**
 	 * Base64 decode with UTF-8
+	 * 
 	 * @param base64 is a String Base64
 	 * @return byte array decoded
 	 */
@@ -116,6 +79,46 @@ public class Base64Utils {
 //	 */
 //	public static String decodeToString(String base64) {
 //		return decodeToString(base64, StandardCharsets.UTF_8);
+//	}
+
+//	/**
+//	 * Base64 encode with UTF-8
+//	 * @param src the string to encode
+//	 * @return byte array encoded
+//	 */
+//	public static byte[] encode(String src) {
+//		return encode(src, StandardCharsets.UTF_8);
+//	}
+
+//	/**
+//	 * Base64 encode to string with UTF-8
+//	 * @param byteArr the byte array to encode
+//	 * @return string encoded
+//	 */
+//	public static String encodeToString(byte[] byteArr) {
+//		return encodeToString(byteArr, StandardCharsets.UTF_8);
+//	}
+
+//	/**
+//	 * Base64 encode DataHandler
+//	 * @param path of file
+//	 * @return
+//	 * @throws IOException
+//	 */
+//	public static String encode(DataHandler handler) {
+//		byte[] byteArr = FilesUtils.toByteArray(handler);
+//		return encodeToString(byteArr);
+//	}
+
+//	/**
+//	 * Base64 encode DataHandler without Charset
+//	 * @param path of file
+//	 * @return
+//	 * @throws IOException
+//	 */
+//	public static String encodeWithoutCharset(DataHandler handler) {
+//		byte[] byteArr = FilesUtils.toByteArray(handler);
+//		return Base64.getEncoder().encodeToString(byteArr);
 //	}
 
 }
