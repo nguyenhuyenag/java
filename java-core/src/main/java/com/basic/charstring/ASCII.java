@@ -1,30 +1,26 @@
 package com.basic.charstring;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class ASCII {
 
-	public static void usingStreamIterate() {
-		Object[] array = Stream.iterate('a', i -> ++i) //
+	public static Object[] usingStreamIterate() {
+		return Stream.iterate('a', c -> ++c) //
 				.limit(26) //
 				.toArray();
-		System.out.println(Arrays.toString(array));
 	}
 
-	public static void usingIntStream() {
-		int[] array = IntStream.rangeClosed('a', 'k') //
+	public static Object[] usingMapToObj() {
+		return IntStream.rangeClosed('a', 'z') //
+				.mapToObj(t -> (char) t) //
+				.toArray();
+	}
+
+	public static int[] usingIntStream() {
+		return IntStream.rangeClosed('a', 'k') //
 				.map(t -> (char) t) //
 				.toArray();
-		System.out.println(Arrays.toString(array));
-	}
-
-	public static void usingMapToObj() {
-		Object[] arr = IntStream.rangeClosed('a', 'z') //
-				.mapToObj(v -> (char) v) //
-				.toArray();
-		System.out.println(Arrays.toString(arr));
 	}
 
 	public static void main(String[] args) {

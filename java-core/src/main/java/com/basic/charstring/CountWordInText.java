@@ -11,6 +11,9 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Đếm số lần xuất hiện của ký tự
+ */
 public class CountWordInText {
 
 	public static void useSet(String text) {

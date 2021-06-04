@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 public class StringCollection {
@@ -35,10 +34,11 @@ public class StringCollection {
 	 * Đảo chuỗi
 	 */
 	public static String reverse(String str) {
-		char[] chars = str.toCharArray();
-		ArrayUtils.reverse(chars);
-		// return StringUtils.reverse(str);
-		return new String(chars);
+		// char[] chars = str.toCharArray();
+		// ArrayUtils.reverse(chars);
+		// return new String(chars); // StringUtils.reverse(str);
+		StringBuilder sb = new StringBuilder(str);
+		return sb.reverse().toString();
 	}
 
 	/**
