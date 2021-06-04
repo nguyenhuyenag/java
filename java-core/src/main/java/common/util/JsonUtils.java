@@ -3,6 +3,7 @@ package common.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.util.Collection;
 import java.util.List;
 
 import javax.json.Json;
@@ -21,10 +22,10 @@ import com.google.gson.GsonBuilder;
 public class JsonUtils {
 
 	// private static final Gson GSON = new Gson();
-	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+	private static final ObjectMapper MAPPER = new ObjectMapper();
 
 	private JsonUtils() {
-		OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
 	/**
@@ -46,7 +47,7 @@ public class JsonUtils {
 	public static String toJsonString(Object object) {
 		if (object != null) {
 			try {
-				return OBJECT_MAPPER.writeValueAsString(object);
+				return MAPPER.writeValueAsString(object);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}
@@ -63,7 +64,7 @@ public class JsonUtils {
 	public static <T> T readValue(InputStream is, Class<T> type) {
 		if (is != null) {
 			try {
-				return OBJECT_MAPPER.readValue(is, type);
+				return MAPPER.readValue(is, type);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -105,7 +106,7 @@ public class JsonUtils {
 	 */
 	public static <T> List<T> toList(String json) {
 		try {
-			return OBJECT_MAPPER.readValue(json, new TypeReference<List<T>>() {});
+			return MAPPER.readValue(json, new TypeReference<List<T>>() {});
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -121,13 +122,20 @@ public class JsonUtils {
 //		return Arrays.asList(GSON.fromJson(json, array));
 //	}
 	
-//	/**
-//	 * Colection to JSON
-//	 * @return JSON
-//	 */
-//	public static <T> String collectionToJSON(Collection<T> list) {
-//		return GSON.toJson(list);
-//	}
+	/**
+	 * Colection to JSON
+	 * @return JSON
+	 * @throws JsonProcessingException 
+	 */
+	public static <T> String collectionToJSON(Collection<T> list) {
+		// return GSON.toJson(list);
+		try {
+			return MAPPER.writeValueAsString(list);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
 	
 //	/**
 //	 * XML to JSON

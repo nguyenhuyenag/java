@@ -35,7 +35,7 @@ class FileException extends RuntimeException {
 	}
 }
 
-public class FilesUtils {
+public class FileUtils {
 
 	public static Path validateFile(Path path) {
 		if (PathUtils.isNotExist(path)) {
@@ -154,7 +154,7 @@ public class FilesUtils {
 	 */
 	public static boolean writeByteArrayToFile(Path path, byte[] bytes, boolean append) {
 		if (PathUtils.isNotExist(path)) {
-			FilesUtils.createFile(path);
+			FileUtils.createFile(path);
 		}
 		try {
 			if (!append) {
@@ -238,7 +238,7 @@ public class FilesUtils {
 	 */
 	public static boolean writeTextToFile(Path path, Collection<? extends CharSequence> contents, boolean append) {
 		if (PathUtils.isNotExist(path)) {
-			FilesUtils.createFile(path);
+			FileUtils.createFile(path);
 		}
 		try {
 			if (!append) {

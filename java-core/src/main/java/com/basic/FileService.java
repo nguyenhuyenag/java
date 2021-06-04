@@ -24,8 +24,6 @@ import java.util.Scanner;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
-import common.util.FilesUtils;
-
 public class FileService {
 
 	public static String readFileToStringCommonsIO(File file, Charset cs) throws IOException {
@@ -144,8 +142,8 @@ public class FileService {
 		file.setReadOnly();
 		// file.canWrite();
 		System.out.println(Files.isWritable(file.toPath()));
-		System.out.println(FilesUtils.readFile(file.toPath()));
-		FilesUtils.writeByteArrayToFile(file.toPath(), "2019".getBytes(), false);
+		//System.out.println(FileUtils.readFileToString(file.toPath()));
+		//FileUtils.writeStringToFile(file.toPath(), "2019".getBytes(), false);
 	}
 
 	// file attributes

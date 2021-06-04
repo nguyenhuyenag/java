@@ -26,7 +26,7 @@ public class Base64Utils {
 	}
 	
 	public static String encodeToString(File file) {
-		byte[] byteArr = FilesUtils.toByteArray(file);
+		byte[] byteArr = FileUtils.toByteArray(file);
 		return encodeToString(byteArr);
 	}
 	
