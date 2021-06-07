@@ -21,6 +21,11 @@ public class ListTo {
 		Object[] arr4 = list.toArray();
 	}
 
+	public static void toArrayInt() {
+		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+		int[] arr = list.stream().mapToInt(t -> t).toArray();
+	}
+
 	public static void toMap() {
 		Map<String, Integer> map = list.stream() //
 				.collect(Collectors.toMap(Function.identity(), String::length));
