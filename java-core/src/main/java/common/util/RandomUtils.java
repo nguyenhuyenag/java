@@ -28,11 +28,16 @@ public class RandomUtils {
 		return RANDOM.nextInt((max - min) + 1) + min;
 	}
 	
-	public static int getIntFrom(int min, int max) {
+	public static int randomIntFrom(int min, int max) {
 		if (max <= min) {
 			throw new IllegalArgumentException("Max must be greater than min");
 		}
 		return ThreadLocalRandom.current().nextInt(min, max + 1);
+	}
+	
+	public <T> T randomFromList(List<T> list) {
+		int index = randomIntFrom(0, list.size() - 1);
+		return list.get(index);
 	}
 	
 	/**
@@ -80,14 +85,9 @@ public class RandomUtils {
 	public static Map<String, Integer> getMap() {
 		Map<String, Integer> map = new HashMap<>();
 		for (int i = 0; i < 9; i++) {
-			map.put(RandomUtils.getAlphabet().toUpperCase(), RandomUtils.getInt(-99, 99));
+			map.put(getAlphabet().toUpperCase(), getInt(-99, 99));
 		}
 		return map;
-	}
-	
-	@Deprecated
-	public static int[] pickRandom() {
-		return new Random().ints(0, 5).distinct().limit(5).toArray();
 	}
 	
 	public static double rand(double min, double max) {
@@ -107,6 +107,11 @@ public class RandomUtils {
 			pre = cur;
 			System.out.println(cur);
 		}
+	}
+	
+	@Deprecated
+	public static int[] pickRandom() {
+		return new Random().ints(0, 5).distinct().limit(5).toArray();
 	}
 	
 }
