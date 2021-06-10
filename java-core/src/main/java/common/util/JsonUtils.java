@@ -3,6 +3,7 @@ package common.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -10,10 +11,10 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -106,18 +107,25 @@ public class JsonUtils {
 	 * JSON to List Object
 	 * 
 	 * @param <T>
-	 * @param json
+	 * @param jsonStringArray
 	 * @param array
 	 * @return
 	 */
-	public static <T> List<T> toList(String json) {
-		try {
-			return MAPPER.readValue(json, new TypeReference<List<T>>() {
-			});
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+	public static <T> List<T> toList(String jsonStringArray, Class<T> classOfT) {
+//		try {
+//			return MAPPER.readValue(json, new TypeReference<List<T>>() {
+//			});
+//		} catch (JsonProcessingException e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+		List<T> list = new ArrayList<>();
+		JSONArray jsonArray = new JSONArray(jsonStringArray);
+		for (Object json : jsonArray) {
+			T t = new Gson().fromJson(json.toString(), classOfT);
+			list.add(t);
 		}
-		return null;
+		return list;
 	}
 
 	/**
