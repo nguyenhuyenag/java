@@ -97,7 +97,9 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
+					<!-- Java 8 syntax -->
 					<source>1.8</source>
+					<!-- the compiled classes to be compatible with JVM 1.8 -->
 					<target>1.8</target>
 				</configuration>
 			</plugin>
