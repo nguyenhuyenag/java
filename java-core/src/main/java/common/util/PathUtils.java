@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -26,6 +27,11 @@ public class PathUtils {
 	
 	public static boolean isNotExist(Path path) {
 		return !exist(path);
+	}
+	
+	public static String join(String... paths) {
+		String result = String.join("/", paths);
+		return Paths.get(result.toString()).toString();
 	}
 
 //	/**
