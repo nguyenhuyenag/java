@@ -1,7 +1,6 @@
 package common.util;
 
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.util.Base64;
 
 public class Base64Utils {
@@ -17,7 +16,7 @@ public class Base64Utils {
 	}
 
 	public static String encodeToString(byte[] byteArr) {
-		byte[] arr = encode(byteArr);
+		byte[] arr = Base64.getEncoder().encode(byteArr);
 		return new String(arr, StandardCharsets.UTF_8);
 	}
 
@@ -26,10 +25,10 @@ public class Base64Utils {
 		return encodeToString(byteArr);
 	}
 
-	public static String encodeToString(Path path) {
-		byte[] byteArr = FileUtils.toByteArray(path);
-		return encodeToString(byteArr);
-	}
+//	public static String encodeToString(Path path) {
+//		byte[] byteArr = FileUtils.toByteArray(path);
+//		return encodeToString(byteArr);
+//	}
 
 	/**
 	 * Base64 decode
@@ -61,16 +60,11 @@ public class Base64Utils {
 //		return decode(src, StandardCharsets.UTF_8);
 //	}
 
-//	/**
-//	 * Base64 decode to string with Charset
-//	 * @param src the string Base64
-//	 * @param charset is Charset
-//	 * @return string decoded
-//	 */
-//	public static String decodeToString(String src, Charset charset) {
-//		byte[] byteArr = decode(src, charset);
-//		return new String(byteArr, charset);
-//	}
+	public static String decodeToString(String base64) {
+		byte[] byteArr = base64.getBytes(StandardCharsets.UTF_8);
+		byteArr = Base64.getDecoder().decode(byteArr);
+		return new String(byteArr);
+	}
 
 //	/**
 //	 * Base64 decode to string with UTF-8
