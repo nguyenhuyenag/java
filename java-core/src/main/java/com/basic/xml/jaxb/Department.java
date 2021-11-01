@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-@XmlRootElement(namespace = "https://gpcoder.com/jaxb")
+@XmlRootElement(namespace = "https://abc.com/jaxb")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Department {
 

@@ -1,21 +1,35 @@
 package com;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.UUID;
-
-import common.util.DateTimeUtils;
+import common.util.XmlUtils;
 
 public class Main {
 	
-	private final static String MQ_PATH = "C:/ftp/HDDT";
-
 	public static void main(String[] args) {
-		//String data = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48VERpZXA+PFRUQ2h1bmc+PFBCYW4+MS4wLjA8L1BCYW4+PE1OR3VpPlRDVDwvTU5HdWk+PE1OTmhhbj5WMDMwOTQ3ODMwNjwvTU5OaGFuPjxNTFREaWVwPjk5OTwvTUxURGllcD48TVREaWVwPlRDVF9NVERpZXBfMDAxPC9NVERpZXA+PE1URFRDaGlldT5UQ1ROX01URGllcF8wMDE8L01URFRDaGlldT48L1RUQ2h1bmc+PERMaWV1PjxUQmFvPjxNVERpZXA+OTk5PC9NVERpZXA+PE1OR3VpPlRDVDwvTU5HdWk+PE5OaGFuPjIwMjEtMTAtMzBUMTQ6MDA6MDA8L05OaGFuPjxUVFROaGFuPjE8L1RUVE5oYW4+PERTTERvPjxMRG8+PE1UYT5M4buXaSBr4bu5IHRodeG6rXQgcGjhuqNuIGjhu5NpIHThu6sgVENUPC9NVGE+PE1Mb2k+VENULTAwMTwvTUxvaT48L0xEbz48L0RTTERvPjwvVEJhbz48L0RMaWV1PjwvVERpZXA+";
-		//System.out.println(Base64Utils.decodeToString(data));
-		String filename = UUID.randomUUID().toString().replaceAll("-", ""); 
-		Path pathFile = Paths.get(MQ_PATH, DateTimeUtils.getCurrentDateTimeByPattern("yyyy/MM/dd"), "mq/mq_" + filename + ".xml");
-		System.out.println(pathFile.toString());
+		String xml = "<TDiep>\r\n" + 
+				"	<TTChung>\r\n" + 
+				"		<PBan>1.0.0</PBan>\r\n" + 
+				"		<MNGui>TCT</MNGui>\r\n" + 
+				"		<MNNhan>V0309478306</MNNhan>\r\n" + 
+				"		<MLTDiep>999</MLTDiep>\r\n" + 
+				"		<MTDiep>TCT_MTDiep_999</MTDiep>\r\n" + 
+				"		<MTDTChieu>V030947830659FEA6EA42BA4C13906BDB819545CEC1</MTDTChieu>\r\n" + 
+				"	</TTChung>\r\n" + 
+				"	<DLieu>\r\n" + 
+				"		<TBao>\r\n" + 
+				"			<MTDiep>999</MTDiep>\r\n" + 
+				"			<MNGui>TCT</MNGui>\r\n" + 
+				"			<NNhan>2021-10-30T14:00:00</NNhan>\r\n" + 
+				"			<TTTNhan>0</TTTNhan>\r\n" + 
+				"			<DSLDo>\r\n" + 
+				"				<LDo>\r\n" + 
+				"					<MTa>TCT đã nhận thông điệp thành công</MTa>\r\n" + 
+				"					<MLoi />\r\n" + 
+				"				</LDo>\r\n" + 
+				"			</DSLDo>\r\n" + 
+				"		</TBao>\r\n" + 
+				"	</DLieu>\r\n" + 
+				"</TDiep>";
+		System.out.println(XmlUtils.readData(xml, "MNGui"));
 	}
 
 }

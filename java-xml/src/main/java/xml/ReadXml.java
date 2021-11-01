@@ -5,16 +5,12 @@ import java.nio.file.Paths;
 
 import org.w3c.dom.NodeList;
 
-import common.util.FilesUtils;
-
 public class ReadXml {
 
 	public static void main(String[] args) {
 		Path filename = Paths.get("file/data.xml");
-		String xml = FilesUtils.readFile(filename).trim();
+		String xml = FileUtils.readFile(filename).trim();
 
-		// NodeList root = XmlUtils.asNoteList(xml, "TBaoThueDTu");
-		// NodeList root = XmlUtils.asNoteList(xml, "TBaoThueDTu");
 		NodeList node = XmlUtils.asNoteList(xml, "bookstore");
 		// NodeList GDich = XmlUtils.asNoteList(xml, "GDich");
 

@@ -7,13 +7,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.parser.Parser;
 
-import common.util.FilesUtils;
+import xml.FileUtils;
 
 public class ByJsoup {
 
 	public static void main(String[] args) {
 		Path path = Paths.get("file/data.xml");
-		String xml = FilesUtils.readFile(path);
+		String xml = FileUtils.readFile(path);
 		// Document doc = Jsoup.parse(xml);
 		Document doc = Jsoup.parse(xml, "", Parser.xmlParser());
 		// Lấy ra tất cả các nội dung, thẻ

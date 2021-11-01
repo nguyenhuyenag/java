@@ -30,8 +30,9 @@ public class PathUtils {
 	}
 	
 	public static String join(String... paths) {
-		String result = String.join("/", paths);
-		return Paths.get(result.toString()).toString();
+		String joinPath = String.join("/", paths);
+		joinPath = Paths.get(joinPath.toString()).toString();
+		return FilenameUtils.normalize(joinPath, true);
 	}
 
 //	/**
