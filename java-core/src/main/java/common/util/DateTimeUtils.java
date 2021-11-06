@@ -72,6 +72,18 @@ public class DateTimeUtils {
 		return null;
 	}
 	
+	public static String changeDateFormat(String strDate, String currentPattern, String newPattern) {
+		try {
+			DateFormat sdf = new SimpleDateFormat(currentPattern);
+			Date date = sdf.parse(strDate);
+			sdf = new SimpleDateFormat(newPattern);
+			return sdf.format(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
 	/**
 	 * Replace for Date constructor warning @Deprecated
 	 * @param year is year

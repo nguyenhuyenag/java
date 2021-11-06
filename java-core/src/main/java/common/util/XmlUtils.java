@@ -17,7 +17,7 @@ import org.xml.sax.SAXException;
 
 public class XmlUtils {
 
-	public static String readData(String xml, String nodename) {
+	public static String getTextOfTag(String xml, String parent, String tagName) {
 		if (StringUtils.isEmpty(xml)) {
 			return "";
 		}
@@ -26,14 +26,13 @@ public class XmlUtils {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			InputSource is = new InputSource(new StringReader(xml));
 			Document doc = builder.parse(is);
-			// Document doc = dBuilder.parse(path.toFile());
 			doc.getDocumentElement().normalize();
-			NodeList nList = doc.getElementsByTagName("TBao");
+			NodeList nList = doc.getElementsByTagName(parent);
 			for (int i = 0; i < nList.getLength(); i++) {
 				Node nNode = nList.item(i);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element el = (Element) nNode;
-					Node tagNode = el.getElementsByTagName(nodename).item(0);
+					Node tagNode = el.getElementsByTagName(tagName).item(0);
 					if (tagNode != null) {
 						return tagNode.getTextContent();
 					}
@@ -43,6 +42,13 @@ public class XmlUtils {
 			e.printStackTrace();
 		}
 		return "";
+	}
+
+	public static String getStructAndTextOfTag(String xml, String tagName) {
+		if (StringUtils.isEmpty(xml) || StringUtils.isEmpty(tagName)) {
+			return "";
+		}
+		return StringUtils.substringBetween(xml, "<" + tagName + ">", "</" + tagName + ">");
 	}
 
 }
