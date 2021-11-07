@@ -15,6 +15,14 @@ public class DaysBetweenTwoDate {
 	public static long betweenDates(Date firstDate, Date secondDate) throws IOException {
 		return ChronoUnit.DAYS.between(firstDate.toInstant(), secondDate.toInstant());
 	}
+	
+	//	public static Date asDate(LocalDate localDate) {
+	//		return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+	//	}
+	//
+	//	public static Date asDate(LocalDateTime localDateTime) {
+	//		return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+	//	}
 
 	public static void main(String[] args) {
 		// LocalDate d1 = LocalDate.of(1987, Month.JUNE, 24);

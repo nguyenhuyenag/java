@@ -1,4 +1,4 @@
-package com.basic.xml.jaxb;
+package com.basic.xml;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

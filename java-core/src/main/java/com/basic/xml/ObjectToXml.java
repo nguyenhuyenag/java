@@ -1,4 +1,4 @@
-package com.basic.xml.jaxb;
+package com.basic.xml;
 
 import java.io.FileOutputStream;
 import java.util.ArrayList;

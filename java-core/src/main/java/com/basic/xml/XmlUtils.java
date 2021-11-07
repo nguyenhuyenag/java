@@ -1,4 +1,4 @@
-package common.util;
+package com.basic.xml;
 
 import java.io.IOException;
 import java.io.StringReader;

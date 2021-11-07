@@ -22,7 +22,7 @@ public class TimeWatch {
 	}
 
 	public static void main(String[] args) {
-		TimeWatch.setTime(TimeUnit.SECONDS, 2);
+		TimeWatch.setTime(TimeUnit.SECONDS, 5);
 		long i = 0;
 		while (TimeWatch.hasNext()) {
 			i++;
