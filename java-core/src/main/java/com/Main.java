@@ -1,22 +1,53 @@
 package com;
 
-import org.apache.commons.lang3.StringUtils;
-
-import common.util.DateTimeUtils;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
 
-	public static String getTagValue(String xml, String tagName) {
-		return StringUtils.substringBetween(xml, "<" + tagName + ">", "</" + tagName + ">");
+	static int totalThreads = 4;
+
+	static void split1(List<Integer> list) {
+		int totalMessages = list.size();
+		int msgPerThread = totalMessages / totalThreads;
+		if (msgPerThread == 0) {
+			msgPerThread = totalMessages;
+		}
+		if (totalThreads > totalMessages) {
+			totalThreads = 1;
+		}
+		for (int i = 0; i < totalThreads; i++) {
+			System.out.println(
+					Arrays.toString(list.subList(msgPerThread * i, msgPerThread * i + msgPerThread).toArray()));
+		}
 	}
-	
-	public static boolean isNumeric(String str) {
-		return str.matches("\\d+");
+
+	public static <T> void splitList(List<T> list, int page) {
+		int total = list.size();
+		if (total % page == 0) {
+			int start = 0, end = page;
+			while (end <= total) {
+				List<T> subList = list.subList(start, end);
+				start = end;
+				end = start + page;
+				System.out.println(Arrays.toString(subList.toArray()));
+			}
+		} else {
+			System.out.println("Lẻ");
+			System.out.println(total / page);
+		}
 	}
 
 	public static void main(String[] args) {
-		String date = "2021-11-06 11:25:54";
-		System.out.println(DateTimeUtils.changeDateFormat(date, "yyyy-MM-dd HH:mm:ss", "HH:mm:ss"));
+		List<Integer> list = IntStream.rangeClosed(1, 10) //
+				.boxed() //
+				.collect(Collectors.toList());
+		System.out.println(Arrays.toString(list.toArray()));
+		splitList(list, 3);
+		// (page - 1)*x
 	}
 
 }
