@@ -2,7 +2,6 @@ package com;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -10,20 +9,20 @@ public class Main {
 
 	static int totalThreads = 4;
 
-	static void split1(List<Integer> list) {
-		int totalMessages = list.size();
-		int msgPerThread = totalMessages / totalThreads;
-		if (msgPerThread == 0) {
-			msgPerThread = totalMessages;
-		}
-		if (totalThreads > totalMessages) {
-			totalThreads = 1;
-		}
-		for (int i = 0; i < totalThreads; i++) {
-			System.out.println(
-					Arrays.toString(list.subList(msgPerThread * i, msgPerThread * i + msgPerThread).toArray()));
-		}
-	}
+//	static void split1(List<Integer> list) {
+//		int totalMessages = list.size();
+//		int msgPerThread = totalMessages / totalThreads;
+//		if (msgPerThread == 0) {
+//			msgPerThread = totalMessages;
+//		}
+//		if (totalThreads > totalMessages) {
+//			totalThreads = 1;
+//		}
+//		for (int i = 0; i < totalThreads; i++) {
+//			System.out.println(
+//					Arrays.toString(list.subList(msgPerThread * i, msgPerThread * i + msgPerThread).toArray()));
+//		}
+//	}
 
 	public static <T> void splitList(List<T> list, int page) {
 		int total = list.size();
