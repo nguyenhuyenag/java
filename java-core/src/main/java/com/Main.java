@@ -1,5 +1,6 @@
 package com;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,29 +25,38 @@ public class Main {
 //		}
 //	}
 
-	public static <T> void splitList(List<T> list, int page) {
+//	public static <T> void splitList(List<T> list, int page) {
+//		int total = list.size();
+//		if (total % page == 0) {
+//			int start = 0, end = page;
+//			while (end <= total) {
+//				List<T> subList = list.subList(start, end);
+//				start = end;
+//				end = start + page;
+//				System.out.println(Arrays.toString(subList.toArray()));
+//			}
+//		} else {
+//			System.out.println("Lẻ");
+//			System.out.println(total / page);
+//		}
+//	}
+
+	public static <T> void splitList(List<T> list, int nSubList) {
 		int total = list.size();
-		if (total % page == 0) {
-			int start = 0, end = page;
-			while (end <= total) {
-				List<T> subList = list.subList(start, end);
-				start = end;
-				end = start + page;
-				System.out.println(Arrays.toString(subList.toArray()));
-			}
-		} else {
-			System.out.println("Lẻ");
-			System.out.println(total / page);
+		int chunkSize = total / nSubList;
+		List<List<T>> lists = new ArrayList<>();
+		for (int i = 0; i < total; i += chunkSize) {
+			int end = Math.min(i + chunkSize, total);
+			lists.add(list.subList(i, end));
 		}
+		lists.forEach(t -> System.out.println(Arrays.toString(t.toArray())));
 	}
 
 	public static void main(String[] args) {
 		List<Integer> list = IntStream.rangeClosed(1, 10) //
 				.boxed() //
 				.collect(Collectors.toList());
-		System.out.println(Arrays.toString(list.toArray()));
 		splitList(list, 3);
-		// (page - 1)*x
 	}
 
 }
