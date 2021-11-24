@@ -1,7 +1,6 @@
 package common.util;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 import net.jpountz.lz4.LZ4Compressor;
 import net.jpountz.lz4.LZ4Factory;
@@ -23,7 +22,7 @@ public class LZ4Utils {
 		byte[] byteArr = Base64Utils.decode(strZipped);
 		if (byteArr != null) {
 			int len = byteArr.length;
-			byte[] restored = new byte[len * 3];
+			byte[] restored = new byte[3 * len];
 			LZ4SafeDecompressor decompressor = factory.safeDecompressor();
 			decompressor.decompress(byteArr, 0, len, restored, 0);
 			return new String(restored, StandardCharsets.UTF_8);
