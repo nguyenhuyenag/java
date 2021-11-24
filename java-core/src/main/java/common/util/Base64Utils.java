@@ -32,7 +32,6 @@ public class Base64Utils {
 
 	/**
 	 * Base64 decode
-	 * 
 	 * @param src the byte array to decode
 	 * @return byte array decoded
 	 */
