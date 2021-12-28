@@ -19,7 +19,7 @@ public class LZ4Utils {
 
 	public static String decompressToString(String strZipped) {
 		LZ4Factory factory = LZ4Factory.safeInstance();
-		byte[] byteArr = Base64Utils.decode(strZipped);
+		byte[] byteArr = Base64Utils.decodeToByte(strZipped);
 		if (byteArr != null) {
 			int len = byteArr.length;
 			byte[] restored = new byte[3 * len];
