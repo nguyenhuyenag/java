@@ -8,14 +8,13 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,26 +27,14 @@ public class JsonUtils {
 	private JsonUtils() {
 		MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
-
-	/**
-	 * JSON to Object
-	 * 
-	 * @return Java object
-	 */
-	public static <T> T toObject(String jsonString, Type type) {
-		GsonBuilder builder = new GsonBuilder();
-		Gson gson = builder.enableComplexMapKeySerialization().create();
-		return gson.fromJson(jsonString, type);
-	}
-
+	
 	/**
 	 * Object to JSON String
-	 * 
 	 * @param <T>    generic type
 	 * @param object Java object
 	 * @return JSON
 	 */
-	public static String toJsonString(Object object) {
+	public static String toJson(Object object) {
 		if (object != null) {
 			try {
 				return MAPPER.writeValueAsString(object);
@@ -58,6 +45,73 @@ public class JsonUtils {
 		return "";
 	}
 
+	/**
+	 * JSON to Object
+	 * @return Java object
+	 */
+	public static <T> T toObject(String jsonString, Type type) {
+		GsonBuilder builder = new GsonBuilder();
+		Gson gson = builder.enableComplexMapKeySerialization().create();
+		return gson.fromJson(jsonString, type);
+	}
+
+	public static com.fasterxml.jackson.databind.JsonNode toJsonNode(String jsonString) {
+		try {
+			return MAPPER.readTree(jsonString);
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * Convert JSON string to JSONObject
+	 * 
+	 * @param jsonString is a JSON string
+	 * @return JSONObject
+	 * @see {@link JSONObject#get("fieldname")}}
+	 */
+	public static org.json.JSONObject toJSONObject(String jsonString) {
+		return new JSONObject(jsonString);
+	}
+
+	/**
+	 * JSON to List Object
+	 * 
+	 * @param <T>
+	 * @param jsonStringArray
+	 * @param array
+	 * @return
+	 */
+	public static <T> List<T> toList(String jsonStringArray, Class<T> classT) {
+		// return MAPPER.readValue(json, new TypeReference<List<T>>() {
+		List<T> list = new ArrayList<>();
+		org.json.JSONArray jsonArray = new JSONArray(jsonStringArray);
+		for (Object json : jsonArray) {
+			T t = new Gson().fromJson(json.toString(), classT);
+			list.add(t);
+		}
+		return list;
+	}
+
+	/**
+	 * Colection to JSON
+	 * 
+	 * @return JSON
+	 * @throws JsonProcessingException
+	 */
+	public static <T> String collectionToJson(Collection<T> list) {
+		// return GSON.toJson(list);
+		try {
+			return MAPPER.writeValueAsString(list);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
 	/**
 	 * InputStream to Object
 	 * 
@@ -75,7 +129,7 @@ public class JsonUtils {
 		}
 		return null;
 	}
-
+	
 	/**
 	 * Convert InputStream to JsonObject
 	 * 
@@ -83,65 +137,13 @@ public class JsonUtils {
 	 * @return JsonObject
 	 * @see {@link JsonObject#getBoolean("fieldname")}
 	 */
-	public static JsonObject toJsonObject(InputStream is) {
+	public static javax.json.JsonObject toJsonObject(InputStream is) {
 		if (is != null) {
-			try (JsonReader jsonReader = Json.createReader(is)) {
+			try (javax.json.JsonReader jsonReader = Json.createReader(is)) {
 				return jsonReader.readObject();
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * Convert JSON string to JSONObject
-	 * 
-	 * @param jsonString is a JSON string
-	 * @return JSONObject
-	 * @see {@link JSONObject#get("fieldname")}}
-	 */
-	public static JSONObject toJSONObject(String jsonString) {
-		return new JSONObject(jsonString);
-	}
-
-	/**
-	 * JSON to List Object
-	 * 
-	 * @param <T>
-	 * @param jsonStringArray
-	 * @param array
-	 * @return
-	 */
-	public static <T> List<T> toList(String jsonStringArray, Class<T> classOfT) {
-//		try {
-//			return MAPPER.readValue(json, new TypeReference<List<T>>() {
-//			});
-//		} catch (JsonProcessingException e) {
-//			e.printStackTrace();
-//		}
-//		return null;
-		List<T> list = new ArrayList<>();
-		JSONArray jsonArray = new JSONArray(jsonStringArray);
-		for (Object json : jsonArray) {
-			T t = new Gson().fromJson(json.toString(), classOfT);
-			list.add(t);
-		}
-		return list;
-	}
-
-	/**
-	 * Colection to JSON
-	 * 
-	 * @return JSON
-	 * @throws JsonProcessingException
-	 */
-	public static <T> String collectionToJSON(Collection<T> list) {
-		// return GSON.toJson(list);
-		try {
-			return MAPPER.writeValueAsString(list);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return "";
 	}
 
 //	/**
