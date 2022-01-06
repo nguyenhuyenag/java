@@ -1,7 +1,8 @@
-package common.util;
+package common.util.zip;
 
 import java.nio.charset.StandardCharsets;
 
+import common.util.Base64Utils;
 import net.jpountz.lz4.LZ4Compressor;
 import net.jpountz.lz4.LZ4Factory;
 import net.jpountz.lz4.LZ4SafeDecompressor;

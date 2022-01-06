@@ -1,4 +1,4 @@
-package common.util;
+package common.util.time;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -119,7 +119,7 @@ public class DateTimeUtils {
 	 * {@link org.apache.directory.api.util.GeneralizedTime}
 	 */
 	public static String LDAPDateTime() {
-		GeneralizedTime gt = new GeneralizedTime(Calendar.getInstance());
+		org.apache.directory.api.util.GeneralizedTime gt = new GeneralizedTime(Calendar.getInstance());
 		return gt.toGeneralizedTime(GeneralizedTime.Format.YEAR_MONTH_DAY_HOUR_MIN_SEC,
 				GeneralizedTime.FractionDelimiter.DOT, 1, GeneralizedTime.TimeZoneFormat.Z);
 	}
