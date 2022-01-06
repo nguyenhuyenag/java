@@ -34,7 +34,7 @@ public class JsonUtils {
 	 * @param object Java object
 	 * @return JSON
 	 */
-	public static String toJson(Object object) {
+	public static String toJSON(Object object) {
 		if (object != null) {
 			try {
 				return MAPPER.writeValueAsString(object);
