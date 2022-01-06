@@ -4,6 +4,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class BeforeDateTime {
+	
+	private BeforeDateTime() {
+
+	}
+	
+	private static class SingletonHelper {
+		private static final BeforeDateTime INSTANCE = new BeforeDateTime();
+	}
+
+	public static BeforeDateTime getInstance() {
+		return SingletonHelper.INSTANCE;
+	}
 
 	private Date get(int timeType, int amount) {
 		Calendar calendar = Calendar.getInstance();
