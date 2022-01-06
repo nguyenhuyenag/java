@@ -108,13 +108,10 @@ public class DateTimeUtils {
 	 * @param amounts là thời gian
 	 * @return Date
 	 */
-	public static Date getLaterDate(int amount) {
+	public static Date later(int amount) {
 		// return new Date(System.currentTimeMillis() + amounts);
 		Calendar calendar = Calendar.getInstance();
-		// calendar.add(Calendar.MILLISECOND, amount);
-		// calendar.add(Calendar.MINUTE, amount);
 		calendar.add(Calendar.HOUR, amount);
-		// calendar.add(Calendar.MONTH, amount);
 		return calendar.getTime();
 	}
 	
