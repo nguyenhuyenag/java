@@ -35,7 +35,7 @@ public class DateTimeUtils {
 	 * @throws DateTimeException
 	 */
 	public static String now() {
-		return dateToString(new Date(), null);
+		return format(new Date(), null);
 	}
 	
 	public static String getCurrentDateTimeByPattern(String pattern) throws DateTimeException {
@@ -50,7 +50,7 @@ public class DateTimeUtils {
 	 * @param pattern the pattern describing the date and time format
 	 * @return the formatted time string
 	 */
-	public static String dateToString(Date date, String pattern) {
+	public static String format(Date date, String pattern) {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern != null ? pattern : YYYYMMDDHHMMSS);
 		return sdf.format(date);
 	}
