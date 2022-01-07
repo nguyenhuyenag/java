@@ -14,7 +14,7 @@ public class LocaleList {
 		Locale locales[] = SimpleDateFormat.getAvailableLocales();
 		for (int i = 0; i < locales.length; i++) {
 			Locale c = locales[i];
-			if (StringUtils.isNotEmpty(c.toLanguageTag())) {
+			if (StringUtils.isNotEmpty(c.toString())) {
 				System.out.printf("%10s - %s, %s \n", c.toString(), c.getDisplayName(), c.getDisplayCountry());
 			}
 		}
