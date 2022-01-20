@@ -438,7 +438,7 @@ public class FileUtils {
 		try (Stream<Path> walk = Files.walk(dir)) {
 			String ext = extension.toLowerCase().trim();
 			return walk.filter(Files::isRegularFile) //
-					.filter(p -> p.toString().toLowerCase().endsWith(ext)) //
+					.filter(f -> f.toString().toLowerCase().endsWith(ext)) //
 					.map(Path::toFile) //
 					.collect(Collectors.toList());
 		} catch (IOException e) {
