@@ -8,8 +8,8 @@ import common.util.FileUtils;
 public class Main {
 
 	public static void main(String[] args) {
-		Path dir = Paths.get("C:\\ftp\\tctn\\2021");
-		FileUtils.listAllFiles(dir, ".xml").forEach(t->System.out.println(t.toString()));
+		Path path = Paths.get("C:\\Users\\huyennv\\Desktop\\test\\kbyt.png");
+		FileUtils.rename(path, "abc");
 	}
 
 }

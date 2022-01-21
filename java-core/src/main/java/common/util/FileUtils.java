@@ -1,6 +1,5 @@
 package common.util;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -14,10 +13,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -91,23 +86,23 @@ public class FileUtils {
 	/**
 	 * File to DataHandler
 	 */
-	public static DataHandler asDataHandler(File file) {
-		DataSource source = new FileDataSource(file);
-		return new DataHandler(source);
-	}
+	//	public static DataHandler asDataHandler(File file) {
+	//		DataSource source = new FileDataSource(file);
+	//		return new DataHandler(source);
+	//	}
 
 	/**
 	 * Read DataHandler to bytes array
 	 */
-	public static byte[] toByteArray(DataHandler handler) {
-		try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
-			handler.writeTo(os);
-			return os.toByteArray();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	//	public static byte[] toByteArray(DataHandler handler) {
+	//		try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
+	//			handler.writeTo(os);
+	//			return os.toByteArray();
+	//		} catch (IOException e) {
+	//			e.printStackTrace();
+	//		}
+	//		return null;
+	//	}
 
 	/**
 	 * Read a file into a String
@@ -291,17 +286,15 @@ public class FileUtils {
 //		return writeTextToFile(path, data, StandardCharsets.UTF_8, true);
 //	}
 	
-	// TODO
-
 	/**
 	 * Get all elements in the directory (without subdirectory)
 	 */
 	public static List<String> listFile(Path dir) {
 		validateFile(dir);
-		try (Stream<Path> list = Files.list(dir)) { // Get all elements in directory
-			return list.filter(Predicates.not(Files::isDirectory)) // without directory
-					.map(Path::toString) // path to string
-					.collect(Collectors.toList()); // to list
+		try (Stream<Path> list = Files.list(dir)) { 				// Get all elements in directory
+			return list.filter(Predicates.not(Files::isDirectory)) 	// without directory
+					.map(Path::toString)
+					.collect(Collectors.toList());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -310,9 +303,6 @@ public class FileUtils {
 
 	/**
 	 * Get all elements in the directory (without subdirectory)
-	 * 
-	 * @param dir the path to the directory
-	 * @return the content of the directory
 	 */
 	public static List<File> listFiles(Path dir) {
 		validateFile(dir);
@@ -328,15 +318,11 @@ public class FileUtils {
 
 	/**
 	 * Get all elements in the directory & subdirectory
-	 * 
-	 * @param dir the path to the directory
-	 * @return the content of the directory & subdirectory
 	 */
 	public static List<String> listAllFile(Path dir) {
 		validateFile(dir);
 		try (Stream<Path> walk = Files.walk(dir)) {
 			return walk.filter(Files::isRegularFile) //
-					// .filter(PredicateUtils.not(Files::isDirectory))
 					.map(Path::toString) //
 					.collect(Collectors.toList());
 		} catch (IOException e) {
@@ -347,9 +333,6 @@ public class FileUtils {
 
 	/**
 	 * Get all elements in the directory & subdirectory
-	 * 
-	 * @param dir the path to the directory
-	 * @return the content of the directory & subdirectory
 	 */
 	public static List<File> listAllFiles(Path dir) {
 		validateFile(dir);
@@ -365,17 +348,13 @@ public class FileUtils {
 
 	/**
 	 * Get all elements in the directory (without subdirectory)
-	 * 
-	 * @param dir       the path to the directory
-	 * @param extension the extension filter
-	 * @return the content of the directory
 	 */
 	public static List<String> listFile(Path dir, String extension) {
 		validateFile(dir);
 		try (Stream<Path> list = Files.list(dir)) {
 			String ext = extension.toLowerCase().trim();
 			return list.filter(Predicates.not(Files::isDirectory)) //
-					.filter(p -> p.toString().toLowerCase().endsWith(ext)) //
+					.filter(f -> f.toString().toLowerCase().endsWith(ext)) //
 					.map(Path::toString) //
 					.collect(Collectors.toList()); //
 		} catch (IOException e) {
@@ -386,17 +365,13 @@ public class FileUtils {
 
 	/**
 	 * Get all elements in the directory (without subdirectory)
-	 * 
-	 * @param dir       the path to the directory
-	 * @param extension the extension filter
-	 * @return the content of the directory
 	 */
 	public static List<File> listFiles(Path dir, String extension) {
 		validateFile(dir);
 		try (Stream<Path> list = Files.list(dir)) {
 			String ext = extension.toLowerCase().trim();
 			return list.filter(Predicates.not(Files::isDirectory)) //
-					.filter(p -> p.toString().toLowerCase().endsWith(ext)) //
+					.filter(f -> f.toString().toLowerCase().endsWith(ext)) //
 					.map(Path::toFile) //
 					.collect(Collectors.toList()); //
 		} catch (IOException e) {
@@ -407,17 +382,13 @@ public class FileUtils {
 
 	/**
 	 * Get all elements in the directory & subdirectory by extention
-	 * 
-	 * @param dir       the path to the directory
-	 * @param extension the extension filter
-	 * @return the content of the directory & subdirectory
 	 */
 	public static List<String> listAllFile(Path dir, String extension) {
 		validateFile(dir);
 		try (Stream<Path> walk = Files.walk(dir)) {
 			String ext = extension.toLowerCase().trim();
 			return walk.filter(Files::isRegularFile) //
-					.filter(p -> p.toString().toLowerCase().endsWith(ext)) //
+					.filter(f -> f.toString().toLowerCase().endsWith(ext)) //
 					.map(Path::toString) //
 					.collect(Collectors.toList());
 		} catch (IOException e) {
@@ -428,10 +399,6 @@ public class FileUtils {
 
 	/**
 	 * Get all elements in the directory & subdirectory by extention
-	 * 
-	 * @param dir       the path to the directory
-	 * @param extension the extension filter
-	 * @return the content of the directory & subdirectory
 	 */
 	public static List<File> listAllFiles(Path dir, String extension) {
 		validateFile(dir);
@@ -449,15 +416,12 @@ public class FileUtils {
 
 	/**
 	 * Get all elements filename in the directory (without subdirectory)
-	 * 
-	 * @param dir the path to the directory
-	 * @return list filename
 	 */
 	public static List<String> listFileName(Path dir) {
 		validateFile(dir);
 		try (Stream<Path> list = Files.list(dir)) {
 			return list.filter(Predicates.not(Files::isDirectory)) //
-					.map(p -> p.getFileName().toString()) //
+					.map(f -> f.getFileName().toString()) //
 					.collect(Collectors.toList()); //
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -467,15 +431,12 @@ public class FileUtils {
 
 	/**
 	 * Get all elements filename in the directory & subdirectory
-	 * 
-	 * @param dir the path to the directory
-	 * @return the content of the directory & subdirectory
 	 */
 	public static List<String> listFileNames(Path dir) {
 		validateFile(dir);
 		try (Stream<Path> walk = Files.walk(dir)) {
 			return walk.filter(Files::isRegularFile) //
-					.map(p -> p.getFileName().toString()) //
+					.map(f -> f.getFileName().toString()) //
 					.collect(Collectors.toList());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -483,39 +444,36 @@ public class FileUtils {
 		return Collections.emptyList();
 	}
 
-	/**
-	 * Count the elements in directory
-	 * 
-	 * @param dir the path to the directory
-	 * @return the number of elements in this directory
-	 */
-	public static int count(Path dir) {
-		return listFile(dir).size();
-	}
-
-	/**
-	 * Count the elements in directory & subdirectory
-	 * 
-	 * @param dir the path to the directory
-	 * @return the number of elements in this directory & subdirectory
-	 */
-	public static int countAll(Path dir) {
-		return listAllFile(dir).size();
-	}
+//	/**
+//	 * Count the elements in directory
+//	 * 
+//	 * @param dir the path to the directory
+//	 * @return the number of elements in this directory
+//	 */
+//	public static int count(Path dir) {
+//		return listFile(dir).size();
+//	}
+//
+//	/**
+//	 * Count the elements in directory & subdirectory
+//	 * 
+//	 * @param dir the path to the directory
+//	 * @return the number of elements in this directory & subdirectory
+//	 */
+//	public static int countAll(Path dir) {
+//		return listAllFile(dir).size();
+//	}
 
 	/**
 	 * File rename
-	 * 
-	 * @param file    current file
-	 * @param newname is new name
-	 * @return {@code boolean}
-	 * @see File#renameTo
+	 * @param newname is new filename (without extension)
 	 */
-	public static boolean rename(Path file, String newname) {
-		validateFile(file);
+	public static boolean rename(Path path, String newname) {
+		validateFile(path);
 		try {
-			Path newfile = Paths.get(file.getParent().toString(), newname + "." + getFileExtension(file.toFile()));
-			Files.move(file, file.resolveSibling(newfile));
+			Path newfile = Paths.get(path.getParent().toString(), newname + "." + getFileExtension(path.toFile()));
+			Files.move(path, path.resolveSibling(newfile));
+			// Files.move(path, path.resolveSibling(newfile), StandardCopyOption.REPLACE_EXISTING);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -523,26 +481,19 @@ public class FileUtils {
 		return false;
 	}
 
-	/**
-	 * File rename
-	 * 
-	 * @param file    current file
-	 * @param newname is new name
-	 * @return {@code boolean}
-	 * @see File#renameTo
-	 */
 	public static boolean rename(File file, String newname) {
 		return rename(file.toPath(), newname);
 	}
-
+	
+	public static void move(Path path, String toFolder) {
+		
+	}
+	
 	/**
-	 * Get filename without extension
-	 * 
-	 * @param file the path to the file
-	 * @return filename
+	 * Get filename (without extension)
 	 */
-	public static String getFilename(Path file) {
-		return FilenameUtils.getBaseName(file.toFile().toString());
+	public static String getFilename(Path path) {
+		return FilenameUtils.getBaseName(path.toFile().toString());
 	}
 
 	/**
