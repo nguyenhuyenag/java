@@ -1,13 +1,16 @@
 package com.basic.thread;
 
-public class RunnableDemo implements Runnable {
+/**
+ * Có 2 cách tạo thread là `extends Thread` hoặc `implements Runnable`
+ */
+public class FromClassThread extends Thread {
 
 	private Thread t;
 	private String threadName;
 
-	public RunnableDemo(String name) {
-		threadName = name;
-		System.out.println("Creating " + threadName);
+	FromClassThread(String name) {
+		this.threadName = name;
+		System.out.println("Thread " + threadName);
 	}
 
 	@Override
@@ -16,8 +19,7 @@ public class RunnableDemo implements Runnable {
 		try {
 			for (int i = 4; i > 0; i--) {
 				System.out.println("Thread: " + threadName + ", " + i);
-				// Let the thread sleep for a while.
-				Thread.sleep(50);
+				Thread.sleep(50); // thread sleep
 			}
 		} catch (InterruptedException e) {
 			System.out.println("Thread " + threadName + " interrupted.");
@@ -31,6 +33,16 @@ public class RunnableDemo implements Runnable {
 			t = new Thread(this, threadName);
 			t.start();
 		}
+	}
+
+	public static void main(String args[]) {
+		FromClassThread T1 = new FromClassThread("Thread-1-HR-Database");
+		T1.start();
+
+		FromClassThread T2 = new FromClassThread("Thread-2-Send-Email");
+		T2.start();
+
+		System.out.println("==> Main thread stopped!!! ");
 	}
 
 }

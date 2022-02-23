@@ -1,13 +1,13 @@
 package com.basic.thread;
 
-public class ThreadDemo extends Thread {
+public class FromRunnable implements Runnable {
 
 	private Thread t;
-	private String threadName;
+	private String threadName; // tên thread
 
-	ThreadDemo(String name) {
-		threadName = name;
-		System.out.println("Creating " + threadName);
+	public FromRunnable(String name) {
+		this.threadName = name;
+		System.out.println("Thread " + threadName);
 	}
 
 	@Override
@@ -16,7 +16,7 @@ public class ThreadDemo extends Thread {
 		try {
 			for (int i = 4; i > 0; i--) {
 				System.out.println("Thread: " + threadName + ", " + i);
-				Thread.sleep(50); // thread sleep
+				Thread.sleep(50); // Let the thread sleep for a while
 			}
 		} catch (InterruptedException e) {
 			System.out.println("Thread " + threadName + " interrupted.");
@@ -30,6 +30,16 @@ public class ThreadDemo extends Thread {
 			t = new Thread(this, threadName);
 			t.start();
 		}
+	}
+
+	public static void main(String args[]) {
+		FromRunnable R1 = new FromRunnable("Thread-1-HR-Database");
+		R1.start();
+
+		FromRunnable R2 = new FromRunnable("Thread-2-Send-Email");
+		R2.start();
+
+		System.out.println("==> Main thread stopped!!! ");
 	}
 
 }
