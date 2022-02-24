@@ -14,16 +14,13 @@ import java.util.concurrent.Future;
  * theo kiểu bất đồng bộ. Do đó ta sẽ không biết được khi nào các Runnable kết
  * thúc, và các kết quả mà chúng trả về là gì.
  * 
- * - submit(Runnable) và submit(Callable): Phương thức submit() cho phép truyền
- * vào hoặc là Runnable như cách bạn thực hành với execute() trên kia, hoặc là
- * Callable. Về cơ bản thì Callable cũng như Runnable, chúng cũng có khả năng
- * tạo ra một Thread. Nhưng Callable thì lại cho phép Thread này trả kết quả về
- * một cách đồng bộ, khi mà Runnable lại không làm được điều đó. Một lát nữa bạn
- * sẽ được trải nghiệm sử dụng Callable. Quay lại phương thức submit() khác với
- * execute() như thế nào? Đó kà submit() có trả về kết quả cuối cùng thông qua
- * lớp Future. Future này giúp bạn xác định xem Thread Pool này đã hoàn thành
- * xong hay chưa. Một lát nữa bạn cũng sẽ được trải nghiệm kết quả Future này.
- *
+ * - submit(Callable): Tương tự execute() nhưng có trả về kết quả thông qua
+ * Future.
+ * 
+ * - submit(Runnable): Cho phép Thread này trả kết quả về một cách đồng bộ. Tức
+ * là khi Thread kết thúc thì null mới được trả về thông qua future.get(), nên
+ * dù được gọi rất sớm, nhưng chúng chỉ in ra null khi nào Thread kết thúc.
+ * 
  */
 public class ExeService {
 
