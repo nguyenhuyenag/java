@@ -23,22 +23,20 @@ import java.util.concurrent.Future;
  * Thread kết thúc.
  * 
  * - invokeAny(Runnable): Tương tự execute() hay submit() nhưng cho phép ta thể
- * truyền vào chúng danh sách các Callable. Hàm thực thi các Callable theo quy
- * luật khai báo Thead Pool, nhưng khi có bất kỳ Callable nào hoàn thành trong
- * danh sách các Callable truyền vào đó, Thread Pool sẽ chấm dứt các Thread còn
- * lại, dù cho chúng đã được đưa vào Pool và đang chờ thực thi.
+ * truyền vào chúng danh sách các Callable. Nếu có bất kỳ Callable nào hoàn
+ * thành trong danh sách các Callable truyền vào thì Thread Pool sẽ chấm dứt các
+ * Thread còn lại, dù cho chúng đã được đưa vào Pool và đang chờ thực thi.
  * 
  * - invokeAll(Runnable): Thực thi tất cả các Callable và chờ nhận các kết quả
  * trả về của các Callable này thông qua danh sách các đối tượng Future.
  * 
- * - shutdown() và shutdownNow(): Một ExecutorService không tự động kết thúc khi
- * chúng thực thi hết các Thread, nó vẫn ở đó và khiến ứng dụng vẫn chạy mặc dù
- * các Thread trong Thread Pool đã hoàn thành. Lệnh shutdown() giúp đóng Thread
- * Pool lại, Thread Pool lúc này sẽ từ chối nhận thêm task nữa và giúp
- * ExecutorService kết thúc sau khi nó hoàn thành nhiệm vụ. Tương tự,
- * shutdownNow() cũng có công năng như vậy, chỉ khác một chỗ phương thức này
- * buộc ExecutorService kết thúc ngay khi được gọi, lúc này đây các Thread chưa
- * được thực thi sẽ bị buộc phải kết thúc theo ExecutorService.
+ * - shutdown() và shutdownNow(): ExecutorService (ES) không tự động kết thúc
+ * khi chúng thực thi hết các Thread nên khiến ứng dụng vẫn chạy mặc dù các
+ * Thread trong Thread Pool đã hoàn thành. Lệnh shutdown() giúp đóng Thread Pool
+ * lại, Thread Pool lúc này sẽ từ chối nhận thêm task nữa và giúp ES kết thúc
+ * sau khi nó hoàn thành nhiệm vụ. Tương tự, shutdownNow() cũng có công năng như
+ * vậy, chỉ khác phương thức này buộc ES kết thúc ngay khi được gọi, lúc này đây
+ * các Thread chưa được thực thi sẽ bị buộc phải kết thúc theo ES.
  */
 public class ExeService {
 
