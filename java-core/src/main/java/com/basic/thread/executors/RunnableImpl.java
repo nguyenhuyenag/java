@@ -37,12 +37,17 @@ public class RunnableImpl implements Runnable {
 		}
 		System.out.println(name + " kết thúc.");
 	}
+	
+	public static void main(String[] args) {
+		// singleThreadExecutor();
+		fixedThreadExecutor();
+		// newCachedThreadPool();
+	}
 
 	static void singleThreadExecutor() {
 		// Khai báo ThreadPool thông qua newSingleThreadExecutor()
 		ExecutorService executorService = Executors.newSingleThreadExecutor();
-		// Khai báo 10 Runnable, và "quăng" chúng vào Pool vừa khai báo
-		for (int i = 1; i <= 5; i++) {
+		for (int i = 1; i <= 10; i++) {
 			RunnableImpl myRunnable = new RunnableImpl("Runnable " + i);
 			executorService.execute(myRunnable);
 		}
@@ -51,8 +56,9 @@ public class RunnableImpl implements Runnable {
 
 	static void fixedThreadExecutor() {
 		// Pool này cho phép thực thi cùng một lúc 5 Thread
+		// Đầu tiên 5 Thread được thực thi. Sau đó hễ Thread nào xong thì Thread khác
+		// được start. Đảm bảo luôn luôn không quá 5 Thread được thực thi trong Pool.
 		ExecutorService executorService = Executors.newFixedThreadPool(5);
-		// Khai báo 10 Runnable, và "quăng" chúng vào Pool vừa khai báo
 		for (int i = 1; i <= 10; i++) {
 			RunnableImpl myRunnable = new RunnableImpl("Runnable " + i);
 			executorService.execute(myRunnable);
@@ -62,18 +68,11 @@ public class RunnableImpl implements Runnable {
 
 	static void newCachedThreadPool() {
 		ExecutorService executorService = Executors.newCachedThreadPool();
-		// Khai báo 10 Runnable, và "quăng" chúng vào Thread Pool vừa khai báo
 		for (int i = 1; i <= 10; i++) {
 			RunnableImpl myRunnable = new RunnableImpl("Runnable " + i);
 			executorService.execute(myRunnable);
 		}
 		executorService.shutdown();
-	}
-
-	public static void main(String[] args) {
-		// singleThreadExecutor();
-		// fixedThreadExecutor();
-		newCachedThreadPool();
 	}
 
 }

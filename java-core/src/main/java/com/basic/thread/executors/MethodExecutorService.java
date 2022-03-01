@@ -11,11 +11,12 @@ import java.util.concurrent.Future;
  * Các phương thức của ExecutorService
  * 
  * - execute(Runnable): Thêm các Runnable vào Thread Pool và khởi chạy chúng
- * theo kiểu bất đồng bộ. Do đó ta sẽ không biết được khi nào các Runnable kết
- * thúc, và các kết quả mà chúng trả về là gì.
+ * theo kiểu bất đồng bộ. Do đó không biết được khi nào các Runnable kết thúc.
  * 
  * - submit(Callable): Tương tự execute() nhưng có trả về kết quả thông qua
- * Future.
+ * Future và giúp kiểm tra. Phương thực future.get() được thực thi đồng bộ
+ * (asynchronous - tức là sau khi callable hoàn thành nhiệm vụ kết quả được trả
+ * về nó mới được thực thi).
  * 
  * - submit(Runnable): Tương tự submit(Callable) nhưng trả kết quả về một cách
  * đồng bộ. Tức là khi Thread kết thúc thì null mới được trả về thông qua
@@ -38,10 +39,24 @@ import java.util.concurrent.Future;
  * vậy, chỉ khác phương thức này buộc ES kết thúc ngay khi được gọi, lúc này đây
  * các Thread chưa được thực thi sẽ bị buộc phải kết thúc theo ES.
  */
-public class ExeService {
+// @SuppressWarnings("rawtypes")
+public class MethodExecutorService {
 
-	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
+		// execute();
+		submitRunnable();
+	}
+
+	public static void execute() {
+		ExecutorService executorService = Executors.newFixedThreadPool(5);
+		for (int i = 1; i <= 10; i++) {
+			RunnableImpl r = new RunnableImpl("Thread " + i);
+			executorService.execute(r);
+		}
+		executorService.shutdown();
+	}
+
+	public static void submitRunnable() {
 		List<Future> listFuture = new ArrayList<>(); // Khởi tạo danh sách các Future
 		ExecutorService exe = Executors.newFixedThreadPool(5);
 		for (int i = 1; i <= 10; i++) {
@@ -49,7 +64,6 @@ public class ExeService {
 			Future f = exe.submit(r);
 			listFuture.add(f); // Từng Future sẽ quản lý một Runnable
 		}
-
 		for (Future f : listFuture) {
 			try {
 				System.out.println(f.get()); // Khi Thread nào kết thúc, get() của Future tương ứng sẽ trả về null
@@ -57,7 +71,6 @@ public class ExeService {
 				e.printStackTrace();
 			}
 		}
-
 		exe.shutdown();
 	}
 
