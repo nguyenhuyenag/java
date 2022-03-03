@@ -39,7 +39,6 @@ import java.util.concurrent.Future;
  * vậy, chỉ khác phương thức này buộc ES kết thúc ngay khi được gọi, lúc này đây
  * các Thread chưa được thực thi sẽ bị buộc phải kết thúc theo ES.
  */
-// @SuppressWarnings("rawtypes")
 public class MethodExecutorService {
 
 	public static void main(String[] args) {
@@ -56,6 +55,7 @@ public class MethodExecutorService {
 		executorService.shutdown();
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static void submitRunnable() {
 		List<Future> listFuture = new ArrayList<>(); // Khởi tạo danh sách các Future
 		ExecutorService exe = Executors.newFixedThreadPool(5);

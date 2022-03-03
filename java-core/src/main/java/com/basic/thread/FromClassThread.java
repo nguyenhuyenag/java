@@ -5,44 +5,46 @@ package com.basic.thread;
  */
 public class FromClassThread extends Thread {
 
-	private Thread t;
-	private String threadName;
-
-	FromClassThread(String name) {
-		this.threadName = name;
-		System.out.println("Thread " + threadName);
-	}
-
 	@Override
 	public void run() {
-		System.out.println("Running " + threadName);
 		try {
-			for (int i = 4; i > 0; i--) {
-				System.out.println("Thread: " + threadName + ", " + i);
-				Thread.sleep(50); // thread sleep
+			for (int i = 5; i > 0; i--) {
+				System.out.println(i);
+				Thread.sleep(100); // thread sleep
 			}
 		} catch (InterruptedException e) {
-			System.out.println("Thread " + threadName + " interrupted.");
+			e.printStackTrace();
 		}
-		System.out.println("Thread " + threadName + " exiting.");
+		System.out.println("Hết giờ");
 	}
 
-	public void start() {
-		System.out.println("Starting " + threadName);
-		if (t == null) {
-			t = new Thread(this, threadName);
-			t.start();
-		}
+	public static void cach1() {
+		FromClassThread c = new FromClassThread();
+		Thread t = new Thread(c);
+		t.start();
+	}
+
+	public static void cach2() {
+		Thread t = new Thread() {
+			@Override
+			public void run() {
+				try {
+					for (int i = 5; i > 0; i--) {
+						System.out.println(i);
+						Thread.sleep(100); // thread sleep
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println("Hết giờ");
+			}
+		};
+		t.start();
 	}
 
 	public static void main(String args[]) {
-		FromClassThread T1 = new FromClassThread("Thread-1-HR-Database");
-		T1.start();
-
-		FromClassThread T2 = new FromClassThread("Thread-2-Send-Email");
-		T2.start();
-
-		System.out.println("==> Main thread stopped!!! ");
+		// cach1();
+		cach2();
 	}
 
 }
