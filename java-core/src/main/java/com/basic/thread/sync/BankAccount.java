@@ -2,11 +2,11 @@ package com.basic.thread.sync;
 
 public class BankAccount {
 
-	private long amount = 20000000; // Số tiền có trong tài khoản
+	long amount = 20; // Số tiền có trong tài khoản
 
 	public boolean checkAccountBalance(long withDrawAmount) {
 		try {
-			Thread.sleep(2000); // giả sử thời gian đọc csdl và kiểm tra tiền
+			Thread.sleep(1000); // Giả lập thời gian đọc cơ sở dữ liệu và kiểm tra tiền
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -16,18 +16,21 @@ public class BankAccount {
 		return false; // Không cho phép rút tiền
 	}
 
-	public void withdraw(String threadName, long withdrawAmount) {
+	public synchronized void withdraw(String threadName, long withdrawAmount) {
 		// In thông tin người rút
-		System.out.println(threadName + " withdraw: " + withdrawAmount);
+		System.out.println(threadName + " check: " + withdrawAmount);
 		if (checkAccountBalance(withdrawAmount)) {
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			amount -= withdrawAmount;
+			System.out.println(threadName + " withdraw successful: " + withdrawAmount);
+		} else {
+			System.out.println(threadName + " withdraw error!");
 		}
-		// Số dư tài khoản
+		// In ra số dư tài khoản
 		System.out.println(threadName + " see balance: " + amount);
 	}
 
