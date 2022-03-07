@@ -23,9 +23,17 @@ public class SynchronizedMethods {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		ExecutorService service = Executors.newFixedThreadPool(3);
 		SynchronizedMethods summation = new SynchronizedMethods();
-		IntStream.range(0, 1000).forEach(count -> service.submit(summation::calculate));
+		ExecutorService service = Executors.newFixedThreadPool(3);
+		// IntStream.range(0, 1000).forEach(count -> service.submit(summation::calculate));
+		IntStream.range(0, 1000).forEach(t -> {
+			service.submit(new Runnable() {
+				@Override
+				public void run() {
+					summation.calculate();
+				}
+			});
+		});
 		service.awaitTermination(1000, TimeUnit.MILLISECONDS);
 		System.out.println(summation.getSum());
 	}

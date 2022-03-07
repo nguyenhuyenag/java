@@ -33,14 +33,20 @@ public class ThreadLifeCycle extends Thread {
 
 	@Override
 	public void run() {
-		System.out.println("Thread start");
+		System.out.println("Thread start...");
 	}
 
 	public static void main(String[] args) {
 		ThreadLifeCycle t = new ThreadLifeCycle();
-		System.out.println(t.getState()); // NEW
+		System.out.println(t.getState()); 		// NEW
 		t.start();
-		System.out.println(t.getState()); // RUNNABLE
+		System.out.println(t.getState()); 		// RUNNABLE
+		try {
+			Thread.sleep(2000);
+			System.out.println(t.getState()); 	// TERMINATED
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
