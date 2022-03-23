@@ -36,9 +36,16 @@ public class StringCollection {
 	public static String reverse(String str) {
 		// char[] chars = str.toCharArray();
 		// ArrayUtils.reverse(chars);
-		// return new String(chars); // StringUtils.reverse(str);
+		// return new String(chars); // hoặc StringUtils.reverse(str);
 		StringBuilder sb = new StringBuilder(str);
 		return sb.reverse().toString();
+	}
+	
+	public String reverse2(String str) {
+		if (str.isEmpty()) {
+			return str;
+		}
+		return reverse2(str.substring(1)) + str.charAt(0);
 	}
 
 	/**
