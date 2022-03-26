@@ -28,6 +28,7 @@ class FileException extends RuntimeException {
 	public FileException(String message, Throwable cause) {
 		super(message, cause);
 	}
+
 }
 
 public class FileUtils {
@@ -86,23 +87,23 @@ public class FileUtils {
 	/**
 	 * File to DataHandler
 	 */
-	//	public static DataHandler asDataHandler(File file) {
-	//		DataSource source = new FileDataSource(file);
-	//		return new DataHandler(source);
-	//	}
+	// public static DataHandler asDataHandler(File file) {
+	// DataSource source = new FileDataSource(file);
+	// return new DataHandler(source);
+	// }
 
 	/**
 	 * Read DataHandler to bytes array
 	 */
-	//	public static byte[] toByteArray(DataHandler handler) {
-	//		try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
-	//			handler.writeTo(os);
-	//			return os.toByteArray();
-	//		} catch (IOException e) {
-	//			e.printStackTrace();
-	//		}
-	//		return null;
-	//	}
+	// public static byte[] toByteArray(DataHandler handler) {
+	// try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
+	// handler.writeTo(os);
+	// return os.toByteArray();
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+	// return null;
+	// }
 
 	/**
 	 * Read a file into a String
@@ -147,30 +148,33 @@ public class FileUtils {
 	 * @param append bằng {@code true} thì thêm nội dung vào cuối file, nếu bằng
 	 *               {@code false} thì ghi đè lên nội dung cũ.
 	 */
-	public static boolean writeByteArrayToFile(Path path, byte[] bytes, boolean append) {
+	public static Path writeByteArrayToFile(Path path, byte[] bytes, boolean append) {
 		if (PathUtils.isNotExist(path)) {
 			FileUtils.createFile(path);
 		}
 		try {
 			if (!append) {
-				Files.write(path, bytes);
-			} else {
-				Files.write(path, bytes, StandardOpenOption.APPEND);
+				return Files.write(path, bytes);
 			}
-			return true;
+			return Files.write(path, bytes, StandardOpenOption.APPEND);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
-	
+
+	public static Path base64ToFile(Path path, String base64) {
+		byte[] byteArr = Base64Utils.decodeToByte(base64);
+		return writeByteArrayToFile(path, byteArr, false);
+	}
+
 	/**
 	 * Tạo (nếu file chưa có) và ghi nội dung cho file
 	 * 
 	 * @param append bằng {@code true} thì thêm nội dung vào cuối file, nếu bằng
 	 *               {@code false} thì ghi đè lên nội dung cũ.
 	 */
-	public static boolean writeStringToFile(Path path, String content, boolean append) {
+	public static Path writeStringToFile(Path path, String content, boolean append) {
 		if (content == null) {
 			throw new FileException("Content is NULL!");
 		}
@@ -285,16 +289,15 @@ public class FileUtils {
 //	public static boolean appendTextToFile(Path path, Collection<? extends CharSequence> data) {
 //		return writeTextToFile(path, data, StandardCharsets.UTF_8, true);
 //	}
-	
+
 	/**
 	 * Get all elements in the directory (without subdirectory)
 	 */
 	public static List<String> listFile(Path dir) {
 		validateFile(dir);
-		try (Stream<Path> list = Files.list(dir)) { 				// Get all elements in directory
-			return list.filter(Predicates.not(Files::isDirectory)) 	// without directory
-					.map(Path::toString)
-					.collect(Collectors.toList());
+		try (Stream<Path> list = Files.list(dir)) { // Get all elements in directory
+			return list.filter(Predicates.not(Files::isDirectory)) // without directory
+					.map(Path::toString).collect(Collectors.toList());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -466,6 +469,7 @@ public class FileUtils {
 
 	/**
 	 * File rename
+	 * 
 	 * @param newname is new filename (without extension)
 	 */
 	public static boolean rename(Path path, String newname) {
@@ -473,7 +477,8 @@ public class FileUtils {
 		try {
 			Path newfile = Paths.get(path.getParent().toString(), newname + "." + getFileExtension(path.toFile()));
 			Files.move(path, path.resolveSibling(newfile));
-			// Files.move(path, path.resolveSibling(newfile), StandardCopyOption.REPLACE_EXISTING);
+			// Files.move(path, path.resolveSibling(newfile),
+			// StandardCopyOption.REPLACE_EXISTING);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -484,11 +489,11 @@ public class FileUtils {
 	public static boolean rename(File file, String newname) {
 		return rename(file.toPath(), newname);
 	}
-	
+
 	public static void move(Path path, String toFolder) {
-		
+
 	}
-	
+
 	/**
 	 * Get filename (without extension)
 	 */
