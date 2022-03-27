@@ -35,8 +35,7 @@ public class Base64Utils {
 
 	public static byte[] decodeToByte(String base64) {
 		byte[] byteArr = base64.getBytes(StandardCharsets.UTF_8);
-		byteArr = Base64.getDecoder().decode(byteArr);
-		return byteArr;
+		return Base64.getDecoder().decode(byteArr);
 	}
 
 	public static String decodeToString(String base64) {
