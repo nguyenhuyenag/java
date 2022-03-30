@@ -1,23 +1,16 @@
 package com;
 
-import com.chilkatsoft.CkZip;
+import java.util.Date;
+
+import common.util.TimeUtils;
 
 public class Main {
 
-	static {
-		try {
-			System.loadLibrary("chilkat");
-		} catch (UnsatisfiedLinkError e) {
-			System.err.println("Native code library failed to load.\n" + e);
-			System.exit(1);
-		}
-	}
-
-	// Instantiate a Chilkat object and print it's version.
-	public static void main(String argv[]) {
-		CkZip zip = new CkZip();
-		System.out.println(zip.version());
-		System.out.println("TS24................");
+	public static void main(String[] args) {
+		Date after = TimeUtils.after().day(1);
+		Date before = TimeUtils.before().day(2);
+		System.out.println(after);
+		System.out.println(before);
 	}
 
 }

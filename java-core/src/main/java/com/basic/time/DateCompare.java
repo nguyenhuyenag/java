@@ -2,7 +2,7 @@ package com.basic.time;
 
 import java.util.Date;
 
-import common.util.time.DateTimeUtils;
+import common.util.DateTimeUtils;
 
 public class DateCompare {
 
