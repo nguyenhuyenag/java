@@ -89,12 +89,12 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class PkiSha2Utils {
+public class PkiSha1Utils {
 
-	public static final byte[] SHA2_DIGEST_INFO_PREFIX = new byte[] { 0x30, 0x31, 0x30, 0x0d, 0x06, 0x09, 0x60,
-			(byte) 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01, 0x05, 0x00, 0x04, 0x20 };
+	public static final byte[] SHA1_DIGEST_INFO_PREFIX = new byte[] { 0x30, 0x1f, 0x30, 0x07, 0x06, 0x05, 0x2b, 0x0e,
+			0x03, 0x02, 0x1a, 0x04, 0x14 };
 
-	private PkiSha2Utils() {
+	private PkiSha1Utils() {
 		super();
 	}
 
@@ -106,24 +106,29 @@ public class PkiSha2Utils {
 		return keyPair;
 	}
 
-//	private static SubjectKeyIdentifier createSubjectKeyId(PublicKey publicKey)
-//			throws IOException {
-//		ByteArrayInputStream bais = new ByteArrayInputStream(publicKey
-//				.getEncoded());
-//		SubjectPublicKeyInfo info = new SubjectPublicKeyInfo(
-//				(ASN1Sequence) new ASN1InputStream(bais).readObject());
+//	private static SubjectKeyIdentifier createSubjectKeyId(PublicKey publicKey) throws IOException {
+//		ByteArrayInputStream bais = new ByteArrayInputStream(publicKey.getEncoded());
+//		SubjectPublicKeyInfo info = new SubjectPublicKeyInfo((ASN1Sequence) new ASN1InputStream(bais).readObject());
 //		return new SubjectKeyIdentifier(info);
 //	}
 
+	/*
+	 * private static SubjectKeyIdentifier subjectAlternativeName(PublicKey
+	 * publicKey) throws IOException {
+	 * 
+	 * ByteArrayInputStream bais = new ByteArrayInputStream(publicKey
+	 * .getEncoded()); //GeneralNames name = new GeneralNames((ASN1Sequence) new
+	 * ASN1InputStream(bais).readObject()); SubjectPublicKeyInfo info = new
+	 * SubjectPublicKeyInfo( (ASN1Sequence) new ASN1InputStream(bais).readObject());
+	 * //SubjectAlternativeNameExtension info = new
+	 * SubjectAlternativeNameExtension(); return new SubjectKeyIdentifier(info); }
+	 */
 	final public static String PROVIDER = BouncyCastleProvider.PROVIDER_NAME;
 
-//	private static AuthorityKeyIdentifier createAuthorityKeyId(
-//			PublicKey publicKey) throws IOException {
+//	private static AuthorityKeyIdentifier createAuthorityKeyId(PublicKey publicKey) throws IOException {
 //
-//		ByteArrayInputStream bais = new ByteArrayInputStream(publicKey
-//				.getEncoded());
-//		SubjectPublicKeyInfo info = new SubjectPublicKeyInfo(
-//				(ASN1Sequence) new ASN1InputStream(bais).readObject());
+//		ByteArrayInputStream bais = new ByteArrayInputStream(publicKey.getEncoded());
+//		SubjectPublicKeyInfo info = new SubjectPublicKeyInfo((ASN1Sequence) new ASN1InputStream(bais).readObject());
 //
 //		return new AuthorityKeyIdentifier(info);
 //	}
@@ -158,7 +163,7 @@ public class PkiSha2Utils {
 		certGen.setNotAfter(new Date(System.currentTimeMillis() + 50000));
 		certGen.setSubjectDN(new X509Principal(attrs));
 		certGen.setPublicKey(entityKey);
-		certGen.setSignatureAlgorithm("SHA256withRSA");
+		certGen.setSignatureAlgorithm("SHA1withRSA");
 		certGen.addExtension("2.5.29.15", true, new X509KeyUsage(X509KeyUsage.encipherOnly));
 		certGen.addExtension("2.5.29.37", true, new DERSequence(KeyPurposeId.anyExtendedKeyUsage));
 		certGen.addExtension("2.5.29.17", true,
@@ -190,7 +195,7 @@ public class PkiSha2Utils {
 			throws IOException, InvalidKeyException, IllegalStateException, NoSuchAlgorithmException,
 			SignatureException, CertificateException, NoSuchProviderException {
 
-		String signatureAlgorithm = "SHA256withRSA";
+		String signatureAlgorithm = "SHA1withRSA";
 		X509V3CertificateGenerator certificateGenerator = new X509V3CertificateGenerator();
 		certificateGenerator.reset();
 
@@ -200,12 +205,37 @@ public class PkiSha2Utils {
 		certificateGenerator.setNotAfter(issuerCertificate.getNotAfter());
 		certificateGenerator.setNotBefore(issuerCertificate.getNotBefore());
 		/** end **/
+		// certificateGenerator.setNotBefore(notBefore.toDate());
+		// certificateGenerator.setNotAfter(notAfter.toDate());
 		X509Principal issuerDN;
 		issuerDN = new X509Principal(issuerCertificate.getIssuerDN().getName());
 		certificateGenerator.setIssuerDN(issuerDN);
 		certificateGenerator.setSubjectDN(new X509Principal(subjectDn));
 
+		/*
+		 * certificateGenerator.setSerialNumber(new BigInteger(128, new
+		 * SecureRandom()));
+		 */
+		// certificateGenerator.setPublicKey(subjectPublicKey);
 		certificateGenerator.setSerialNumber(issuerCertificate.getSerialNumber());
+		/****/
+		/*
+		 * certificateGenerator.copyAndAddExtension(X509Extensions.ExtendedKeyUsage,
+		 * false, issuerCertificate);
+		 * certificateGenerator.copyAndAddExtension(X509Extensions.
+		 * AuthorityKeyIdentifier, false, issuerCertificate);
+		 * certificateGenerator.copyAndAddExtension(X509Extensions.
+		 * CRLDistributionPoints, false, issuerCertificate);
+		 * certificateGenerator.addExtension(X509Extensions.SubjectKeyIdentifier, false,
+		 * createSubjectKeyId(subjectPublicKey));
+		 * certificateGenerator.copyAndAddExtension(X509Extensions.CertificatePolicies,
+		 * false, issuerCertificate);
+		 * 
+		 * certificateGenerator.copyAndAddExtension(X509Extensions.AuthorityInfoAccess,
+		 * false, issuerCertificate);
+		 * certificateGenerator.copyAndAddExtension(X509Extensions.
+		 * SubjectAlternativeName, false, issuerCertificate);
+		 */
 
 		certificateGenerator.copyAndAddExtension(X509Extensions.SubjectAlternativeName, false, issuerCertificate);
 		certificateGenerator.copyAndAddExtension(X509Extensions.AuthorityInfoAccess, false, issuerCertificate);
@@ -218,13 +248,26 @@ public class PkiSha2Utils {
 		certificateGenerator.copyAndAddExtension(X509Extensions.CRLDistributionPoints, false, issuerCertificate);
 
 		/** add information into digital sign **/
+		/*
+		 * certificateGenerator.addExtension(X509Extensions.KeyUsage, true, keyUsage);
+		 */
 
 		certificateGenerator.copyAndAddExtension(X509Extensions.KeyUsage, true, issuerCertificate);
 
 		X509Certificate certificate;
+		// certificate = certificateGenerator.generate();
+		// SecureRandom random = SecureRandom.getInstance("SHA1PRNG","SUN");
 		certificate = certificateGenerator.generate(issuerPrivateKey);
 
+		/*
+		 * Next certificate factory trick is needed to make sure that the certificate
+		 * delivered to the caller is provided by the default security provider instead
+		 * of BouncyCastle. If we don't do this trick we might run into trouble when
+		 * trying to use the CertPath validator.
+		 */
+
 		CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+		// create path
 
 		certificate = (X509Certificate) certificateFactory
 				.generateCertificate(new ByteArrayInputStream(certificate.getEncoded()));

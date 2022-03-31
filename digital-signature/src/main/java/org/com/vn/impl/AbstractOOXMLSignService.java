@@ -17,15 +17,13 @@ import javax.crypto.Cipher;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.poi.ooxml.signature.service.spi.DigestInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import be.fedict.eid.applet.service.signer.ooxml.OOXMLProvider;
-import digital.GetCertify;
 
 public class AbstractOOXMLSignService {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AbstractOOXMLSignService.class);
+	// private static final Logger LOG =
+	// LoggerFactory.getLogger(AbstractOOXMLSignService.class);
 
 	public AbstractOOXMLSignService() {
 		OOXMLProvider.install();
@@ -57,13 +55,13 @@ public class AbstractOOXMLSignService {
 
 	private File sign(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {
 		OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
-		GetCertify mycert = new GetCertify();
+		// GetCertify mycert = new GetCertify();
 		DigestInfo digestInfo = signatureService.preSign(null, null);
 		File tmpFile;
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, priKey);
 
-		byte[] digestInfoValue = ArrayUtils.addAll(PkiTestUtils.SHA1_DIGEST_INFO_PREFIX, digestInfo.digestValue);
+		byte[] digestInfoValue = ArrayUtils.addAll(PkiSha1Utils.SHA1_DIGEST_INFO_PREFIX, digestInfo.digestValue);
 		byte[] signatureValue = cipher.doFinal(digestInfoValue);
 
 		signatureService.postSign(signatureValue, Collections.singletonList((X509Certificate) chain));
@@ -82,7 +80,7 @@ public class AbstractOOXMLSignService {
 
 	private File signSHA2(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {
 		OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
-		GetCertify mycert = new GetCertify();
+		// GetCertify mycert = new GetCertify();
 		DigestInfo digestInfo = signatureService.preSignSHA2(null, null);
 		File tmpFile;
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");

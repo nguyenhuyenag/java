@@ -1,20 +1,18 @@
- /*
- 	* @project: digitalOffice
- 	*@author:   nganv
-	*Jun 21, 2010 2:05:56 PM
-	*/
+/*
+	* @project: digitalOffice
+	*@author:   nganv
+*Jun 21, 2010 2:05:56 PM
+*/
 package org.com.vn.impl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
-
 import be.fedict.eid.applet.service.signer.TemporaryDataStorage;
 import be.fedict.eid.applet.service.signer.ooxml.AbstractOOXMLSignatureService;
 
-public class OOXMLSignatureServiceImpl  extends
-	AbstractOOXMLSignatureService {
+public class OOXMLSignatureServiceImpl extends AbstractOOXMLSignatureService {
 
 	private final URL ooxmlUrl;
 
@@ -47,4 +45,3 @@ public class OOXMLSignatureServiceImpl  extends
 		return this.temporaryDataStorage;
 	}
 }
-
