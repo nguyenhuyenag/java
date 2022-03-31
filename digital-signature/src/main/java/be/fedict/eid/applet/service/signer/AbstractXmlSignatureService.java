@@ -79,8 +79,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.poi.ooxml.signature.service.spi.DigestInfo;
+import org.apache.poi.ooxml.signature.service.spi.SignatureService;
 import org.apache.xml.security.signature.XMLSignature;
 import org.apache.xml.security.utils.Base64;
 import org.apache.xml.security.utils.Constants;
@@ -96,9 +96,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
-import org.apache.poi.ooxml.signature.service.spi.DigestInfo;
-import org.apache.poi.ooxml.signature.service.spi.SignatureService;
 
 /**
  * Abstract base class for an XML Signature Service implementation.

@@ -56,8 +56,8 @@ public class AbstractOOXMLSignService {
 	private File sign(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {
 		OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
 		// GetCertify mycert = new GetCertify();
-		DigestInfo digestInfo = signatureService.preSign(null, null);
 		File tmpFile;
+		DigestInfo digestInfo = signatureService.preSign(null, null);
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, priKey);
 
@@ -81,7 +81,7 @@ public class AbstractOOXMLSignService {
 	private File signSHA2(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {
 		OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
 		// GetCertify mycert = new GetCertify();
-		DigestInfo digestInfo = signatureService.preSignSHA2(null, null);
+		org.apache.poi.ooxml.signature.service.spi.DigestInfo digestInfo = signatureService.preSignSHA2(null, null);
 		File tmpFile;
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, priKey);
