@@ -21,11 +21,9 @@ import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfSignatureAppearance;
 import com.lowagie.text.pdf.PdfStamper;
 
-import digital.impl.AbstractExelSign;
-
 public class Signs {
 
-	final Logger logger = LoggerFactory.getLogger(Signs.class);
+	final Logger LOG = LoggerFactory.getLogger(Signs.class);
 
 	private static PrivateKey PRIVATEKEY;
 	private static Certificate[] CHAIN;
@@ -122,14 +120,12 @@ public class Signs {
 				}
 				if (fileType != null && (fileType.equals(".xlsx") || fileType.equals(".docx"))) {
 					try {
-						AbstractExelSign myFile = new AbstractExelSign();
+						OOXMLSign myFile = new OOXMLSign();
 						myFile.sign(UrlSource, UrlDes, key, chain[0]);
 						sTrue = true;
-
 					} catch (Exception e) {
 						e.printStackTrace();
 						return false;
-
 					}
 				}
 			} catch (Exception e) {
@@ -140,13 +136,13 @@ public class Signs {
 				fileSource.delete();
 			}
 		} else {
-			logger.debug("------Error: path file " + UrlSource + " source not exists  -----");
+			LOG.debug("------Error: path file " + UrlSource + " source not exists  -----");
 			return false;
 		}
 		if (sTrue) {
 			return true;
 		} else {
-			logger.debug("------Error: path file " + UrlSource + " source not invalue type  -----");
+			LOG.debug("------Error: path file " + UrlSource + " source not invalue type  -----");
 			return false;
 		}
 	}
@@ -154,7 +150,6 @@ public class Signs {
 	@SuppressWarnings("null")
 	public boolean SignFileSHA2(String UrlSource, String UrlDes, String sFileType, String sReason_Sign,
 			String sLocation_Sign, String sVisibleSignature, boolean DeleteFileSource) {
-
 		boolean sTrue = false;
 		File fileSource = new File(UrlSource);
 
@@ -165,7 +160,6 @@ public class Signs {
 
 		if (fileSource.exists()) {
 			try {
-
 				PrivateKey key = PRIVATEKEY;
 				Certificate[] chain = CHAIN;
 
@@ -194,10 +188,8 @@ public class Signs {
 						}
 						// comment next line to have an invisible signature
 						int n = stp.getReader().getNumberOfPages();
-
 						sap.setVisibleSignature(new Rectangle(POSITION_SIGN_IMAGE_X, POSITION_SIGN_IMAGE_Y,
 								POSITION_SIGN_IMAGE_U, POSITION_SIGN_IMAGE_Z), n, sVisibleSignature);
-
 						stp.close();
 						reader.close();
 						fout.close();
@@ -207,45 +199,38 @@ public class Signs {
 						reader.close();
 						stp.close();
 						fout.close();
-						logger.debug("------Error: Sign file " + UrlSource + " (pdf) not success. Detail error: "
+						LOG.debug("------Error: Sign file " + UrlSource + " (pdf) not success. Detail error: "
 								+ getStackTrace(e));
 						return false;
 					}
 				}
-
 				if (sFileType != null && (sFileType.equals(".xlsx") || sFileType.equals(".docx"))) {
 					try {
-						AbstractExelSign myFile = new AbstractExelSign();
+						OOXMLSign myFile = new OOXMLSign();
 						myFile.signSHA2(UrlSource, UrlDes, key, chain[0]);
 						sTrue = true;
-
 					} catch (Exception e) {
-						logger.debug(
+						LOG.debug(
 								"------Error: Sign file " + UrlSource + " (excel) not success  -----" + e.toString());
 						e.printStackTrace();
 						return false;
-
 					}
 				}
-
 			} catch (Exception e) {
-
-				logger.debug("------Error: Sign file " + UrlSource + "  not success  ----- " + getStackTrace(e));
+				LOG.debug("------Error: Sign file " + UrlSource + "  not success  ----- " + getStackTrace(e));
 				return false;
 			}
 			if (DeleteFileSource) {
-
 				fileSource.delete();
-
 			}
 		} else {// File exited
-			logger.debug("------Error: path file " + UrlSource + " source not exists  -----");
+			LOG.debug("------Error: path file " + UrlSource + " source not exists  -----");
 			return false;
 		}
 		if (sTrue) {
 			return true;
 		} else {
-			logger.debug("------Error: path file " + UrlSource + " source not invalue type  -----");
+			LOG.debug("------Error: path file " + UrlSource + " source not invalue type  -----");
 			return false;
 		}
 

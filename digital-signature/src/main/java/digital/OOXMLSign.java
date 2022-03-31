@@ -1,9 +1,4 @@
-/*
-	* @project: digitalOffice
-	*@author:   nganv
-*Jun 21, 2010 1:55:04 PM
-*/
-package digital.impl;
+package digital;
 
 import java.io.File;
 import java.net.URL;
@@ -19,27 +14,25 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.poi.ooxml.signature.service.spi.DigestInfo;
 
 import be.fedict.eid.applet.service.signer.ooxml.OOXMLProvider;
+import digital.impl.OOXMLSignatureServiceImpl;
 
-public class AbstractOOXMLSignService {
+public class OOXMLSign {
 
 	// private static final Logger LOG =
 	// LoggerFactory.getLogger(AbstractOOXMLSignService.class);
+	
+	public static final byte[] SHA1_DIGEST_INFO_PREFIX = new byte[] { 0x30, 0x1f, 0x30, 0x07, 0x06, 0x05, 0x2b, 0x0e,
+			0x03, 0x02, 0x1a, 0x04, 0x14 };
 
-	public AbstractOOXMLSignService() {
+	public static final byte[] SHA2_DIGEST_INFO_PREFIX = new byte[] { 0x30, 0x31, 0x30, 0x0d, 0x06, 0x09, 0x60,
+			(byte) 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x01, 0x05, 0x00, 0x04, 0x20 };
+
+	public OOXMLSign() {
 		OOXMLProvider.install();
 	}
 
-	/*
-	 * @Test public void testSignSpreadsheet() throws Exception {
-	 * sign("/hello-world-unsigned.xlsx"); }
-	 */
-
 	public File sign(String documentResourceName, String fileSigned, PrivateKey priKey, Certificate chain)
 			throws Exception {
-		/*
-		 * URL ooxmlUrl = AbstractOOXMLSignService.class
-		 * .getResource(documentResourceName);
-		 */
 		File excelFile = new File(documentResourceName);
 		URL ooxmlUrl = excelFile.toURI().toURL();
 		return sign(ooxmlUrl, fileSigned, priKey, chain);
@@ -55,21 +48,18 @@ public class AbstractOOXMLSignService {
 
 	private File sign(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {
 		OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
-		// GetCertify mycert = new GetCertify();
 		DigestInfo digestInfo = signatureService.preSign(null, null);
-		File tmpFile;
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, priKey);
 
-		byte[] digestInfoValue = ArrayUtils.addAll(PkiSha1Utils.SHA1_DIGEST_INFO_PREFIX, digestInfo.digestValue);
+		byte[] digestInfoValue = ArrayUtils.addAll(SHA1_DIGEST_INFO_PREFIX, digestInfo.digestValue);
 		byte[] signatureValue = cipher.doFinal(digestInfoValue);
 
 		signatureService.postSign(signatureValue, Collections.singletonList((X509Certificate) chain));
 
 		// verify: signature
 		byte[] signedOOXMLData = signatureService.getSignedOfficeOpenXMLDocumentData();
-		// tmpFile =new File(fileSigned+"/"+FilenameUtils.getName(ooxmlUrl.getFile()));
-		tmpFile = new File(fileSigned);
+		File tmpFile = new File(fileSigned);
 		if (tmpFile.exists()) {
 			tmpFile.delete();
 		}
@@ -80,27 +70,23 @@ public class AbstractOOXMLSignService {
 
 	private File signSHA2(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {
 		OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
-		// GetCertify mycert = new GetCertify();
 		DigestInfo digestInfo = signatureService.preSignSHA2(null, null);
-		File tmpFile;
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, priKey);
 
-		byte[] digestInfoValue = ArrayUtils.addAll(PkiSha2Utils.SHA2_DIGEST_INFO_PREFIX, digestInfo.digestValue);
+		byte[] digestInfoValue = ArrayUtils.addAll(SHA2_DIGEST_INFO_PREFIX, digestInfo.digestValue);
 		byte[] signatureValue = cipher.doFinal(digestInfoValue);
 
 		signatureService.postSign(signatureValue, Collections.singletonList((X509Certificate) chain));
 
 		// verify: signature
 		byte[] signedOOXMLData = signatureService.getSignedOfficeOpenXMLDocumentData();
-		// tmpFile =new File(fileSigned+"/"+FilenameUtils.getName(ooxmlUrl.getFile()));
-		tmpFile = new File(fileSigned);
+		File tmpFile = new File(fileSigned);
 		if (tmpFile.exists()) {
 			tmpFile.delete();
 		}
 		FileUtils.writeByteArrayToFile(tmpFile, signedOOXMLData);
 		return tmpFile;
-
 	}
 
 }

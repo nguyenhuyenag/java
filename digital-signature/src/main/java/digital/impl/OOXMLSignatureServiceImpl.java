@@ -16,12 +16,12 @@ public class OOXMLSignatureServiceImpl extends AbstractOOXMLSignatureService {
 
 	private final URL ooxmlUrl;
 
-	private final TemporaryTestDataStorage temporaryDataStorage;
+	private final TemporaryDataStorageImpl temporaryDataStorage;
 
 	private final ByteArrayOutputStream signedOOXMLOutputStream;
 
 	public OOXMLSignatureServiceImpl(URL ooxmlUrl) {
-		this.temporaryDataStorage = new TemporaryTestDataStorage();
+		this.temporaryDataStorage = new TemporaryDataStorageImpl();
 		this.signedOOXMLOutputStream = new ByteArrayOutputStream();
 		this.ooxmlUrl = ooxmlUrl;
 	}

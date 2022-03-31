@@ -45,13 +45,13 @@ import java.util.Map;
 
 import be.fedict.eid.applet.service.signer.TemporaryDataStorage;
 
-public class TemporaryTestDataStorage implements TemporaryDataStorage {
+public class TemporaryDataStorageImpl implements TemporaryDataStorage {
 
 	private ByteArrayOutputStream outputStream;
 
 	private Map<String, Serializable> attributes;
 
-	public TemporaryTestDataStorage() {
+	public TemporaryDataStorageImpl() {
 		this.outputStream = new ByteArrayOutputStream();
 		this.attributes = new HashMap<String, Serializable>();
 	}
