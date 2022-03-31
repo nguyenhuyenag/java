@@ -3,7 +3,7 @@
 	*@author:   nganv
 *Jun 21, 2010 1:55:04 PM
 */
-package org.com.vn.impl;
+package digital.impl;
 
 import java.io.File;
 import java.net.URL;
@@ -56,8 +56,8 @@ public class AbstractOOXMLSignService {
 	private File sign(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {
 		OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
 		// GetCertify mycert = new GetCertify();
-		File tmpFile;
 		DigestInfo digestInfo = signatureService.preSign(null, null);
+		File tmpFile;
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, priKey);
 
@@ -81,7 +81,7 @@ public class AbstractOOXMLSignService {
 	private File signSHA2(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {
 		OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
 		// GetCertify mycert = new GetCertify();
-		org.apache.poi.ooxml.signature.service.spi.DigestInfo digestInfo = signatureService.preSignSHA2(null, null);
+		DigestInfo digestInfo = signatureService.preSignSHA2(null, null);
 		File tmpFile;
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
 		cipher.init(Cipher.ENCRYPT_MODE, priKey);

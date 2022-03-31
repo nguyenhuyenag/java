@@ -3,7 +3,7 @@
 	*@author:   nganv
 *Jun 21, 2010 2:05:56 PM
 */
-package org.com.vn.impl;
+package digital.impl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;

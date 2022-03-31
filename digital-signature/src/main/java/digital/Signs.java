@@ -11,8 +11,6 @@ import java.security.PrivateKey;
 import java.security.cert.Certificate;
 import java.util.Calendar;
 
-import org.com.vn.impl.AbstractExelSign;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +20,8 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfSignatureAppearance;
 import com.lowagie.text.pdf.PdfStamper;
+
+import digital.impl.AbstractExelSign;
 
 public class Signs {
 

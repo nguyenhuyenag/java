@@ -33,7 +33,7 @@
  * limitations under the License.
  */
 
-package org.com.vn.impl;
+package digital.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
