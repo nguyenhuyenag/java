@@ -1,4 +1,5 @@
 /*
+
  * eID Applet Project.
  * Copyright (C) 2008-2009 FedICT.
  *
@@ -55,10 +56,10 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.xml.security.utils.Constants;
 import org.apache.xpath.XPathAPI;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -77,8 +78,8 @@ import be.fedict.eid.applet.service.signer.facets.KeyInfoSignatureFacet;
 public abstract class AbstractOOXMLSignatureService extends
 		AbstractXmlSignatureService {
 
-	static final Log LOG = LogFactory
-			.getLog(AbstractOOXMLSignatureService.class);
+	static final Logger LOG = LoggerFactory
+			.getLogger(AbstractOOXMLSignatureService.class);
 
 	protected AbstractOOXMLSignatureService() {
 		addSignatureFacet(new OOXMLSignatureFacet(this));

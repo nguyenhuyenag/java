@@ -51,8 +51,8 @@ import javax.xml.crypto.URIReferenceException;
 import javax.xml.crypto.XMLCryptoContext;
 import javax.xml.crypto.dsig.XMLSignatureFactory;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * JSR105 URI dereferencer for Office Open XML documents.
@@ -62,8 +62,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class OOXMLURIDereferencer implements URIDereferencer {
 
-	private static final Log LOG = LogFactory
-			.getLog(OOXMLURIDereferencer.class);
+	private static final Logger LOG = LoggerFactory.getLogger(OOXMLURIDereferencer.class);
 
 	private final URL ooxmlUrl;
 

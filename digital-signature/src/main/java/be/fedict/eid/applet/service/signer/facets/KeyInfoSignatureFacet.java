@@ -55,9 +55,9 @@ import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
 import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import javax.xml.crypto.dsig.keyinfo.X509Data;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.jcp.xml.dsig.internal.dom.DOMKeyInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -73,8 +73,8 @@ import be.fedict.eid.applet.service.signer.SignatureFacet;
  */
 public class KeyInfoSignatureFacet implements SignatureFacet {
 
-	private static final Log LOG = LogFactory
-			.getLog(KeyInfoSignatureFacet.class);
+	private static final Logger LOG = LoggerFactory
+			.getLogger(KeyInfoSignatureFacet.class);
 
 	private final boolean includeEntireCertificateChain;
 

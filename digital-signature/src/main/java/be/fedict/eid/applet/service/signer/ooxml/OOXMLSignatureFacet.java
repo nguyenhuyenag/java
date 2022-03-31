@@ -43,7 +43,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -63,14 +62,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.xml.security.utils.Constants;
 import org.apache.xpath.XPathAPI;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -89,7 +88,7 @@ import be.fedict.eid.applet.service.signer.SignatureFacet;
  */
 public class OOXMLSignatureFacet implements SignatureFacet {
 
-	private static final Log LOG = LogFactory.getLog(OOXMLSignatureFacet.class);
+	private static final Logger LOG = LoggerFactory.getLogger(OOXMLSignatureFacet.class);
 
 	private final AbstractOOXMLSignatureService signatureService;
 
