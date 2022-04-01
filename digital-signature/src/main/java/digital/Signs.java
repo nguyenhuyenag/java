@@ -29,7 +29,7 @@ public class Signs {
 	private static Certificate[] CHAIN;
 	private static String PATH_SIGN_IMAGE;
 
-	private static int POSITION_SIGN_IMAGE_X, POSITION_SIGN_IMAGE_Y, POSITION_SIGN_IMAGE_U, POSITION_SIGN_IMAGE_Z;
+	private static int POSITION_X, POSITION_Y, POSITION_U, POSITION_Z;
 
 	public Signs() {
 
@@ -70,81 +70,57 @@ public class Signs {
 		return sw.toString();
 	}
 
-	public boolean SignFile(String UrlSource, String UrlDes, String fileType, String sReason_Sign,
-			String sLocation_Sign, String sVisibleSignature, boolean DeleteFileSource) {
-		boolean sTrue = false;
-		File fileSource = new File(UrlSource);
+	public boolean SignFile(String filein, String fileout, String fileType, String reason, String location,
+			String visible, boolean isDelete) {
+		// boolean sTrue = false;
+		File fileSource = new File(filein);
 
-		POSITION_SIGN_IMAGE_X = 245; // fix width
-		POSITION_SIGN_IMAGE_Y = 90; // fix height
-		POSITION_SIGN_IMAGE_U = 370;
-		POSITION_SIGN_IMAGE_Z = 25;
-
+		POSITION_X = 245; // fix width
+		POSITION_Y = 90; // fix height
+		POSITION_U = 370;
+		POSITION_Z = 25;
+		if (StringUtils.isEmpty(fileType)) {
+			LOG.info("Filetype is null or emplty!");
+			return false;
+		}
 		if (fileSource.exists()) {
 			PrivateKey key = PRIVATEKEY;
 			Certificate[] chain = CHAIN;
 			try {
-				if (fileType != null && fileType.equals(".pdf")) {
-					PdfReader reader = null;
-					PdfStamper stp = null;
-					FileOutputStream fout = null;
-					try {
-						reader = new PdfReader(UrlSource);
-						fout = new FileOutputStream(UrlDes);
-						stp = PdfStamper.createSignature(reader, fout, '\0', null, true);
-						PdfSignatureAppearance sap = stp.getSignatureAppearance();
-						sap.setCrypto(key, chain, null, PdfSignatureAppearance.WINCER_SIGNED);
-						sap.setReason(sReason_Sign);
-						sap.setLocation(sLocation_Sign);
-						sap.setSignDate(Calendar.getInstance());
-						if (StringUtils.isNotEmpty(PATH_SIGN_IMAGE)) {
-							sap.setImage(Image.getInstance(PATH_SIGN_IMAGE));
-						}
-						// comment next line to have an invisible signature
-						int n = stp.getReader().getNumberOfPages();
-
-						sap.setVisibleSignature(new Rectangle(POSITION_SIGN_IMAGE_X, POSITION_SIGN_IMAGE_Y,
-								POSITION_SIGN_IMAGE_U, POSITION_SIGN_IMAGE_Z), n, sVisibleSignature);
-
-						stp.close();
-						reader.close();
-						fout.close();
-						return true;
-					} catch (IOException e) {
-						reader.close();
-						stp.close();
-						fout.close();
-						e.printStackTrace();
-					}
-					return false;
+				if (fileType.equals(".xlsx") || fileType.equals(".docx")) {
+					OOXMLSign xmlSign = new OOXMLSign();
+					xmlSign.sign(filein, fileout, key, chain[0]);
 				}
-				if (fileType != null && (fileType.equals(".xlsx") || fileType.equals(".docx"))) {
-					try {
-						OOXMLSign myFile = new OOXMLSign();
-						myFile.sign(UrlSource, UrlDes, key, chain[0]);
-						sTrue = true;
-					} catch (Exception e) {
-						e.printStackTrace();
-						return false;
+				if (fileType.equals(".pdf")) {
+					PdfReader reader = new PdfReader(filein);
+					FileOutputStream fout = new FileOutputStream(fileout);
+					PdfStamper stp = PdfStamper.createSignature(reader, fout, '\0', null, true);
+					PdfSignatureAppearance sap = stp.getSignatureAppearance();
+					sap.setCrypto(key, chain, null, PdfSignatureAppearance.WINCER_SIGNED);
+					sap.setReason(reason);
+					sap.setLocation(location);
+					sap.setSignDate(Calendar.getInstance());
+					if (StringUtils.isNotEmpty(PATH_SIGN_IMAGE)) {
+						sap.setImage(Image.getInstance(PATH_SIGN_IMAGE));
 					}
+					// comment next line to have an invisible signature
+					int n = stp.getReader().getNumberOfPages();
+					sap.setVisibleSignature(new Rectangle(POSITION_X, POSITION_Y, POSITION_U, POSITION_Z), n, visible);
+					stp.close();
+					fout.close();
+					reader.close();
 				}
+				return true;
 			} catch (Exception e) {
 				e.printStackTrace();
-				return false;
 			}
-			if (DeleteFileSource) {
+			if (isDelete) {
+				LOG.info("Delete " + filein);
 				fileSource.delete();
 			}
-		} else {
-			LOG.debug("------Error: path file " + UrlSource + " source not exists  -----");
-			return false;
 		}
-		if (sTrue) {
-			return true;
-		} else {
-			LOG.debug("------Error: path file " + UrlSource + " source not invalue type  -----");
-			return false;
-		}
+		LOG.info("File " + filein + " source not exists!");
+		return false;
 	}
 
 	@SuppressWarnings("null")
@@ -153,10 +129,10 @@ public class Signs {
 		boolean sTrue = false;
 		File fileSource = new File(UrlSource);
 
-		POSITION_SIGN_IMAGE_X = 245; // fix width
-		POSITION_SIGN_IMAGE_Y = 90; // fix height
-		POSITION_SIGN_IMAGE_U = 370;
-		POSITION_SIGN_IMAGE_Z = 25;
+		POSITION_X = 245; // fix width
+		POSITION_Y = 90; // fix height
+		POSITION_U = 370;
+		POSITION_Z = 25;
 
 		if (fileSource.exists()) {
 			try {
@@ -188,8 +164,8 @@ public class Signs {
 						}
 						// comment next line to have an invisible signature
 						int n = stp.getReader().getNumberOfPages();
-						sap.setVisibleSignature(new Rectangle(POSITION_SIGN_IMAGE_X, POSITION_SIGN_IMAGE_Y,
-								POSITION_SIGN_IMAGE_U, POSITION_SIGN_IMAGE_Z), n, sVisibleSignature);
+						sap.setVisibleSignature(new Rectangle(POSITION_X, POSITION_Y, POSITION_U, POSITION_Z), n,
+								sVisibleSignature);
 						stp.close();
 						reader.close();
 						fout.close();
@@ -210,8 +186,7 @@ public class Signs {
 						myFile.signSHA2(UrlSource, UrlDes, key, chain[0]);
 						sTrue = true;
 					} catch (Exception e) {
-						LOG.debug(
-								"------Error: Sign file " + UrlSource + " (excel) not success  -----" + e.toString());
+						LOG.debug("------Error: Sign file " + UrlSource + " (excel) not success  -----" + e.toString());
 						e.printStackTrace();
 						return false;
 					}

@@ -1,13 +1,20 @@
 package digital;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.util.Collections;
 
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -20,7 +27,7 @@ public class OOXMLSign {
 
 	// private static final Logger LOG =
 	// LoggerFactory.getLogger(AbstractOOXMLSignService.class);
-	
+
 	public static final byte[] SHA1_DIGEST_INFO_PREFIX = new byte[] { 0x30, 0x1f, 0x30, 0x07, 0x06, 0x05, 0x2b, 0x0e,
 			0x03, 0x02, 0x1a, 0x04, 0x14 };
 
@@ -31,12 +38,15 @@ public class OOXMLSign {
 		OOXMLProvider.install();
 	}
 
-	public File sign(String documentResourceName, String fileSigned, PrivateKey priKey, Certificate chain)
-			throws Exception {
-		File excelFile = new File(documentResourceName);
-		URL ooxmlUrl = excelFile.toURI().toURL();
-		return sign(ooxmlUrl, fileSigned, priKey, chain);
-
+	public File sign(String documentResourceName, String fileSigned, PrivateKey priKey, Certificate chain) {
+		try {
+			File excelFile = new File(documentResourceName);
+			URL ooxmlUrl = excelFile.toURI().toURL();
+			return sign(ooxmlUrl, fileSigned, priKey, chain);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public File signSHA2(String documentResourceName, String fileSigned, PrivateKey priKey, Certificate chain)
@@ -46,26 +56,31 @@ public class OOXMLSign {
 		return signSHA2(ooxmlUrl, fileSigned, priKey, chain);
 	}
 
-	private File sign(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {
-		OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
-		DigestInfo digestInfo = signatureService.preSign(null, null);
-		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-		cipher.init(Cipher.ENCRYPT_MODE, priKey);
+	private File sign(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) {
+		try {
+			OOXMLSignatureServiceImpl signatureService = new OOXMLSignatureServiceImpl(ooxmlUrl);
+			DigestInfo digestInfo = signatureService.preSign(null, null);
+			Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+			cipher.init(Cipher.ENCRYPT_MODE, priKey);
 
-		byte[] digestInfoValue = ArrayUtils.addAll(SHA1_DIGEST_INFO_PREFIX, digestInfo.digestValue);
-		byte[] signatureValue = cipher.doFinal(digestInfoValue);
+			byte[] digestInfoValue = ArrayUtils.addAll(SHA1_DIGEST_INFO_PREFIX, digestInfo.digestValue);
+			byte[] signatureValue = cipher.doFinal(digestInfoValue);
 
-		signatureService.postSign(signatureValue, Collections.singletonList((X509Certificate) chain));
+			signatureService.postSign(signatureValue, Collections.singletonList((X509Certificate) chain));
 
-		// verify: signature
-		byte[] signedOOXMLData = signatureService.getSignedOfficeOpenXMLDocumentData();
-		File tmpFile = new File(fileSigned);
-		if (tmpFile.exists()) {
-			tmpFile.delete();
+			// verify: signature
+			byte[] signedOOXMLData = signatureService.getSignedOfficeOpenXMLDocumentData();
+			File tmpFile = new File(fileSigned);
+			if (tmpFile.exists()) {
+				tmpFile.delete();
+			}
+			FileUtils.writeByteArrayToFile(tmpFile, signedOOXMLData);
+			return tmpFile;
+		} catch (IllegalBlockSizeException | BadPaddingException | NoSuchAlgorithmException | IOException
+				| NoSuchPaddingException | InvalidKeyException e) {
+			e.printStackTrace();
 		}
-		FileUtils.writeByteArrayToFile(tmpFile, signedOOXMLData);
-		return tmpFile;
-
+		return null;
 	}
 
 	private File signSHA2(URL ooxmlUrl, String fileSigned, PrivateKey priKey, Certificate chain) throws Exception {

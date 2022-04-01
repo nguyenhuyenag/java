@@ -37,6 +37,7 @@ package be.fedict.eid.applet.service.signer;
 
 import java.security.Key;
 import java.security.cert.X509Certificate;
+import java.util.Collections;
 import java.util.List;
 
 import javax.xml.crypto.AlgorithmMethod;
@@ -73,6 +74,7 @@ public class KeyInfoKeySelector extends KeySelector implements
 		if (null == keyInfo) {
 			throw new KeySelectorException("no ds:KeyInfo present");
 		}
+		Collections.checkedList(keyInfo.getContent(), XMLStructure.class);
 		List<XMLStructure> keyInfoContent = keyInfo.getContent();
 		this.certificate = null;
 		for (XMLStructure keyInfoStructure : keyInfoContent) {
