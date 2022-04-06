@@ -35,8 +35,9 @@ public class Signs {
 
 	}
 
-	public Signs(String pathSign, String passSign) {
-		new Signs(pathSign, passSign, null);
+	public Signs(PrivateKey privateKey, Certificate[] certs) {
+		Signs.PRIVATEKEY = privateKey;
+		Signs.CHAIN = certs;
 	}
 
 	public Signs(String pathSign, String passSign, String pathImage) {
@@ -89,7 +90,10 @@ public class Signs {
 			try {
 				if (fileType.equals(".xlsx") || fileType.equals(".docx")) {
 					OOXMLSign xmlSign = new OOXMLSign();
-					xmlSign.sign(filein, fileout, key, chain[0]);
+					File file = xmlSign.sign(filein, fileout, key, chain[0]);
+					if (file == null || !file.exists()) {
+						return false;
+					}
 				}
 				if (fileType.equals(".pdf")) {
 					PdfReader reader = new PdfReader(filein);
