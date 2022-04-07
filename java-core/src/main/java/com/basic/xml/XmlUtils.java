@@ -23,9 +23,9 @@ public class XmlUtils {
 			return "";
 		}
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		try {
+		try (StringReader sr = new StringReader(xml)) {
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			InputSource is = new InputSource(new StringReader(xml));
+			InputSource is = new InputSource(sr);
 			Document doc = builder.parse(is);
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName(parent);
@@ -59,11 +59,11 @@ public class XmlUtils {
 	}
 	
 	public static boolean isXMLValid(String string) {
-		try {
+		try (StringReader sr = new StringReader(string)) {
 			SAXParserFactory.newInstance() //
 					.newSAXParser() //
 					.getXMLReader() //
-					.parse(new InputSource(new StringReader(string)));
+					.parse(new InputSource(sr));
 			return true;
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
