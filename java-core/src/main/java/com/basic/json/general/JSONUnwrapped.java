@@ -24,7 +24,7 @@ public class JSONUnwrapped {
 		JSONUnwrapped.Name name = new JSONUnwrapped.Name("John", "Doe");
 		JSONUnwrapped user = new JSONUnwrapped(1, name);
 
-		String result = new ObjectMapper().writeValueAsString(user);
+		String result = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(user);
 		System.out.println(result);
 	}
 
