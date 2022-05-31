@@ -22,4 +22,13 @@ public class OpenBrowser {
 			e.printStackTrace();
 		}
 	}
+	
+	public void openHomePage() {
+        try {
+            URI homepage = new URI("http://localhost:8080/");
+            Desktop.getDesktop().browse(homepage);
+        } catch (URISyntaxException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
