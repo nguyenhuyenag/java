@@ -124,4 +124,11 @@ public class DateTimeUtils {
 				GeneralizedTime.FractionDelimiter.DOT, 1, GeneralizedTime.TimeZoneFormat.Z);
 	}
 	
+	// fromday <= target <= today
+	public boolean isBetween(Date target, Date fromday, Date today) {
+		// min.getTime() <= d.getTime() && d.getTime() <= max.getTime()
+		// todayDate.after(historyDate) && todayDate.before(futureDate)
+		return (0 <= target.compareTo(fromday) && target.compareTo(today) <= 0);
+	}
+	
 }
