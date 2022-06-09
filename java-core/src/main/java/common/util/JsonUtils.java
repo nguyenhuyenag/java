@@ -37,7 +37,7 @@ public class JsonUtils {
 	public static String toJSON(Object object) {
 		if (object != null) {
 			try {
-				return MAPPER.writeValueAsString(object);
+				return MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(object);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}
