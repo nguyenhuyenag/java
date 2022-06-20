@@ -40,7 +40,7 @@ public class StringCollection {
 		StringBuilder sb = new StringBuilder(str);
 		return sb.reverse().toString();
 	}
-	
+
 	public String reverse2(String str) {
 		if (str.isEmpty()) {
 			return str;
@@ -70,6 +70,7 @@ public class StringCollection {
 
 	/**
 	 * String => char[], byte[]
+	 * 
 	 * @see ASCII
 	 */
 	public static void toByteOrChar() {
@@ -78,6 +79,12 @@ public class StringCollection {
 		char[] charArr = str.toCharArray();
 		System.out.println(Arrays.toString(byteArr));
 		System.out.println(Arrays.toString(charArr));
+	}
+
+	public void startsWith() {
+		// StringUtils.startsWith("abcdef", "abc") = true
+		// StringUtils.startsWith("ABCDEF", "abc") = false
+		// StringUtils.startsWithIgnoreCase("ABCDEF", "abc") = true
 	}
 
 	public static void main(String[] args) {
