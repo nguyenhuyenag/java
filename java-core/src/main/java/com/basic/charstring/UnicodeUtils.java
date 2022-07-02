@@ -38,7 +38,8 @@ public class UnicodeUtils {
 		// System.out.println(isUnicode("+"));
 		// System.out.println(isUnicode("@"));
 		// System.out.println(isUnicode("]"));
-		String s = "Năm 1979, khi đang là học sinh tại lớp chuyên toán trường Quốc học Huế, ông được chọn để tham gia kỳ thi Olympic Toán Quốc tế ở Luân Đôn cùng 4 học sinh khác";
+		String s = "Năm 1979, khi đang là học sinh tại lớp chuyên toán trường Quốc học Huế, "
+				+ "ông được chọn để tham gia kỳ thi Olympic Toán Quốc tế ở Luân Đôn cùng 4 học sinh khác";
 		System.out.println(flattenToAscii(s));
 		// System.out.println(StringUtils.stripAccents(s));
 	}
