@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 @SuppressWarnings("unused")
 class Reflection {
+	
 	private int age = 20;
 	private int level = 100;
 
