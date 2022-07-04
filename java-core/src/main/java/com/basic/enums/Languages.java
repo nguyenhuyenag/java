@@ -1,7 +1,5 @@
 package com.basic.enums;
 
-import java.util.Arrays;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -9,19 +7,22 @@ import lombok.Getter;
 @AllArgsConstructor
 enum Language {
 
-	JAVA("Java", "001"), PYTHON("Python", "002"), C("C", "003"), JAVASCRIPT("Javascript", "004");
+	C("C", "001"), //
+	JAVA("Java", "002"), //
+	PYTHON("Python", "003"), //
+	JAVASCRIPT("Javascript", "004");
 
-	private String code;
-	private String des;
+	private String value;
+	private String description;
 	
 }
 
 public class Languages {
 
 	public static void main(String[] args) {
-		System.out.println(Language.JAVA.getCode() + ": " + Language.JAVA.getDes());
-		System.out.println();
-		System.out.println(Arrays.toString(Language.values()));
+		for (Language e : Language.values()) {
+			System.out.println(e.getValue() + ", " + e.getDescription());
+		}
 	}
 
 }

@@ -18,7 +18,7 @@ package com.basic.enums;
  * 
  * - values(): Trả về một mảng của kiểu enum chứa tất cả các hằng số enum
  * 
- * Size[] enumArray = Size.value();
+ * 	Size[] enumArray = Size.value();
  * 
  */
 public enum Size {
