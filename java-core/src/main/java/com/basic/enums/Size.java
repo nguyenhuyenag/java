@@ -22,5 +22,7 @@ package com.basic.enums;
  * 
  */
 public enum Size {
+	
 	SMALL, MEDIUM, LARGE, EXTRALARGE;
+	
 }

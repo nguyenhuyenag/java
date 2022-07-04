@@ -7,21 +7,21 @@ import lombok.Getter;
 @AllArgsConstructor
 enum Language {
 
-	C("C", "001"), //
-	JAVA("Java", "002"), //
-	PYTHON("Python", "003"), //
-	JAVASCRIPT("Javascript", "004");
+	C(0, "This is C"), //
+	JAVA(1, "This is Java"), //
+	PYTHON(2, "This is Python"), //
+	JAVASCRIPT(3, "This is Javascript");
 
-	private String value;
+	private int value;
 	private String description;
-	
+
 }
 
 public class Languages {
 
 	public static void main(String[] args) {
 		for (Language e : Language.values()) {
-			System.out.println(e.getValue() + ", " + e.getDescription());
+			System.out.println(e.name() + ", " + e.getValue() + ", " + e.getDescription());
 		}
 	}
 
