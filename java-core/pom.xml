@@ -98,6 +98,12 @@
 			<artifactId>lorem</artifactId>
 			<version>2.1</version>
 		</dependency>
+		<!-- async/await -->
+		<dependency>
+			<groupId>com.ea.async</groupId>
+			<artifactId>ea-async</artifactId>
+			<version>1.2.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
