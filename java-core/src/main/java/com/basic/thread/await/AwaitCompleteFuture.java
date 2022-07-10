@@ -1,4 +1,4 @@
-package com.basic.thread.async;
+package com.basic.thread.await;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -6,7 +6,10 @@ import java.util.concurrent.Executors;
 
 import com.ea.async.Async;
 
-public class DemoCompleteFuture {
+/**
+ * Await 1 CompletableFuture
+ */
+public class AwaitCompleteFuture {
 
 	/**
 	 * Mỗi lần chạy, thứ tự các dòng in ra sẽ khác nhau do chúng chạy trên các
@@ -26,12 +29,11 @@ public class DemoCompleteFuture {
 		Async.init(); // enable async/await, chỉ cần gọi hàm này 1 lần duy nhất trong project
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 		CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(() -> add(1, 2), executor);
-		Async.await(future1);
+		Async.await(future1); // Chờ CompletableFuture thực hiện xong mới chạy tới dòng code tiếp theo
 		CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> add(1, 3), executor);
 		Async.await(future2);
 		CompletableFuture<Integer> future3 = CompletableFuture.supplyAsync(() -> add(2, 3), executor);
 		Async.await(future3);
-
 		System.out.println("Done");
 		executor.shutdown();
 	}
