@@ -28,7 +28,6 @@ public class CallableDemo implements Callable<Integer> {
 
 	public int sum() {
 		int sum = this.a + this.b;
-		// "Result: " + a + " + " + b + " = " + sum
 		System.out.println(String.format("%d + %d = %d", a, b, sum));
 		return sum;
 	}
