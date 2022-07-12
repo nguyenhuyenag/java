@@ -22,7 +22,7 @@ public class AwaitCompleteFuture {
 	 * thread khác nhau.
 	 */
 	@SuppressWarnings("unused")
-	static void withoutAsync() {
+	public static void withoutAsync() {
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 		CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(() -> add(1, 2), executor);
 		CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> add(2, 3), executor);
@@ -31,7 +31,7 @@ public class AwaitCompleteFuture {
 		executor.shutdown();
 	}
 
-	static void withAsync() {
+	public static void withAsync() {
 		Async.init(); // enable async/await, chỉ cần gọi hàm này 1 lần duy nhất trong project
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 		CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(() -> add(1, 2), executor);

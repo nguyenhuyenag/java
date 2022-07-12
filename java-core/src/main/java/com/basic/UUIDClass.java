@@ -5,8 +5,6 @@
 //import java.security.NoSuchAlgorithmException;
 //import java.util.UUID;
 //
-//import org.apache.directory.api.util.Hex;
-//
 //public class UUIDClass {
 //
 //	public static String bytesToHex(byte[] bytes) throws DecoderException {
