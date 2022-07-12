@@ -1,4 +1,4 @@
-package com.basic.thread.sync;
+package com.basic.thread.synchronize;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
