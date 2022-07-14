@@ -26,7 +26,7 @@ package com.basic.thread;
  * - TIMED_WAITING: A thread that is waiting for another thread to perform an
  * actionfor up to a specified waiting time is in this state.
  * 
- * - TERMINATED A thread that has exited is in this state.
+ * - TERMINATED: A thread that has exited is in this state.
  * 
  */
 public class ThreadLifeCycle extends Thread {

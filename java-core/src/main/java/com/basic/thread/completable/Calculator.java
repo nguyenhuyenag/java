@@ -11,8 +11,7 @@ import java.util.concurrent.ForkJoinPool;
  * thread mới và chạy method trong thread đó). Đầu vào của nó sẽ là 1 Supplier
  * và 1 Executor (thread mới sẽ được đưa vào Executor để quản lý).
  * 
- * - Trường hợp kết quả trả về kiểu void thì ta có thể dùng
- * CompletableFuture.runAsync
+ * - CompletableFuture.runAsync: Trường hợp kết quả trả về kiểu void
  *
  */
 @SuppressWarnings("unused")
@@ -36,10 +35,10 @@ public class Calculator {
 	/**
 	 * Xử lý kết quả trả về
 	 * 
-	 * - thenRun: Là thực hiện làm gì khi CompletableFuture hoàn thành (không cần
-	 * quan tâm kết quả là gì).
+	 * - thenRun: Thực hiện làm gì đó khi CompletableFuture hoàn thành (không cần
+	 * quan tâm kết quả trả về).
 	 * 
-	 * - thenAccept: Là xử lý kết quả khi CompletableFuture hoàn thành.
+	 * - thenAccept: Xử lý kết quả khi CompletableFuture hoàn thành.
 	 * 
 	 * - handle: Dùng xử lý kết quả hoặc lỗi khi CompletableFuture hoàn thành.
 	 */
@@ -78,13 +77,13 @@ public class Calculator {
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 		CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> Calculator.add(1, 2), executor);
 		future.thenApply(data -> {
-			System.out.println("CompletableFuture 1 done");
-			return Calculator.add(2, 3); // CompletableFuture 2
-		}).thenApply(data -> {
-			System.out.println("CompletableFuture 2 done");
+			System.out.println("CompletableFuture 1 done, data = " + data);
+			return Calculator.add(2, 3); // (1)
+		}).thenApply(data -> { 			 // (1) return value
+			System.out.println("CompletableFuture 2 done, data = " + data);
 			return Calculator.add(3, 4); // CompletableFuture 3
 		}).thenAccept(data -> {
-			System.out.println("CompletableFuture 3 done");
+			System.out.println("CompletableFuture 3 done, data = " + data);
 		}).thenRun(() -> {
 			System.out.println("Finished!");
 		});
@@ -92,7 +91,9 @@ public class Calculator {
 	}
 
 	/**
-	 * Bắt sự kiện tất cả các CompletableFuture hoàn thành
+	 * CompletableFuture.allOf: Bắt sự kiện tất cả các CompletableFuture hoàn thành
+	 * 
+	 * CompletableFuture.anyOf: Bắt sự kiện có 1 CompletableFuture hoàn thành
 	 */
 	public static void ex4() throws InterruptedException, ExecutionException {
 		ExecutorService executor = Executors.newFixedThreadPool(10);
@@ -117,16 +118,16 @@ public class Calculator {
 		CompletableFuture<Integer> future3 = CompletableFuture.supplyAsync(() -> Calculator.add(2, 3));
 		System.out.println("Done");
 		while (ForkJoinPool.commonPool().getActiveThreadCount() > 0) {
-			
+
 		}
 	}
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		// ex1();
 		// ex2();
-		// ex3();
+		ex3();
 		// ex4();
-		commonPool();
+		// commonPool();
 	}
 
 }
