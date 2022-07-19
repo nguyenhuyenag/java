@@ -22,13 +22,14 @@ class MyDevTeam extends Thread {
 		System.out.println("Task finished by development team " + Thread.currentThread().getName());
 		this.countDownLatch.countDown();
 	}
+
 }
 
 public class CountDownLatchDemo {
 
 	public static void main(String[] args) {
 		final CountDownLatch latch = new CountDownLatch(3);
-		countDown.
+		latch.countDown();
 	}
 
 }
