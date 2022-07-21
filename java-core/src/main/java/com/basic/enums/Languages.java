@@ -19,10 +19,16 @@ enum Language {
 
 public class Languages {
 
-	public static void main(String[] args) {
+	static void forloop() {
+		System.out.println("Value: " + Language.C.getValue());
 		for (Language e : Language.values()) {
 			System.out.println(e.name() + ", " + e.getValue() + ", " + e.getDescription());
 		}
+	}
+
+	public static void main(String[] args) {
+		// forloop();
+		System.out.println(Language.valueOf("1"));
 	}
 
 }
