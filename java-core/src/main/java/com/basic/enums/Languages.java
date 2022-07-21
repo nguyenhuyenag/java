@@ -13,7 +13,7 @@ enum Language {
 	JAVASCRIPT(3, "This is Javascript");
 
 	private int value;
-	private String description;
+	private String desc;
 
 }
 
@@ -22,7 +22,7 @@ public class Languages {
 	static void forloop() {
 		System.out.println("Value: " + Language.C.getValue());
 		for (Language e : Language.values()) {
-			System.out.println(e.name() + ", " + e.getValue() + ", " + e.getDescription());
+			System.out.println(e.name() + ", " + e.getValue() + ", " + e.getDesc());
 		}
 	}
 
