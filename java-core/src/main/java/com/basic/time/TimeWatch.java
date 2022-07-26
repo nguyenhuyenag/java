@@ -2,6 +2,7 @@ package com.basic.time;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.function.ToDoubleBiFunction;
 
 public class TimeWatch {
 
@@ -21,13 +22,26 @@ public class TimeWatch {
 		return (after != System.currentTimeMillis());
 	}
 
-	public static void main(String[] args) {
-		TimeWatch.setTime(TimeUnit.SECONDS, 5);
-		long i = 0;
-		while (TimeWatch.hasNext()) {
-			i++;
+	static void todo(String message, TimeUnit unit, long time) {
+		while (true) {
+			System.out.println(message);
+			try {
+				unit.sleep(time);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
-		System.out.println(i);
+	}
+
+	public static void main(String[] args) {
+//		TimeWatch.setTime(TimeUnit.SECONDS, 5);
+//		long i = 0;
+//		while (TimeWatch.hasNext()) {
+//			i++;
+//		}
+//		System.out.println(i);
+
+		todo("Hi you", TimeUnit.SECONDS, 2);
 	}
 
 }
