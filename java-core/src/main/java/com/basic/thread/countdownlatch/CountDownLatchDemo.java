@@ -13,7 +13,7 @@ class Sevice1 extends Thread {
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
 		}
@@ -34,7 +34,7 @@ class Sevice2 extends Thread {
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
 		}
@@ -84,7 +84,7 @@ public class CountDownLatchDemo {
 		try {
 			System.out.println("Waiting for 3 services have started ... ");
 			latch.await(); // 
-			System.out.println("Starting main Thread ... ");
+			System.out.println("Starting main Thread, id = " + Thread.currentThread().getId());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
