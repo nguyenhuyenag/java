@@ -1,9 +1,6 @@
 package com.basic.thread.countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 class Sevice1 extends Thread {
@@ -73,27 +70,23 @@ public class CountDownLatchDemo {
 
 	public static void main(String[] args) {
 		final CountDownLatch latch = new CountDownLatch(3);
-		
+
 		Thread service1 = new Thread(new Sevice1(latch));
 		Thread service2 = new Thread(new Sevice2(latch));
 		Thread service3 = new Thread(new Sevice3(latch));
-		
-		// service1.start();
-		// service2.start();
-		// service3.start();
-		
+
+		service1.start();
+		service2.start();
+		service3.start();
+
 		// ExecutorService executor = Executors.newFixedThreadPool(3);
-		
-		for (int i = 0; i<2;i++) {
-			
-		}
 
 		// latch waits till the count becomes 0
 		// this way we can make sure that the execution of main thread only
 		// finishes ones 3 services have executed
 		try {
 			System.out.println("Waiting for 3 services have started ... ");
-			latch.await(30, TimeUnit.SECONDS); // 
+			latch.await(30, TimeUnit.SECONDS); //
 			System.out.println("Starting main Thread, id = " + Thread.currentThread().getId());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
