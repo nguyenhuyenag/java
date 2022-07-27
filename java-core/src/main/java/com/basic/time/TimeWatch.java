@@ -2,7 +2,6 @@ package com.basic.time;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.util.function.ToDoubleBiFunction;
 
 public class TimeWatch {
 
