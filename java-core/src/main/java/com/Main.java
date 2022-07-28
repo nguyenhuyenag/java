@@ -14,8 +14,10 @@ public class Main {
 //		for (int i = 0; i < 4; i++) {
 //			System.out.println(RandomStringUtils.randomAlphanumeric(32).toUpperCase());
 //		}
-		Path path = Paths.get("C:\\Users\\huyennv\\Desktop\\tax-conver\\04_GTGT_TT80_2022.xlsx");
-		System.out.println(Base64Utils.encodeToString(path).trim());
+		// Path header = Paths.get("C:/Users/huyennv/Desktop/tax-conver/Header.xlsx");
+		// System.out.println(Base64Utils.encodeToString(header).trim());
+		Path tokhai = Paths.get("C:/Users/huyennv/Desktop/tax-conver/tokhai/TNDN/06_TNDN_TT80_2022.xlsx");
+		System.out.println(Base64Utils.encodeToString(tokhai).trim());
 	}
 
 }
