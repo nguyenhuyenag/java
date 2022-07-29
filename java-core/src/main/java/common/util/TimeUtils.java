@@ -1,8 +1,7 @@
 package common.util;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class TimeUtils {
 
@@ -10,75 +9,75 @@ public class TimeUtils {
 
 	}
 
-	public static Date now() {
-		return new Date();
-	}
+//	public static Date now() {
+//		return new Date();
+//	}
+//
+//	public static BeforeDateTime before() {
+//		return BeforeDateTime.getInstance();
+//	}
+//
+//	public static AfterDateTime after() {
+//		return AfterDateTime.getInstance();
+//	}
+//
+//	public static String format(Date date, String pattern) {
+//		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+//		return sdf.format(date);
+//	}
 
-	public static BeforeDateTime before() {
-		return BeforeDateTime.getInstance();
-	}
+//	private static class Handle {
+//
+//		private Date get(int timeType, int amount) {
+//			Calendar calendar = Calendar.getInstance();
+//			calendar.add(timeType, amount);
+//			return calendar.getTime();
+//		}
+//
+//		public Date day(int amount) {
+//			return get(Calendar.DATE, amount);
+//		}
+//
+//		public Date minute(int amount) {
+//			return get(Calendar.MINUTE, amount);
+//		}
+//
+//		public Date second(int amount) {
+//			return get(Calendar.SECOND, amount);
+//		}
+//
+//	}
 
-	public static AfterDateTime after() {
-		return AfterDateTime.getInstance();
-	}
-
-	public static String format(Date date, String pattern) {
-		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-		return sdf.format(date);
-	}
-
-	static class Handle {
-
-		private Date get(int timeType, int amount) {
-			Calendar calendar = Calendar.getInstance();
-			calendar.add(timeType, amount);
-			return calendar.getTime();
-		}
-
-		public Date day(int amount) {
-			return get(Calendar.DATE, amount);
-		}
-
-		public Date minute(int amount) {
-			return get(Calendar.MINUTE, amount);
-		}
-
-		public Date second(int amount) {
-			return get(Calendar.SECOND, amount);
-		}
-
-	}
-
-	public static class AfterDateTime extends Handle {
-
-		private AfterDateTime() {
-
-		}
-
-		private static class SingletonHelper {
-			private static final AfterDateTime INSTANCE = new AfterDateTime();
-		}
-
-		static AfterDateTime getInstance() {
-			return SingletonHelper.INSTANCE;
-		}
-
-	}
-
-	public static class BeforeDateTime extends Handle {
-
-		private BeforeDateTime() {
-
-		}
-
-		private static class SingletonHelper {
-			private static final BeforeDateTime INSTANCE = new BeforeDateTime();
-		}
-
-		static BeforeDateTime getInstance() {
-			return SingletonHelper.INSTANCE;
-		}
-	}
+//	public static class AfterDateTime extends Handle {
+//
+//		private AfterDateTime() {
+//
+//		}
+//
+//		private static class SingletonHelper {
+//			private static final AfterDateTime INSTANCE = new AfterDateTime();
+//		}
+//
+//		static AfterDateTime getInstance() {
+//			return SingletonHelper.INSTANCE;
+//		}
+//
+//	}
+//
+//	public static class BeforeDateTime extends Handle {
+//
+//		private BeforeDateTime() {
+//
+//		}
+//
+//		private static class SingletonHelper {
+//			private static final BeforeDateTime INSTANCE = new BeforeDateTime();
+//		}
+//
+//		static BeforeDateTime getInstance() {
+//			return SingletonHelper.INSTANCE;
+//		}
+//	}
 
 //	public static void main(String[] args) {
 //		Date after = TimeUtils.after().day(1);
@@ -86,5 +85,30 @@ public class TimeUtils {
 //		System.out.println(after);
 //		System.out.println(before);
 //	}
+
+//	private Date get(int timeType, int amount) {
+//		Calendar calendar = Calendar.getInstance();
+//		calendar.add(timeType, amount);
+//		return calendar.getTime();
+//	}
+
+	public static Date before(TimeUnit unit, int amount) {
+		long time = unit.toMillis(amount);
+		return new Date(System.currentTimeMillis() - time);
+	}
+
+	public static Date after(TimeUnit unit, int amount) {
+		long time = unit.toMillis(amount);
+		return new Date(System.currentTimeMillis() + time);
+	}
+
+	public static void main(String[] args) {
+		Date date = new Date();
+		Date before = before(TimeUnit.HOURS, 2);
+		Date after = after(TimeUnit.HOURS, 1);
+		System.out.println("Now:\t" + DateTimeUtils.format(date, "dd-MM-yyyy HH:mm:ss"));
+		System.out.println("Before:\t" + DateTimeUtils.format(before, "dd-MM-yyyy HH:mm:ss"));
+		System.out.println("After:\t" + DateTimeUtils.format(after, "dd-MM-yyyy HH:mm:ss"));
+	}
 
 }
