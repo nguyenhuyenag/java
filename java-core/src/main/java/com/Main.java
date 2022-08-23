@@ -36,7 +36,7 @@ public class Main {
 	public static void main(String[] args) {
 		// Path header = Paths.get("C:/Users/huyennv/Desktop/tax-conver/Header.xlsx");
 		// System.out.println(Base64Utils.encodeToString(header).trim());
-		Path tokhai = Paths.get("C:/Users/huyennv/Desktop/tax-conver/05_QTT_TNCN_TT80_251.xlsx");
+		Path tokhai = Paths.get("C:/Users/huyennv/Desktop/tax-conver/01_LPMB_TT80_2022.xlsx");
 		System.out.println(Base64Utils.encodeToString(tokhai).trim());
 		// System.out.println(containsDuplicate(new int[] { 1, 2, 3, 4 }));
 	}

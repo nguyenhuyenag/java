@@ -1,4 +1,4 @@
-package com.basic.xml;
+package common.util;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -16,9 +16,12 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class XmlUtils {
+public class XMLUtils {
 
-	public static String getTextOfTag(String xml, String parent, String tagName) {
+	/**
+	 * Đọc dữ liệu của 1 tag: <name>Java</name> => Java
+	 */
+	public static String getTagValue(String xml, String parent, String tagName) {
 		if (StringUtils.isEmpty(xml)) {
 			return "";
 		}
