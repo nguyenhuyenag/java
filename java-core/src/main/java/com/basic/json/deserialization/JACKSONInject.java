@@ -18,6 +18,7 @@ public class JACKSONInject {
 
 		InjectableValues inject = new InjectableValues.Std() //
 				.addValue(int.class, 1);
+		
 		JACKSONInject bean = new ObjectMapper() //
 				.reader(inject) //
 				.forType(JACKSONInject.class).readValue(json);

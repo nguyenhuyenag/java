@@ -13,8 +13,9 @@ import lombok.Setter;
 // then @JsonProperty annotation to indicate the property name in JSON.
 public class JSONProperty {
 
-	@JsonProperty("_id")
+	@JsonProperty("_id") // Đóng dòng này và run
 	public int id;
+	
 	private String name;
 
 	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {

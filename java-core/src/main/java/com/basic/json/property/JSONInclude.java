@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-@JsonInclude(Include.NON_NULL) // to exclude properties with empty/null/default values
+@JsonInclude(Include.NON_NULL) // to exclude properties with `empty/null/default` values
 public class JSONInclude {
 
 	public int id;

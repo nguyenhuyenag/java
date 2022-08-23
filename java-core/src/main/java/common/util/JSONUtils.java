@@ -19,12 +19,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class JsonUtils {
+public class JSONUtils {
 
 	// private static final Gson GSON = new Gson();
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 
-	private JsonUtils() {
+	private JSONUtils() {
 		MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 	
