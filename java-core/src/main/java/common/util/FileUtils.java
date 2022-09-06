@@ -153,10 +153,10 @@ public class FileUtils {
 			FileUtils.createFile(path);
 		}
 		try {
-			if (!append) {
-				return Files.write(path, bytes);
+			if (append) {
+				return Files.write(path, bytes, StandardOpenOption.APPEND);
 			}
-			return Files.write(path, bytes, StandardOpenOption.APPEND);
+			return Files.write(path, bytes);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

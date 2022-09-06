@@ -145,6 +145,12 @@ public class JSONUtils {
 		}
 		return null;
 	}
+	
+	// List to JSON array
+	public static String toJSONArray(List<?> list) {
+		JSONArray jarr = new JSONArray(list);
+		return jarr.toString();
+	}
 
 //	/**
 //	 * JSON to List Object with GSON

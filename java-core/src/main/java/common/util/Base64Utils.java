@@ -44,4 +44,12 @@ public class Base64Utils {
 		return new String(byteArr);
 	}
 	
+	public static Path base64ToFile(Path path, String base64) {
+		byte[] byteArr = Base64Utils.decodeToByte(base64);
+		if (byteArr == null) {
+			throw new IllegalArgumentException("Illegal character in Base64 data");
+		}
+		return FileUtils.writeByteArrayToFile(path, byteArr, false);
+	}
+	
 }
