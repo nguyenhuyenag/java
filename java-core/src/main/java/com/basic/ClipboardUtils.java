@@ -15,7 +15,7 @@ public class ClipboardUtils {
 				.setContents(new StringSelection(text), null);
 	}
 
-	public static void paste() {
+	public static void readClipboard() {
 		try {
 			String data = (String) Toolkit.getDefaultToolkit() //
 					.getSystemClipboard() //
@@ -29,7 +29,7 @@ public class ClipboardUtils {
 	public static void main(String[] args) {
 		String s = "I'm Java";
 		copy(s);
-		paste();
+		readClipboard();
 	}
 
 }
