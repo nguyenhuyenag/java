@@ -23,14 +23,22 @@ public class SomeBean {
 	String field2;
 	String field3;
 
+	// Hiển thị các field được chỉ định
+	public static FilterProvider filter1() {
+		return new SimpleFilterProvider() // .setFailOnUnknownId(false) //
+				.addFilter("SomeBeanName", SimpleBeanPropertyFilter.filterOutAllExcept("field1", "field3"));
+	}
+
+	// Ẩn các field được chỉ định
+	public static FilterProvider filter2() {
+		return new SimpleFilterProvider() // .setFailOnUnknownId(false) //
+				.addFilter("SomeBeanName", SimpleBeanPropertyFilter.serializeAllExcept("field1"));
+	}
+
 	public static void main(String[] args) throws JsonProcessingException {
 		SomeBean bean = new SomeBean("value1", "value2", "value2");
-		// mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-		FilterProvider filters = new SimpleFilterProvider() //
-				// .setFailOnUnknownId(false) //
-				.addFilter("SomeBeanName", SimpleBeanPropertyFilter.filterOutAllExcept("field1", "field2"));
 		ObjectMapper mapper = new ObjectMapper();
-		System.out.println(mapper.setFilterProvider(filters).writeValueAsString(bean));
+		System.out.println(mapper.setFilterProvider(filter2()).writeValueAsString(bean));
 	}
 
 }
