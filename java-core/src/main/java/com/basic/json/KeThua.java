@@ -1,4 +1,4 @@
-package com;
+package com.basic.json;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,7 +37,7 @@ class B extends A {
 
 }
 
-public class Main {
+public class KeThua {
 
 	public static void main(String[] args) throws JsonProcessingException {
 		// test();
