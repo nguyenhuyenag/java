@@ -27,9 +27,7 @@ public class XMLUtils {
 		}
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try (StringReader sr = new StringReader(xml)) {
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			InputSource is = new InputSource(sr);
-			Document doc = builder.parse(is);
+			Document doc = factory.newDocumentBuilder().parse(new InputSource(sr));
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName(parent);
 			for (int i = 0; i < nList.getLength(); i++) {

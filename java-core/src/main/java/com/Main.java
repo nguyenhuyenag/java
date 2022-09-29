@@ -10,7 +10,7 @@ import common.util.Base64Utils;
 public class Main {
 
 	public static void main(String[] args) {
-		Path path = Paths.get("C:/Users/huyennv/Desktop/tax-conver/04_GTGT_TT80_2022.xlsx");
+		Path path = Paths.get("C:/Users/huyennv/Desktop/tax-conver/833_04_TNDN_TT80_2022.xlsx");
 		String base64 = Base64Utils.encodeToString(path);
 		System.out.println(base64.trim());
 		ClipboardUtils.copy(base64);
