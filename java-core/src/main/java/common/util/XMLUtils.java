@@ -59,8 +59,8 @@ public class XMLUtils {
 		return start + between + end;
 	}
 
-	public static boolean isXMLValid(String string) {
-		try (StringReader sr = new StringReader(string)) {
+	public static boolean isXMLValid(String xml) {
+		try (StringReader sr = new StringReader(xml)) {
 			SAXParserFactory.newInstance() //
 					.newSAXParser() //
 					.getXMLReader() //
