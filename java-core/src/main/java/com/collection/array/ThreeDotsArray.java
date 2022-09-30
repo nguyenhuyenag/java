@@ -3,8 +3,9 @@ package com.collection.array;
 /**
  * https://stackoverflow.com/questions/3158730/java-3-dots-in-parameters
  *
+ * ArbitraryNumberArguments
  */
-public class ArbitraryNumberArguments {
+public class ThreeDotsArray {
 
 	public static void X(int... args) {
 		for (int val : args) {
