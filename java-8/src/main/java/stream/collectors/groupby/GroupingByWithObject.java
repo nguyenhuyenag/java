@@ -1,4 +1,4 @@
-package stream.collectors;
+package stream.collectors.groupby;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,45 +6,23 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 class Book {
 	private Integer id;
 	private String title;
-	private Integer cagegoryId;
-
-	public Book(Integer id, String title, Integer cagegoryId) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.cagegoryId = cagegoryId;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public Integer getCagegoryId() {
-		return cagegoryId;
-	}
-
-	public void setCagegoryId(Integer cagegoryId) {
-		this.cagegoryId = cagegoryId;
-	}
+	private int cagegoryId;
 
 }
 
-public class GroupingBy {
+public class GroupingByWithObject {
 
 	public static void main(String[] args) {
 		List<Book> books = Arrays.asList(//

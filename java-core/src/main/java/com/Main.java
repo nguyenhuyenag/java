@@ -50,7 +50,6 @@ public class Main {
 		// 3 apple, 2 banana, others 1
 		List<String> items = Arrays.asList("apple", "apple", "banana", "apple", "orange", "banana", "papaya");
 		Map<String, Long> finalMap = new LinkedHashMap<>();
-
 		Map<String, Long> result = items.stream()
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		// Sort a map and add to finalMap
