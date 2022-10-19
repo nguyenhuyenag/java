@@ -1,62 +1,53 @@
 package com;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-import javax.xml.XMLConstants;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
-
-import org.xml.sax.SAXException;
-
-import com.basic.ClipboardUtils;
-
-import common.util.Base64Utils;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
-	public static void validateXMLSchemaStringXML(String xsdPath, String xml) {
-		try {
-			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = factory.newSchema(new File(xsdPath));
-			Validator validator = schema.newValidator();
-			StreamSource source = new StreamSource(new StringReader(xml));
-			validator.validate(source);
-		} catch (SAXException | IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	public static void test() {
+//		Path path = Paths.get("C:/Users/huyennv/Desktop/tax-conver/892_03_TNDN_TT80_251.xlsx");
+//		String base64 = Base64Utils.encodeToString(path);
+//		System.out.println(base64.trim());
+//		ClipboardUtils.copy(base64);
+//	}
 
-	public static void test() {
-		Path path = Paths.get("C:/Users/huyennv/Desktop/tax-conver/953_05_QTT_TNCN_TT80_251.xlsx");
-		String base64 = Base64Utils.encodeToString(path);
-		System.out.println(base64.trim());
-		ClipboardUtils.copy(base64);
+	// nums[i] < nums[j] < nums[k]
+	public static boolean increasingTriplet(int[] nums) {
+		int len = nums.length;
+		Set<Integer> set = new HashSet<>();
+		for (int x : nums) {
+			set.add(x);
+		}
+		if (set.size() < 3) {
+			return false;
+		}
+		for (int i = 0; i < len; i++) {
+			for (int j = i + 1; j < len; j++) {
+				if (nums[i] >= nums[j]) {
+					continue;
+				}
+				for (int k = j + 1; k < len; k++) {
+					if (nums[i] >= nums[k] || nums[j] >= nums[k]) {
+						continue;
+					}
+					if (nums[i] < nums[j] && nums[j] < nums[k]) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 	public static void main(String[] args) {
 		// test();
-		// 3 apple, 2 banana, others 1
-		List<String> items = Arrays.asList("apple", "apple", "banana", "apple", "orange", "banana", "papaya");
-		Map<String, Long> finalMap = new LinkedHashMap<>();
-		Map<String, Long> result = items.stream()
-				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-		// Sort a map and add to finalMap
-		result.entrySet().stream() //
-				.sorted(Map.Entry.<String, Long>comparingByValue().reversed()) //
-				.forEachOrdered(e -> finalMap.put(e.getKey(), e.getValue()));
-		System.out.println(finalMap);
+		// int[] nums = { 2, 1, 5, 0, 4, 6 };
+		// System.out.println(increasingTriplet(nums));
+		int i1 = 123456;
+		int i2 = 123_456;
+		short binary= 0b0101;
+		System.out.println(binary); // true
 	}
 
 }
