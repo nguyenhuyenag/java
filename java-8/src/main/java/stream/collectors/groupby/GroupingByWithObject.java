@@ -16,6 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 class Book {
+	
 	private Integer id;
 	private String title;
 	private int cagegoryId;

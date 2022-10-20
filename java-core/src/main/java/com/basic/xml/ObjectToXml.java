@@ -10,7 +10,6 @@ import javax.xml.bind.Marshaller;
 public class ObjectToXml {
 
 	private static Department getDepartment() {
-		
 		// Create employees
 		List<Employee> employees = new ArrayList<>();
 		Employee emp1 = new Employee(1, "GP Coder", 1000, 28);
