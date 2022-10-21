@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <students>
-    <student id="1">
-        <name>John</name>
+    <student id="2">
+        <name>Huyen</name>
         <code>12345</code>
-        <age>19</age>
+    <email>huyennv@gmail.com</email>
     </student>
 </students>
