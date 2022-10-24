@@ -13,6 +13,7 @@ public class GroupingBy {
 		// 3 apple, 2 banana, others 1
 		List<String> items = Arrays.asList("apple", "apple", "banana", "apple", "orange", "banana", "papaya");
 		Map<String, Long> result = items.stream()
+				// .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		System.out.println("Without sort:\t" + result);
 		// Sort a map and add to finalMap
