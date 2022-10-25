@@ -1,5 +1,9 @@
 package com;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Main {
@@ -25,8 +29,19 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		// infoOfCurrentProcess();
-		infoOfLiveProcesses();
+		long startTime = System.currentTimeMillis();
+
+		List strings = IntStream.rangeClosed(1, 10_000_000).mapToObj(Integer::toString).collect(Collectors.toList());
+
+		long totalTime = System.currentTimeMillis() - startTime;
+		System.out.println("Generated " + strings.size() + " strings in " + totalTime + " ms.");
+
+		startTime = System.currentTimeMillis();
+
+		String appended = (String) strings.stream().limit(100_000).reduce("", (l, r) -> l.toString() + r.toString());
+
+		totalTime = System.currentTimeMillis() - startTime;
+		System.out.println("Created string of length " + appended.length() + " in " + totalTime + " ms.");
 	}
 
 }
