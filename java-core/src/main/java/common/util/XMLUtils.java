@@ -24,6 +24,7 @@ public class XMLUtils {
 		if (StringUtils.isEmpty(xml)) {
 			return "";
 		}
+		xml = xml.trim().replaceFirst("^([\\W]+)<","<"); // "Content is not allowed in prolog"
 		try (StringReader sr = new StringReader(xml)) {
 			Document doc = DocumentBuilderFactory.newInstance() //
 					.newDocumentBuilder() //

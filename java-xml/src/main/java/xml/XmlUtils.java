@@ -70,7 +70,7 @@ public class XmlUtils {
 	public static NodeList asNoteList(String xml, String nodeName) {
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document document = builder.parse(new InputSource(new StringReader(xml)));
+			Document document = builder.parse(new InputSource(new StringReader(xml))); // close stream
 			document.getDocumentElement().normalize();
 			NodeList nodeList = document.getElementsByTagName(nodeName);
 			return nodeList.item(0).getChildNodes();
