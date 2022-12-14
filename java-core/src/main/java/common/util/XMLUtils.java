@@ -1,11 +1,20 @@
 package common.util;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Document;
@@ -20,11 +29,12 @@ public class XMLUtils {
 	/**
 	 * Đọc dữ liệu của 1 tag: <name>Java</name> => Java
 	 */
-	public static String getTagValue(String xml, String parent, String tagName) {
+	public static String getTagValue2(String xml, String parent, String tagName) {
 		if (StringUtils.isEmpty(xml)) {
 			return "";
 		}
-		xml = xml.trim().replaceFirst("^([\\W]+)<","<"); // "Content is not allowed in prolog"
+		// xml = xml.trim().replaceFirst("^([\\W]+)<","<"); // "Content is not allowed
+		// in prolog"
 		try (StringReader sr = new StringReader(xml)) {
 			Document doc = DocumentBuilderFactory.newInstance() //
 					.newDocumentBuilder() //
@@ -37,7 +47,32 @@ public class XMLUtils {
 					Element el = (Element) node;
 					Node tagNode = el.getElementsByTagName(tagName).item(0);
 					if (tagNode != null) {
-						return tagNode.getTextContent();
+						return tagNode.getTextContent().trim();
+					}
+				}
+			}
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	public static String getTagValue(String xml, String parent, String tagName) {
+		if (StringUtils.isEmpty(xml)) {
+			return "";
+		}
+		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+			Document doc = DocumentBuilderFactory.newInstance() //
+					.newDocumentBuilder() //
+					.parse(new InputSource(is));
+			NodeList nList = doc.getElementsByTagName(parent);
+			for (int i = 0; i < nList.getLength(); i++) {
+				Node node = nList.item(i);
+				if (node.getNodeType() == Node.ELEMENT_NODE) {
+					Element el = (Element) node;
+					Node tagNode = el.getElementsByTagName(tagName).item(0);
+					if (tagNode != null) {
+						return tagNode.getTextContent().trim();
 					}
 				}
 			}
@@ -73,8 +108,30 @@ public class XMLUtils {
 		return false;
 	}
 
-	public static void main(String[] args) {
-		
+	protected static String getString(String xml, String tagName)
+			throws IOException, SAXException, ParserConfigurationException {
+		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+			Document doc = DocumentBuilderFactory.newInstance() //
+					.newDocumentBuilder() //
+					.parse(new InputSource(is));
+			Element element = doc.getDocumentElement();
+			NodeList list = element.getElementsByTagName(tagName);
+			if (list != null && list.getLength() > 0) {
+				NodeList subList = list.item(0).getChildNodes();
+				if (subList != null && subList.getLength() > 0) {
+					return subList.item(0).getNodeValue().trim();
+				}
+			}
+		}
+		return null;
+	}
+
+	public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
+		Path path = Paths.get(PathUtils.HOME, "file/test.xml");
+		String xml = FileUtils.readFile(path);
+		// System.out.println(xml);
+		// String s = getTagValue(xml, "Signature", "SignatureValue");
+		System.out.println(getString(xml, "SignatureProperty"));
 	}
 
 }
