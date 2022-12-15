@@ -12,28 +12,45 @@ public class Match {
 		return Arrays.asList(arr).contains(value);
 	}
 
-	static boolean findString(String[] array, String key) {
+	public static boolean findString(String[] array, String key) {
 		Predicate<String> predicate = s -> s.equals("key");
 		return Arrays.stream(array).anyMatch(predicate);
 	}
 
-	static boolean findInt(int[] arr, int key) {
+	/**
+	 * Stream#anyMatch trả về TRUE nếu có một phần tử nào đó trong stream thỏa mãn
+	 * điều kiện được đặt ra. Ngược lại Stream#anyMatch trả về FALSE nếu stream rỗng
+	 * hoặc không có bất kỳ phần tử nào thỏa điều kiện
+	 */
+	public static boolean anyMatch(int[] arr, int key) {
 		return IntStream.of(arr).anyMatch(x -> x == key);
 	}
 
-	static boolean allMatchs(int[] arr, int key) {
+	/**
+	 * Stream#allMatch trả về TRUE nếu tất cả các phần tử trong stream đều thỏa mãn
+	 * điều kiện cho trước, ngược lại FALSE.
+	 */
+	public static boolean allMatch(int[] arr, int key) {
 		return IntStream.of(arr).allMatch(x -> x == key);
 	}
 
-	public static void main(String[] args) {
+	/**
+	 * Ngược lại với Stream#allMatch, Stream#noneMatch trả về TRUE nếu tất cả các
+	 * phần tử trong stream đều không thỏa điều kiện được đặt ra.
+	 */
+	public static boolean noneMatch(int[] arr, int key) {
+		return IntStream.of(arr).noneMatch(x -> x % key == 0);
+	}
 
+	public static void main(String[] args) {
 		String[] values = { "AB", "BC", "CD", "AE" };
 		System.out.println(findString(values, "AB"));
 
 		int[] arr = { 4, 4, 4, 4 };
-		System.out.println(findInt(arr, 3));
 
-		System.out.println(allMatchs(arr, 4));
+		System.out.println(anyMatch(arr, 3));
+		System.out.println(allMatch(arr, 4));
+		System.out.println(noneMatch(arr, 4));
 
 	}
 

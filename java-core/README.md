@@ -120,3 +120,6 @@
 
 # mvn javadoc:javadoc
 
+# Method parameter
+
+	- Một method có thể nhận tối đa 255 tham số, tuy nhiên mặc định chứa một tham số this nên chính xác sẽ còn 254.
