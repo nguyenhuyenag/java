@@ -22,9 +22,7 @@
 			<Object>
 				<SignatureProperties Id="proid" xmlns="">
 					<SignatureProperty Target="#sigid">
-						<SigningTime xmlns="http://example.org/#signatureProperties">
-							2022-12-13T14:04:10Z
-						</SigningTime>
+						<SigningTime xmlns="http://example.org/#signatureProperties">2022-12-13T14:04:10Z</SigningTime>
 					</SignatureProperty>
 				</SignatureProperties>
 			</Object>

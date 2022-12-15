@@ -8,12 +8,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.lang3.StringUtils;
@@ -108,30 +108,57 @@ public class XMLUtils {
 		return false;
 	}
 
-	protected static String getString(String xml, String tagName)
-			throws IOException, SAXException, ParserConfigurationException {
+//	protected static String getTagValue(String xml, String tagName) {
+//		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+//			Document doc = DocumentBuilderFactory.newInstance() //
+//					.newDocumentBuilder() //
+//					.parse(new InputSource(is));
+//			Element element = doc.getDocumentElement();
+//			NodeList nList = element.getElementsByTagName(tagName);
+//			if (nList != null && nList.getLength() > 0) {
+//				NodeList subList = nList.item(0).getChildNodes();
+//				if (subList != null && subList.getLength() > 0) {
+//					return subList.item(0).getNodeValue().trim();
+//				}
+//			}
+//		} catch (SAXException | IOException | ParserConfigurationException e) {
+//			e.printStackTrace();
+//		}
+//		return "";
+//	}
+
+	public static void getTagValue3() throws XPathExpressionException {
+		Path path = Paths.get(PathUtils.HOME, "file/test.xml");
+		String xml = FileUtils.readFile(path);
+		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+			Document doc = DocumentBuilderFactory.newInstance() //
+					.newDocumentBuilder() //
+					.parse(new InputSource(is));
+			XPath xPath = XPathFactory.newInstance().newXPath();
+			NodeList nodes = (NodeList) xPath.evaluate("//NoiDung/LaoDong/STT", doc, XPathConstants.NODESET);
+			for (int i = 0; i < nodes.getLength(); i++) {
+				Node node = nodes.item(i);
+				System.out.println(node.getTextContent().trim());
+			}
+		} catch (SAXException | IOException | ParserConfigurationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) throws XPathExpressionException {
+		Path path = Paths.get(PathUtils.HOME, "file/test.xml");
+		String xml = FileUtils.readFile(path);
 		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
 			Document doc = DocumentBuilderFactory.newInstance() //
 					.newDocumentBuilder() //
 					.parse(new InputSource(is));
 			Element element = doc.getDocumentElement();
-			NodeList list = element.getElementsByTagName(tagName);
-			if (list != null && list.getLength() > 0) {
-				NodeList subList = list.item(0).getChildNodes();
-				if (subList != null && subList.getLength() > 0) {
-					return subList.item(0).getNodeValue().trim();
-				}
-			}
+			// NodeList nList = doc.getElementsByTagName(parent);
+			String name = element.getAttribute("NoiDung");
+			System.out.println(name);
+		} catch (SAXException | IOException | ParserConfigurationException e) {
+			e.printStackTrace();
 		}
-		return null;
-	}
-
-	public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
-		Path path = Paths.get(PathUtils.HOME, "file/test.xml");
-		String xml = FileUtils.readFile(path);
-		// System.out.println(xml);
-		// String s = getTagValue(xml, "Signature", "SignatureValue");
-		System.out.println(getString(xml, "SignatureProperty"));
 	}
 
 }
