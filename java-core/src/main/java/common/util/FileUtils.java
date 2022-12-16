@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -477,8 +478,7 @@ public class FileUtils {
 		try {
 			Path newfile = Paths.get(path.getParent().toString(), newname + "." + getFileExtension(path.toFile()));
 			Files.move(path, path.resolveSibling(newfile));
-			// Files.move(path, path.resolveSibling(newfile),
-			// StandardCopyOption.REPLACE_EXISTING);
+			// Files.move(path, path.resolveSibling(newfile), StandardCopyOption.REPLACE_EXISTING);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -526,6 +526,24 @@ public class FileUtils {
 			e.printStackTrace();
 		}
 		return Collections.emptySet();
+	}
+
+	public static void fileAttributes() {
+		try {
+			Path file = Paths.get(PathUtils.HOME, "file/test.xml");
+			BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
+			System.out.println("Create time: " + attr.creationTime());
+			System.out.println("Size: " + attr.size());
+			System.out.println("Last access time: " + attr.lastAccessTime());
+			System.out.println("Last modified time: " + attr.lastModifiedTime());
+			System.out.println("Last modified time: " + file.toFile().lastModified());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		fileAttributes();
 	}
 
 }
