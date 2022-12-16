@@ -11,10 +11,7 @@ import java.nio.file.Paths;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Document;
@@ -26,37 +23,37 @@ import org.xml.sax.SAXException;
 
 public class XMLUtils {
 
+//	public static String getTagValue2(String xml, String parent, String tagName) {
+//		if (StringUtils.isEmpty(xml)) {
+//			return "";
+//		}
+//		// xml = xml.trim().replaceFirst("^([\\W]+)<","<"); // "Content is not allowed
+//		// in prolog"
+//		try (StringReader sr = new StringReader(xml)) {
+//			Document doc = DocumentBuilderFactory.newInstance() //
+//					.newDocumentBuilder() //
+//					.parse(new InputSource(sr));
+//			doc.getDocumentElement().normalize();
+//			NodeList nList = doc.getElementsByTagName(parent);
+//			for (int i = 0; i < nList.getLength(); i++) {
+//				Node node = nList.item(i);
+//				if (node.getNodeType() == Node.ELEMENT_NODE) {
+//					Element el = (Element) node;
+//					Node tagNode = el.getElementsByTagName(tagName).item(0);
+//					if (tagNode != null) {
+//						return tagNode.getTextContent().trim();
+//					}
+//				}
+//			}
+//		} catch (ParserConfigurationException | SAXException | IOException e) {
+//			e.printStackTrace();
+//		}
+//		return "";
+//	}
+
 	/**
 	 * Đọc dữ liệu của 1 tag: <name>Java</name> => Java
 	 */
-	public static String getTagValue2(String xml, String parent, String tagName) {
-		if (StringUtils.isEmpty(xml)) {
-			return "";
-		}
-		// xml = xml.trim().replaceFirst("^([\\W]+)<","<"); // "Content is not allowed
-		// in prolog"
-		try (StringReader sr = new StringReader(xml)) {
-			Document doc = DocumentBuilderFactory.newInstance() //
-					.newDocumentBuilder() //
-					.parse(new InputSource(sr));
-			doc.getDocumentElement().normalize();
-			NodeList nList = doc.getElementsByTagName(parent);
-			for (int i = 0; i < nList.getLength(); i++) {
-				Node node = nList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					Element el = (Element) node;
-					Node tagNode = el.getElementsByTagName(tagName).item(0);
-					if (tagNode != null) {
-						return tagNode.getTextContent().trim();
-					}
-				}
-			}
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
-
 	public static String getTagValue(String xml, String parent, String tagName) {
 		if (StringUtils.isEmpty(xml)) {
 			return "";
@@ -80,19 +77,6 @@ public class XMLUtils {
 			e.printStackTrace();
 		}
 		return "";
-	}
-
-	public static String getStructAndTextOfTag(String xml, String tagName) {
-		if (StringUtils.isEmpty(xml) || StringUtils.isEmpty(tagName)) {
-			return "";
-		}
-		String start = "<" + tagName + ">";
-		String end = "</" + tagName + ">";
-		String between = StringUtils.substringBetween(xml, start, end);
-		if (StringUtils.isEmpty(between)) {
-			return "";
-		}
-		return start + between + end;
 	}
 
 	public static boolean isXMLValid(String xml) {
@@ -127,38 +111,43 @@ public class XMLUtils {
 //		return "";
 //	}
 
-	public static void getTagValue3() throws XPathExpressionException {
-		Path path = Paths.get(PathUtils.HOME, "file/test.xml");
-		String xml = FileUtils.readFile(path);
-		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
-			Document doc = DocumentBuilderFactory.newInstance() //
-					.newDocumentBuilder() //
-					.parse(new InputSource(is));
-			XPath xPath = XPathFactory.newInstance().newXPath();
-			NodeList nodes = (NodeList) xPath.evaluate("//NoiDung/LaoDong/STT", doc, XPathConstants.NODESET);
-			for (int i = 0; i < nodes.getLength(); i++) {
-				Node node = nodes.item(i);
-				System.out.println(node.getTextContent().trim());
-			}
-		} catch (SAXException | IOException | ParserConfigurationException e) {
-			e.printStackTrace();
+//	public static void getTagValue3() throws XPathExpressionException {
+//		Path path = Paths.get(PathUtils.HOME, "file/test.xml");
+//		String xml = FileUtils.readFile(path);
+//		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+//			Document doc = DocumentBuilderFactory.newInstance() //
+//					.newDocumentBuilder() //
+//					.parse(new InputSource(is));
+//			XPath xPath = XPathFactory.newInstance().newXPath();
+//			NodeList nodes = (NodeList) xPath.evaluate("//NoiDung/LaoDong/STT", doc, XPathConstants.NODESET);
+//			for (int i = 0; i < nodes.getLength(); i++) {
+//				Node node = nodes.item(i);
+//				System.out.println(node.getTextContent().trim());
+//			}
+//		} catch (SAXException | IOException | ParserConfigurationException e) {
+//			e.printStackTrace();
+//		}
+//	}
+
+	public static String getStructAndTextOfTag(String xml, String tagName) {
+		if (StringUtils.isEmpty(xml) || StringUtils.isEmpty(tagName)) {
+			return "";
 		}
+		String start = "<" + tagName; // + ">";
+		String end = "</" + tagName + ">";
+		String between = StringUtils.substringBetween(xml, start, end);
+		if (StringUtils.isEmpty(between)) {
+			return "";
+		}
+		return start + between + end;
 	}
 
 	public static void main(String[] args) throws XPathExpressionException {
 		Path path = Paths.get(PathUtils.HOME, "file/test.xml");
 		String xml = FileUtils.readFile(path);
-		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
-			Document doc = DocumentBuilderFactory.newInstance() //
-					.newDocumentBuilder() //
-					.parse(new InputSource(is));
-			Element element = doc.getDocumentElement();
-			// NodeList nList = doc.getElementsByTagName(parent);
-			String name = element.getAttribute("NoiDung");
-			System.out.println(name);
-		} catch (SAXException | IOException | ParserConfigurationException e) {
-			e.printStackTrace();
-		}
+		// System.out.println(xml);
+		String s = getStructAndTextOfTag(xml, "SignatureProperties");
+		System.out.println(s);
 	}
 
 }
