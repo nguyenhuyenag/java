@@ -5,17 +5,16 @@ public class PrimitiveData {
 	/**
 	 * Giá trị khởi tạo
 	 * 
-	 * 		object				=>	NULL
+	 * 		object					=>	NULL
 	 * 
-	 * 		int/short/byte/long => 	0
+	 * 		int/short/byte/long 	=> 	0
 	 * 
-	 * 		float/double 		=> 	0.0
+	 * 		float/double 			=> 	0.0
 	 * 
-	 * 		boolean 			=> 	false
+	 * 		boolean 				=> 	false
 	 * 
-	 * 		char				=>	'\u0000'
+	 * 		char					=>	'\u0000'
 	 */
-
 	private static class Helper {
 		private static final PrimitiveData INSTANCE = new PrimitiveData();
 	}
@@ -25,13 +24,13 @@ public class PrimitiveData {
 	}
 
 	public final byte	BYTE_MIN 	= -128;						// -2^7
-	public final byte 	BYTE_MAX 	= 127; 						// 2^7 - 1
+	public final byte 	BYTE_MAX 	= 127; 						//  2^7	 - 1
 	public final short	SHORT_MIN 	= -32768; 					// -2^15
-	public final short 	SHORT_MAX 	= 32767; 					// 2^15 - 1
+	public final short 	SHORT_MAX 	= 32767; 					//  2^15 - 1
 	public final int 	INT_MIN 	= -2147483648; 				// -2^31
-	public final int 	INT_MAX 	= 2147483647; 				// 2^31 - 1
+	public final int 	INT_MAX 	= 2147483647; 				//  2^31 - 1
 	public final long 	LONG_MIN 	= -9223372036854775808L;	// -2^63
-	public final long 	LONG_MAX 	= 9223372036854775807L; 	// 2^63 - 1
+	public final long 	LONG_MAX 	= 9223372036854775807L; 	//  2^63 - 1
 	
 	/**
 	 * Nếu 2 số integer giá trị 127 thì là true, còn 128 là false vì kiểu
