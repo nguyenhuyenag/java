@@ -22,7 +22,7 @@ public class JSONUnwrapped {
 
 	public static void main(String[] args) throws JsonProcessingException {
 		JSONUnwrapped.Name name = new JSONUnwrapped.Name("John", "Doe");
-		JSONUnwrapped user = new JSONUnwrapped(1, name);
+		JSONUnwrapped user = new JSONUnwrapped(123, name);
 
 		String result = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(user);
 		System.out.println(result);

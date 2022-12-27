@@ -17,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonFilter("SomeBeanName")
-public class SomeBean {
+public class ShowHideField {
 
 	String field1;
 	String field2;
@@ -36,7 +36,7 @@ public class SomeBean {
 	}
 
 	public static void main(String[] args) throws JsonProcessingException {
-		SomeBean bean = new SomeBean("value1", "value2", "value2");
+		ShowHideField bean = new ShowHideField("value1", "value2", "value2");
 		ObjectMapper mapper = new ObjectMapper();
 		System.out.println(mapper.setFilterProvider(filter2()).writeValueAsString(bean));
 	}

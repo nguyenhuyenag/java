@@ -6,6 +6,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import common.util.JSONUtils;
+
 public class JSONCreator {
 
 	public int id;
@@ -18,11 +20,11 @@ public class JSONCreator {
 	}
 
 	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {
-		String json = "{\"id\":1,\"theName\":\"Jackson\"}";
+		String json = "{\"id\":1000, \"theName\":\"Jackson\"}";
 		JSONCreator bean = new ObjectMapper() //
 				.readerFor(JSONCreator.class) //
 				.readValue(json);
-		System.out.println(bean.id + ", " + bean.name);
+		System.out.println(JSONUtils.toJSON(bean));
 	}
 
 }

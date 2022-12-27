@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-// then @JsonProperty annotation to indicate the property name in JSON.
+// then @JsonProperty annotation to indicate the property name in JSON
 public class JSONProperty {
 
 	@JsonProperty("_id") // Đóng dòng này và run
