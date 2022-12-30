@@ -16,12 +16,14 @@ public class JSONProperty {
 
 	@JsonProperty("_id") // Đóng dòng này và run
 	public int id;
-	
+
 	private String name;
 
 	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {
 		String json = "{\"_id\": 12, \"name\": \"Green\"}";
-		JSONProperty bean = new ObjectMapper().readerFor(JSONProperty.class).readValue(json);
+		JSONProperty bean = new ObjectMapper() //
+				.readerFor(JSONProperty.class) //
+				.readValue(json);
 		System.out.println(JSONUtils.toJSON(bean));
 	}
 
