@@ -8,7 +8,7 @@ public class StreamXWhile {
 
 	public static void takeWhile1() {
 		Stream.iterate("", s -> s + "s") //
-				.takeWhile(s -> s.length() < 10) //
+				.takeWhile(s -> s.length() < 10) // ngắt vòng lặp của forEach của stream
 				.forEach(t -> System.out.println(t));
 	}
 
