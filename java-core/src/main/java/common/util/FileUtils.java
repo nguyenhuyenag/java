@@ -6,8 +6,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -528,22 +528,16 @@ public class FileUtils {
 		return Collections.emptySet();
 	}
 
-	public static void fileAttributes() {
+	public static void copy(Path source, Path target) {
 		try {
-			Path file = Paths.get(PathUtils.HOME, "file/test.xml");
-			BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
-			System.out.println("Create time: " + attr.creationTime());
-			System.out.println("Size: " + attr.size());
-			System.out.println("Last access time: " + attr.lastAccessTime());
-			System.out.println("Last modified time: " + attr.lastModifiedTime());
-			System.out.println("Last modified time: " + file.toFile().lastModified());
+			Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.format("I/O error when copying file");
 		}
 	}
 
 	public static void main(String[] args) {
-		fileAttributes();
+		
 	}
 
 }

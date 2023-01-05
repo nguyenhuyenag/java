@@ -112,7 +112,6 @@
 
 		throw new IllegalArgumentException("IllegalArgumentException Exception");
 
-
 # For loop vs Iterator
 
 	- Iterator có khả năng thêm/xoá những phần từ tập hợp trong quá trình duyệt.
@@ -127,14 +126,29 @@
 	
 	- Ghi đè phương thức là ví dụ về đa hình lúc runtime.
 
-# compare(T obj1, T obj2) và compareTo(T object)
+# Comparator.compare(T1, T2) và Comparable.compareTo(T)
 
 	- compare() is from the Comparator interface, so it is used to compare two different instances of another class with each other.
 
 	- compareTo() is from the Comparable interface, so it is used to compare THIS instance to another one.
 
-# mvn javadoc:javadoc
-
 # Method parameter
 
 	- Một method có thể nhận tối đa 255 tham số, tuy nhiên mặc định chứa một tham số this nên chính xác sẽ còn 254.
+
+# Pass by value & Pass by reference
+
+Khi các tham số đầu vào của một method là
+
+	- Pass-by-value: Method sẽ tạo bản sao của tham số truyền vào và hoạt động trên chúng. Mọi thay đổi trên bản sao này không ảnh hưởng đến giá trị ban đầu. 
+	
+	- Pass-by-reference: Method sẽ thao tác trên cùng một object. Điều này có nghĩa là khi method thay đổi giá trị của tham số thì giá trị của chúng tại nơi gọi cũng thay đổi theo.
+
+	- Trong java luôn luôn là pass-by-value
+
+	
+	
+	
+	
+	
+	

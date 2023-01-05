@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Scanner;
+
+import common.util.PathUtils;
 
 public class FileService {
 
@@ -55,13 +58,6 @@ public class FileService {
 //		return list;
 //	}
 
-	public static void copy(Path source, Path target) {
-		try {
-			Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
-		} catch (IOException e) {
-			System.err.format("I/O error when copying file");
-		}
-	}
 
 //	public static void fileUsingFileOutputStream(String path, String data, Charset cs) throws IOException {
 //		try (FileOutputStream fot = new FileOutputStream(path)) {
@@ -178,6 +174,20 @@ public class FileService {
 			System.out.println("yottabytes : " + yottabytes);
 		} else {
 			System.out.println("File does not exists!");
+		}
+	}
+	
+	public static void fileAttributes() {
+		try {
+			Path file = Paths.get(PathUtils.HOME, "file/test.xml");
+			BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
+			System.out.println("Create time: " + attr.creationTime());
+			System.out.println("Size: " + attr.size());
+			System.out.println("Last access time: " + attr.lastAccessTime());
+			System.out.println("Last modified time: " + attr.lastModifiedTime());
+			System.out.println("Last modified time: " + file.toFile().lastModified());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	

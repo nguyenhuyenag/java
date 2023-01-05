@@ -3,31 +3,19 @@ package common.object;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
 	private int age;
 	private String name;
-
-	public User(int age, String name) {
-		this.age = age;
-		this.name = name;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public boolean hasFieldNull() {
 		return Stream.of(name, age).anyMatch(Objects::isNull);
@@ -35,7 +23,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "(" + this.name + ", " + this.age + ")";
+		return "User [age=" + age + ", name=" + name + "]";
 	}
 
 }

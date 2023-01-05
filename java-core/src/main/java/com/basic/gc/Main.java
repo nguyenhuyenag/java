@@ -8,6 +8,7 @@ package com.basic.gc;
  * định là không còn reference nào đến nó.
  *
  */
+@SuppressWarnings("unused")
 public class Main {
 
 	// to store object name
