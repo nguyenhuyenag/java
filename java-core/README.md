@@ -81,22 +81,37 @@
 	
 # Exception
 
-	- Có 2 loại là: Runtime exception và Checked exception
+	- Có 2 loại là: Checked Exception và Runtime Exception (Unchecked Exception)
 	
-	- Runtime exception là lỗi trong lúc mình thực thi chương trình, còn Checked exception là lỗi trong quá trình biên dịch.	
+	- Checked exception là lỗi trong quá trình biên dịch
+
+		+ FileNotFoundException,...
+	
+	- Runtime exception là lỗi trong lúc mình thực thi chương trình. Đa phần xảy ra lỗi do dữ liệu không hợp lệ trong quá trình tương tác với chương trình
+
+		+ ArrayIndexOutOfBoundsException, lỗi chia cho 0,...
+
+	- Oracle: Nếu một exception xảy ra mà người dùng có thể khắc phục được thì sử dụng checked exception, còn nếu không thể thì sử dụng unchecked exception
 	
 # Throw vs Throws
 
-	Throw											Throws
+		Throw										Throws
 	
-	- Ném ra một ngoại lệ							- Khai báo một ngoại lệ
+	- Ném một exception cụ thể					- khai báo các exception của một method
 	
 	- Checked exception không được ném ra 		- Ném ra checked exception ngay cả khi chỉ sử dụng throws
 	  nếu chỉ sử dụng throw
 	  
+	- Không thể throw nhiều exception			- Có thể throw nhiều exception (dùng dấu phẩy)
+
+	- Throw được dùng bên trong method 			- Throws được dùng chung với phần khai báo của method
+
 	- Sau throw là một new instance				- Sau throws là một hoặc nhiều class
 	
-	- Không thể throw nhiều exception			- Có thể throw nhiều exception (dùng dấu phẩy)
+		throws FileNotFoundException;
+
+		throw new IllegalArgumentException("IllegalArgumentException Exception");
+
 
 # For loop vs Iterator
 
