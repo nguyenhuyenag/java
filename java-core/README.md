@@ -23,7 +23,7 @@
 	
 	- Không thể tạo, catch, throw đối tượng của parameterized types
 	
-	- Không thể overload các hàm trong một lớp giống như
+	- Không thể overload các hàm trong một lớp
 
 # Static
 
@@ -61,20 +61,12 @@
 
 # TreeMap
 
-	- TreeMap lưu trữ dữ liệu dưới dạng cặp key và value
-	
-	- TreeMap chỉ chứa các key duy nhất
-	
 	- TreeMap KHÔNG cho phép bất kỳ key nào là null và nhưng có thể có nhiều giá trị null
 	
 	- TreeMap tự động sắp xếp các phần tăng dần theo key 
 	
 # LinkedHashMap
 
-	- LinkedHashMap lưu trữ dữ liệu dưới dạng cặp key và value
-	
-	- LinkedHashMap chỉ chứa các key duy nhất
-	
 	- LinkedHashMap có thể có 1 key là null và nhiều giá trị null
 	
 	- LinkedHashMap duy trì các phần tử theo thứ tự chèn
@@ -145,6 +137,47 @@ Khi các tham số đầu vào của một method là
 	- Pass-by-reference: Method sẽ thao tác trên cùng một object. Điều này có nghĩa là khi method thay đổi giá trị của tham số thì giá trị của chúng tại nơi gọi cũng thay đổi theo.
 
 	- Trong java luôn luôn là pass-by-value
+	
+	- Tham số reference object: Các object sau khi khởi tạo đều được lưu trữ trong heap. Những object này sẽ được tham chiếu bởi các biến reference khác nhau. Hay nói cách khác các biến này sẽ lưu trữ địa chỉ của các object mà chúng tham chiếu. Các biến reference này được lưu trữ trong trong vùng nhớ Stack. Khi một biến reference (địa chỉ của object) được truyền vào tham số của method thì một bản sao chép của chúng được tạo ra và lưu vào Stack. Chúng có cùng địa chỉ đến object được lưu trong heap. Khi ta thao tác trên biến reference thì sẽ ảnh hưởng đến object được lưu trong heap
+	
+			public static void todo(User u1) {
+				u1.setName("Java2");
+			}
+		
+			User u = new User(25, "Java");
+			todo(u);
+			System.out.println(u.getName()); // = Java2
+	
+# Stack & Heap
+
+	- Các biến nguyên thủy được lưu trực tiếp trong stack
+	
+	- Các biến của object sau khi khởi tạo sẽ được lưu trong heap
+	
+	- Stack
+	
+		+ Dùng để cấp phát vùng nhớ tĩnh: Các tham số của method, biến local, biến tham chiếu đến các object
+		+ Hoạt động theo cơ chế LIFO
+		+ Tự giải phóng vùng nhớ method thực hiện xong
+		+ Các biến local bên trong Stack chỉ tồn tại khi method còn đang chạy. 
+		+ Nếu stack memory đầy Java sẽ quăng ra StackOverFlowError.
+		+ Truy cập Stack memory sẽ nhanh hơn so với Heap.
+		+ Dùng để thực thi luồng (mỗi thread trong java đều có riêng một Stack memory của nó)
+		
+	- Heap
+	
+		Heap memory được chia thành các phần nhỏ hơn:
+
+		- Young Generation: Là nơi tất cả các object được khởi tạo cho đến khi không còn được một tham chiếu đến nó thì sẽ được trình dọn rác thu gom.
+		- Old (Tenured) Generation: Là nơi lưu trữ các object có vòng đời dài. Khi một object được khởi tạo và được đặt ở Young Generation chúng sẽ được đặt một ngưỡng cho thời gian sống, nếu vượt qua ngưỡng này thì chúng sẽ được đưa vào Old Generation.
+		- Permanent Generation: Đây là nơi lưu trữ các metadata cho runtime class và application method.
+		
+		+ Dùng để cấp phát vùng nhớ động cho các object được khởi tạo tại thời điểm runtime
+		+ Nó được truy cập thông qua các cơ chế quản lý phức tạp bao gồm các phần Young, Old, Permanent Generation.
+		+ Nếu Heap space đầy thì java sẽ quăng lỗi OutOfMemoryError.
+		+ Truy cập dữ liệu trong vùng nhớ Heap sẽ lâu hơn so với Stack.
+		+ Heap không tự giải phóng vùng nhớ mà phải nhờ sự can thiệp của trình dọn rác java.
+		+ Heap là một vùng nhớ chung cho toàn bộ Thread và chúng ta cần bảo vệ dữ liệu bằng cách đồng bộ hoá. 
 
 	
 	
