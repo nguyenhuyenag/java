@@ -43,13 +43,26 @@
 	
 	- Với Java < 7 có thể thực thi chương trình mà không cần phương thức main()
 
+# Super
+
+	- Gọi constructor của class cha.
+	- Truy cập đến các biến instance của class cha khi class cha và class con có các biến instance giống tên nhau. 
+	- Truy cập method của class cha khi class con đã ghi đè phương thức của class cha.
+
 # This (đối tượng hiện tại của class)
 
-	- Không thể dùng this hay super trong phương thức static do phương thức static không gắn
-	
-	  với đối tượng, nên không có this.
+	- Không thể dùng this hay super() trong phương thức static do phương thức static không gắn với đối tượng, nên không có this.
 		
 # Final
+
+	- Một constructor không thể khai báo với từ khoá final
+	- Tất cả các biến được khai báo bên trong interface được mặc định là final
+	- Biến final khi khai báo không gán giá trị thì phải được gán trong constructor hoặc static block
+	
+			final int MAX_VALUE;
+		    public Demo() {
+		        MAX_VALUE = 99;
+		    }
 
 	- Method
 
@@ -179,9 +192,5 @@ Khi các tham số đầu vào của một method là
 		+ Heap không tự giải phóng vùng nhớ mà phải nhờ sự can thiệp của trình dọn rác java.
 		+ Heap là một vùng nhớ chung cho toàn bộ Thread và chúng ta cần bảo vệ dữ liệu bằng cách đồng bộ hoá. 
 
-	
-	
-	
-	
 	
 	
