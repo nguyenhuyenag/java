@@ -1,19 +1,11 @@
 package com;
 
+import common.util.DateTimeUtils;
+
 public class Main {
 
-	final int MAX_VALUE;
-	Main() {
-        MAX_VALUE = 99;
-    }
-	
-	void test() {
-		System.out.println(this);
-	}
-
 	public static void main(String[] args) {
-		Main m =  new Main();
-		m.test();
+		DateTimeUtils.asDate(0, 0, 0);
 	}
 
 }
