@@ -9,27 +9,27 @@ package com.basic.gc;
  *
  */
 @SuppressWarnings("unused")
-public class Main {
+public class Garbage {
 
 	// to store object name
 	String obj_name;
 
-	public Main(String obj_name) {
+	public Garbage(String obj_name) {
 		this.obj_name = obj_name;
 	}
 
 	public static void t1() {
-		new Main("t1");
+		new Garbage("t1");
 	}
 
 	public static void t2() {
-		Main t2 = new Main("t2");
+		Garbage t2 = new Garbage("t2");
 		t2 = null;
 	}
 	
 	public static void t3() {
-		Main t1 = new Main("t1");
-		Main t2 = new Main("t2");
+		Garbage t1 = new Garbage("t1");
+		Garbage t2 = new Garbage("t2");
 		t1 = t2;
 	}
 

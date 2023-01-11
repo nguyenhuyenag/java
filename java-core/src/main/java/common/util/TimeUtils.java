@@ -1,8 +1,5 @@
 package common.util;
 
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 public class TimeUtils {
 
 	private TimeUtils() {
@@ -92,23 +89,62 @@ public class TimeUtils {
 //		return calendar.getTime();
 //	}
 
-	public static Date before(TimeUnit unit, int amount) {
-		long time = unit.toMillis(amount);
-		return new Date(System.currentTimeMillis() - time);
-	}
+//	public static Date before(TimeUnit unit, int amount) {
+//		long time = unit.toMillis(amount);
+//		return new Date(System.currentTimeMillis() - time);
+//	}
+//
+//	public static Date after(TimeUnit unit, int amount) {
+//		long time = unit.toMillis(amount);
+//		return new Date(System.currentTimeMillis() + time);
+//	}
+	
+//	/**
+//	 * Get later date
+//	 * <pre>
+//	 * getLaterDate(ONE_HOURS)		= 1 giờ sau
+//	 * getLaterDate( ONE_DAYS )		= 1 ngày sau
+//	 * </pre>
+//	 * @param amounts là thời gian
+//	 * @return Date
+//	 */
+//	private static Date later(int amount) {
+//		// return new Date(System.currentTimeMillis() + amounts);
+//		Calendar calendar = Calendar.getInstance();
+//		calendar.add(Calendar.HOUR, amount);
+//		return calendar.getTime();
+//	}
+	
+//	public static enum CalendarEnums {
+//		HOUR, MINUTE, SECOND;
+//	}
+//	
+//	public static Date later(CalendarEnums ce, int amount) {
+//		// return new Date(System.currentTimeMillis() + amounts);
+//		Calendar calendar = Calendar.getInstance();
+//		switch (ce) {
+//			case HOUR:
+//				calendar.add(Calendar.HOUR, amount);
+//				break;
+//			case MINUTE:
+//				calendar.add(Calendar.MINUTE, amount);
+//				break;
+//			case SECOND:
+//				calendar.add(Calendar.SECOND, amount);
+//				break;
+//			default:
+//				break;
+//		}
+//		return calendar.getTime();
+//	}
 
-	public static Date after(TimeUnit unit, int amount) {
-		long time = unit.toMillis(amount);
-		return new Date(System.currentTimeMillis() + time);
-	}
-
-	public static void main(String[] args) {
-		Date date = new Date();
-		Date before = before(TimeUnit.HOURS, 2);
-		Date after = after(TimeUnit.HOURS, 1);
-		System.out.println("Now:\t" + DateTimeUtils.format(date, "dd-MM-yyyy HH:mm:ss"));
-		System.out.println("Before:\t" + DateTimeUtils.format(before, "dd-MM-yyyy HH:mm:ss"));
-		System.out.println("After:\t" + DateTimeUtils.format(after, "dd-MM-yyyy HH:mm:ss"));
-	}
+//	public static void main(String[] args) {
+//		Date date = new Date();
+//		Date before = before(TimeUnit.HOURS, 2);
+//		Date after = after(TimeUnit.HOURS, 1);
+//		System.out.println("Now:\t" + DateTimeUtils.format(date, "dd-MM-yyyy HH:mm:ss"));
+//		System.out.println("Before:\t" + DateTimeUtils.format(before, "dd-MM-yyyy HH:mm:ss"));
+//		System.out.println("After:\t" + DateTimeUtils.format(after, "dd-MM-yyyy HH:mm:ss"));
+//	}
 
 }
