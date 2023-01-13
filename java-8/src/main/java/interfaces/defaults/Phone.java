@@ -1,6 +1,6 @@
-package interfaces.method.defaults;
+package interfaces.defaults;
 
-import interfaces.method.defaults.Company.Samsung;
+import interfaces.defaults.Company.Samsung;
 
 class LG {
 

@@ -11,6 +11,8 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class LifecyclePerClass {
+	
+	private int count = 0;
 
 	@BeforeAll
 	void beforeAllInit() {
@@ -24,7 +26,7 @@ public class LifecyclePerClass {
 
 	@BeforeEach
 	void init() {
-		System.out.println("running before each...");
+		System.out.println(String.format("running before each...(%d)", ++count));
 	}
 
 	@AfterEach
@@ -44,7 +46,7 @@ public class LifecyclePerClass {
 
 	@Test
 	void test3() {
-		Assertions.assertEquals(true, false);
+		Assertions.assertEquals(false, false);
 	}
 
 }

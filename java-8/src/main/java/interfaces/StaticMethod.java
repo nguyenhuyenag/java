@@ -1,4 +1,4 @@
-package interfaces.method;
+package interfaces;
 
 interface StaticMethod {
 
