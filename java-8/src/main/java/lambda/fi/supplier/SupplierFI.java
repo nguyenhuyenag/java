@@ -28,8 +28,8 @@ public class SupplierFI {
 	}
 
 	public static void main(String[] args) {
-		withoutLambda();
 		useLambda();
+		withoutLambda();
 	}
 
 }

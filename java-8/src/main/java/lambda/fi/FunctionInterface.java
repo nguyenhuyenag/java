@@ -1,7 +1,7 @@
 package lambda.fi;
 
 /**
- * Functional Interface: Là interface có duy nhất một phương thức abstract
+ * Functional Interface là interface có duy nhất một phương thức abstract
  */
 @FunctionalInterface // <- có thể có hoặc không
 interface StringProcessor {
@@ -34,7 +34,7 @@ public class FunctionInterface {
 		System.out.println(todo("Method reference", String::toUpperCase));
 	}
 
-	public static void test() {
+	public void test() {
 		String len = todo("Java", new StringProcessor() {
 			@Override
 			public String process(String s) {
@@ -45,10 +45,10 @@ public class FunctionInterface {
 	}
 
 	public static void main(String[] args) {
-		withoutLambda();
 		useLambda();
+		withoutLambda();
 		methodReference();
-		test();
+		// test();
 	}
 
 }
