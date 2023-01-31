@@ -1,25 +1,24 @@
 package com;
 
-import java.util.Date;
-
-import org.apache.directory.api.util.DateUtils;
-
-import common.util.DateTimeUtils;
+import java.util.Properties;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Date now = new Date();
-		String ldap = DateTimeUtils.LDAPDateTime(now);
-		System.out.println("Now: " + DateTimeUtils.format(now));
-		System.out.println("LDAP: " + ldap);
-		Date convert = DateTimeUtils.LDAPDateTimeToDate(ldap);
-		System.out.println("Convert: " + DateTimeUtils.format(convert));
-		
-		// Date date = DateUtils.parse(ldap);
+//		Date now = new Date();
+//		String ldap = DateTimeUtils.LDAPDateTime(now);
+//		System.out.println("Now: " + DateTimeUtils.format(now));
+//		System.out.println("LDAP: " + ldap);
+//		Date convert = DateTimeUtils.LDAPDateTimeToDate(ldap);
+//		System.out.println("Convert: " + DateTimeUtils.format(convert));
+//		
+//		// Date date = DateUtils.parse(ldap);
+//
+//		String generalizedTime = DateUtils.getGeneralizedTime(now);
+//		System.out.println(generalizedTime);
 
-		String generalizedTime = DateUtils.getGeneralizedTime(now);
-		System.out.println(generalizedTime);
+		Properties sysProps = System.getProperties();
+		sysProps.list(System.out);
 	}
 
 }

@@ -1,4 +1,4 @@
-package csv;
+package parameterized.csv;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

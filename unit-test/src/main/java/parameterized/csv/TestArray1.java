@@ -1,10 +1,10 @@
-package csv;
+package parameterized.csv;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-public class TestCSV2 {
+public class TestArray1 {
 
 	public boolean isEvenNumber(int t) {
 		return t % 2 == 0;
