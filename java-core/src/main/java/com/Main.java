@@ -1,7 +1,5 @@
 package com;
 
-import java.util.Properties;
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -17,8 +15,8 @@ public class Main {
 //		String generalizedTime = DateUtils.getGeneralizedTime(now);
 //		System.out.println(generalizedTime);
 
-		Properties sysProps = System.getProperties();
-		sysProps.list(System.out);
+		System.out.println(System.getProperty("user.country"));
+		
 	}
 
 }

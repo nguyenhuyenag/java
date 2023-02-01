@@ -22,13 +22,6 @@ public class DoTest {
 		// Assert.fail("FAIL - Try to development");
 	}
 
-//	@RepeatedTest(3)
-//	void repeatedTest() {
-//		int i = 0;
-//		System.out.println("Executing repeated test " + i);
-//		assertEquals(2, Math.addExact(1, 1), "1 + 1 should equal 2");
-//	}
-
 	@RepeatedTest(value = 3, name = "Method name")
 	void repeatedTestWithLongName(RepetitionInfo repetitionInfo) {
 		// System.out.println("Executing repeated test with long name");
