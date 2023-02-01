@@ -1,4 +1,4 @@
-package parameterized.csv;
+package parameterized;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
