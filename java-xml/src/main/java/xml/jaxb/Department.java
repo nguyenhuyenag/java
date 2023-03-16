@@ -11,8 +11,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-@XmlRootElement(namespace = "https://gpcoder.com/jaxb")
+import lombok.Getter;
+import lombok.Setter;
+
+@XmlRootElement(namespace = "https://abc.com/jaxb")
 @XmlAccessorType(XmlAccessType.FIELD)
+@Getter
+@Setter
 public class Department {
 
 	@XmlElement(name = "no")
@@ -35,30 +40,6 @@ public class Department {
 	public Department(String deptNo, String deptName) {
 		this.deptNo = deptNo;
 		this.deptName = deptName;
-	}
-
-	public String getDeptNo() {
-		return deptNo;
-	}
-
-	public void setDeptNo(String deptNo) {
-		this.deptNo = deptNo;
-	}
-
-	public String getDeptName() {
-		return deptName;
-	}
-
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
-
-	public List<Employee> getEmployees() {
-		return employees;
-	}
-
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
 	}
 
 	@Override

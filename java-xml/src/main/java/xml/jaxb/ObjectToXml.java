@@ -13,10 +13,13 @@ public class ObjectToXml {
 		
 		// Create employees
 		List<Employee> employees = new ArrayList<>();
-		Employee emp1 = new Employee(1, "GP Coder", 1000, 28);
+		Employee emp1 = new Employee(1, "GP Dane", 1000, 28);
 		Employee emp2 = new Employee(2, "LN Devil", 700, 27);
+		Employee emp3 = new Employee(3, "John Lenan", 800, 30);
+		
 		employees.add(emp1);
 		employees.add(emp2);
+		employees.add(emp3);
 
 		// Create department
 		Department department = new Department("D01", "IT Support");
@@ -37,7 +40,7 @@ public class ObjectToXml {
 		marshaller.marshal(dept, System.out);
 
 		// Write data to file xml
-		marshaller.marshal(dept, new FileOutputStream("department.xml"));
+		marshaller.marshal(dept, new FileOutputStream("file/department.xml"));
 	}
 
 }
