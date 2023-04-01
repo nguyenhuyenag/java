@@ -7,6 +7,7 @@ class ObjGeneric<T> {
 
 	private T object;
 
+	@SuppressWarnings("deprecation")
 	public ObjGeneric(Class<T> clazz) throws InstantiationException, IllegalAccessException {
 		this.object = (T) clazz.newInstance();
 	}
