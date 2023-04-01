@@ -10,7 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("unused")
-public class ListTo {
+public class ListToAnotherColecction {
 
 	static List<String> list = Arrays.asList("a", "b", "c");
 

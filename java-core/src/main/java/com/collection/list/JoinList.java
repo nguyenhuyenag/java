@@ -12,16 +12,18 @@ public class JoinList {
 	 * - suffix		: chuỗi ký tự được thêm vào cuối kết quả
 	 */
 	public static void main(String[] args) {
-		List<String> list = Arrays.asList("Java", "C++", "C#", "PHP");
+		List<String> list = Arrays.asList("A", "B", "C", "D");
 
 		String result6 = list.stream().collect(Collectors.joining());
 		System.out.println(result6);
 
-		String result7 = list.stream().collect(Collectors.joining(" - "));
+		String result7 = list.stream().collect(Collectors.joining("*"));
 		System.out.println(result7);
 
-		String result8 = list.stream().collect(Collectors.joining(" ", "PRE-", "-POST"));
+		String result8 = list.stream().collect(Collectors.joining("_", "PREFIX^", "^SUFFIX"));
 		System.out.println(result8);
+		
+		System.out.println(String.join("_", list));
 	}
 
 }
