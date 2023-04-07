@@ -5,9 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
@@ -142,12 +141,35 @@ public class XMLUtils {
 		return start + between + end;
 	}
 
+	public static void extractValue() {
+		// String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><int
+		// xmlns=\"http://tempuri.org/\">1279872209</int>";
+		String xmlString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<int xmlns=\"http://tempuri.org/\">1279872209</int>";
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			try (ByteArrayInputStream input = new ByteArrayInputStream(xmlString.getBytes())) {
+				Document doc = builder.parse(input);
+				// Get the int element
+				NodeList intNodes = doc.getElementsByTagName("int");
+				Element intElement = (Element) intNodes.item(0);
+				// Get the value of the int element
+				String intValue = intElement.getTextContent();
+				System.out.println("Value of int tag: " + intValue);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void main(String[] args) throws XPathExpressionException {
-		Path path = Paths.get(PathUtils.HOME, "file/test.xml");
-		String xml = FileUtils.readFile(path);
+		// Path path = Paths.get(PathUtils.HOME, "file/test.xml");
+		// String xml = FileUtils.readFile(path);
 		// System.out.println(xml);
-		String s = getStructAndTextOfTag(xml, "SignatureProperties");
-		System.out.println(s);
+		// String s = getStructAndTextOfTag(xml, "SignatureProperties");
+		// System.out.println(s);
+		extractValue();
 	}
 
 }
