@@ -5,10 +5,27 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.time.Duration;
 
 public class HttpClient11 {
+
+	public String post(String url, String data) throws IOException, InterruptedException {
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder() //
+				.uri(URI.create(url)) //
+				.header("Content-Type", "application/json") //
+				// ofByteArray(), ofByteArrays(), ofFile(), ofInputStream()
+				.POST(BodyPublishers.ofString(data)) //
+				.build();
+		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+		if (response.statusCode() != 200) {
+			throw new IOException("HTTP response status: " + response.statusCode());
+		}
+		return response.body();
+	}
 
 	public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException {
 		// HttpClient httpClient = HttpClient.newHttpClient();
