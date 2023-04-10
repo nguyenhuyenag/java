@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonFilter("SomeBeanName")
+@JsonFilter("MyBeanName")
 public class ShowHideField {
 
 	String field1;
@@ -25,14 +25,16 @@ public class ShowHideField {
 
 	// Hiển thị các field được chỉ định
 	public static FilterProvider filter1() {
-		return new SimpleFilterProvider() // .setFailOnUnknownId(false) //
-				.addFilter("SomeBeanName", SimpleBeanPropertyFilter.filterOutAllExcept("field1", "field3"));
+		return new SimpleFilterProvider() // 
+				// .setFailOnUnknownId(false) //
+				.addFilter("MyBeanName", SimpleBeanPropertyFilter.filterOutAllExcept("field1", "field3"));
 	}
 
 	// Ẩn các field được chỉ định
 	public static FilterProvider filter2() {
-		return new SimpleFilterProvider() // .setFailOnUnknownId(false) //
-				.addFilter("SomeBeanName", SimpleBeanPropertyFilter.serializeAllExcept("field1"));
+		return new SimpleFilterProvider() // 
+				// .setFailOnUnknownId(false) //
+				.addFilter("MyBeanName", SimpleBeanPropertyFilter.serializeAllExcept("field1"));
 	}
 
 	public static void main(String[] args) throws JsonProcessingException {

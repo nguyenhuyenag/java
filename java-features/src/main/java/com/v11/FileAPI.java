@@ -11,8 +11,9 @@ public class FileAPI {
 		Path file = Path.of(File.createTempFile("tempFile", ".tmp").toURI());
 		System.out.println(file.toString());
 		try {
-			Path tempFilePath = Files.writeString(file, "Welcome to TutorialsPoint");
-			// Path tempFilePath = Files.writeString(file, "Welcome to TutorialsPoint", Charset.defaultCharset(), StandardOpenOption.WRITE);
+			String content = "Welcome to TutorialsPoint";
+			Path tempFilePath = Files.writeString(file, content);
+			// Files.writeString(file, content, Charset.defaultCharset(), StandardOpenOption.WRITE);
 			String fileContent = Files.readString(tempFilePath);
 			System.out.println(fileContent);
 		} catch (IOException e) {

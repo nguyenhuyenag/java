@@ -142,8 +142,6 @@ public class XMLUtils {
 	}
 
 	public static void extractValue() {
-		// String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><int
-		// xmlns=\"http://tempuri.org/\">1279872209</int>";
 		String xmlString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<int xmlns=\"http://tempuri.org/\">1279872209</int>";
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -157,7 +155,6 @@ public class XMLUtils {
 				String intValue = intElement.getTextContent();
 				System.out.println("Value of int tag: " + intValue);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -21,7 +21,7 @@ package com.basic.enums;
  * 	Size[] enumArray = Size.value();
  * 
  */
-public enum Size {
+public enum EnumsApi {
 	
 	SMALL, MEDIUM, LARGE, EXTRALARGE;
 	
