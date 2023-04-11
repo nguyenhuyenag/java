@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class JSONRawValue {
+public class RawValue {
 
 	public String name;
 
@@ -15,7 +15,7 @@ public class JSONRawValue {
 	public String json;
 
 	public static void main(String[] args) throws JsonProcessingException {
-		JSONRawValue bean = new JSONRawValue("My bean", "{\"attr\":false}");
+		RawValue bean = new RawValue("My bean", "{\"attr\":false}");
 		String result = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(bean);
 		System.out.println(result);
 	}

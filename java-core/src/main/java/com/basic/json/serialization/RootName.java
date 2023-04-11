@@ -7,15 +7,15 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import lombok.AllArgsConstructor;
 
-@JsonRootName(value = "_USER")
 @AllArgsConstructor
-public class JSONRootName {
+@JsonRootName(value = "__USER")
+public class RootName {
 
 	public int id;
 	public String name;
 
 	public static void main(String[] args) throws JsonProcessingException {
-		JSONRootName bean = new JSONRootName(2, "Java");
+		RootName bean = new RootName(2, "Java");
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.enable(SerializationFeature.WRAP_ROOT_VALUE); // wrapping is enabled
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);

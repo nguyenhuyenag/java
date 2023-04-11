@@ -23,14 +23,14 @@ public class ShowHideField {
 	String field2;
 	String field3;
 
-	// Hiển thị các field được chỉ định
+	// Hiển thị các field chỉ định
 	public static FilterProvider filter1() {
 		return new SimpleFilterProvider() // 
 				// .setFailOnUnknownId(false) //
 				.addFilter("MyBeanName", SimpleBeanPropertyFilter.filterOutAllExcept("field1", "field3"));
 	}
 
-	// Ẩn các field được chỉ định
+	// Ẩn các field chỉ định
 	public static FilterProvider filter2() {
 		return new SimpleFilterProvider() // 
 				// .setFailOnUnknownId(false) //
