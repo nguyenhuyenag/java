@@ -1,4 +1,4 @@
-package com.basic.json.deserialization;
+package com.basic.json.preview;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

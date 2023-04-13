@@ -1,4 +1,4 @@
-package com.basic.json;
+package com.basic.json.preview;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -12,23 +12,23 @@ public class ReadJSONAsString {
 
 	public static void main(String[] agrs) throws IOException {
 		String json = "{\"name\":\"Tom\",\"age\":25,\"address\":[\"Poland\",\"5th avenue\"]}";
-		JsonFactory jfactory = new JsonFactory();
-		try (JsonParser jParser = jfactory.createParser(json)) {
+		JsonFactory factory = new JsonFactory();
+		try (JsonParser parser = factory.createParser(json)) {
 			List<String> addresses = new LinkedList<>();
-			while (jParser.nextToken() != JsonToken.END_OBJECT) {
-				String fieldname = jParser.getCurrentName();
+			while (parser.nextToken() != JsonToken.END_OBJECT) {
+				String fieldname = parser.getCurrentName();
 				if ("name".equals(fieldname)) {
-					jParser.nextToken();
-					System.out.println("Name: " + jParser.getText());
+					parser.nextToken();
+					System.out.println("Name: " + parser.getText());
 				}
 				if ("age".equals(fieldname)) {
-					jParser.nextToken();
-					System.out.println("Age: " + jParser.getIntValue());
+					parser.nextToken();
+					System.out.println("Age: " + parser.getIntValue());
 				}
 				if ("address".equals(fieldname)) {
-					jParser.nextToken();
-					while (jParser.nextToken() != JsonToken.END_ARRAY) {
-						addresses.add(jParser.getText());
+					parser.nextToken();
+					while (parser.nextToken() != JsonToken.END_ARRAY) {
+						addresses.add(parser.getText());
 					}
 					System.out.println("Address: " + String.join(", ", addresses));
 				}
