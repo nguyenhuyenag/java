@@ -1,4 +1,4 @@
-package com.basic.json.general;
+package com.basic.json.parse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,18 +11,18 @@ import lombok.Setter;
 
 @Getter
 @Setter
-// @JsonProperty annotation to indicate the property name in JSON
-public class JSONProperty {
+public class FieldProperty {
 
 	@JsonProperty("_id") // Đóng dòng này và run
 	public int id;
 
 	private String name;
 
+	// @JsonProperty annotation to indicate the property name in JSON
 	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {
 		String json = "{\"_id\": 12, \"name\": \"Green\"}";
-		JSONProperty bean = new ObjectMapper() //
-				.readerFor(JSONProperty.class) //
+		FieldProperty bean = new ObjectMapper() //
+				.readerFor(FieldProperty.class) //
 				.readValue(json);
 		System.out.println(JSONUtils.toJSON(bean));
 	}

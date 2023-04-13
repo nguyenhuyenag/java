@@ -1,23 +1,22 @@
-package com.basic.json.property;
+package com.basic.json.create;
 
+import com.basic.json.PrettyJson;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class JSONIgnore {
+// @JsonIgnoreProperties({ "id" })
+public class IgnoreField extends PrettyJson {
 
 	@JsonIgnore
 	public int id;
-
 	public String name;
 
 	public static void main(String[] args) throws JsonProcessingException {
-		JSONIgnore bean = new JSONIgnore(1, "My bean");
-		String result = new ObjectMapper().writeValueAsString(bean);
-		System.out.println(result);
+		IgnoreField bean = new IgnoreField(1, "JSON");
+		System.out.println(bean.toJSON());
 	}
 
 }
