@@ -5,13 +5,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import common.util.JSONUtils;
+import common.util.JsonUtils;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class FieldProperty {
+public class ChangeFieldName {
 
 	@JsonProperty("_id") // Đóng dòng này và run
 	public int id;
@@ -21,10 +21,10 @@ public class FieldProperty {
 	// @JsonProperty annotation to indicate the property name in JSON
 	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {
 		String json = "{\"_id\": 12, \"name\": \"Green\"}";
-		FieldProperty bean = new ObjectMapper() //
-				.readerFor(FieldProperty.class) //
+		ChangeFieldName bean = new ObjectMapper() //
+				.readerFor(ChangeFieldName.class) //
 				.readValue(json);
-		System.out.println(JSONUtils.toJSON(bean));
+		System.out.println(JsonUtils.toJSON(bean));
 	}
 
 }

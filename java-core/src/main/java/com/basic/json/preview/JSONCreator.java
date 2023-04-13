@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import common.util.JSONUtils;
+import common.util.JsonUtils;
 
 public class JSONCreator {
 
@@ -24,7 +24,7 @@ public class JSONCreator {
 		JSONCreator bean = new ObjectMapper() //
 				.readerFor(JSONCreator.class) //
 				.readValue(json);
-		System.out.println(JSONUtils.toJSON(bean));
+		System.out.println(JsonUtils.toJSON(bean));
 	}
 
 }

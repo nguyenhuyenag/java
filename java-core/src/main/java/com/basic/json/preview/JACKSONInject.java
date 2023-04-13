@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import common.util.JSONUtils;
+import common.util.JsonUtils;
 
 public class JACKSONInject {
 
@@ -25,7 +25,7 @@ public class JACKSONInject {
 				.forType(JACKSONInject.class) //
 				.readValue(json);
 		
-		System.out.println(JSONUtils.toJSON(bean));
+		System.out.println(JsonUtils.toJSON(bean));
 	}
 
 }
