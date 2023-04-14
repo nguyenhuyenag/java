@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @JsonRootName(value = "__USER")
-public class RootName extends PrettyJson {
+public class RootName implements PrettyJson {
 
 	public int id;
 	public String name;

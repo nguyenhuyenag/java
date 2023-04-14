@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @JsonPropertyOrder({ "name", "id" }) // sắp xếp field
-public class DisableAnnotations extends PrettyJson {
+public class DisableAnnotations implements PrettyJson {
 
 	public int id;
 	public String name;

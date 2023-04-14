@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true) // ignore field that exists in json but not in bean
-public class IgnoreJsonField extends PrettyJson {
+public class IgnoreJsonField implements PrettyJson {
 
 	private String name;
 	private String address;

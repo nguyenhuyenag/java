@@ -8,7 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class FieldChangeName extends PrettyJson {
+public class FieldChangeName implements PrettyJson {
 
 	@JsonIgnore
 	public int id;

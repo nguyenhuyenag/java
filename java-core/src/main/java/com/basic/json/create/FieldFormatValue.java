@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class FieldFormatValue extends PrettyJson {
+public class FieldFormatValue implements PrettyJson {
 
 	public String name;
 

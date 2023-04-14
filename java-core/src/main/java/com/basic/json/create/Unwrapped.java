@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class Unwrapped extends PrettyJson {
+public class Unwrapped implements PrettyJson {
 
 	public int id;
 

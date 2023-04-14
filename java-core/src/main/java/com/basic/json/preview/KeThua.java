@@ -2,7 +2,6 @@ package com.basic.json.preview;
 
 import com.basic.json.PrettyJson;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class A extends PrettyJson {
+class A {
 
 	String name;
 	int age;
@@ -20,7 +19,7 @@ class A extends PrettyJson {
 @Getter
 @Setter
 @AllArgsConstructor
-class B extends A {
+class B extends A implements PrettyJson {
 
 	String name;
 	int height;

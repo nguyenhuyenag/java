@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FormatDatetime extends PrettyJson {
+public class FormatDatetime implements PrettyJson {
 
 	private String name;
 	private Date eventDate;

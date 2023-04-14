@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @JsonPropertyOrder({ "year", "name", "version" }) // order properties
-public class FieldOrder extends PrettyJson {
+public class FieldOrder implements PrettyJson {
 
 	public String name;
 	public int year;

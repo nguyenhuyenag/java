@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @JsonInclude(Include.NON_NULL) // Ignore that field with `empty/null/default` values
-public class FieldIgnoreNullValue extends PrettyJson {
+public class FieldIgnoreNullValue implements PrettyJson {
 
 	private int id;
 	private String name;

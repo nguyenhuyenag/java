@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 // @JsonIgnoreProperties({ "id", "name" })
-public class FieldIgnore extends PrettyJson {
+public class FieldIgnore implements PrettyJson {
 
 	@JsonIgnore
 	public int id;

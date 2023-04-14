@@ -18,30 +18,32 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonFilter("MyBeanName")
-public class FieldShowHide extends PrettyJson {
+public class FieldShowHide implements PrettyJson {
 
 	String field1;
 	String field2;
 	String field3;
+	String field4;
+	String field5;
 
 	// Hiển thị các field chỉ định
-	public static FilterProvider filter1() {
+	public static FilterProvider showFields() {
 		return new SimpleFilterProvider() //
 				// .setFailOnUnknownId(false) //
 				.addFilter("MyBeanName", SimpleBeanPropertyFilter.filterOutAllExcept("field1", "field3"));
 	}
 
 	// Ẩn các field chỉ định
-	public static FilterProvider filter2() {
+	public static FilterProvider hiddenFields() {
 		return new SimpleFilterProvider() //
 				// .setFailOnUnknownId(false) //
-				.addFilter("MyBeanName", SimpleBeanPropertyFilter.serializeAllExcept("field1", "field2"));
+				.addFilter("MyBeanName", SimpleBeanPropertyFilter.serializeAllExcept("field3", "field4"));
 	}
 
 	public static void main(String[] args) throws JsonProcessingException {
-		FieldShowHide bean = new FieldShowHide("value1", "value2", "value2");
+		FieldShowHide bean = new FieldShowHide();
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.setFilterProvider(filter2());
+		mapper.setFilterProvider(hiddenFields());
 		System.out.println(bean.toJSON(mapper));
 	}
 
