@@ -18,7 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonFilter("MyBeanName")
-public class FieldShowHide implements PrettyJson {
+public class FieldIgnoreDynamic implements PrettyJson {
 
 	String field1;
 	String field2;
@@ -41,7 +41,7 @@ public class FieldShowHide implements PrettyJson {
 	}
 
 	public static void main(String[] args) throws JsonProcessingException {
-		FieldShowHide bean = new FieldShowHide();
+		FieldIgnoreDynamic bean = new FieldIgnoreDynamic();
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setFilterProvider(hiddenFields());
 		System.out.println(bean.toJSON(mapper));

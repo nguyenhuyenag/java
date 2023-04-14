@@ -3,6 +3,9 @@ package com.basic.json.pojo;
 import java.util.Date;
 
 import com.basic.json.PrettyJson;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +14,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonInclude(Include.NON_NULL)
+@JsonIgnoreProperties({ "id_user" })
 public class HoaDon extends Sample implements PrettyJson {
 
 	private static final long serialVersionUID = -2911410330228623991L;
