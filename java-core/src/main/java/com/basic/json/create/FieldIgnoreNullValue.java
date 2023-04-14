@@ -13,10 +13,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @JsonInclude(Include.NON_NULL) // Ignore that field with `empty/null/default` values
-public class IgnoreNullValue extends PrettyJson {
+public class FieldIgnoreNullValue extends PrettyJson {
 
 	private int id;
 	private String name;
+	
 	// @JsonInclude(JsonInclude.Include.NON_NULL)
 	private String address;
 
@@ -24,7 +25,7 @@ public class IgnoreNullValue extends PrettyJson {
 	 * Trong spring boot: spring.jackson.default-property-inclusion=non_null
 	 */
 	public static void main(String[] args) throws JsonProcessingException {
-		IgnoreNullValue bean = new IgnoreNullValue(2023, null, "");
+		FieldIgnoreNullValue bean = new FieldIgnoreNullValue(2023, null, "");
 		System.out.println(bean.toJSON());
 	}
 

@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class FormatFieldData extends PrettyJson {
+public class FieldFormatValue extends PrettyJson {
 
 	public String name;
 
@@ -20,7 +20,7 @@ public class FormatFieldData extends PrettyJson {
 	public Date eventDate;
 
 	public static void main(String[] args) {
-		FormatFieldData bean = new FormatFieldData("party", new Date());
+		FieldFormatValue bean = new FieldFormatValue("party", new Date());
 		System.out.println(bean.toJSON());
 	}
 

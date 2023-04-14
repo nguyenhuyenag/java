@@ -1,5 +1,6 @@
 package com.basic.json.preview;
 
+import com.basic.json.PrettyJson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class A {
+class A extends PrettyJson {
 
 	String name;
 	int age;
@@ -24,15 +25,6 @@ class B extends A {
 	String name;
 	int height;
 	
-	public String toJSON() {
-		try {
-			return new ObjectMapper().writeValueAsString(this);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
-
 }
 
 public class KeThua {
