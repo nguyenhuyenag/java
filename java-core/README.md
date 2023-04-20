@@ -143,23 +143,23 @@
 
 # Pass by value & Pass by reference
 
-Khi các tham số đầu vào của một method là
+	Khi các tham số đầu vào của một method là:
 
-	- Pass-by-value: Method sẽ tạo bản sao của tham số truyền vào và hoạt động trên chúng. Mọi thay đổi trên bản sao này không ảnh hưởng đến giá trị ban đầu. 
+		- Pass-by-value: Method sẽ tạo bản sao của tham số truyền vào và hoạt động trên chúng. Mọi thay đổi trên bản sao này không ảnh hưởng đến giá trị ban đầu. 
 	
-	- Pass-by-reference: Method sẽ thao tác trên cùng một object. Điều này có nghĩa là khi method thay đổi giá trị của tham số thì giá trị của chúng tại nơi gọi cũng thay đổi theo.
+		- Pass-by-reference: Method sẽ thao tác trên cùng một object. Điều này có nghĩa là khi method thay đổi giá trị của tham số thì giá trị của chúng tại nơi gọi cũng thay đổi theo.
 
-	- Trong java luôn luôn là pass-by-value
+		- Trong java luôn luôn là pass-by-value
 	
-	- Tham số reference object: Các object sau khi khởi tạo đều được lưu trữ trong heap. Những object này sẽ được tham chiếu bởi các biến reference khác nhau. Hay nói cách khác các biến này sẽ lưu trữ địa chỉ của các object mà chúng tham chiếu. Các biến reference này được lưu trữ trong trong vùng nhớ Stack. Khi một biến reference (địa chỉ của object) được truyền vào tham số của method thì một bản sao chép của chúng được tạo ra và lưu vào Stack. Chúng có cùng địa chỉ đến object được lưu trong heap. Khi ta thao tác trên biến reference thì sẽ ảnh hưởng đến object được lưu trong heap
+		- Tham số reference object: Các object sau khi khởi tạo đều được lưu trữ trong heap. Những object này sẽ được tham chiếu bởi các biến reference khác nhau. Hay nói cách khác các biến này sẽ lưu trữ địa chỉ của các object mà chúng tham chiếu. Các biến reference này được lưu trữ trong trong vùng nhớ Stack. Khi một biến reference (địa chỉ của object) được truyền vào tham số của method thì một bản sao chép của chúng được tạo ra và lưu vào Stack. Chúng có cùng địa chỉ đến object được lưu trong heap. Khi ta thao tác trên biến reference thì sẽ ảnh hưởng đến object được lưu trong heap
 	
-			public static void todo(User u1) {
-				u1.setName("Java2");
-			}
-		
-			User u = new User(25, "Java");
-			todo(u);
-			System.out.println(u.getName()); // = Java2
+				public static void todo(User u1) {
+					u1.setName("Java2");
+				}
+			
+				User u = new User(25, "Java");
+				todo(u);
+				System.out.println(u.getName()); // = Java2
 	
 # Stack & Heap
 

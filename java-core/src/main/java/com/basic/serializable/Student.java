@@ -10,14 +10,13 @@ public class Student implements Serializable {
 	private int age;
 	// private transient int age; // không Serializable
 
-	public String getName() {
-		return name;
-	}
-
 	public Student(String name, int age) {
-		super();
 		this.name = name;
 		this.age = age;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public void setName(String name) {
