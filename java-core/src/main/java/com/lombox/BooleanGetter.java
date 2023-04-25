@@ -1,6 +1,5 @@
-package com;
+package com.lombox;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 
 class Test {
@@ -8,12 +7,12 @@ class Test {
 	@Getter // = isRunning()
 	private boolean running;
 
-	@Getter
+	@Getter // = getStatus()
 	private Boolean status;
 
 }
 
-public class Main {
+public class BooleanGetter {
 
 	public static void main(String[] args) {
 		Test t = new Test();
