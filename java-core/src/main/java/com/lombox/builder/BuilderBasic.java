@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class StudentBuilder {
+public class BuilderBasic {
 
 	private String firstName;
 	private String lastName;
@@ -17,7 +17,7 @@ public class StudentBuilder {
 	private int age;
 
 	public static void main(String[] args) {
-		StudentBuilder john = StudentBuilder.builder() //
+		BuilderBasic john = BuilderBasic.builder() //
 				.firstName("John") //
 				.lastName("Doe") //
 				.email("john@doe.com") //

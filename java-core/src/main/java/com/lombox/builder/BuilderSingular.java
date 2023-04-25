@@ -27,7 +27,7 @@ class Car {
  * 		.award("Singer of the Year", LocalDate.now().minusYears(5))		// Map<String, LocalDate>
  * 		.award("Best Dancer", LocalDate.now().minusYears(2)) .build();
  */
-public class SingularBuilder {
+public class BuilderSingular {
 
 	public static void main(String[] args) {
 		Car car = Car.builder() //
