@@ -5,8 +5,8 @@ import java.io.File;
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
 @Data
+@Builder
 class Message {
 
 	private String sender;
