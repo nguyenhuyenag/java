@@ -3,7 +3,7 @@ package com.v12;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class SwitchExpressions {
+public class SwitchExpression {
 
 	public static void oldStyle() {
 		DayOfWeek dayOfWeek = LocalDate.now().getDayOfWeek();

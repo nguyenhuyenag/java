@@ -7,27 +7,27 @@ interface Foo {
 		baz();
 	}
 
+	static void buzz() {
+		System.out.print("Hello");
+		staticBaz();
+	}
+
 	private void baz() {
 		System.out.println("world!");
 	}
-	
-	static void buzz() {
-        System.out.print("Hello");
-        staticBaz();
-    }
 
-    private static void staticBaz() {
-        System.out.println(" static world!");
-    }
+	private static void staticBaz() {
+		System.out.println(" static world!");
+	}
 
 }
 
 public class PrivateMethodsInterfaces implements Foo {
-	
+
 	public static void main(String... args) {
-        Foo customFoo = new PrivateMethodsInterfaces();
-        customFoo.bar();
-        Foo.buzz();
-    }
-	
+		Foo customFoo = new PrivateMethodsInterfaces();
+		customFoo.bar();
+		Foo.buzz();
+	}
+
 }

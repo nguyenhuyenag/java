@@ -1,7 +1,7 @@
 package com.v12;
 
 public class StringAPI {
-	
+
 	public static void main(String[] args) {
 		String text = "Hello!\nThis is Java 12 article.";
 
@@ -10,6 +10,9 @@ public class StringAPI {
 
 		text = text.indent(-10);
 		System.out.println(text);
+
+		String result = "Hello".transform(input -> input + " world");
+		System.out.println(result); // Hello world
 	}
-	
+
 }
