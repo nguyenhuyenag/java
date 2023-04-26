@@ -1,4 +1,4 @@
-package com.v14;
+package com.v16;
 
 import lombok.Data;
 
@@ -9,10 +9,7 @@ class Journaldev {
 
 }
 
-/**
- * Pattern Matching for instanceof (Preview)
- */
-public class InstanceOf {
+public class PatternMatchingInstanceOf {
 
 	public static void oldStyle() {
 		Object obj = new Object();
