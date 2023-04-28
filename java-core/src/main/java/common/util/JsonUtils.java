@@ -7,10 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.json.Json;
-
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -27,9 +24,10 @@ public class JsonUtils {
 	private JsonUtils() {
 		MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
-	
+
 	/**
 	 * Object to JSON String
+	 * 
 	 * @param <T>    generic type
 	 * @param object Java object
 	 * @return JSON
@@ -37,8 +35,7 @@ public class JsonUtils {
 	public static String toJSON(Object object) {
 		if (object != null) {
 			try {
-				return MAPPER.writerWithDefaultPrettyPrinter()
-							 .writeValueAsString(object);
+				return MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(object);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}
@@ -48,6 +45,7 @@ public class JsonUtils {
 
 	/**
 	 * JSON to Object
+	 * 
 	 * @return Java object
 	 */
 	public static <T> T toObject(String jsonString, Type type) {
@@ -67,24 +65,19 @@ public class JsonUtils {
 		return null;
 	}
 
-	/**
-	 * Convert JSON string to JSONObject
-	 * 
-	 * @param jsonString is a JSON string
-	 * @return JSONObject
-	 * @see {@link JSONObject#get("fieldname")}}
-	 */
-	public static org.json.JSONObject toJSONObject(String jsonString) {
-		return new JSONObject(jsonString);
-	}
+//	/**
+//	 * Convert JSON string to JSONObject
+//	 * 
+//	 * @param jsonString is a JSON string
+//	 * @return JSONObject
+//	 * @see {@link JSONObject#get("fieldname")}}
+//	 */
+//	public static org.json.JSONObject toJSONObject(String jsonString) {
+//		return new JSONObject(jsonString);
+//	}
 
 	/**
 	 * JSON to List Object
-	 * 
-	 * @param <T>
-	 * @param jsonStringArray
-	 * @param array
-	 * @return
 	 */
 	public static <T> List<T> toList(String jsonStringArray, Class<T> classT) {
 		// return MAPPER.readValue(json, new TypeReference<List<T>>() {
@@ -95,6 +88,12 @@ public class JsonUtils {
 			list.add(t);
 		}
 		return list;
+	}
+
+	// List to JSON array
+	public static String toJSONArray(List<?> list) {
+		JSONArray jarr = new JSONArray(list);
+		return jarr.toString();
 	}
 
 	/**
@@ -112,7 +111,7 @@ public class JsonUtils {
 		}
 		return "";
 	}
-	
+
 	/**
 	 * InputStream to Object
 	 * 
@@ -130,7 +129,7 @@ public class JsonUtils {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Convert InputStream to JsonObject
 	 * 
@@ -138,20 +137,14 @@ public class JsonUtils {
 	 * @return JsonObject
 	 * @see {@link JsonObject#getBoolean("fieldname")}
 	 */
-	public static javax.json.JsonObject toJsonObject(InputStream is) {
-		if (is != null) {
-			try (javax.json.JsonReader jsonReader = Json.createReader(is)) {
-				return jsonReader.readObject();
-			}
-		}
-		return null;
-	}
-	
-	// List to JSON array
-	public static String toJSONArray(List<?> list) {
-		JSONArray jarr = new JSONArray(list);
-		return jarr.toString();
-	}
+//	public static javax.json.JsonObject toJsonObject(InputStream is) {
+//		if (is != null) {
+//			try (javax.json.JsonReader jsonReader = Json.createReader(is)) {
+//				return jsonReader.readObject();
+//			}
+//		}
+//		return null;
+//	}
 
 //	/**
 //	 * JSON to List Object with GSON

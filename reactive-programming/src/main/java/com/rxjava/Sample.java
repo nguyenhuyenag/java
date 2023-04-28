@@ -3,7 +3,7 @@ package com.rxjava;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.functions.Consumer;
 
-public class Test {
+public class Sample {
 
 	public static void withoutLambda() {
 		final int a = 3;

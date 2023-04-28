@@ -1,17 +1,20 @@
 package com.basic.net;
 
-import java.util.HashMap;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.client.utils.URIBuilder;
 
 public class URLBuilder {
 
 	private String url;
-	private Map<String, String> params = new HashMap<>();
+	private Map<String, String> params = new LinkedHashMap<>();
 
 	/**
 	 * http://localhost:8080/cloud24_ctrl
@@ -57,10 +60,21 @@ public class URLBuilder {
 		return this.url + join.toString();
 	}
 
-	public static void main(String[] args) {
+	public static void todo() {
 		URLBuilder buider = URLBuilder.build("https://www.youtube.com/watch");
 		buider.addParameter("v", "3AtDnEC4zak").addParameter("t", "20s");
 		System.out.println(buider.toURL());
+	}
+
+	public static void usingUriBuilder() throws URISyntaxException {
+		String url = "https://www.youtube.com/watch";
+		URI uri = new URIBuilder(url).addParameter("v", "3AtDnEC4zak").addParameter("t", "20s").build();
+		System.out.println(uri.toString());
+	}
+
+	public static void main(String[] args) throws URISyntaxException {
+		todo();
+		usingUriBuilder();
 	}
 
 }
