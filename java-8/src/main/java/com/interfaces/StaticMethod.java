@@ -1,27 +1,19 @@
 package com.interfaces;
 
-interface StaticMethod {
+interface Car {
 
-	default void print() {
-		if (isValid()) {
-			System.out.println("Vehicle printed");
-		}
-	}
-
-	static boolean isValid() {
+	public static void isValid() {
 		System.out.println("Vehicle is valid");
-		return true;
 	}
 
-	void showLog();
+	public void showLog();
 }
 
-class Car implements StaticMethod {
+public class StaticMethod implements Car {
 
 	@Override
 	public void showLog() {
-		print();
-		StaticMethod.isValid();
+		Car.isValid();
 	}
 
 }

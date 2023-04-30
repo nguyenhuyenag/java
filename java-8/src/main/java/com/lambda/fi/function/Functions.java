@@ -7,14 +7,17 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/**
- * - R apply(T t) : Phương thức này thực hiện một hành động cụ thể trên đối số đã
- * cho và trả về một đối khác
- *
- * - Thường dùng để chuyển kiểu dữ liệu này sang kiểu dữ liệu khác
- *  
- *  @see lambda.fi.function.Functions2
- */
+/*-
+	- Functional Interface (FI) là interface có duy nhất một phương thức abstract
+
+		public interface Function<T, R> {
+			R apply(T t);
+		}
+	
+	- Với, T là kiểu dữ liệu của tham số và R là kiểu dữ liệu trả về. Khi sử dụng FI, ta 
+	chỉ cần triển khai lại phương thức apply() để thực hiện các tính toán cần thiết và trả
+	về giá trị đúng kiểu dữ liệu R.
+*/
 public class Functions {
 
 	public static void main(String[] args) {
