@@ -1,16 +1,14 @@
-package com.interfaces;
+package com.interfaces.fi;
 
 @FunctionalInterface // <- có thể có hoặc không
 interface StringUtils {
-
 	int process(String s);
-
 }
 
 public class FunctionInterface {
 
 	/**
-	 * Sử dụng interface làm tham số và xử lý input 
+	 * Sử dụng interface làm tham số và xử lý input
 	 */
 	public static int setup(String input, StringUtils processor) {
 		return processor.process(input);
@@ -27,11 +25,13 @@ public class FunctionInterface {
 	}
 
 	public static void useLambda() {
-		System.out.println(setup("Use lambda", s -> s.length()));
+		int length = setup("Use lambda", s -> s.length());
+		System.out.println(length);
 	}
 
 	public static void methodReference() {
-		System.out.println(setup("Method reference", String::length));
+		int length = setup("Method reference", String::length);
+		System.out.println(length);
 	}
 
 	public static void main(String[] args) {

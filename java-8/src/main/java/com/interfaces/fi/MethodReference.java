@@ -1,4 +1,4 @@
-package com.lambda;
+package com.interfaces.fi;
 
 import java.util.Arrays;
 
@@ -22,10 +22,10 @@ class MathUtils {
 	}
 }
 
-/*-
- * Là kỹ thuật lập trình hướng hàm, mục đích của nó là đưa hành vi vào hàm. Hay
- * nói cách khác là đưa thêm các đoạn code vào hàm như là một parameter.
- * => Lập trình hướng hàm là đưa hành vi vào hàm.
+/**
+ * - Lập trình hướng hàm là đưa hành vi vào hàm. mục đích của nó là đưa hành vi
+ * vào hàm. Hay nói cách khác là đưa thêm các đoạn code vào hàm như là một
+ * parameter.
  */
 public class MethodReference {
 
