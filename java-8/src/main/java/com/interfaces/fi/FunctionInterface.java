@@ -10,34 +10,32 @@ public class FunctionInterface {
 	/**
 	 * Sử dụng interface làm tham số và xử lý input
 	 */
-	public static int setup(String input, StringUtils processor) {
+	public static int doAction(String input, StringUtils processor) {
 		return processor.process(input);
 	}
 
-	public static void withoutLambda() { // <- anonymous function
-		int length = setup("Hello Java", new StringUtils() {
+	public static int withoutLambda() { // <- anonymous function
+		return doAction("Hello Java", new StringUtils() {
 			@Override
 			public int process(String s) {
 				return s.length();
 			}
 		});
-		System.out.println(length);
 	}
 
-	public static void useLambda() {
-		int length = setup("Use lambda", s -> s.length());
-		System.out.println(length);
+	public static int useLambda() {
+		return doAction("Use lambda", s -> s.length());
 	}
 
-	public static void methodReference() {
-		int length = setup("Method reference", String::length);
-		System.out.println(length);
+	public static int methodReference() {
+		return doAction("Method reference", String::length);
 	}
 
 	public static void main(String[] args) {
-		useLambda();
-		withoutLambda();
-		methodReference();
+		int length = useLambda();
+		// int length = withoutLambda();
+		// int length = methodReference();
+		System.out.println(length);
 	}
 
 }
