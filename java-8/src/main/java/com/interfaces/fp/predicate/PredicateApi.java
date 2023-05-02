@@ -1,10 +1,10 @@
-package com.lambda.fi.predicate;
+package com.interfaces.fp.predicate;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class Api {
+public class PredicateApi {
 
 	static List<String> list = Arrays.asList("Java", "Quora", "C", "C#", "Jara");
 

@@ -1,4 +1,4 @@
-package com.interfaces.fi;
+package com.interfaces;
 
 interface Hello {
 	void sayHello(String name);

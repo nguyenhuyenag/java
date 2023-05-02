@@ -1,4 +1,4 @@
-package com.lambda.fi.function;
+package com.interfaces.function;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

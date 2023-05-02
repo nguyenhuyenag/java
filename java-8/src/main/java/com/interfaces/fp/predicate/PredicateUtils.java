@@ -1,4 +1,4 @@
-package com.lambda.fi.predicate;
+package com.interfaces.fp.predicate;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;

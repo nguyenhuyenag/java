@@ -1,4 +1,4 @@
-package com.lambda.fi.predicate;
+package com.interfaces.fp.predicate;
 
 import java.util.ArrayList;
 import java.util.Arrays;

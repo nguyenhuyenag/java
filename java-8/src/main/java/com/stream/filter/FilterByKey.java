@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import com.lambda.fi.predicate.PredicateUtils;
+import com.interfaces.fp.predicate.PredicateUtils;
 import com.util.User;
 
 public class FilterByKey {

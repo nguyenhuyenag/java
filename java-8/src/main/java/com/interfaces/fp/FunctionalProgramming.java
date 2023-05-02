@@ -1,4 +1,4 @@
-package com.interfaces.fi;
+package com.interfaces.fp;
 
 /**
  * - Lập trình hướng hàm là đưa hành vi vào hàm, mục đích của nó là đưa hành vi

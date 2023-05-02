@@ -1,4 +1,4 @@
-package com.lambda.fi.function;
+package com.interfaces.function;
 
 import java.util.function.Function;
 
