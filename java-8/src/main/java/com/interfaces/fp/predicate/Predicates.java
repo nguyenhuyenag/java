@@ -7,13 +7,14 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /*-
- * - boolean test(T t): Kiểm tra một tham số đầu vào và trả về true hoặc false
- * - Thường dùng để kiểm tra phần tử
+ * 		boolean test(T t): Kiểm tra một tham số đầu vào và trả về true hoặc false
  */
 public class Predicates {
 
-	// lệnh removeIf sẽ thực hiện duyệt từng phần tử,
-	// nếu method test của Predicate trả về true thì sẽ remove phần tử đó khỏi list
+	/**
+	 * Lệnh removeIf sẽ thực hiện duyệt từng phần tử, nếu method test của Predicate
+	 * trả về true thì sẽ remove phần tử đó khỏi list
+	 */
 	public static <T> void removeWithLambda(List<T> list, Predicate<T> p) {
 		list.removeIf(t -> p.test(t));
 		System.out.println(list);

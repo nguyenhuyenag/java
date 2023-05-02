@@ -2,16 +2,14 @@ package com.interfaces.fi;
 
 @FunctionalInterface
 interface StringUtils {
-	
 	int process(String s);
-	
 	// int process2(String s); // Đóng/mở để thấy sự khác biệt
 }
 
 /**
  * Functional Interface là một interface chỉ có duy nhất một phương thức trừu
- * tượng (abstract method), được gọi là phương thức abstract function hoặc
- * single abstract method (SAM). Ví dụ Predicate, Function, Runnable, Callable
+ * tượng (abstract method ~ abstract function) hoặc single abstract method
+ * (SAM). Ví dụ Predicate, Function, Runnable, Callable,...
  */
 public class FunctionInterface {
 
