@@ -1,21 +1,30 @@
 package com.lambda.supplier;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 
+/*-
+ * - Supplier là một functional interface dùng để cung cấp (supply) một giá trị.
+ * Ví dụ khi chúng ta muốn tạo ra một đối tượng mới, nhưng không muốn xác định 
+ * trước đối tượng đó trong thời điểm khởi tạo. Thay vào đó, chúng ta sẽ cung 
+ * cấp một cách linh hoạt để tạo đối tượng đó, và đối tượng Supplier sẽ lấy và 
+ * trả về giá trị đó cho chúng ta khi được yêu cầu bằng phương thức get()
+ * 
+ * 		public interface Supplier<T> { 
+ * 			T get();
+ * 		}
+ * 
+ * - Hàm get() -> Trả về giá trị trong context mà nó đang được sử dụng
+ */
 public class Suppliers {
 
 	/**
-	 * T get(): Phương thức get() sẽ return một giá trị cụ thể
+	 * Dùng Supplier để tạo một đối tượng ngẫu nhiên của lớp Integer
 	 */
-	private static void print(Supplier<?> supplier) {
-		System.out.println(supplier.get());
-	}
-
 	public static void main(String[] args) {
-		List<String> list = Arrays.asList("Java", "Oracle", "Sun");
-		list.stream().forEach(x -> print(() -> x));
+		Supplier<Integer> randomInt = () -> ThreadLocalRandom.current().nextInt();
+		int randomNumber = randomInt.get();
+		System.out.println(randomNumber);
 	}
 
 }

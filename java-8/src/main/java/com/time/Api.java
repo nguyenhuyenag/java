@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 public class Api {
 
 	public static void TimeApi() {
-
 		// the current date
 		LocalDate date = LocalDate.now();
 		System.out.println("The current date is " + date);
