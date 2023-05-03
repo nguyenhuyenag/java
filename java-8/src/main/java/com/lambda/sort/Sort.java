@@ -1,4 +1,4 @@
-package com.stream;
+package com.lambda.sort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,23 +6,21 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.util.RandomUtils;
-
 public class Sort {
 
-	static void print(List<Integer> l1, List<Integer> l2) {
-		String format = String.format("%s > %s ", Arrays.toString(l1.toArray()), //
-				Arrays.toString(l1.toArray()));
-		System.out.println(format);
+	public static void print(List<Integer> L1, List<Integer> L2) {
+		String s1 = Arrays.toString(L1.toArray());
+		String s2 = Arrays.toString(L1.toArray());
+		System.out.println(String.format("%s -> %s ", s1, s2));
 	}
 
-	static void streamSorted(List<Integer> list) {
+	public static void streamSorted(List<Integer> list) {
 		System.out.println("Stream sorted...");
 		Collections.shuffle(list);
 		print(list, list.stream().sorted().collect(Collectors.toList()));
 	}
 
-	static void collectionsSort(List<Integer> list) {
+	public static void collectionsSort(List<Integer> list) {
 		System.out.println("Collection sort...");
 		Collections.shuffle(list);
 		List<Integer> cloneList = new ArrayList<Integer>(list);
@@ -30,7 +28,7 @@ public class Sort {
 		print(list, cloneList);
 	}
 
-	static void arraysSort(List<Integer> list) {
+	public static void arraysSort(List<Integer> list) {
 		System.out.println("Arrays sort...");
 		Collections.shuffle(list);
 		Integer[] array = list.stream().toArray(Integer[]::new);
@@ -39,10 +37,10 @@ public class Sort {
 	}
 
 	public static void main(String[] args) {
-		List<Integer> list = RandomUtils.getRandomListInt(10, -10, 20);
+		List<Integer> list = Arrays.asList(2, 5, 7, -4, 0, 11, -7, 0, 7, 6);
+		arraysSort(list);
 		streamSorted(list);
 		collectionsSort(list);
-		arraysSort(list);
 	}
 
 }

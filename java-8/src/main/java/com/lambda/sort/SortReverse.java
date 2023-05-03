@@ -1,4 +1,4 @@
-package com.stream;
+package com.lambda.sort;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,12 +10,7 @@ import com.util.RandomUtils;
 
 public class SortReverse {
 
-	static void x() {
-		
-	}
-
 	public static void main(String[] args) {
-
 		List<Integer> list = RandomUtils.getRandomListInt(10, -10, 20);
 
 		// Stream sort reverse
