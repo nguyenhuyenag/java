@@ -8,7 +8,7 @@ import java.util.function.BiPredicate;
 /**
  * Tương tự với Predicate nhưng có 2 tham số
  */
-public class BiPredicates {
+public class PredicatesBi {
 
 	public static void main(String[] args) {
 		List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Eva");

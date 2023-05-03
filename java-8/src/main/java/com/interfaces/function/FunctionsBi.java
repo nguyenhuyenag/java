@@ -6,9 +6,9 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * R apply(T t, U u)
+ *		R apply(T t, U u); 
  */
-public class BiFunctions {
+public class FunctionsBi {
 
 	public static void main(String[] args) {
 

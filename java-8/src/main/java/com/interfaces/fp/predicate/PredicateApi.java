@@ -10,9 +10,9 @@ public class PredicateApi {
 	private static List<String> list = Arrays.asList("Java", "Quora", "C", "C#", "PHP");
 
 	public static List<String> and() {
-		Predicate<String> p1 = s -> s.startsWith("J");
-		Predicate<String> p2 = s -> s.endsWith("a");
-		return list.stream().filter(p1.and(p2)).toList();
+		Predicate<String> p1 = s -> s.endsWith("a");
+		Predicate<String> p2 = s -> s.startsWith("J");
+		return list.stream().filter(p2.and(p1)).toList();
 	}
 
 	public static List<String> or() {

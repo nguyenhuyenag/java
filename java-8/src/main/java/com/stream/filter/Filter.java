@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @see PredicateTest.fi.predicate.TestMethod
- * @see lambda.fi.predicate.BiPredicates
+ * @see Predicates.fi.predicate.TestMethod
+ * @see PredicatesBi.fi.predicate.BiPredicates
  */
 public class Filter {
 
