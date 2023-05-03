@@ -5,8 +5,12 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-/**
- *		R apply(T t, U u); 
+/*-
+ * - Tương tự như Function nhưng có 2 tham số
+ *		
+ *		public interface BiFunction<T, U, R> {
+ *			R apply(T t, U u);
+ *		} 
  */
 public class FunctionsBi {
 

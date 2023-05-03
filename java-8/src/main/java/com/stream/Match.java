@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
+// list.stream() -> Stream ko thể dùng lại nên phải khởi tạo lại dùng
 public class Match {
 
 	@SuppressWarnings("unlikely-arg-type")

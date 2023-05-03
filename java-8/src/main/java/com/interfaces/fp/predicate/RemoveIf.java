@@ -13,7 +13,6 @@ public class RemoveIf {
 	 */
 	public static <T> void removeWithLambda(List<T> list, Predicate<T> p) {
 		list.removeIf(t -> p.test(t));
-		// System.out.println(list);
 	}
 
 //	public static <T> void removeWithoutLambda(List<T> list, Predicate<T> p) {
