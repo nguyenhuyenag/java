@@ -35,12 +35,16 @@ public class RemoveIf {
 		List<Integer> nums = new ArrayList<>();
 		nums.addAll(Arrays.asList(-1, 2, 0, 3, 8, 4 - 9, 11, -3, 10, -22, 27));
 
-		// filter() -> Return a new list
+		/**
+		 * filter() -> Return a new list
+		 */
 		// Predicate<Integer> conditon = t -> true; 		// pass all
 		// Predicate<Integer> conditon = t -> t % 2 != 0;	// odd number
 		nums = eval(nums, t -> t % 2 == 0); 				// even numbers
 
-		// removeIf() -> Return this list
+		/**
+		 * removeIf() -> Return this list
+		 */
 		// removeWithLambda(nums, t -> t < 0); 				// remove negative numbers
 		// removeWithLambda(nums, t -> t > 0); 				// remove positive numbers
 		

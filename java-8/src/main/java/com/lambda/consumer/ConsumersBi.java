@@ -1,4 +1,4 @@
-package com.lambda.fi.consumer;
+package com.lambda.consumer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ import java.util.function.BiConsumer;
 /**
  * Tương tự Consumer nhưng có hai tham số
  */
-public class BiConsumerFI {
+public class ConsumersBi {
 
 	public static void main(String[] args) {
 		Map<String, Integer> map = new HashMap<>();
