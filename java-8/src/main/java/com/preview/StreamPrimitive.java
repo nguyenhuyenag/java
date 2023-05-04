@@ -1,4 +1,4 @@
-package com.stream.init;
+package com.preview;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;

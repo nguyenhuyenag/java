@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 public class GroupingBy {
 
 	public static void main(String[] args) {
-		// 3 apple, 2 banana, others 1
 		List<String> items = Arrays.asList("apple", "apple", "banana", "apple", "orange", "banana", "papaya");
 		Map<String, Long> result = items.stream()
 				// .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
