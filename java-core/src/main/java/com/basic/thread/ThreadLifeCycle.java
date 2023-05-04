@@ -33,7 +33,7 @@ public class ThreadLifeCycle extends Thread {
 
 	@Override
 	public void run() {
-		System.out.println("Thread start...");
+		System.out.println("Thread running...");
 	}
 
 	public static void main(String[] args) {

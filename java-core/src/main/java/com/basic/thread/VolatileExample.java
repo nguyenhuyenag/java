@@ -1,19 +1,15 @@
 package com.basic.thread;
 
 /**
- * - volatile là một từ khóa trong Java, được sử dụng để đánh dấu một biến là
- * "volatile". Khi một biến được đánh dấu là volatile, nó sẽ được xử lý khác
- * biệt so với các biến thông thường.
- * 
- * - Cụ thể, khi một biến được đánh dấu là volatile, các giá trị gán vào biến sẽ
- * được ghi vào bộ nhớ chính trực tiếp, không thông qua bộ nhớ đệm của CPU. Điều
- * này đảm bảo rằng nếu một thread đọc giá trị của biến từ bộ nhớ chính, nó sẽ
- * nhận được giá trị mới nhất, thay vì giá trị trong bộ nhớ đệm của nó.
+ * - Khi một biến được đánh dấu là volatile, các giá trị gán vào nó được ghi vào
+ * bộ nhớ chính trực tiếp, không thông qua bộ nhớ đệm của CPU. Điều này đảm bảo
+ * rằng nếu một thread đọc giá trị của biến từ bộ nhớ chính, nó sẽ nhận được giá
+ * trị mới nhất, thay vì giá trị trong bộ nhớ đệm của nó.
  * 
  * - Ngoài ra, khi một biến được đánh dấu là volatile, tất cả các lần đọc và ghi
- * của nó đều được đảm bảo là tuân thủ theo thứ tự mà chúng được thực hiện. Điều
- * này có nghĩa là nếu một thread ghi giá trị mới cho biến và một thread khác
- * đọc giá trị đó, giá trị mới nhất sẽ được đọc.
+ * của nó đều được đảm bảo là tuân thủ theo thứ tự mà chúng được thực hiện.
+ * Nghĩa là nếu một thread ghi giá trị mới cho biến và một thread khác đọc giá
+ * trị đó, giá trị mới nhất sẽ được đọc.
  * 
  * - Vì vậy, volatile được sử dụng để đảm bảo tính toàn vẹn của dữ liệu trong
  * một ứng dụng đa luồng, đặc biệt là trong các trường hợp khi các biến có thể
@@ -24,20 +20,32 @@ package com.basic.thread;
  */
 public class VolatileExample {
 
-	// private static int count = 0; // chay chuong trinh khi co va khong co volatile
-	private static volatile int count = 0;
+	private static int count = 0;
+	// private static volatile int count = 0;
 
+	/**
+	 * - Giá trị của biến `count` chỉ được lưu trong bộ nhớ đệm của CPU, và không
+	 * được đồng bộ hóa giữa các thread. Do đó, khi một thread thay đổi giá trị của
+	 * biến count, thread khác không thể nhận biết được sự thay đổi này, và do đó sẽ
+	 * không bao giờ thoát khỏi vòng lặp while.
+	 * 
+	 * - Khi thêm lệnh in ra màn hình trong vòng lặp của thread Listener, chương
+	 * trình sẽ dừng lại do hiện tượng "busy-waiting" (chờ đợi bằng cách lặp vô tận
+	 * một phép kiểm tra). Tuy nhiên, việc in ra giá trị của biến count có thể khiến
+	 * cho giá trị đó được đọc từ bộ nhớ chính thay vì bộ nhớ đệm của CPU, do đó giá
+	 * trị được đọc sẽ là giá trị mới nhất được ghi vào bởi thread Maker
+	 */
 	public static void main(String[] args) {
-		new ChangeListener().start();
-		new ChangeMaker().start();
+		new Listener().start();
+		new Maker().start();
 	}
 
-	public static class ChangeMaker extends Thread {
+	public static class Maker extends Thread {
 		@Override
 		public void run() {
 			int i = 0;
 			while (count < 5) {
-				System.out.println("Increasing value of count variable to " + (i + 1));
+				System.out.println("Maker count = " + (i + 1));
 				count = ++i;
 				try {
 					Thread.sleep(500);
@@ -48,15 +56,14 @@ public class VolatileExample {
 		}
 	}
 
-	public static class ChangeListener extends Thread {
+	public static class Listener extends Thread {
 		@Override
 		public void run() {
 			int value = count;
-			// Khi giá trị của biến COUNT nhỏ hơn 5, thread này sẽ lặp mãi mãi để kiểm tra
-			// giá trị của biến này
 			while (value < 5) {
+				// System.out.println("Listener value = " + value + ", count = " + count);
 				if (value != count) {
-					System.out.println("Count variable changed to : " + count);
+					// System.out.println("Listener count = " + count);
 					value = count;
 				}
 			}
