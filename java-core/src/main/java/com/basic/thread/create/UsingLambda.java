@@ -1,9 +1,9 @@
-package com.basic.thread;
+package com.basic.thread.create;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class WithLambda {
+public class UsingLambda {
 
 	public static void main(String[] args) {
 		ExecutorService executor = Executors.newSingleThreadExecutor();

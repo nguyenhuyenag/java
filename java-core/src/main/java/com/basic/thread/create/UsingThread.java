@@ -1,9 +1,9 @@
-package com.basic.thread;
+package com.basic.thread.create;
 
 /**
  * Có 2 cách tạo thread là `extends Thread` hoặc `implements Runnable`
  */
-public class FromClassThread extends Thread {
+public class UsingThread extends Thread {
 
 	@Override
 	public void run() {
@@ -19,8 +19,7 @@ public class FromClassThread extends Thread {
 	}
 
 	public static void cach1() {
-		FromClassThread c = new FromClassThread();
-		Thread t = new Thread(c);
+		Thread t = new Thread(new UsingThread());
 		t.start();
 	}
 
