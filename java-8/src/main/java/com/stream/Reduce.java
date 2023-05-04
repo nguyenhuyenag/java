@@ -15,7 +15,7 @@ import java.util.List;
  * Hàm này có kiểu dữ liệu là BiFunction<T, ? super U, T> với T là kiểu dữ liệu
  * của phần tử trong Stream, và U là kiểu dữ liệu của identity.
  */
-public class Reducing {
+public class Reduce {
 
 	public static void findSum() {
 		List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
