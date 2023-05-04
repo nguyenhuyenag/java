@@ -1,4 +1,4 @@
-package com.stream.collectors.groupby;
+package com.stream.collect.groupby;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;

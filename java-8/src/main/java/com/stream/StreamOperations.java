@@ -36,13 +36,6 @@ public class StreamOperations {
 		System.out.println(names);
 	}
 
-//	public static void sort(List<User> list) {
-//		// list.sort(Comparator.comparing(User::getAge));
-//		// list.sort((u1, u2) -> u1.getAge() - u2.getAge());
-//		Collections.sort(list, (u1, u2) -> u1.getAge() - u2.getAge());
-//		System.out.println(list);
-//	}
-
 	public static void sortMiltipleValue(List<User> list) {
 		Comparator<User> comparing = Comparator.comparing(User::getName) //
 				.thenComparing(Comparator.comparing(User::getAge));
@@ -50,7 +43,7 @@ public class StreamOperations {
 		// list.stream().sorted(comparing); // <- Return a new list
 		System.out.println(list);
 	}
-	
+
 	public static void reverse(List<User> list) {
 		Collections.reverse(list);
 		System.out.println(list);
@@ -61,8 +54,6 @@ public class StreamOperations {
 		// filter(list);
 		// map(list);
 		reverse(list);
-
-		
 
 //		// Stream.collect()
 //		List<String> list = Arrays.asList("System", "out", "println", "Stream", "collect", "AB", "A");
