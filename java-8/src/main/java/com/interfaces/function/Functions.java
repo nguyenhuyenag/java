@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.function.Function;
 
 /*-
- * 
  *		public interface Function<T, R> {
  *			R apply(T t);
  *		}

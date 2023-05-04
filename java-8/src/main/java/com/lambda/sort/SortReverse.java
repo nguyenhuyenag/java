@@ -4,41 +4,44 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.util.RandomUtils;
 
 public class SortReverse {
 
-	public static void main(String[] args) {
-		List<Integer> list = RandomUtils.getRandomListInt(10, -10, 20);
-
-		// Stream sort reverse
-		System.out.println("Stream sort reverse \t\t"
-				+ list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList()));
-
+	public static void byComparatorReversed(List<Integer> list) {
 		Collections.shuffle(list);
+		Comparator<Integer> comparator = (a, b) -> a - b;
+		list.sort(comparator.reversed());
+		System.out.println(list);
+	}
 
-		// lambda
-		List<Integer> lambda = list.stream().sorted((n1, n2) -> n2 - n1).collect(Collectors.toList());
-		System.out.println("Stream sort lambda \t\t" + lambda);
-
+	public static void byComparatorReverseOrder(List<Integer> list) {
 		Collections.shuffle(list);
+		list = list.stream().sorted((a, b) -> b - a).toList();
+		// list = list.stream().sorted(Comparator.reverseOrder()).toList();
+		System.out.println(list);
+	}
 
-		// Collection sort
+	public static void byCollectionsReverseOrder(List<Integer> list) {
+		Collections.shuffle(list);
 		Collections.sort(list, Collections.reverseOrder());
-		System.out.println("Collections sort reverse \t" + list);
+		System.out.println(list);
+	}
 
+	public static void byArraysSort(List<Integer> list) {
 		Collections.shuffle(list);
-
-		// Array sort
 		Integer[] array = list.stream().toArray(Integer[]::new);
 		Arrays.sort(array, Collections.reverseOrder());
-		System.out.println("Arrays sort reverse \t\t" + Arrays.toString(array));
+		System.out.println(Arrays.toString(array));
+	}
 
-		// Collections.shuffle(list);
-		// System.out.println(Arrays.toString(list.toArray()));
-
+	public static void main(String[] args) {
+		List<Integer> list = RandomUtils.getRandomListInt(10, -10, 50);
+		byComparatorReversed(list);
+		byComparatorReverseOrder(list);
+		byCollectionsReverseOrder(list);
+		byArraysSort(list);
 	}
 
 }

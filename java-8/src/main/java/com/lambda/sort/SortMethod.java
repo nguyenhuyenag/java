@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Sort {
+public class SortMethod {
 
 	public static void print(List<Integer> L1, List<Integer> L2) {
 		String s1 = Arrays.toString(L1.toArray());
@@ -15,22 +14,20 @@ public class Sort {
 	}
 
 	public static void streamSorted(List<Integer> list) {
-		System.out.println("Stream sorted...");
-		Collections.shuffle(list);
-		print(list, list.stream().sorted().collect(Collectors.toList()));
+		System.out.println("Stream sorted");
+		// Collections.shuffle(list);
+		print(list, list.stream().sorted().toList()); // <- Return a new list
 	}
 
 	public static void collectionsSort(List<Integer> list) {
-		System.out.println("Collection sort...");
-		Collections.shuffle(list);
-		List<Integer> cloneList = new ArrayList<Integer>(list);
+		System.out.println("Collection sort");
+		List<Integer> cloneList = new ArrayList<>(list);
 		Collections.sort(cloneList);
 		print(list, cloneList);
 	}
 
 	public static void arraysSort(List<Integer> list) {
-		System.out.println("Arrays sort...");
-		Collections.shuffle(list);
+		System.out.println("Arrays sort");
 		Integer[] array = list.stream().toArray(Integer[]::new);
 		Arrays.sort(array);
 		print(list, Arrays.asList(array));
