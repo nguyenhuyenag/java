@@ -1,5 +1,8 @@
 package com.basic.thread;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * - Khi một biến được đánh dấu là volatile, các giá trị gán vào nó được ghi vào
  * bộ nhớ chính trực tiếp, không thông qua bộ nhớ đệm của CPU. Điều này đảm bảo
@@ -18,10 +21,32 @@ package com.basic.thread;
  * trong mọi trường hợp, do đó các khối lệnh nên được đồng bộ hóa bằng các cơ
  * chế khác như synchronized hoặc Lock khi cần thiết.
  */
-public class VolatileExample {
+public class Volatile {
 
-	private static int count = 0;
-	// private static volatile int count = 0;
+	// private static int count = 0;
+	private static volatile int count = 0;
+
+	public static void main(String[] args) {
+		ExecutorService executor = Executors.newFixedThreadPool(2);
+		executor.submit(new Maker());
+		executor.submit(new Listener());
+		executor.shutdown();
+	}
+
+	public static class Maker implements Runnable {
+		@Override
+		public void run() {
+			for (int i = 0; i < 6; i++) {
+				System.out.println("Maker -> count = " + (i + 1));
+				count = i;
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 
 	/**
 	 * - Giá trị của biến `count` chỉ được lưu trong bộ nhớ đệm của CPU, và không
@@ -35,38 +60,14 @@ public class VolatileExample {
 	 * cho giá trị đó được đọc từ bộ nhớ chính thay vì bộ nhớ đệm của CPU, do đó giá
 	 * trị được đọc sẽ là giá trị mới nhất được ghi vào bởi thread Maker
 	 */
-	public static void main(String[] args) {
-		new Listener().start();
-		new Maker().start();
-	}
-
-	public static class Maker extends Thread {
+	public static class Listener implements Runnable {
 		@Override
 		public void run() {
-			int i = 0;
+			System.out.println("Listener -> start");
 			while (count < 5) {
-				System.out.println("Maker count = " + (i + 1));
-				count = ++i;
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
-	public static class Listener extends Thread {
-		@Override
-		public void run() {
-			int value = count;
-			while (value < 5) {
 				// System.out.println("Listener value = " + value + ", count = " + count);
-				if (value != count) {
-					// System.out.println("Listener count = " + count);
-					value = count;
-				}
 			}
+			System.out.println("Listener -> stop");
 		}
 	}
 }

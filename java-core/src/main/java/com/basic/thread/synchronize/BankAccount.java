@@ -4,22 +4,19 @@ public class BankAccount {
 
 	long amount = 20; // Số tiền có trong tài khoản
 
-	public boolean checkAccountBalance(long withDrawAmount) {
+	public boolean canCheck(long drawAmount) {
 		try {
-			Thread.sleep(1000); // Giả lập thời gian đọc cơ sở dữ liệu và kiểm tra tiền
+			Thread.sleep(1000); // waiting process database
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		if (withDrawAmount <= amount) {
-			return true; // Cho phép rút tiền
-		}
-		return false; // Không cho phép rút tiền
+		return (amount >= drawAmount);
 	}
 
-	public synchronized void withdraw(String threadName, long withdrawAmount) {
+	public synchronized void withDraw(String threadName, long withdrawAmount) {
 		// In thông tin người rút
 		System.out.println(threadName + " check: " + withdrawAmount);
-		if (checkAccountBalance(withdrawAmount)) {
+		if (canCheck(withdrawAmount)) {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {

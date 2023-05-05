@@ -1,6 +1,20 @@
 package com.basic.thread.basic;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+/**
+ * Thread bị ngắt (interrupted) bởi một thread khác
+ */
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ThreadInterrupt implements Runnable {
+
+	private String threadname;
 
 	public void run() {
 		for (int i = 1; i <= 10; i++) {
@@ -18,10 +32,10 @@ public class ThreadInterrupt implements Runnable {
 		Thread t1 = new Thread(new ThreadInterrupt());
 		t1.start();
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 			t1.interrupt();
 		} catch (InterruptedException ex) {
-			// do nothing
+
 		}
 	}
 }

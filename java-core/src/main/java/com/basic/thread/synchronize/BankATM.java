@@ -2,7 +2,7 @@ package com.basic.thread.synchronize;
 
 public class BankATM extends Thread {
 
-	private String threadName = "";
+	private String threadName;
 	private long withdrawAmount = 0;
 	private BankAccount bankAccount;
 
@@ -14,16 +14,16 @@ public class BankATM extends Thread {
 
 	@Override
 	public void run() {
-		bankAccount.withdraw(threadName, withdrawAmount);
+		bankAccount.withDraw(threadName, withdrawAmount);
 	}
 
 	public static void main(String[] args) {
 		BankAccount bankAccount = new BankAccount();
-		// Người chồng rút 15 triệu
+		// Chồng rút 15 triệu
 		BankATM husband = new BankATM("Husband", bankAccount, 15);
-		husband.start();
-		// Người vợ rút hết 20 triệu
+		// Vợ rút 20 triệu
 		BankATM wife = new BankATM("Wife", bankAccount, 20);
+		husband.start();
 		wife.start();
 	}
 

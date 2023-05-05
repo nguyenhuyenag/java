@@ -10,11 +10,9 @@ package com.basic.thread.sleepwait;
  * khối code truy cập vào các object được sử dụng bởi nhiều thread, chúng được
  * bảo vệ bởi synchronized để đảm bảo rằng chỉ có 1 thread truy cập vào object
  * tại cùng một thời điểm).
- *
  */
-
 class Sum implements Runnable {
-	
+
 	public int sum = 0;
 
 	@Override
