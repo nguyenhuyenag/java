@@ -13,7 +13,6 @@ import java.util.concurrent.Future;
  * - executor.shutdown(): Tắt executor khi không còn task (đối tượng Callable)
  * nào ở bên trong (các task đã hoàn thành). Nếu không tắt thì chương trình sẽ
  * chạy mãi vì luôn có một thread kiểm tra task trong executor để thực thi.
- *
  */
 @SuppressWarnings("unused")
 public class CallableDemo implements Callable<Integer> {
@@ -41,7 +40,7 @@ public class CallableDemo implements Callable<Integer> {
 	 * Kết quả hiển thị không theo thứ tự được submit vào executor vì nó chạy cùng
 	 * lúc.
 	 */
-	public static void ex1() throws InterruptedException, ExecutionException {
+	public static void example1() throws InterruptedException, ExecutionException {
 		CallableDemo c1 = new CallableDemo(1, 2);
 		CallableDemo c2 = new CallableDemo(1, 3);
 		CallableDemo c3 = new CallableDemo(2, 3);
@@ -61,7 +60,7 @@ public class CallableDemo implements Callable<Integer> {
 	 * chương trình sẽ bị delay rất lâu. Giải pháp cho trường hợp này là sử dụng
 	 * method get() với thời gian timeout: f1.get(1, TimeUnit.SECONDS)
 	 */
-	public static void ex2() throws InterruptedException, ExecutionException {
+	public static void example2() throws InterruptedException, ExecutionException {
 		CallableDemo c1 = new CallableDemo(1, 2);
 		CallableDemo c2 = new CallableDemo(1, 3);
 		CallableDemo c3 = new CallableDemo(2, 3);
@@ -75,8 +74,8 @@ public class CallableDemo implements Callable<Integer> {
 	}
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		// ex1();
-		ex2();
+		example1();
+		example2();
 	}
 
 }

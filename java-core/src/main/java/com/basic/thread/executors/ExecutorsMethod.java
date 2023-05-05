@@ -19,11 +19,11 @@ import java.util.concurrent.Executors;
  * thống, đồng thời cũng giúp tránh bị tình trạng nắm giữ resource của hệ thống
  * quá lâu
  */
-public class RunnableImpl implements Runnable {
+public class ExecutorsMethod implements Runnable {
 
 	private String name;
 
-	public RunnableImpl(String name) {
+	public ExecutorsMethod(String name) {
 		this.name = name;
 	}
 
@@ -37,39 +37,39 @@ public class RunnableImpl implements Runnable {
 		}
 		System.out.println(name + " kết thúc.");
 	}
-	
+
 	public static void main(String[] args) {
 		// singleThreadExecutor();
 		fixedThreadExecutor();
 		// newCachedThreadPool();
 	}
 
-	static void singleThreadExecutor() {
+	public static void singleThreadExecutor() {
 		// Khai báo ThreadPool thông qua newSingleThreadExecutor()
 		ExecutorService executorService = Executors.newSingleThreadExecutor();
 		for (int i = 1; i <= 10; i++) {
-			RunnableImpl myRunnable = new RunnableImpl("Runnable " + i);
+			ExecutorsMethod myRunnable = new ExecutorsMethod("Runnable " + i);
 			executorService.execute(myRunnable);
 		}
 		executorService.shutdown();
 	}
 
-	static void fixedThreadExecutor() {
+	public static void fixedThreadExecutor() {
 		// Pool này cho phép thực thi cùng một lúc 5 Thread
 		// Đầu tiên 5 Thread được thực thi. Sau đó hễ Thread nào xong thì Thread khác
 		// được start. Đảm bảo luôn luôn không quá 5 Thread được thực thi trong Pool.
 		ExecutorService executorService = Executors.newFixedThreadPool(5);
 		for (int i = 1; i <= 10; i++) {
-			RunnableImpl myRunnable = new RunnableImpl("Runnable " + i);
+			ExecutorsMethod myRunnable = new ExecutorsMethod("Runnable " + i);
 			executorService.execute(myRunnable);
 		}
 		executorService.shutdown();
 	}
 
-	static void newCachedThreadPool() {
+	public static void newCachedThreadPool() {
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		for (int i = 1; i <= 10; i++) {
-			RunnableImpl myRunnable = new RunnableImpl("Runnable " + i);
+			ExecutorsMethod myRunnable = new ExecutorsMethod("Runnable " + i);
 			executorService.execute(myRunnable);
 		}
 		executorService.shutdown();

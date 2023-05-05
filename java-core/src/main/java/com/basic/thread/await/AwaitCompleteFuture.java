@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 import com.ea.async.Async;
 
 /**
- * Await 1 CompletableFuture
+ * Await CompletableFuture
  */
 public class AwaitCompleteFuture {
 

@@ -39,39 +39,58 @@ import java.util.concurrent.Future;
  * vậy, chỉ khác phương thức này buộc ES kết thúc ngay khi được gọi, lúc này đây
  * các Thread chưa được thực thi sẽ bị buộc phải kết thúc theo ES.
  */
-public class MethodExecutorService {
+class MyTask implements Runnable {
 
-	public static void main(String[] args) {
-		// execute();
-		submitRunnable();
+	private String name;
+
+	public MyTask(String name) {
+		this.name = name;
 	}
 
-	public static void execute() {
-		ExecutorService executorService = Executors.newFixedThreadPool(5);
-		for (int i = 1; i <= 10; i++) {
-			RunnableImpl r = new RunnableImpl("Thread " + i);
-			executorService.execute(r);
+	@Override
+	public void run() {
+		System.out.println(name + " running...");
+		try {
+			Thread.sleep(1000); // Giả lập thời gian chạy của Runnable mất 1 giây
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		executorService.shutdown();
+		System.out.println(name + " stop");
+	}
+}
+
+public class IExecutorService {
+
+	public static void main(String[] args) throws InterruptedException {
+		execute();
+		// submit();
 	}
 
-	@SuppressWarnings("rawtypes")
-	public static void submitRunnable() {
-		List<Future> listFuture = new ArrayList<>(); // Khởi tạo danh sách các Future
-		ExecutorService exe = Executors.newFixedThreadPool(5);
+	public static void submit() {
+		List<Future<?>> futures = new ArrayList<>(); // Khởi tạo danh sách các Future
+		ExecutorService executor = Executors.newFixedThreadPool(5);
 		for (int i = 1; i <= 10; i++) {
-			RunnableImpl r = new RunnableImpl("Thread " + i);
-			Future f = exe.submit(r);
-			listFuture.add(f); // Từng Future sẽ quản lý một Runnable
+			Runnable r = new MyTask("Thread " + i);
+			Future<?> f = executor.submit(r);
+			futures.add(f); // Từng Future sẽ quản lý một Runnable
 		}
-		for (Future f : listFuture) {
+		for (Future<?> f : futures) {
 			try {
-				System.out.println(f.get()); // Khi Thread nào kết thúc, get() của Future tương ứng sẽ trả về null
+				System.out.println(f.get()); // Khi có thread nào đó kết thúc, get() sẽ trả về null
 			} catch (InterruptedException | ExecutionException e) {
 				e.printStackTrace();
 			}
 		}
-		exe.shutdown();
+		executor.shutdown(); // tắt executor sau khi thêm task vào queue
+	}
+
+	public static void execute() throws InterruptedException {
+		ExecutorService executor = Executors.newFixedThreadPool(5);
+		for (int i = 1; i <= 10; i++) {
+			Runnable r = new MyTask("Thread " + i);
+			executor.execute(r);
+		}
+		executor.shutdown();
 	}
 
 }
