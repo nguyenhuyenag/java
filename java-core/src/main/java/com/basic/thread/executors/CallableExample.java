@@ -14,7 +14,6 @@ import java.util.concurrent.Future;
  * nào ở bên trong (các task đã hoàn thành). Nếu không tắt thì chương trình sẽ
  * chạy mãi vì luôn có một thread kiểm tra task trong executor để thực thi.
  */
-// @SuppressWarnings("unused")
 public class CallableExample implements Callable<Integer> {
 
 	private int a;
