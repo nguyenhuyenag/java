@@ -21,9 +21,9 @@ public class BankATM extends Thread {
 		BankAccount bankAccount = new BankAccount();
 		// Chồng rút 15 triệu
 		BankATM husband = new BankATM("Husband", bankAccount, 15);
+		husband.start();
 		// Vợ rút 20 triệu
 		BankATM wife = new BankATM("Wife", bankAccount, 20);
-		husband.start();
 		wife.start();
 	}
 

@@ -1,4 +1,4 @@
-package com.basic.thread.await;
+package com.basic.thread.other;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;

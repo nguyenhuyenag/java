@@ -1,4 +1,4 @@
-package com.basic.thread.coop;
+package com.basic.thread.sleepwait;
 
 /**
  * wait(): Phương thức này khi được gọi, nó sẽ làm Thread đang nắm giữ Lock trên

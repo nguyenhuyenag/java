@@ -1,4 +1,4 @@
-package com.basic.thread.callable;
+package com.basic.thread.executors;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -14,13 +14,13 @@ import java.util.concurrent.Future;
  * nào ở bên trong (các task đã hoàn thành). Nếu không tắt thì chương trình sẽ
  * chạy mãi vì luôn có một thread kiểm tra task trong executor để thực thi.
  */
-@SuppressWarnings("unused")
-public class CallableDemo implements Callable<Integer> {
+// @SuppressWarnings("unused")
+public class CallableExample implements Callable<Integer> {
 
 	private int a;
 	private int b;
 
-	public CallableDemo(int a, int b) {
+	public CallableExample(int a, int b) {
 		this.a = a;
 		this.b = b;
 	}
@@ -41,13 +41,13 @@ public class CallableDemo implements Callable<Integer> {
 	 * lúc.
 	 */
 	public static void example1() throws InterruptedException, ExecutionException {
-		CallableDemo c1 = new CallableDemo(1, 2);
-		CallableDemo c2 = new CallableDemo(1, 3);
-		CallableDemo c3 = new CallableDemo(2, 3);
+		CallableExample c1 = new CallableExample(1, 2);
+		CallableExample c2 = new CallableExample(1, 3);
+		CallableExample c3 = new CallableExample(2, 3);
 		ExecutorService executor = Executors.newFixedThreadPool(10);
-		Future<Integer> f1 = executor.submit(c1);
-		Future<Integer> f2 = executor.submit(c2);
-		Future<Integer> f3 = executor.submit(c3);
+		executor.submit(c1);
+		executor.submit(c2);
+		executor.submit(c3);
 		System.out.println("Done");
 		executor.shutdown();
 	}
@@ -61,14 +61,14 @@ public class CallableDemo implements Callable<Integer> {
 	 * method get() với thời gian timeout: f1.get(1, TimeUnit.SECONDS)
 	 */
 	public static void example2() throws InterruptedException, ExecutionException {
-		CallableDemo c1 = new CallableDemo(1, 2);
-		CallableDemo c2 = new CallableDemo(1, 3);
-		CallableDemo c3 = new CallableDemo(2, 3);
+		CallableExample c1 = new CallableExample(1, 2);
+		CallableExample c2 = new CallableExample(1, 3);
+		CallableExample c3 = new CallableExample(2, 3);
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 		Future<Integer> f1 = executor.submit(c1);
 		f1.get();
-		Future<Integer> f2 = executor.submit(c2);
-		Future<Integer> f3 = executor.submit(c3);
+		executor.submit(c2);
+		executor.submit(c3);
 		System.out.println("Done");
 		executor.shutdown();
 	}

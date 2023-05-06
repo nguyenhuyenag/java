@@ -2,7 +2,7 @@ package com.basic.thread.synchronize;
 
 public class BankAccount {
 
-	long amount = 20; // Số tiền có trong tài khoản
+	private long amount = 20; // Số tiền có trong tài khoản
 
 	public boolean canCheck(long drawAmount) {
 		try {

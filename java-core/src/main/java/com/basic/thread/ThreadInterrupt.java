@@ -1,4 +1,4 @@
-package com.basic.thread.basic;
+package com.basic.thread;
 
 /**
  * Tạm ngắt (interrupted) thread

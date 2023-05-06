@@ -66,7 +66,7 @@ class Sevice3 extends Thread {
 
 }
 
-public class CountDownLatchDemo1 {
+public class CountDownLatch1 {
 
 	public static void main(String[] args) {
 		final CountDownLatch latch = new CountDownLatch(3);

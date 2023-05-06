@@ -5,14 +5,15 @@ package com.basic.thread;
  	Vòng đời của thread
  
 	  - NEW: Thread được khởi tạo nhưng chưa start
-	  
+
 	  - RUNNABLE: Thread được start. Sau start thì thread vẫn chưa chạy liền mà còn
-	  chờ cấp phát tài nguyên, do đó chúng ta có thể chia thành 2 trạng thái nhỏ
-	  nữa là Ready to Run (chờ đợi cấp phát tài nguyên) và Running (đã chính thức
-	  chạy).
+	  chờ cấp phát tài nguyên, do đó chúng ta có thể chia thành 2 trạng thái nhỏ:
 	  
-	  - Trong quá trình chạy, nếu có bất kỳ tác động nào, ngoại trừ làm kết thúc
-	  vòng đời của thread (TERMINATED), nó sẽ vào trạng thái dưới đây
+	  		+ Ready to Run (chờ đợi cấp phát tài nguyên)
+			+ Running (đã chính thức chạy).
+	  
+	  		- Trong quá trình chạy, nếu có bất kỳ tác động nào, ngoại trừ làm kết thúc
+	  		vòng đời của thread (TERMINATED), nó sẽ vào trạng thái dưới đây
 	  
 	  - BLOCKED: Là trạng thái khi thread nó không có đủ điều kiện để chạy. Ví dụ 1
 	  phương thức được đánh dấu synchronized, ở 1 thời điểm chỉ có 1 thread dùng nó
@@ -37,16 +38,16 @@ public class ThreadLifeCycle extends Thread {
 	}
 
 	public static void main(String[] args) {
-		ThreadLifeCycle t = new ThreadLifeCycle();
+		Thread t = new ThreadLifeCycle();
 		System.out.println(t.getState()); 		// NEW
 		t.start();
 		System.out.println(t.getState()); 		// RUNNABLE
 		try {
 			Thread.sleep(2000);
-			System.out.println(t.getState()); 	// TERMINATED
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		System.out.println(t.getState()); 	// TERMINATED
 	}
 
 }

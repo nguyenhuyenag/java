@@ -2,7 +2,7 @@ package com.basic.thread.countdownlatch;
 
 import java.util.concurrent.CountDownLatch;
 
-public class CountDownLatchDemo2 {
+public class CountDownLatch2 {
 	
 	public static void main(String args[]) throws InterruptedException {
 		// Let us create task that is going to

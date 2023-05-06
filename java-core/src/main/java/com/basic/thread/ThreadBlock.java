@@ -1,4 +1,4 @@
-package com.basic.thread.basic;
+package com.basic.thread;
 
 public class ThreadBlock implements Runnable {
 
