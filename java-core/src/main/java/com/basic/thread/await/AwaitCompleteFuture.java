@@ -18,8 +18,7 @@ public class AwaitCompleteFuture {
 	}
 
 	/**
-	 * Mỗi lần chạy, thứ tự các dòng in ra sẽ khác nhau do chúng chạy trên các
-	 * thread khác nhau.
+	 * Thứ tự các dòng in ra sẽ khác nhau do chạy trên các thread khác nhau
 	 */
 	public static void withoutAsync() {
 		ExecutorService executor = Executors.newFixedThreadPool(10);

@@ -20,10 +20,10 @@ public class ThreadBlock implements Runnable {
 	public static void main(String[] args) {
 		Thread t1 = new Thread(new ThreadBlock());
 		t1.start();
-		boolean flag = true; // chạy chương trình với flag = true, false
+		boolean flag = true;	// Chạy chương trình với flag = true, false
 		if (flag) {
 			try {
-				t1.join(); // <- block main thread and wait t1 to complete
+				t1.join(); 		// Block main thread and wait t1 to complete
 			} catch (InterruptedException ex) {
 
 			}
