@@ -1,4 +1,4 @@
-package com.sleepwait;
+package com.other;
 
 /**
  * - wait() là một instance method được sử dụng để đồng bộ hoá. Nó có thể được

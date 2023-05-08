@@ -9,7 +9,7 @@ public class UsingRunnable implements Runnable {
 	}
 
 	/**
-	 * Không tạo ra thread mới, phương thức run() sẽ được thực thi trên chính thread
+	 * Không tạo ra thread mới, phương thức run() vẫn thực thi trên chính thread
 	 * hiện tại
 	 */
 	public static void incorrect() {

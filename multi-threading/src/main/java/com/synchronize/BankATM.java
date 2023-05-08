@@ -14,7 +14,11 @@ public class BankATM extends Thread {
 
 	@Override
 	public void run() {
-		bankAccount.withDraw(threadName, withdrawAmount);
+		try {
+			bankAccount.withDraw(threadName, withdrawAmount);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
