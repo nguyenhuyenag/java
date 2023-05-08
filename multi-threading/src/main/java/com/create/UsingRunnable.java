@@ -4,12 +4,30 @@ public class UsingRunnable implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Running thread");
+		System.out.println("ThreadName -> " + Thread.currentThread().getName());
+		System.out.println("Thread running");
+	}
+
+	/**
+	 * Không tạo ra thread mới, phương thức run() sẽ được thực thi trên chính thread
+	 * hiện tại
+	 */
+	public static void incorrect() {
+		System.out.println("ThreadName -> " + Thread.currentThread().getName());
+		Runnable task = new UsingRunnable();
+		task.run();
+	}
+
+	public static void correct() {
+		System.out.println("ThreadName -> " + Thread.currentThread().getName());
+		Runnable task = new UsingRunnable();
+		Thread t = new Thread(task);
+		t.start();
 	}
 
 	public static void main(String args[]) {
-		Runnable r1 = new UsingRunnable();
-		r1.run();
+		correct();
+		// incorrect();
 	}
 
 }

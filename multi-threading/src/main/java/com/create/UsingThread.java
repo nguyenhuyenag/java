@@ -7,6 +7,7 @@ public class UsingThread extends Thread {
 
 	@Override
 	public void run() {
+		System.out.println("ThreadName -> " + Thread.currentThread().getName());
 		try {
 			for (int i = 5; i > 0; i--) {
 				System.out.println(i);
@@ -15,18 +16,13 @@ public class UsingThread extends Thread {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Hết giờ");
-	}
-
-	public static void cach1() {
-		Thread t = new Thread(new UsingThread());
-		t.start();
 	}
 
 	public static void cach2() {
-		Thread t = new Thread() {
+		Thread task = new Thread() {
 			@Override
 			public void run() {
+				System.out.println("ThreadName -> " + Thread.currentThread().getName());
 				try {
 					for (int i = 5; i > 0; i--) {
 						System.out.println(i);
@@ -35,14 +31,21 @@ public class UsingThread extends Thread {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				System.out.println("Hết giờ");
 			}
 		};
+		Thread t = new Thread(task);
+		t.start();
+	}
+
+	public static void cach1() {
+		UsingThread myThread = new UsingThread();
+		Thread t = new Thread(myThread);
 		t.start();
 	}
 
 	public static void main(String args[]) {
-		// cach1();
+		System.out.println("ThreadName -> " + Thread.currentThread().getName());
+		cach1();
 		cach2();
 	}
 
