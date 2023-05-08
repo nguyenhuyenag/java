@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Hủy bỏ CompletableFuture
  */
-public class CancelledCompletable {
+public class CompletableCancel {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		AtomicBoolean cancelled = new AtomicBoolean(false);

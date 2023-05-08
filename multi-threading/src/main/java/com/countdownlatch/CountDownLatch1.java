@@ -67,14 +67,13 @@ class Sevice3 extends Thread {
 }
 
 /**
- * CountDownLatch nó có khác biệt nên sử dụng sẽ khó khăn hơn. Với
- * CountDownLatch nếu khởi tạo giá trị ban đầu là 3 thì bắt buộc phải count
- * down về 0, main thread mới thực thi. Nếu chương trình chỉ có 2 thì không làm
- * được. Ngược lại, nếu 4 thread thì thread thứ 4 cũng không làm ảnh hưởng đến
- * CountDownLatch. CountDownLatch thực sự hữu ích khi biết chính xác số lượng
- * Thread.
+ * - CountDownLatch vs Executors
  * 
- * Đối với Executor, ta có thể khởi tạo giá trị ban đầu là 4, queue là 20. Nếu
+ * + Nếu CountDownLatch khởi tạo giá trị ban đầu là 3 thì bắt buộc phải
+ * countdown về 0 thì main thread mới thực thi. CountDownLatch thực sự hữu ích
+ * khi biết chính xác số lượng Thread.
+ * 
+ * + Đối với Executor, ta có thể khởi tạo giá trị ban đầu là 4, queue là 20. Nếu
  * số lượng thread là 5 hay 10 thì nó có thể thêm vào queue để thực thi sau
  */
 public class CountDownLatch1 {
@@ -89,8 +88,6 @@ public class CountDownLatch1 {
 		service1.start();
 		service2.start();
 		service3.start();
-
-		// ExecutorService executor = Executors.newFixedThreadPool(3);
 
 		// latch waits till the count becomes 0
 		// this way we can make sure that the execution of main thread only
