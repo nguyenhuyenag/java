@@ -17,13 +17,13 @@ import java.util.concurrent.Executors;
   	không được sử dụng trong vòng 60 giây sẽ bị gỡ ra khỏi cache. Những tính năng
   	này giúp cho Pool được khởi tạo theo kiểu này tận dụng được hiệu năng của hệ
   	thống, đồng thời cũng giúp tránh bị tình trạng nắm giữ resource của hệ thống
-  	quá lâu
+  	quá lâu.
  */
-public class ExecutorsMethod implements Runnable {
+public class CreateThreadPool implements Runnable {
 
 	private String name;
 
-	public ExecutorsMethod(String name) {
+	public CreateThreadPool(String name) {
 		this.name = name;
 	}
 
@@ -45,34 +45,30 @@ public class ExecutorsMethod implements Runnable {
 	}
 
 	public static void singleThreadExecutor() {
-		// Khai báo ThreadPool thông qua newSingleThreadExecutor()
-		ExecutorService executorService = Executors.newSingleThreadExecutor();
+		ExecutorService executor = Executors.newSingleThreadExecutor();
 		for (int i = 1; i <= 10; i++) {
-			ExecutorsMethod myRunnable = new ExecutorsMethod("Runnable " + i);
-			executorService.execute(myRunnable);
+			CreateThreadPool myRunnable = new CreateThreadPool("Runnable " + i);
+			executor.execute(myRunnable);
 		}
-		executorService.shutdown();
+		executor.shutdown();
 	}
 
 	public static void fixedThreadExecutor() {
-		// Pool này cho phép thực thi cùng một lúc 5 Thread
-		// Đầu tiên 5 Thread được thực thi. Sau đó hễ Thread nào xong thì Thread khác
-		// được start. Đảm bảo luôn luôn không quá 5 Thread được thực thi trong Pool.
-		ExecutorService executorService = Executors.newFixedThreadPool(5);
+		ExecutorService executor = Executors.newFixedThreadPool(5);
 		for (int i = 1; i <= 10; i++) {
-			ExecutorsMethod myRunnable = new ExecutorsMethod("Runnable " + i);
-			executorService.execute(myRunnable);
+			CreateThreadPool myRunnable = new CreateThreadPool("Runnable " + i);
+			executor.execute(myRunnable);
 		}
-		executorService.shutdown();
+		executor.shutdown();
 	}
 
 	public static void newCachedThreadPool() {
-		ExecutorService executorService = Executors.newCachedThreadPool();
+		ExecutorService executor = Executors.newCachedThreadPool();
 		for (int i = 1; i <= 10; i++) {
-			ExecutorsMethod myRunnable = new ExecutorsMethod("Runnable " + i);
-			executorService.execute(myRunnable);
+			CreateThreadPool myRunnable = new CreateThreadPool("Runnable " + i);
+			executor.execute(myRunnable);
 		}
-		executorService.shutdown();
+		executor.shutdown();
 	}
 
 }

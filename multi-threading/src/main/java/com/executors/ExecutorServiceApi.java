@@ -34,8 +34,8 @@ import java.util.concurrent.Future;
 		+ shutdown(): Tắt executor khi không còn task nào ở bên trong (các task đã
 		hoàn thành). Nếu không shutdown thì chương trình sẽ chạy mãi vì luôn có một
 		thread kiểm tra task trong executor để thực thi. Lệnh shutdown() giúp đóng
-		ThreadPool lại, ThreadPool lúc này sẽ từ chối nhận thêm task nữa và giúp ES
-		kết thúc sau khi nó hoàn thành nhiệm vụ.
+		ThreadPool lại và từ chối nhận thêm task nữa và giúp ES kết thúc sau khi nó 
+		hoàn thành nhiệm vụ.
 		
 		+ shutdownNow(): Cũng có công năng như vậy, chỉ khác phương thức này buộc ES
 		kết thúc ngay khi được gọi, lúc này đây các Thread chưa được thực thi sẽ bị
@@ -61,7 +61,7 @@ class MyTask implements Runnable {
 	}
 }
 
-public class IExecutorService {
+public class ExecutorServiceApi {
 
 	public static void main(String[] args) throws InterruptedException {
 		execute();

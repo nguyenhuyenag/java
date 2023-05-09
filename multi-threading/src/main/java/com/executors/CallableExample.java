@@ -6,14 +6,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-/**
- * - Mỗi đối tượng CallableDemo có thể xem là một thread, khi được submit vào
- * ExecutorService nó sẽ được thực thi.
- * 
- * - executor.shutdown(): Tắt executor khi không còn task (đối tượng Callable)
- * nào ở bên trong (các task đã hoàn thành). Nếu không tắt thì chương trình sẽ
- * chạy mãi vì luôn có một thread kiểm tra task trong executor để thực thi.
- */
 public class CallableExample implements Callable<Integer> {
 
 	private int a;

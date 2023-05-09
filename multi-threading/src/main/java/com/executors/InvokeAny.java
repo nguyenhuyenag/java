@@ -1,4 +1,4 @@
-package com.future;
+package com.executors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,7 @@ import java.util.concurrent.Executors;
  * Thread hoàn thành, chỉ cần 1 task hoàn thành phương thức get() sẽ nhận được
  * kết quả.
  * 
- * - Nếu 1 trong số task hoàn thành hoặc ném ra 1 ngoại lệ, phần còn lại của
- * Callable sẽ được hủy bỏ (cancelled).
+ * - Nếu 1 trong số task hoàn thành hoặc ném ra 1 ngoại lệ, sẽ dừng luôn ThreadPool
  * 
  * 		invokeAny(Collection<?> extends Callable<T> tasks)
  *

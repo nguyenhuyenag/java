@@ -1,4 +1,4 @@
-package com.future;
+package com.executors;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -9,10 +9,10 @@ import java.util.concurrent.TimeUnit;
 public class FutureCancel {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		ExecutorService executorService = Executors.newSingleThreadExecutor();
+		ExecutorService executor = Executors.newSingleThreadExecutor();
 
 		long startTime = System.currentTimeMillis();
-		Future<Integer> future = executorService.submit(new CallableWorker(1));
+		Future<Integer> future = executor.submit(new CallableWorker(1));
 
 		while (!future.isDone()) {
 			System.out.println("Task is still working ...");
@@ -24,7 +24,7 @@ public class FutureCancel {
 			}
 		}
 
-		executorService.shutdown();
+		executor.shutdown();
 
 		if (!future.isCancelled()) {
 			System.out.println("Task completed! Retrieving the result");
