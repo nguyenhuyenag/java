@@ -15,13 +15,12 @@ import java.util.concurrent.Future;
 		
 		+ submit(Callable): Tương tự execute() nhưng có trả về kết quả thông qua
 		Future.get(). Phương thực get() được thực thi đồng bộ (asynchronous - tức là
-		sau khi callable hoàn thành nhiệm vụ kết quả được trả về nó mới được thực
-		thi).
+		sau khi callable hoàn thành nhiệm vụ kết quả được trả về nó mới được thực thi).
 		
-		- submit(Runnable): Tương tự submit(Callable) nhưng trả kết quả về một cách
+		+ submit(Runnable): Tương tự submit(Callable) nhưng trả kết quả về một cách
 		đồng bộ. Tức là khi Thread kết thúc thì null mới được trả về thông qua
 		Future.get(), nên dù được gọi rất sớm, nhưng chúng chỉ in ra null khi nào
-		Thread kết thúc.
+		thread kết thúc.
 		
 		+ invokeAny(): Tương tự execute() hay submit() nhưng cho phép ta thể truyền
 		vào chúng danh sách các Callable. Nếu có bất kỳ Callable nào hoàn thành trong

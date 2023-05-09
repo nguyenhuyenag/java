@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
  * - Phương thức invokeAny() trả về một Future, nhưng trả về kết quả của một trong
  * những đối tượng Callable. Nó không đảm bảo về kết quả bạn sẽ nhận được từ
  * callable nào, chỉ cần một trong số chúng hoàn thành. Tức là ko cần tất cả các
- * Thread hoàn thành, chỉ cần 1 task hoàn thành phương thức get() sẽ nhận được
+ * thread hoàn thành, chỉ cần 1 task hoàn thành phương thức get() sẽ nhận được
  * kết quả.
  * 
  * - Nếu 1 trong số task hoàn thành hoặc ném ra 1 ngoại lệ, sẽ dừng luôn ThreadPool
@@ -28,17 +28,14 @@ public class InvokeAny {
 	 */
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		ExecutorService executor = Executors.newFixedThreadPool(5);
-
 		List<Callable<Integer>> callables = new ArrayList<>();
 		for (int i = 1; i <= 10; i++) {
-			callables.add(new CallableWorker(i));
+			callables.add(new Worker(i));
 		}
-
-		Integer result = executor.invokeAny(callables);
+		int result = executor.invokeAny(callables);
 		System.out.println("Result = " + result);
-
-		executor.shutdown();
 		System.out.println("Finished all threads ");
+		executor.shutdown();
 	}
 
 }

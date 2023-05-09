@@ -1,72 +1,44 @@
 package com.executors;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class CallableExample implements Callable<Integer> {
-
-	private int a;
-	private int b;
-
-	public CallableExample(int a, int b) {
-		this.a = a;
-		this.b = b;
-	}
-
-	public int sum() {
-		int sum = this.a + this.b;
-		System.out.println(String.format("%d + %d = %d", a, b, sum));
-		return sum;
-	}
-
-	@Override
-	public Integer call() throws Exception {
-		return this.sum();
-	}
-
-	/**
-	 * Kết quả hiển thị không theo thứ tự được submit vào executor vì nó chạy cùng
-	 * lúc.
-	 */
-	public static void example1() throws InterruptedException, ExecutionException {
-		CallableExample c1 = new CallableExample(1, 2);
-		CallableExample c2 = new CallableExample(1, 3);
-		CallableExample c3 = new CallableExample(2, 3);
-		ExecutorService executor = Executors.newFixedThreadPool(10);
-		executor.submit(c1);
-		executor.submit(c2);
-		executor.submit(c3);
-		System.out.println("Done");
-		executor.shutdown();
-	}
-
-	/**
-	 * - Khi gọi f1.get() thì nó sẽ block thread chính lại để khi nào đối tượng c1
-	 * thực hiện xong và trả về kết quả.
-	 * 
-	 * - Trường hợp đối tượng c1 mất quá nhiều thời gian để tính tổng 2 số thì cả
-	 * chương trình sẽ bị delay rất lâu. Giải pháp cho trường hợp này là sử dụng
-	 * method get() với thời gian timeout: f1.get(1, TimeUnit.SECONDS)
-	 */
-	public static void example2() throws InterruptedException, ExecutionException {
-		CallableExample c1 = new CallableExample(1, 2);
-		CallableExample c2 = new CallableExample(1, 3);
-		CallableExample c3 = new CallableExample(2, 3);
-		ExecutorService executor = Executors.newFixedThreadPool(10);
-		Future<Integer> f1 = executor.submit(c1);
-		f1.get();
-		executor.submit(c2);
-		executor.submit(c3);
-		System.out.println("Done");
-		executor.shutdown();
-	}
+/**
+ * Callable tương tự như Runnable, nhưng nó trả về một giá trị từ một thread
+ * thông qua phương thức call()
+ */
+public class CallableExample {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		example1();
-		example2();
+		example();
+	}
+
+	/**
+	 * - Kết quả hiển thị không theo thứ tự khi submit vào executor vì chạy bất đồng
+	 * bộ.
+	 * 
+	 * - Khi gọi f.get() thì nó sẽ block main thread để khi nào đối tượng c1 thực
+	 * hiện xong và trả về kết quả.
+	 * 
+	 * - Trường hợp đối tượng Callable mất quá nhiều thời gian để tính toán số thì
+	 * cả chương trình sẽ bị delay. Giải pháp cho trường hợp này là sử dụng timeout:
+	 * 
+	 * f.get(5, TimeUnit.SECONDS)
+	 * @throws ExecutionException 
+	 * @throws InterruptedException 
+	 */
+	@SuppressWarnings("unused")
+	public static void example() throws InterruptedException, ExecutionException {
+		int nThread = 5;
+		ExecutorService executor = Executors.newFixedThreadPool(nThread);
+		for (int i = 0; i < nThread; i++) {
+			Worker w = new Worker(i);
+			Future<Integer> f = executor.submit(w);
+			// System.out.println("Get -> " + f.get());
+		}
+		executor.shutdown();
 	}
 
 }
