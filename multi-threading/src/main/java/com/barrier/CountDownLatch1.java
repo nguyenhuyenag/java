@@ -1,4 +1,4 @@
-package com.countdownlatch;
+package com.barrier;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -70,8 +70,9 @@ class Sevice3 extends Thread {
  * - CountDownLatch vs Executors
  * 
  * + Nếu CountDownLatch khởi tạo giá trị ban đầu là 3 thì bắt buộc phải
- * countdown về 0 thì main thread mới thực thi. CountDownLatch thực sự hữu ích
- * khi biết chính xác số lượng Thread.
+ * countdown về 0 thì main thread mới thực thi. Khi lệnh CountDownLatch.await()
+ * được gọi, các thread sẽ bị chặn cho đến khi đếm đến 0. CountDownLatch thực sự
+ * hữu ích khi biết chính xác số lượng Thread.
  * 
  * + Đối với Executor, ta có thể khởi tạo giá trị ban đầu là 4, queue là 20. Nếu
  * số lượng thread là 5 hay 10 thì nó có thể thêm vào queue để thực thi sau
@@ -81,25 +82,22 @@ public class CountDownLatch1 {
 	public static void main(String[] args) {
 		final CountDownLatch latch = new CountDownLatch(3);
 
-		Thread service1 = new Thread(new Sevice1(latch));
-		Thread service2 = new Thread(new Sevice2(latch));
-		Thread service3 = new Thread(new Sevice3(latch));
+		Thread t1 = new Thread(new Sevice1(latch));
+		Thread t2 = new Thread(new Sevice2(latch));
+		Thread t3 = new Thread(new Sevice3(latch));
 
-		service1.start();
-		service2.start();
-		service3.start();
+		t1.start();
+		t2.start();
+		t3.start();
 
-		// latch waits till the count becomes 0
-		// this way we can make sure that the execution of main thread only
-		// finishes ones 3 services have executed
 		try {
 			System.out.println("Waiting for 3 services have started ... ");
 			latch.await(30, TimeUnit.SECONDS); //
-			System.out.println("Starting main Thread, id = " + Thread.currentThread().getId());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Done!!!");
+
+		System.out.println("Starting main Thread, id = " + Thread.currentThread().getId());
 	}
 
 }
