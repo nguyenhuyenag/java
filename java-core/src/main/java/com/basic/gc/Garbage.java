@@ -6,7 +6,6 @@ package com.basic.gc;
  * 
  * finalize(): Method này sẽ được trình thu gon rác gọi khi một object được xác
  * định là không còn reference nào đến nó.
- *
  */
 @SuppressWarnings("unused")
 public class Garbage {

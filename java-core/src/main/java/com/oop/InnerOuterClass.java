@@ -1,4 +1,4 @@
-package com.basic;
+package com.oop;
 
 public class InnerOuterClass {
 

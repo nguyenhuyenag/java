@@ -1,4 +1,4 @@
-package com.basic;
+package com.basic.closeable;
 
 import java.io.IOException;
 import java.util.Scanner;
