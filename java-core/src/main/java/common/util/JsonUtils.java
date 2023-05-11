@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -136,7 +137,7 @@ public class JsonUtils {
 	/**
 	 * Map<String, String> asMap = asType(s);
 	 */
-	public static Map<String, String> asType(String json) {
+	public static Map<String, String> asMap(String json) {
 		if (StringUtils.isNotEmpty(json)) {
 			try {
 				return MAPPER.readValue(json, new TypeReference<Map<String, String>>() {});
@@ -144,7 +145,7 @@ public class JsonUtils {
 				e.printStackTrace();
 			}
 		}
-		return null; // Collections.emptyMap();
+		return Collections.emptyMap();
 	}
 
 	/**
@@ -194,7 +195,7 @@ public class JsonUtils {
 	
 	public static void main(String[] args) {
 		String s = "{\"id\":\"9221041e-d9ff-43f8-a894-2fe58905b8f9\",\"app_name\":\"TKTX\",\"date\":\"2023-05-10 08:46:01\",\"request_type\":3,\"taxnumber\":\"0309478306888\",\"val\":0,\"state\":\"1\",\"message\":\"pepsicoca113@gmail.com\",\"json\":null}";
-		Map<String, String> asMap = asType(s);
+		Map<String, String> asMap = asMap(s);
 		System.out.println(asMap);
 	}
 
