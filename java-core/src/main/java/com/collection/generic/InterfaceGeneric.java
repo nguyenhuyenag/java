@@ -20,19 +20,19 @@ class ISortImpl<T> implements ISort<T> {
 }
 
 // Use
-public class IGeneric<T> extends ISortImpl<T> {
+public class InterfaceGeneric<T> extends ISortImpl<T> {
 
 	public static void main(String[] args) {
 
 		// Sort String
 		String[] array = { "1", "a", "2", "b" };
-		IGeneric<String> sSort = new IGeneric<>();
+		InterfaceGeneric<String> sSort = new InterfaceGeneric<>();
 		sSort.sort(array);
 
 		// Sort Integer
 		// int[] arr = { 1, 3, 5}; // <- error
 		Integer[] arr = { 1, 3, 5, 7, 9, 2 };
-		IGeneric<Integer> iSort = new IGeneric<>();
+		InterfaceGeneric<Integer> iSort = new InterfaceGeneric<>();
 		iSort.sort(arr);
 	}
 

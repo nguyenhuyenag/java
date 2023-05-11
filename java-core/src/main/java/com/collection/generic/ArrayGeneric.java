@@ -8,7 +8,6 @@ class AGeneric<T> {
 	 * T[] arr; 			// Ok
 	 * T[] arr2 = new T[5];	// Error
 	 */
-
 	private T[] array;
 
 	// Contructor
