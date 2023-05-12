@@ -31,38 +31,5 @@
 				</TTin>
 			</TTKhac>
 		</TTChung>
-		<NDCTu>
-			<TCTTNhap>
-				<Ten>CONG TY CO PHAN TS24 (NO_EDIT)</Ten>
-				<MST>0309478306-999</MST>
-				<DChi>285/94B, Phường 05, Quận 6, Tp. Hồ Chí Minh</DChi>
-				<SDThoai>1234567890</SDThoai>
-				<TTKhac />
-			</TCTTNhap>
-			<NNT>
-				<Ten>ĐỖ MẠNH CƯỜNG</Ten>
-				<MST>0304628540</MST>
-				<DChi>C242 Xóm Chiếu, phường 15, Quận 4, Tp. Hồ Chí Minh, Việt Nam</DChi>
-				<QTich>Việt Nam</QTich>
-				<CNCTru>1</CNCTru>
-				<CMND>024056069</CMND>
-				<NgCCMND>19/03/2009</NgCCMND>
-				<NCCMND>Tp. Hồ Chí Minh</NCCMND>
-				<SDThoai>0902820052</SDThoai>
-				<DCTDTu>nvdang234@gmail.com</DCTDTu>
-				<TTKhac />
-			</NNT>
-			<TTNCNKTru>
-				<KTNhap>Thu nhập từ tiền lương, tiền công</KTNhap>
-				<TThang>01</TThang>
-				<DThang>12</DThang>
-				<Nam>2022</Nam>
-				<BHiem>1000000</BHiem>
-				<TTNCThue>2000000</TTNCThue>
-				<TTNTThue>1000000</TTNTThue>
-				<SThue>1000000</SThue>
-				<STNCDNhan>5000000</STNCDNhan>
-			</TTNCNKTru>
-		</NDCTu>
 	</DLCTu>
 </CTu>
