@@ -1,4 +1,4 @@
-package xml;
+package xml.util;
 
 import java.io.File;
 import java.io.StringReader;
@@ -12,7 +12,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-public class XmlUtils {
+public class XmlUtilsOld {
 
 	public static NodeList readXMLFile(String xmlFilePath) {
 		try {

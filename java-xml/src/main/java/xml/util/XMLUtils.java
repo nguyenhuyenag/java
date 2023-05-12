@@ -1,4 +1,4 @@
-package common.util;
+package xml.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -79,11 +79,12 @@ public class XMLUtils {
 	}
 
 	public static boolean isXMLValid(String xml) {
-		try (StringReader sr = new StringReader(xml)) {
+		xml = xml.trim().replaceFirst("^([\\W]+)<","<");
+		try (StringReader reader = new StringReader(xml)) {
 			SAXParserFactory.newInstance() //
 					.newSAXParser() //
 					.getXMLReader() //
-					.parse(new InputSource(sr));
+					.parse(new InputSource(reader));
 			return true;
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();

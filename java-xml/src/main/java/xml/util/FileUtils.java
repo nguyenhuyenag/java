@@ -1,4 +1,4 @@
-package xml;
+package xml.util;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -96,7 +96,8 @@ public class FileUtils {
 		if (path != null) {
 			byte[] bytes = toByteArray(path);
 			if (bytes != null) {
-				return new String(bytes, StandardCharsets.UTF_8);
+				String content = new String(bytes, StandardCharsets.UTF_8);
+				return content.trim();
 			}
 		}
 		return "";

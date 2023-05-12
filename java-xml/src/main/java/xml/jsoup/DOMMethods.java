@@ -7,7 +7,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import xml.FileUtils;
+import xml.util.FileUtils;
 
 public class DOMMethods {
 
