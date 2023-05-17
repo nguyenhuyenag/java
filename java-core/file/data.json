@@ -1,0 +1,39 @@
+{
+	"name": "Bob",
+	"profession": "Software engineer",
+	"department": "Research",
+	"age": 40,
+	"family": [{
+			"wife": {
+				"name": "Alice",
+				"profession": "Doctor",
+				"age": 38
+			}
+		}, {
+			"son": {
+				"name": "Peter",
+				"occupation": "Schoolboy",
+				"age": 11
+			}
+		}
+	],
+	"address": {
+		"city": "West Nilsamouth",
+		"street_name": "Terrance Brooks",
+		"street_address": "8919 Wuckert Road",
+		"zip_code": "42812",
+		"state": "Texas",
+		"country": "United States",
+		"coordinates": {
+			"lat": 48.93963484012798,
+			"lng": 147.8168788940793
+		}
+	},
+	"performance": [
+		{
+			"2020": 4.5
+		}, {
+			"2021": 4.8
+		}
+	]
+}
