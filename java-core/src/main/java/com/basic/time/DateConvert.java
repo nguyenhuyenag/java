@@ -122,6 +122,9 @@ public class DateConvert {
 		}
 	}
 
+	/**
+	 * Milliseconds time
+	 */
 	public static long getEpochTime(Object dateTimeObject) {
 		if (dateTimeObject instanceof Date) {
 			Date date = (Date) dateTimeObject;
