@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +12,7 @@ public class DateConvert {
 
 //	// Date -> LocalDate
 //	public static LocalDate dateToLocalDate(Date date) {
-//		return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//		return 
 //	}
 //
 //	// Date -> LocalDateTime
@@ -93,8 +92,9 @@ public class DateConvert {
 	public static LocalDate toLocalDate(Object dateTimeObject) {
 		if (dateTimeObject instanceof Date) {
 			Date date = (Date) dateTimeObject;
-			Instant instant = date.toInstant();
-			return instant.atZone(ZoneOffset.UTC).toLocalDate();
+			// Instant instant = date.toInstant();
+			// return instant.atZone(ZoneOffset.UTC).toLocalDate();
+			return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		} else if (dateTimeObject instanceof Instant) {
 			Instant instant = (Instant) dateTimeObject;
 			return instant.atZone(ZoneOffset.UTC).toLocalDate();
@@ -142,15 +142,15 @@ public class DateConvert {
 	}
 
 	// convertTimeUnit(TimeUnit.HOURS, TimeUnit.MINUTES, 1L);
-	public static long convertTimeUnit(TimeUnit fromUnit, TimeUnit toUnit, long duration) {
-		return toUnit.convert(duration, fromUnit);
+	public static long convertTimeUnit(long duration, TimeUnit from, TimeUnit to) {
+		return to.convert(duration, from);
 	}
 
 	public static void main(String[] args) {
 		// long convert = convertTimeUnit(TimeUnit.HOURS, TimeUnit.MINUTES, 10L);
 		// System.out.println("Convert: " + convert);
-		LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
-        System.out.println("Giờ UTC hiện tại: " + now);
+		// LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
+		// System.out.println("Giờ UTC hiện tại: " + now);
 	}
 
 }
