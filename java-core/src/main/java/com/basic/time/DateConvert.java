@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class DateConvert {
 
@@ -74,6 +75,17 @@ public class DateConvert {
 		} else {
 			throw new IllegalArgumentException("Unsupported DateTime object type");
 		}
+	}
+
+	// convertTimeUnit(TimeUnit.HOURS, TimeUnit.MINUTES, 1L);
+	public static long convertTimeUnit(TimeUnit from, TimeUnit to, long duration) {
+		return to.convert(duration, from);
+	}
+
+	public static void main(String[] args) {
+		long h = 1L;
+		long convert = convertTimeUnit(TimeUnit.HOURS, TimeUnit.MINUTES, h);
+		System.out.println("Convert: " + convert);
 	}
 
 }

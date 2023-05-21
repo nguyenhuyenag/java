@@ -11,7 +11,7 @@ public class DaysBetweenTwoDate {
 		return ChronoUnit.DAYS.between(d1.toInstant(), d2.toInstant());
 	}
 
-	private static long convertTimeUnit(TimeUnit unit, Date d1, Date d2) {
+	private static long calculatorDiff(TimeUnit unit, Date d1, Date d2) {
 		long diff = Math.abs(d1.getTime() - d2.getTime());
 		// millisecond -> other
 		return unit.convert(diff, TimeUnit.MILLISECONDS);
@@ -23,7 +23,7 @@ public class DaysBetweenTwoDate {
 		// long result = call1(d1, d2, TimeUnit.DAYS);
 		Date d1 = new Date(2023, 10, 12);
 		Date d2 = new Date(2023, 10, 20);
-		long diff = convertTimeUnit(TimeUnit.HOURS, d1, d2);
+		long diff = calculatorDiff(TimeUnit.HOURS, d1, d2);
 		System.out.println(diff);
 	}
 

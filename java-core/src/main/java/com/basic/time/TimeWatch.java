@@ -11,7 +11,7 @@ public class TimeWatch {
 
 	}
 
-	public static void setTime(TimeUnit unit, int limit) {
+	public static void setTime(int limit, TimeUnit unit) {
 		long amount = unit.toMillis(limit);
 		Date date = new Date(System.currentTimeMillis() + amount);
 		after = date.getTime();
@@ -21,26 +21,25 @@ public class TimeWatch {
 		return (after != System.currentTimeMillis());
 	}
 
-	static void todo(String message, TimeUnit unit, long time) {
-		while (true) {
-			System.out.println(message);
-			try {
-				unit.sleep(time);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+//	public static void todo(String message, long time, TimeUnit unit) {
+//		while (true) {
+//			System.out.println(message);
+//			try {
+//				unit.sleep(time);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	}
 
 	public static void main(String[] args) {
-//		TimeWatch.setTime(TimeUnit.SECONDS, 5);
-//		long i = 0;
-//		while (TimeWatch.hasNext()) {
-//			i++;
-//		}
-//		System.out.println(i);
-
-		todo("Hi you", TimeUnit.SECONDS, 2);
+		TimeWatch.setTime(5, TimeUnit.SECONDS);
+		long i = 0;
+		while (TimeWatch.hasNext()) {
+			i++;
+		}
+		System.out.println(i);
+		// todo("Hi you", 2, TimeUnit.SECONDS);
 	}
 
 }
