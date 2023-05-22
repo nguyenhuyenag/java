@@ -1,8 +1,6 @@
 package com.basic.time;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 public class DaysBetweenTwoDate {
@@ -16,18 +14,20 @@ public class DaysBetweenTwoDate {
 		return DateConvert.convertTimeUnit(diff, TimeUnit.MILLISECONDS, timeUnit);
 	}
 
-	public static long calculatorDiff(TimeUnit timeUnit, Date d1, Date d2) {
-		return calculatorDiff(timeUnit, d1.getTime(), d2.getTime());
+	public static long calculatorDiff(TimeUnit timeUnit, Object d1, Object d2) {
+		long dt1 = DateConvert.getEpochTime(d1);
+		long dt2 = DateConvert.getEpochTime(d2);
+		return calculatorDiff(timeUnit, dt1, dt2);
 	}
 
 	public static void main(String[] args) {
 		// Date d1 = new Date(2023, 10, 12);
 		// Date d2 = new Date(2023, 10, 20);
-		LocalDate ld1 = LocalDate.of(2023, Month.OCTOBER, 12);
-		LocalDate ld2 = LocalDate.of(2023, Month.OCTOBER, 20);
-		long l1 = DateConvert.getEpochTime(ld1);
-		long l2 = DateConvert.getEpochTime(ld2);
-		long diff = calculatorDiff(TimeUnit.HOURS, l1, l2);
+		// LocalDate d1 = LocalDate.of(2023, 10, 12);
+		// LocalDate d2 = LocalDate.of(2023, Month.OCTOBER, 20);
+		LocalDateTime d1 = LocalDateTime.of(2023, 1, 1, 15, 30, 10);
+		LocalDateTime d2 = LocalDateTime.of(2023, 12, 1, 15, 30, 10);
+		long diff = calculatorDiff(TimeUnit.HOURS, d1, d2);
 		System.out.println(diff);
 	}
 

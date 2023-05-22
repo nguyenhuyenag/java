@@ -3,9 +3,7 @@ package com.basic.time;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.ValueRange;
 
 public class InstantTime {
 
@@ -31,8 +29,8 @@ public class InstantTime {
 		System.out.println("Instant in String format: " + instantStr);
 		
 		// Get range of MILLI_OF_SECOND field
-		ValueRange milliRange = Instant.now().range(ChronoField.MILLI_OF_SECOND);
-		System.out.println("Range of MILLI_OF_SECOND: " + milliRange);
+		// ValueRange milliRange = Instant.now().range(ChronoField.MILLI_OF_SECOND);
+		// System.out.println("Range of MILLI_OF_SECOND: " + milliRange);
 		
 		Instant instant2 = Instant.now().plusMillis(1000);
 		System.out.println(instant.equals(instant2));

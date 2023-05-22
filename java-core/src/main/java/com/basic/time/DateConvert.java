@@ -3,7 +3,6 @@ package com.basic.time;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -92,9 +91,8 @@ public class DateConvert {
 	public static LocalDate toLocalDate(Object dateTimeObject) {
 		if (dateTimeObject instanceof Date) {
 			Date date = (Date) dateTimeObject;
-			// Instant instant = date.toInstant();
-			// return instant.atZone(ZoneOffset.UTC).toLocalDate();
-			return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			Instant instant = date.toInstant();
+			return instant.atZone(ZoneOffset.UTC).toLocalDate();
 		} else if (dateTimeObject instanceof Instant) {
 			Instant instant = (Instant) dateTimeObject;
 			return instant.atZone(ZoneOffset.UTC).toLocalDate();
