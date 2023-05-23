@@ -61,7 +61,7 @@ public class ListZone {
 		}
 		// print map
 		sortedMap.forEach((k, v) -> {
-			String out = String.format("%32s / UTC%s %n", k, v);
+			String out = String.format("UTC%s / %s %n", v, k);
 			System.out.printf(out);
 		});
 		// System.out.println("\nTotal Zone IDs " + sortedMap.size());
