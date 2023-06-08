@@ -1,6 +1,6 @@
 package com.reflection;
 
-public class GetMethodName {
+public class MethodGetThisName {
 
 	public static String getCurrentMethodName() {
 		return Thread.currentThread().getStackTrace()[2].getClassName() //
@@ -9,19 +9,19 @@ public class GetMethodName {
 
 	public static void test1() {
 		String name = new Object(){}.getClass().getEnclosingMethod().getName();
-		System.out.println(name);
+		System.out.println("My name is: " + name);
 	}
 
 	public static void test2() {
 		class Local {
 		}
 		String name = Local.class.getEnclosingMethod().getName();
-		System.out.println(name);
+		System.out.println("My name is: " + name);
 	}
 
 	public static void main(String[] args) {
 		test1();
-		test2();
+		// test2();
 	}
 
 }

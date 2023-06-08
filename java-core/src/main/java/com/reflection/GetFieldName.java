@@ -13,8 +13,8 @@ import lombok.experimental.FieldNameConstants;
 @FieldNameConstants
 public class GetFieldName {
 
-	private String name;
 	private int age;
+	private String name;
 	private double height;
 
 	private static List<String> getFieldNamesForClass(Class<?> clazz) throws Exception {

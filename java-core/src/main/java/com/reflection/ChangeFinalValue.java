@@ -5,7 +5,9 @@ import java.lang.reflect.Modifier;
 
 @SuppressWarnings("unused")
 class Reflections {
+	
 	private static final int FIELD = 50;
+	
 }
 
 public class ChangeFinalValue {
