@@ -18,7 +18,7 @@ public class GetFieldName {
 	private double height;
 
 	private static List<String> getFieldNamesForClass(Class<?> clazz) throws Exception {
-		List<String> fieldNames = new ArrayList<String>();
+		List<String> fieldNames = new ArrayList<>();
 		Field[] fields = clazz.getDeclaredFields();
 		for (int i = 0; i < fields.length; i++) {
 			fieldNames.add(fields[i].getName());
@@ -28,7 +28,7 @@ public class GetFieldName {
 
 	public static void main(String[] args) throws Exception {
 		List<String> list = getFieldNamesForClass(GetFieldName.class);
-		list.forEach(t -> System.out.println(t));
+		list.forEach(System.out::println);
 	}
 
 }

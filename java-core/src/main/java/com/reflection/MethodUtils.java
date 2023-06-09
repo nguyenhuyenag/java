@@ -25,7 +25,7 @@ public class MethodUtils {
 			}
 		}
 	}
-	
+
 	public static void getAllReturnTypes() {
 		Method[] methods = methodOf(MethodClazz.class);
 		for (Method m : methods) {
@@ -42,25 +42,23 @@ public class MethodUtils {
 		}
 		return false;
 	}
-	
-	
-//	public static boolean checkMethodExits2(String methodName) {
-//		try {
-//			// Method method = MethodClazz.class.getMethod(methodName, String.class);
-//			Method method = MethodClazz.class.getDeclaredMethod(methodName, String.class);
-//			return method.getReturnType();
-//		} catch (NoSuchMethodException | SecurityException e) {
-//			e.printStackTrace();
-//		}
-//		return false;
-//	}
+
+	public static String getCurrentMethodName() {
+		return Thread.currentThread().getStackTrace()[2].getMethodName();
+	}
+
+	public static void testGetMethodName() {
+		String name = getCurrentMethodName();
+		System.out.println(name);
+	}
 
 	public static void main(String[] args) {
 		// showAllNames();
 		// showAllStatic();
 		// boolean check = checkMethodExits1("getName");
 		// System.out.println(check);
-		getAllReturnTypes();
+		// getAllReturnTypes();
+		testGetMethodName();
 	}
 
 }
