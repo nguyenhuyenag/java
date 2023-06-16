@@ -16,7 +16,7 @@ public class PathUtils {
 	/**
 	 * Project directory
 	 */
-	public static final String HOME = System.getProperty("user.dir");
+	public static final String PROJECT_DIR = System.getProperty("user.dir");
 
 	/**
 	 * Test whether a file or directory exists

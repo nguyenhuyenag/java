@@ -6,12 +6,15 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+
+import common.util.PathUtils;
 
 public class ReadRangeFromFile {
 
 	// read(0, 4) -> Đọc ra dữ liệu từ 0 -> 4 trong file 5MB
 	public static void read(int from, int to) {
-		String filePath = "path/to/your/file.txt";
+		String filePath = PathUtils.PROJECT_DIR +  "/file/vnedict.txt";
 		long startPosition = from * 1024 * 1024; // x MB
 		long endPosition = to * 1024 * 1024; // y MB
 
@@ -28,10 +31,11 @@ public class ReadRangeFromFile {
 		 * thước của tệp tin, do đó, nếu tệp tin quá lớn, việc sử dụng MappedByteBuffer
 		 * có thể gây ra vấn đề về bộ nhớ
 		 */
+		byte[] data = null;
 		try (FileChannel channel = FileChannel.open(Path.of(filePath), StandardOpenOption.READ)) {
 			long bytesToRead = endPosition - startPosition;
 			MappedByteBuffer buffer = channel.map(FileChannel.MapMode.READ_ONLY, startPosition, bytesToRead);
-			byte[] data = new byte[(int) bytesToRead];
+			data = new byte[(int) bytesToRead];
 			buffer.get(data);
 			// Use the 'data' byte array as needed
 		} catch (IOException e) {
@@ -52,18 +56,23 @@ public class ReadRangeFromFile {
 		 * Điều này cho phép chúng ta đọc dữ liệu từ vị trí x đến vị trí y trong tệp tin
 		 * mà không cần đọc toàn bộ tệp vào bộ nhớ trước đó.
 		 */
+		byte[] data2 = null;
 		try (FileChannel channel = FileChannel.open(Path.of(filePath), StandardOpenOption.READ)) {
 			long bytesToRead = endPosition - startPosition;
 			ByteBuffer buffer = ByteBuffer.allocate((int) bytesToRead);
 			int bytesRead = channel.read(buffer, startPosition);
 			buffer.flip();
-			byte[] data = new byte[bytesRead];
-			buffer.get(data);
+			data2 = new byte[bytesRead];
+			buffer.get(data2);
 			// Use the 'data' byte array as needed
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		System.out.println(Arrays.equals(data, data2));
+	}
+	
+	public static void main(String[] args) {
+		read(0, 1);
 	}
 
 }

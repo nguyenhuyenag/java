@@ -179,7 +179,7 @@ public class FileService {
 	
 	public static void fileAttributes() {
 		try {
-			Path file = Paths.get(PathUtils.HOME, "file/test.xml");
+			Path file = Paths.get(PathUtils.PROJECT_DIR, "file/test.xml");
 			BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
 			System.out.println("Create time: " + attr.creationTime());
 			System.out.println("Size: " + attr.size());
