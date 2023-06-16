@@ -1,4 +1,4 @@
-package common.util;
+package com.basic.file;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +17,10 @@ import java.util.stream.Stream;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import common.util.Base64Utils;
+import common.util.PathUtils;
+import common.util.Predicates;
 
 class FileException extends RuntimeException {
 
