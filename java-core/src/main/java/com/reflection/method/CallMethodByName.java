@@ -1,5 +1,6 @@
 package com.reflection.method;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -10,8 +11,8 @@ public class CallMethodByName {
 			throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException,
 			SecurityException, IllegalArgumentException, InvocationTargetException {
 		String className = "com.reflection.method.MethodClazz";
-		Class<?> clazz = Class.forName(className); // Convert string classname to class
-		Object instance = clazz.newInstance(); // Invoke empty constructor
+		Class<?> clazz = Class.forName(className); 	// Convert string classname to class
+		Object instance = clazz.newInstance(); 		// Invoke empty constructor
 
 		// Set name
 		Method setNameMethod = instance.getClass().getMethod("setName", String.class);
@@ -31,6 +32,10 @@ public class CallMethodByName {
 		Method getAgeMethod = instance.getClass().getMethod("getAge");
 		int age = (int) getAgeMethod.invoke(instance);
 		System.out.println("Age: " + age);
+		
+		// Using contructor
+		Constructor<?> dogConstructor = clazz.getConstructor(String.class, int.class);
+		instance = dogConstructor.newInstance("Hachiko", 10);
 	}
 
 }
