@@ -1,3 +1,22 @@
+# Java version
+
+	JDK		Maven	Major 
+	 7	 	 1.7		 51
+	 8  		 1.8		 52
+	 9	  	 9		 53
+	 10  	 10		 54
+	 11  	 11		 55
+	 12  	 12		 56
+	 13  	 13		 57
+	 14  	 14		 58
+	 15  	 15		 59
+	 16  	 16		 60
+	 17  	 17		 61
+	 18		 18		 62
+
+    
+    Từ Java 9 trở đi, Oracle đã thay đổi cách phân phối và ký hiệu phiên bản Java. Thay vì sử dụng ký hiệu "1.x" như trước đây, các phiên bản sau Java 8 sẽ được đánh số theo kiểu "x". Ví dụ: Java 9 được ký hiệu là 9
+    
 # Primitive Data Types
 
 	TYPE		SIZE		MIN			MAX
