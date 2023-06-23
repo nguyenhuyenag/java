@@ -5,7 +5,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class UTCVietNam {
+public class VietNamAndUTC {
 	
 	public static void main(String[] args) {
 		ZonedDateTime utc = ZonedDateTime.now(ZoneOffset.UTC);
