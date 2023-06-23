@@ -20,11 +20,10 @@ public class DateTimeApi {
 		int minute = now.getMinute();
 		int second = now.getSecond();
 		int millis = now.get(ChronoField.MILLI_OF_SECOND); // Note: no direct getter available
-		System.out.println("DayOfMonth: " + now.getDayOfMonth());
+		// System.out.println("DayOfMonth: " + now.getDayOfMonth());
 		System.out.println("DayOfWeek: " + now.getDayOfWeek());
 		System.out.println("DayOfYear: " + now.getDayOfYear());
-		System.out.printf("LocalDateTime: %d-%02d-%02d %02d:%02d:%02d.%03d\n", year, month, day, hour, minute, second,
-				millis);
+		System.out.printf("LocalDateTime: %d-%02d-%02d %02d:%02d:%02d.%03d\n", year, month, day, hour, minute, second, millis);
 	}
 
 	public static void byCalendar() {
@@ -37,7 +36,7 @@ public class DateTimeApi {
 		int second = calendar.get(Calendar.SECOND);
 		int millis = calendar.get(Calendar.MILLISECOND);
 		System.out.println("DayOfWeek: " + calendar.get(Calendar.DAY_OF_WEEK));
-		System.out.println("DayOfMonth: " + calendar.get(Calendar.DAY_OF_MONTH));
+		// System.out.println("DayOfMonth: " + calendar.get(Calendar.DAY_OF_MONTH));
 		System.out.println("DayOfYear: " + calendar.get(Calendar.DAY_OF_YEAR));
 		System.out.println("WeekOfMonth: " + calendar.get(Calendar.WEEK_OF_MONTH));
 		System.out.println("WeekOfYear: " + calendar.get(Calendar.WEEK_OF_YEAR));
@@ -63,7 +62,7 @@ public class DateTimeApi {
 	}
 
 	public static void main(String[] args) throws ParseException {
-		basicDateTimeInfo();
 		firstDayOfWeek();
+		basicDateTimeInfo();
 	}
 }
