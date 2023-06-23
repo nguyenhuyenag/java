@@ -5,6 +5,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 
 // Xem thêm time trong Java 8
@@ -22,7 +23,8 @@ public class DateTimeApi {
 		System.out.println("DayOfMonth: " + now.getDayOfMonth());
 		System.out.println("DayOfWeek: " + now.getDayOfWeek());
 		System.out.println("DayOfYear: " + now.getDayOfYear());
-		System.out.printf("LocalDateTime: %d-%02d-%02d %02d:%02d:%02d.%03d\n", year, month, day, hour, minute, second, millis);
+		System.out.printf("LocalDateTime: %d-%02d-%02d %02d:%02d:%02d.%03d\n", year, month, day, hour, minute, second,
+				millis);
 	}
 
 	public static void byCalendar() {
@@ -39,7 +41,10 @@ public class DateTimeApi {
 		System.out.println("DayOfYear: " + calendar.get(Calendar.DAY_OF_YEAR));
 		System.out.println("WeekOfMonth: " + calendar.get(Calendar.WEEK_OF_MONTH));
 		System.out.println("WeekOfYear: " + calendar.get(Calendar.WEEK_OF_YEAR));
-		System.out.printf("Calendar: %d-%02d-%02d %02d:%02d:%02d.%03d", year, month, day, hour, minute, second, millis);
+		// Last day of month
+		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+		System.out.println("LastDayOfMonth: " + calendar.get(Calendar.DAY_OF_MONTH));
+		System.out.printf("Calendar: %d-%02d-%02d %02d:%02d:%02d.%03d\n", year, month, day, hour, minute, second, millis);
 	}
 
 	public static void basicDateTimeInfo() {
@@ -47,17 +52,18 @@ public class DateTimeApi {
 		// byLocalDateTime();
 	}
 
-	// Ngày đầu tiên của tuần hiện tại
 	public static void firstDayOfWeek() {
-		// Ngày hiện tại
 		LocalDate today = LocalDate.now();
-		// Ngày đầu tiên của tuần hiện tại
 		LocalDate firstDayOfWeek = today.with(DayOfWeek.MONDAY);
+		LocalDate lastDayOfWeek = today.with(DayOfWeek.SUNDAY);
+		LocalDate lastDayOfMonth = today.with(TemporalAdjusters.lastDayOfMonth());
 		System.out.println("Ngày đầu tiên của tuần: " + firstDayOfWeek);
+		System.out.println("Ngày cuối cùng của tuần: " + lastDayOfWeek);
+		System.out.println("Ngày cuối cùng của tháng: " + lastDayOfMonth);
 	}
 
 	public static void main(String[] args) throws ParseException {
 		basicDateTimeInfo();
-		// firstDayOfWeek();
+		firstDayOfWeek();
 	}
 }
