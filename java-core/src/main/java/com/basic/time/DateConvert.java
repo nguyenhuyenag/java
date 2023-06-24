@@ -3,9 +3,13 @@ package com.basic.time;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.time.DateUtils;
 
 public class DateConvert {
 
@@ -120,6 +124,31 @@ public class DateConvert {
 		}
 	}
 
+	public static Calendar toCalendar(Object input) {
+		Calendar calendar = Calendar.getInstance();
+		if (input instanceof Date) {
+			Date date = (Date) input;
+			calendar.setTime(date);
+		} else if (input instanceof Instant) {
+			Instant instant = (Instant) input;
+			Date date = Date.from(instant);
+			calendar.setTime(date);
+		} else if (input instanceof LocalDate) {
+			LocalDate ld = (LocalDate) input;
+			Instant instant = ld.atStartOfDay(ZoneId.systemDefault()).toInstant();
+			Date date = Date.from(instant);
+			calendar.setTime(date);
+		} else if (input instanceof LocalDateTime) {
+			LocalDateTime ldt = (LocalDateTime) input;
+			Instant instant = ldt.atZone(ZoneId.systemDefault()).toInstant();
+			Date date = Date.from(instant);
+			calendar.setTime(date);
+		} else {
+			throw new IllegalArgumentException("Unsupported DateTime object type");
+		}
+		return calendar;
+	}
+
 	/**
 	 * Milliseconds time
 	 */
@@ -142,7 +171,7 @@ public class DateConvert {
 		}
 	}
 
-	// convertTimeUnit(TimeUnit.HOURS, TimeUnit.MINUTES, 1L);
+	// convertTimeUnit(1L, TimeUnit.HOURS, TimeUnit.MINUTES);
 	public static long convertTimeUnit(long duration, TimeUnit from, TimeUnit to) {
 		return to.convert(duration, from);
 	}
@@ -152,6 +181,10 @@ public class DateConvert {
 		// System.out.println("Convert: " + convert);
 		// LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
 		// System.out.println("Giờ UTC hiện tại: " + now);
+		// Calendar cal = Calendar.getInstance();
+
+		DateUtils.toCalendar(new Date());
+
 	}
 
 }
