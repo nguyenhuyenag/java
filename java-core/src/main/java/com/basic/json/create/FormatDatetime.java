@@ -22,8 +22,8 @@ public class FormatDatetime implements PrettyJson {
 	private Date eventDate;
 
 	/**
-	 * Mặc định Jackson sẽ chuyển Date sang Timestamp (long) tính từ 01 – 01 – 1970
-	 * UTC khi serialize sang Json
+	 * Mặc định Jackson sẽ chuyển Date sang Timestamp (long) tính từ 1-1-1970 UTC
+	 * khi serialize sang Json
 	 */
 	public static void main(String[] args) throws ParseException {
 		SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
