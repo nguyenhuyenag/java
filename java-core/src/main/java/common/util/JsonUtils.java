@@ -102,9 +102,6 @@ public class JsonUtils {
 
 	/**
 	 * Colection to JSON
-	 * 
-	 * @return JSON
-	 * @throws JsonProcessingException
 	 */
 	public static <T> String collectionToJson(Collection<T> list) {
 		// return GSON.toJson(list);
@@ -118,10 +115,6 @@ public class JsonUtils {
 
 	/**
 	 * InputStream to Object
-	 * 
-	 * @param is   InputStream
-	 * @param type class type
-	 * @return object
 	 */
 	public static <T> T readValue(InputStream is, Class<T> type) {
 		if (is != null) {
@@ -133,14 +126,15 @@ public class JsonUtils {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Map<String, String> asMap = asType(s);
 	 */
 	public static Map<String, String> asMap(String json) {
 		if (StringUtils.isNotEmpty(json)) {
 			try {
-				return MAPPER.readValue(json, new TypeReference<Map<String, String>>() {});
+				return MAPPER.readValue(json, new TypeReference<Map<String, String>>() {
+				});
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -151,8 +145,6 @@ public class JsonUtils {
 	/**
 	 * Convert InputStream to JsonObject
 	 * 
-	 * @param is InputStream
-	 * @return JsonObject
 	 * @see {@link JsonObject#getBoolean("fieldname")}
 	 */
 //	public static javax.json.JsonObject toJsonObject(InputStream is) {
@@ -166,7 +158,6 @@ public class JsonUtils {
 
 //	/**
 //	 * JSON to List Object with GSON
-//	 * 
 //	 * List<User> list = JsonUtils.toList(json, User[].class);
 //	 */
 //	public static <T> List<T> toListWithoutCommon(String json, Class<T[]> array) {
@@ -192,7 +183,7 @@ public class JsonUtils {
 //	public static String xmlToJSON(File file) {
 //		return xmlToJSON(file.toPath());
 //	}
-	
+
 	public static void main(String[] args) {
 		String s = "{\"id\":\"9221041e-d9ff-43f8-a894-2fe58905b8f9\",\"app_name\":\"TKTX\",\"date\":\"2023-05-10 08:46:01\",\"request_type\":3,\"taxnumber\":\"0309478306888\",\"val\":0,\"state\":\"1\",\"message\":\"pepsicoca113@gmail.com\",\"json\":null}";
 		Map<String, String> asMap = asMap(s);
