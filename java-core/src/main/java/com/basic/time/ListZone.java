@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -68,7 +69,7 @@ public class ListZone {
 	}
 
 	public static void test2() {
-		List<String> zoneIds = ZoneId.getAvailableZoneIds().stream().sorted().toList();
+		List<String> zoneIds = ZoneId.getAvailableZoneIds().stream().sorted().collect(Collectors.toList());
 		for (String zoneId : zoneIds) {
 			ZoneId zone = ZoneId.of(zoneId);
 			ZonedDateTime now = ZonedDateTime.now(zone);

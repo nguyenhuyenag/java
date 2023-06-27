@@ -2,19 +2,19 @@ package com.jmh;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 
 public class TestBM {
 
-	@Test
-	public void runBenchmarks() throws Exception {
+	@org.junit.jupiter.api.Test
+	public void runBenchmarksTest() throws RunnerException {
 		Options options = new OptionsBuilder() //
 				.include(this.getClass().getName() + ".*") //
 				.mode(Mode.AverageTime) //

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 
@@ -32,7 +32,7 @@ public class ReadRangeFile {
 		 * có thể gây ra vấn đề về bộ nhớ
 		 */
 		byte[] data = null;
-		try (FileChannel channel = FileChannel.open(Path.of(filePath), StandardOpenOption.READ)) {
+		try (FileChannel channel = FileChannel.open(Paths.get(filePath), StandardOpenOption.READ)) {
 			long bytesToRead = endPosition - startPosition;
 			MappedByteBuffer buffer = channel.map(FileChannel.MapMode.READ_ONLY, startPosition, bytesToRead);
 			data = new byte[(int) bytesToRead];
@@ -57,7 +57,7 @@ public class ReadRangeFile {
 		 * mà không cần đọc toàn bộ tệp vào bộ nhớ trước đó.
 		 */
 		byte[] data2 = null;
-		try (FileChannel channel = FileChannel.open(Path.of(filePath), StandardOpenOption.READ)) {
+		try (FileChannel channel = FileChannel.open(Paths.get(filePath), StandardOpenOption.READ)) {
 			long bytesToRead = endPosition - startPosition;
 			ByteBuffer buffer = ByteBuffer.allocate((int) bytesToRead);
 			int bytesRead = channel.read(buffer, startPosition);
