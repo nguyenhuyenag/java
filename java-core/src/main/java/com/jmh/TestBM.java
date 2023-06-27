@@ -1,45 +1,60 @@
 package com.jmh;
 
+import java.util.concurrent.TimeUnit;
+
+import org.junit.jupiter.api.Test;
 import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.Warmup;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.openjdk.jmh.runner.options.TimeValue;
 
 public class TestBM {
 
+	@Test
+	public void runBenchmarks() throws Exception {
+		Options options = new OptionsBuilder() //
+				.include(this.getClass().getName() + ".*") //
+				.mode(Mode.AverageTime) //
+				.warmupTime(TimeValue.seconds(1)) //
+				.warmupIterations(6) //
+				.threads(1) //
+				.measurementIterations(6) //
+				.forks(1) //
+				.shouldFailOnError(true) //
+				.shouldDoGC(true) //
+				.build();
+		Runner runner = new Runner(options);
+		runner.run();
+	}
+
+	private static String hello = "not another hello world";
+
 	@Benchmark
-	@BenchmarkMode(Mode.AverageTime)
-	@Fork(value = 1)
-	@Warmup(iterations = 2)
-	@Measurement(iterations = 1)
-	public void init() {
-		// fib(52);
-		// fibbonaci(300);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@OutputTimeUnit(TimeUnit.MILLISECONDS)
+	public void stringsWithoutStringBuilder() throws Exception {
+		@SuppressWarnings("unused")
+		String hellos = "";
+		for (int i = 0; i < 1000; i++) {
+			hellos += hello;
+			if (i != 999) {
+				hellos += "\n";
+			}
 		}
 	}
 
-	public static int fib(int n) {
-		if (n < 2)
-			return 1;
-		else
-			return fib(n - 1) + fib(n - 2);
-	}
-
-	public double fibbonaci(int n) {
-		double prev = 0d, next = 1d, result = 0d;
-		for (int i = 0; i < n; i++) {
-			result = prev + next;
-			prev = next;
-			next = result;
+	@Benchmark
+	@OutputTimeUnit(TimeUnit.MILLISECONDS)
+	public void stringsWithStringBuilder() throws Exception {
+		StringBuilder hellosBuilder = new StringBuilder();
+		for (int i = 0; i < 1000; i++) {
+			hellosBuilder.append(hello);
+			if (i != 999) {
+				hellosBuilder.append("\n");
+			}
 		}
-		return result;
 	}
 
 }
