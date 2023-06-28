@@ -19,7 +19,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import common.util.Base64Utils;
-import common.util.PathUtils;
 import common.util.Predicates;
 
 class FileException extends RuntimeException {

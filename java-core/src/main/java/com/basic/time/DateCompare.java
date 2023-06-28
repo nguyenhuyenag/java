@@ -2,8 +2,6 @@ package com.basic.time;
 
 import java.util.Date;
 
-import common.util.DateTimeUtils;
-
 public class DateCompare {
 
 	public static void main(String[] args) {

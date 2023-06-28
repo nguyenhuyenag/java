@@ -1,12 +1,11 @@
 package com.basic.json.preview;
 
+import com.basic.json.JsonUtils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import common.util.JsonUtils;
 
 public class JSONCreator {
 

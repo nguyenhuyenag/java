@@ -1,4 +1,4 @@
-package common.util;
+package com.basic.json;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -8,8 +8,6 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Scanner;
 
-import common.util.PathUtils;
-
 public class FileService {
 
 //	public static String readFileToStringCommonsIO(File file, Charset cs) throws IOException {

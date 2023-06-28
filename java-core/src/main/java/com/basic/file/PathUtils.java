@@ -1,4 +1,4 @@
-package common.util;
+package com.basic.file;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,12 +13,12 @@ public class PathUtils {
 
 	// File.separator => '\'
 
+	public static final String HOME = System.getProperty("user.home");
+
 	/**
 	 * Project directory
 	 */
 	public static final String PROJECT_DIR = System.getProperty("user.dir");
-	
-	public static final String HOME = System.getProperty("user.home");
 
 	/**
 	 * Test whether a file or directory exists
@@ -26,11 +26,11 @@ public class PathUtils {
 	public static boolean exist(Path path) {
 		return (path != null && Files.exists(path));
 	}
-	
+
 	public static boolean isNotExist(Path path) {
 		return !exist(path);
 	}
-	
+
 	public static String join(String... paths) {
 		String joinPath = String.join("/", paths);
 		joinPath = Paths.get(joinPath.toString()).toString();
@@ -96,7 +96,7 @@ public class PathUtils {
 	public static boolean deleteRecursively(Path path) {
 		return deleteRecursively(path.toFile());
 	}
-	
+
 	/**
 	 * Kích thước thư mực
 	 */

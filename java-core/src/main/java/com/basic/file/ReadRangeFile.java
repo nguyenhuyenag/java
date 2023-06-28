@@ -8,8 +8,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 
-import common.util.PathUtils;
-
 public class ReadRangeFile {
 
 	// read(0, 4) -> Đọc ra dữ liệu từ 0 -> 4 trong file 5MB

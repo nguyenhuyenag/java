@@ -1,11 +1,10 @@
 package com.basic.json.preview;
+import com.basic.json.JsonUtils;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import common.util.JsonUtils;
 
 public class JACKSONInject {
 

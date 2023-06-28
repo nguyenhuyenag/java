@@ -5,8 +5,6 @@ import java.io.IOException;
 
 import org.apache.tika.Tika;
 
-import common.util.PathUtils;
-
 public class DetectMimeType {
 
 	public static void main(String[] args) throws IOException {

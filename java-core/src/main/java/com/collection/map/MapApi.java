@@ -5,16 +5,6 @@ import java.util.Map;
 
 public class MapApi {
 
-	@SuppressWarnings({ "unused", "serial" })
-	private void initHashMap() {
-		Map<String, String> init = new HashMap<>() {
-			{
-				put("key1", "value1");
-				put("key2", "value2");
-			}
-		};
-	}
-
 	/**
 	 * - putIfAbsent(k, v): Nếu key không chứa trong HashMap sẽ được thêm mới, nếu
 	 * key đã tồn tại thì value sẽ được update thành value mới được truyền vào.
