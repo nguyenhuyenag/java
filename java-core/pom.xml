@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>java-core</groupId>
 	<artifactId>java-core</artifactId>
@@ -12,9 +10,9 @@
 
 	<properties>
 		<jmh.version>1.20</jmh.version>
+		<slf4j.version>2.0.6</slf4j.version>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<maven.compiler.release>17</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -25,7 +23,7 @@
 			<version>5.7.2</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Apache commons -->
+		<!-- Apache -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -109,6 +107,17 @@
 			<artifactId>jmh-generator-annprocess</artifactId>
 			<version>${jmh.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<!-- SLF4J -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4j.version}</version>
 		</dependency>
 	</dependencies>
 

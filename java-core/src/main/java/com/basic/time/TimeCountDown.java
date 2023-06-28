@@ -40,11 +40,9 @@ public class TimeCountDown {
 		TimeCountDown countdown = new TimeCountDown();
 		countdown.setTime(10, TimeUnit.SECONDS); // Set the timer for 10 seconds
 		countdown.start();
-
 		while (!countdown.isDone()) {
 			// Do other tasks while waiting for the countdown
 		}
-
 		System.out.println("Countdown is done.");
 	}
 

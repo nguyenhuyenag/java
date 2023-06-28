@@ -13,53 +13,6 @@ import org.apache.commons.lang3.time.DateUtils;
 
 public class DateConvert {
 
-//	// Date -> LocalDate
-//	public static LocalDate dateToLocalDate(Date date) {
-//		return 
-//	}
-//
-//	// Date -> LocalDateTime
-//	public static LocalDateTime dateToLocalDateTime(Date date) {
-//		return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-//	}
-//
-//	// Date -> Instant
-//	public static Instant dateToInstant(Date date) {
-//		return Instant.ofEpochMilli(date.getTime());
-//	}
-//
-//	// LocalDate -> Date
-//	public static Date localDateToDate(LocalDate localDate) {
-//		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-//	}
-//
-//	// LocalDate -> LocalDateTime
-//	public static LocalDateTime localDateToLocalDateTime(LocalDate localDate) {
-//		return localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toLocalDateTime();
-//	}
-//
-//	// LocalDate -> Instant
-//	public static Instant localDateToLocalInstant(LocalDate localDate) {
-//		LocalDateTime localDateTime = localDate.atStartOfDay();
-//		return localDateTime.toInstant(ZoneOffset.UTC);
-//	}
-//
-//	// Instant -> Date
-//	public static Date instantToDate(Instant instant) {
-//		return Date.from(instant);
-//	}
-//
-//	// Instant -> LocalDate
-//	public static LocalDate instantToLocalDate(Instant instant) {
-//		ZonedDateTime zonedDateTime = instant.atZone(ZoneId.systemDefault());
-//		return zonedDateTime.toLocalDate();
-//	}
-//
-//	// Instant -> LocalDateTime
-//	public static LocalDateTime instantToLocalDateTime(Instant instant) {
-//		return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-//	}
-
 	public static Date toDate(Object dateTimeObject) {
 		if (dateTimeObject instanceof Instant) {
 			Instant instant = (Instant) dateTimeObject;
@@ -182,9 +135,7 @@ public class DateConvert {
 		// LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
 		// System.out.println("Giờ UTC hiện tại: " + now);
 		// Calendar cal = Calendar.getInstance();
-
 		DateUtils.toCalendar(new Date());
-
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.basic.time;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -31,15 +31,16 @@ public class DaysBetweenTwoDate {
 		return calculatorDiff(timeUnit, dt1, dt2);
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
-		// Date d1 = new Date(2023, 10, 12);
-		// Date d2 = new Date(2023, 10, 20);
+		Date d1 = new Date(2023, 10, 12);
+		Date d2 = new Date(2023, 10, 20);
 		// LocalDate d1 = LocalDate.of(2023, 10, 12);
 		// LocalDate d2 = LocalDate.of(2023, Month.OCTOBER, 20);
-		LocalDateTime d1 = LocalDateTime.of(2023, 1, 1, 15, 30, 10);
-		LocalDateTime d2 = LocalDateTime.of(2023, 12, 1, 15, 30, 10);
-
-		long diff = calculatorDiff(d1, d2, TimeUnit.HOURS);
+		// LocalDateTime d1 = LocalDateTime.of(2023, 1, 1, 15, 30, 10);
+		// LocalDateTime d2 = LocalDateTime.of(2023, 12, 1, 15, 30, 10);
+		// Calculator
+		long diff = calculatorDiff(d1, d2, TimeUnit.DAYS);
 		System.out.println(diff);
 	}
 

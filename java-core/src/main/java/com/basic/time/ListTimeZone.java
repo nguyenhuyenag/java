@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,11 +18,9 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * Java Locale List: https://www.viralpatel.net/java-locale-list-tutorial/
  */
-public class ListZone {
+public class ListTimeZone {
 
-	public static final boolean SORT_BY_REGION = true;
-
-	public static void test1() {
+	public static void list3() {
 		Locale locales[] = SimpleDateFormat.getAvailableLocales();
 		for (int i = 0; i < locales.length; i++) {
 			Locale c = locales[i];
@@ -31,24 +30,8 @@ public class ListZone {
 		}
 	}
 
-	private static Map<String, String> getAllZoneIdsAndItsOffSet() {
-		Map<String, String> result = new HashMap<>();
-		LocalDateTime localDateTime = LocalDateTime.now();
-		for (String zoneId : ZoneId.getAvailableZoneIds()) {
-			ZoneId id = ZoneId.of(zoneId);
-			// LocalDateTime -> ZonedDateTime
-			ZonedDateTime zonedDateTime = localDateTime.atZone(id);
-			// ZonedDateTime -> ZoneOffset
-			ZoneOffset zoneOffset = zonedDateTime.getOffset();
-			// replace Z to +00:00
-			String offset = zoneOffset.getId().replaceAll("Z", "+00:00");
-			result.put(id.toString(), offset);
-		}
-		return result;
-
-	}
-
-	public static void test3() {
+	public static void list1() {
+		boolean SORT_BY_REGION = true;
 		Map<String, String> sortedMap = new LinkedHashMap<>();
 		Map<String, String> allZoneIdsAndItsOffSet = getAllZoneIdsAndItsOffSet();
 		// sort map by key
@@ -65,24 +48,51 @@ public class ListZone {
 			String out = String.format("UTC%s / %s %n", v, k);
 			System.out.printf(out);
 		});
-		// System.out.println("\nTotal Zone IDs " + sortedMap.size());
 	}
 
-	public static void test2() {
-		List<String> zoneIds = ZoneId.getAvailableZoneIds().stream().sorted().collect(Collectors.toList());
+	public static void list2() {
+		List<String> zoneIds = ZoneId.getAvailableZoneIds().stream()
+				.sorted()
+				.collect(Collectors.toList());
 		for (String zoneId : zoneIds) {
 			ZoneId zone = ZoneId.of(zoneId);
 			ZonedDateTime now = ZonedDateTime.now(zone);
 			String timeZone = now.getOffset().toString();
-			timeZone = timeZone.replaceFirst("^([+-]\\d{2}):(00)$", "$1");
+			// timeZone = timeZone.replaceFirst("^([+-]\\d{2}):(00)$", "$1");
 			String formattedLine = String.format("%-30s | %s", zoneId, timeZone);
 			System.out.println(formattedLine);
 		}
 	}
 
+	private static Map<String, String> getAllZoneIdsAndItsOffSet() {
+		Map<String, String> result = new HashMap<>();
+		LocalDateTime localDateTime = LocalDateTime.now();
+		for (String zoneId : ZoneId.getAvailableZoneIds()) {
+			ZoneId id = ZoneId.of(zoneId);
+			// LocalDateTime -> ZonedDateTime
+			ZonedDateTime zonedDateTime = localDateTime.atZone(id);
+			// ZonedDateTime -> ZoneOffset
+			ZoneOffset zoneOffset = zonedDateTime.getOffset();
+			// Replace Z to +00:00
+			String offset = zoneOffset.getId().replaceAll("Z", "+00:00");
+			result.put(id.toString(), offset);
+		}
+		return result;
+	}
+
+	public static void VNAndUTC() {
+		ZonedDateTime utc = ZonedDateTime.now(ZoneOffset.UTC);
+		DateTimeFormatter ft = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		System.out.println("UTC = " + utc.format(ft));
+		ZonedDateTime vn = ZonedDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh"));
+		System.out.println("Viet Nam = " + vn.format(ft));
+	}
+
 	public static void main(String[] args) {
-		// test2();
-		test3();
+		list1();
+		list2();
+		list3();
+		// VNAndUTC();
 	}
 
 }
