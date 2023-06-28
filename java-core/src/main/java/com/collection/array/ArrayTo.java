@@ -24,9 +24,7 @@ public class ArrayTo {
 
 	public static void toSet() {
 		Set<Integer> set1 = Arrays.stream(ints).boxed().collect(Collectors.toSet());
-		
 		Set<Integer> set2 = new HashSet<Integer>(Arrays.asList(Ints));
-		
 		Set<Integer> set3 = new HashSet<Integer>();
 		Collections.addAll(set3, Ints);
 	}

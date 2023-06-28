@@ -2,6 +2,8 @@
 
 - Phím tắt
 
+	- Close current file			- Ctrl + W
+	
 	- Duplicate line				- Ctrl + Alt + Up/Down
 	
 	- Delete current line			- Ctrl + D
@@ -34,8 +36,12 @@
 		
 	- Create a Javadoc				- Shift + Alt + J
 								  	  Từ dòng trên tên hàm gõ `/**` + Enter
-								  	  
-	- Open Javadoc					- Shift + F2
+
+	- Open Javadoc					- F2								  	  
+	- Open Javadoc in browser		- Shift + F2
+	
+	- Open method					- F3
+									  Click to method name -> F3
 		
 	- Word Wrap						- Alt + Shift + Y
 								  	  Window -> Editor -> Toggle word wrap
