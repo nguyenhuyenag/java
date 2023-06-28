@@ -3,7 +3,17 @@ package com.collection.map;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LearnMap {
+public class MapApi {
+
+	@SuppressWarnings({ "unused", "serial" })
+	private void initHashMap() {
+		Map<String, String> init = new HashMap<>() {
+			{
+				put("key1", "value1");
+				put("key2", "value2");
+			}
+		};
+	}
 
 	/**
 	 * - putIfAbsent(k, v): Nếu key không chứa trong HashMap sẽ được thêm mới, nếu
@@ -12,7 +22,7 @@ public class LearnMap {
 	 * - getOrDefault(k, v): Trả về phần tử của key được chỉ định. Nếu key không
 	 * chứa trong mảng nó sẽ trả về default value mà chúng ta truyền vào
 	 */
-	public static void main(String[] args) {
+	public static void mapApi() {
 		// Creating an empty HashMap
 		Map<Integer, String> hash_map = new HashMap<>();
 		hash_map.putIfAbsent(1, "HGA");
@@ -20,6 +30,10 @@ public class LearnMap {
 
 		hash_map.put(1, "replace");
 		System.out.println(hash_map);
+	}
+
+	public static void main(String[] args) {
+		mapApi();
 	}
 
 }

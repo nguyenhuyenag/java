@@ -15,8 +15,8 @@ public class IterableLoop {
 		}
 	}
 
-	public static void loopByForEach(Iterable<Integer> iterable) {
-		iterable.forEach(t -> System.out.print(t + " "));
+	public static void loopByForEach(Iterable<Integer> iter) {
+		iter.forEach(t -> System.out.print(t + " "));
 	}
 
 	public static void main(String[] args) {

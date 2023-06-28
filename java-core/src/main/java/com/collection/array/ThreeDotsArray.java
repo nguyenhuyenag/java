@@ -7,7 +7,7 @@ package com.collection.array;
  */
 public class ThreeDotsArray {
 
-	public static void X(int... args) {
+	public static void todo(int... args) {
 		for (int val : args) {
 			System.out.print(val + " ");
 		}
@@ -15,10 +15,10 @@ public class ThreeDotsArray {
 	}
 
 	public static void main(String[] args) {
-		X(0);
-		X(1, 2);
-		X(3, 4, 5, 6);
-		X(7, 8, 9, 0);
+		todo(0);
+		todo(1, 2);
+		todo(3, 4, 5, 6);
+		todo(7, 8, 9, 0);
 	}
 
 }
