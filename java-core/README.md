@@ -206,6 +206,4 @@
 		+ Truy cập dữ liệu trong vùng nhớ Heap sẽ lâu hơn so với Stack.
 		+ Heap không tự giải phóng vùng nhớ mà phải nhờ sự can thiệp của trình dọn rác java.
 		+ Heap là một vùng nhớ chung cho toàn bộ Thread và chúng ta cần bảo vệ dữ liệu bằng cách đồng bộ hoá. 
-
-	
 	
