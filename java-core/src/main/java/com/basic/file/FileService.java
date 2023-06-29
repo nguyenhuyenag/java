@@ -56,7 +56,6 @@ public class FileService {
 //		return list;
 //	}
 
-
 //	public static void fileUsingFileOutputStream(String path, String data, Charset cs) throws IOException {
 //		try (FileOutputStream fot = new FileOutputStream(path)) {
 //			byte[] bytes = data.getBytes(cs);
@@ -147,34 +146,6 @@ public class FileService {
 //		printAttributes(attr);
 //	}
 
-	// File size
-	public static void filesize() {
-		File file = new File("file/data-csv.csv");
-		if (file.exists()) {
-			double bytes = file.length();
-			double kilobytes = bytes / 1024;
-			double megabytes = kilobytes / 1024;
-			double gigabytes = megabytes / 1024;
-			double terabytes = gigabytes / 1024;
-			double petabytes = terabytes / 1024;
-			double exabytes = petabytes / 1024;
-			double zettabytes = exabytes / 1024;
-			double yottabytes = zettabytes / 1024;
-			// console
-			System.out.println("bytes \t   : " + bytes);
-			System.out.println("kilobytes  : " + kilobytes);
-			System.out.println("megabytes  : " + megabytes);
-			System.out.println("gigabytes  : " + gigabytes);
-			System.out.println("terabytes  : " + terabytes);
-			System.out.println("petabytes  : " + petabytes);
-			System.out.println("exabytes   : " + exabytes);
-			System.out.println("zettabytes : " + zettabytes);
-			System.out.println("yottabytes : " + yottabytes);
-		} else {
-			System.out.println("File does not exists!");
-		}
-	}
-	
 	public static void fileAttributes() {
 		try {
 			Path file = Paths.get(PathUtils.PROJECT_DIR, "file/test.xml");
@@ -188,9 +159,38 @@ public class FileService {
 			e.printStackTrace();
 		}
 	}
-	
+
+	// File size
+	public static void fileSize() {
+		// https://fastest.fish/generate-file
+		File file = new File("C:/Users/huyennv/Downloads/100MiB.bin");
+		if (!file.exists()) {
+			System.out.println("File doesn't exists!");
+			return;
+		}
+		long bytes = file.length();
+		double kilobytes = bytes / 1024;
+		double megabytes = kilobytes / 1024;
+		double gigabytes = megabytes / 1024;
+		double terabytes = gigabytes / 1024;
+		double petabytes = terabytes / 1024;
+		double exabytes = petabytes / 1024;
+		double zettabytes = exabytes / 1024;
+		double yottabytes = zettabytes / 1024;
+		// console
+		System.out.println("bytes \t   : " + bytes);
+		System.out.println("kilobytes  : " + kilobytes);
+		System.out.println("megabytes  : " + megabytes);
+		System.out.println("gigabytes  : " + gigabytes);
+		System.out.println("terabytes  : " + terabytes);
+		System.out.println("petabytes  : " + petabytes);
+		System.out.println("exabytes   : " + exabytes);
+		System.out.println("zettabytes : " + zettabytes);
+		System.out.println("yottabytes : " + yottabytes);
+	}
+
 	public static void main(String[] args) {
-		filesize();
+		fileSize();
 	}
 
 }
