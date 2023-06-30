@@ -9,7 +9,7 @@ public class OSValidator {
 			System.out.println("It's a Windows OS");
 		}
 		if (SystemUtils.IS_OS_LINUX) {
-			System.out.println("It's a MAC OS");
+			System.out.println("It's a Linux OS");
 		}
 	}
 

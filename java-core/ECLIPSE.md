@@ -22,7 +22,6 @@
 	
 	- Run current file				- Ctrl + F11
 	
-	
 	- Find block '{...}'			- Ctrl + Shift + P
 	
 	- Find references				- Ctrl + Shift + G

@@ -9,9 +9,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import lombok.AllArgsConstructor;
 
 /*-
- * equals(): Kiểm tra 2 đối tượng có bằng nhau không
+ * - equals(): Kiểm tra 2 đối tượng có bằng nhau không
  * 
- * hashCode(): HashMap, HashTable sử dụng key để tìm kiếm value tương ứng. Để
+ * - hashCode(): HashMap, HashTable sử dụng key để tìm kiếm value tương ứng. Để
  * tối ưu cho việc này, Java sử dụng các hash value lấy từ phương thức
  * hashCode() của key để gom chúng lại (gọi là bucket).
  * 

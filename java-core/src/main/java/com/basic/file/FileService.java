@@ -8,6 +8,8 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Scanner;
 
+import javax.swing.filechooser.FileSystemView;
+
 public class FileService {
 
 //	public static String readFileToStringCommonsIO(File file, Charset cs) throws IOException {
@@ -159,6 +161,17 @@ public class FileService {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void desktopPath() {
+		String desktopPath = System.getProperty("user.home") + File.separator +"Desktop";
+		System.out.println(desktopPath);
+		System.out.println(Files.exists(Paths.get(desktopPath)));
+		
+		FileSystemView view = FileSystemView.getFileSystemView();
+		File file = view.getHomeDirectory();
+		desktopPath = file.getPath();
+		System.out.println(desktopPath);
+	}
 
 	// File size
 	public static void fileSize() {
@@ -190,7 +203,8 @@ public class FileService {
 	}
 
 	public static void main(String[] args) {
-		fileSize();
+		// fileSize();
+		desktopPath();
 	}
 
 }

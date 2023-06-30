@@ -1,4 +1,4 @@
-package com.basic.net;
+package com.basic.awt;
 
 import java.awt.Desktop;
 import java.io.IOException;
