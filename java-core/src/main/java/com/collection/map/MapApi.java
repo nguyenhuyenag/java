@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class MapApi {
 
-	/**
+	/*-
 	 * - put(k, v) ~ addOrUpdate: Thêm mới entry hoặc cập nhật giá trị của một entry
-	 * đã tồn tại. Hàm trả về giá trị cũ của entry với key đã được cập nhật (nếu
-	 * có). Nếu key chưa tồn tại, phương thức trả về `null`.
+	 * đã tồn tại. Hàm trả về giá trị cũ của entry với key đã được cập nhật (nếu có). 
+	 * Nếu key chưa tồn tại, phương thức trả về `null`.
 	 * 
 	 * - putIfAbsent(k, v) ~ addIfNotExist: Chỉ thêm mới entry khi key chưa tồn tại
 	 * trong Map. Hàm trả về giá trị hiện tại của entry với key đã tồn tại, hoặc giá
@@ -17,22 +17,20 @@ public class MapApi {
 	 * - getOrDefault(k, v): Trả về phần tử của key được chỉ định. Nếu key không tồn
 	 * tại sẽ trả về default value mà chúng ta truyền vào.
 	 * 
-	 * - compute(k, (k1, v1) -> to_do):
+	 * - compute("key", (k, v) -> to_do): Giá trị k chính là "key"
 	 * 
-	 * - computeIfPresent(k, (k1, v1) -> to_do): Chỉ thực hiện khi key tồn tại và
-	 * value != null
+	 * - computeIfPresent("key", (k, v) -> to_do): Chỉ thực hiện khi key tồn tại và value != null
 	 * 
-	 * - computeIfAbsent(k, k1 -> to_do): Chỉ thực hiện khi key chưa tồn tại hoặc
-	 * value == null
+	 * - computeIfAbsent(k, k1 -> to_do): Chỉ thực hiện khi key chưa tồn tại hoặc value == null
 	 * 
 	 * - entrySet() = keySet() + values()
 	 * 
 	 * - remove(k): Xóa entry - remove(k, v): Xóa chính xác entry có giá trị k, v
 	 * 
-	 * - containsKey() - containsValue()
+	 * - containsKey()
+	 * - containsValue()
 	 * 
 	 * - replace(k, v): Cập nhập giá trị của 1 entry
-	 * 
 	 * - replace(k, v, v0): Cập nhập giá trị của 1 entry đúng giá trị k, v
 	 */
 	public static void mapApi() {

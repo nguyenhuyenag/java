@@ -14,7 +14,7 @@
 	
 	- Search file					- Ctrl + Shift + R
 	
-	- Auto import					- Ctrl + Shift + I
+	- Auto import/remove class		- Ctrl + Shift + O
 		
 	- Shows outline					- Ctrl + O
 	
@@ -22,7 +22,6 @@
 	
 	- Run current file				- Ctrl + F11
 	
-	- Remove unuse import			- Ctrl + Shift + O
 	
 	- Find block '{...}'			- Ctrl + Shift + P
 	
