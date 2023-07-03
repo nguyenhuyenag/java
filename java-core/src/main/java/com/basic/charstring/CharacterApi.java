@@ -16,7 +16,7 @@ public class CharacterApi {
 		System.out.println("IsAlphabetic: " + Character.isAlphabetic(ch3)); // Determines if the specified character
 																			// (Unicode code point)
 
-		/*-
+		/*- Chuyển một số nguyên thành một ký tự tương ứng dựa trên một hệ số cơ số
 		 * digit: Số nguyên cần chuyển đổi thành ký tự. 
 		 * radix: Hệ cơ số, có giá trị từ 2 đến 36.
 		 */
