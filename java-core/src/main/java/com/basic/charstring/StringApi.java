@@ -7,7 +7,7 @@ import java.util.TreeSet;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class StringCollection {
+public class StringApi {
 
 	/**
 	 * Viết hoa chữ cái đầu tiên
