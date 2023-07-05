@@ -23,6 +23,10 @@ public class MapApi {
 	 * 
 	 * - computeIfAbsent(k, k1 -> to_do): Chỉ thực hiện khi key chưa tồn tại hoặc value == null
 	 * 
+	 * - keySet(): Set<K>
+	 * 
+	 * - values(): Collection<V>
+	 * 
 	 * - entrySet() = keySet() + values()
 	 * 
 	 * - remove(k): Xóa entry - remove(k, v): Xóa chính xác entry có giá trị k, v
@@ -50,6 +54,7 @@ public class MapApi {
 		scores.computeIfAbsent("C", k -> 22);
 		scores.computeIfAbsent("D", k -> 33);
 		System.out.println("ComputeIfAbsent: " + scores);
+		
 	}
 
 	public static void main(String[] args) {
