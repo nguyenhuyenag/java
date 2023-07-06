@@ -1,10 +1,13 @@
 package com.basic.charstring;
 
+import static org.apache.commons.lang3.StringUtils.deleteWhitespace;
 import static org.apache.commons.lang3.StringUtils.equalsAny;
 import static org.apache.commons.lang3.StringUtils.isAllEmpty;
 import static org.apache.commons.lang3.StringUtils.isAnyEmpty;
 import static org.apache.commons.lang3.StringUtils.isNoneBlank;
+import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.leftPad;
+import static org.apache.commons.lang3.StringUtils.removeStart;
 import static org.apache.commons.lang3.StringUtils.rightPad;
 import static org.apache.commons.lang3.StringUtils.splitByCharacterType;
 import static org.apache.commons.lang3.StringUtils.splitByCharacterTypeCamelCase;
@@ -20,19 +23,20 @@ public class StringUtilsApi {
 
 	public static void splitByCharacter_Type() {
 		String input = "Hello123! wo1412rld";
-		
+
 		// Không tính khoảng trắng
-		// String regex = "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=\\W)(?=\\w)|(?<=\\w)(?=\\W)";
-		
+		// String regex =
+		// "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=\\W)(?=\\w)|(?<=\\w)(?=\\W)";
+
 		// Kể cả khoảng trắng
 		String regex = "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=\\W)(?=\\w)|(?<=\\w)(?=\\W)|(?<=\\s)(?=\\S)|(?<=\\S)(?=\\s)";
 		String[] result = input.split(regex);
 		System.out.println("SplitByRegex: " + Arrays.toString(result));
-		
+
 		// SplitByCharacterTypeCamelCase
 		String[] splitByCharacterTypeCamelCase = splitByCharacterTypeCamelCase(input);
 		System.out.println("SplitByCharacterTypeCamelCase: " + Arrays.toString(splitByCharacterTypeCamelCase));
-		
+
 		// splitByCharacterType: Tách chuỗi dựa trên loại ký tự, phân biệt hoa & thường
 		String[] splitByCharacterType = splitByCharacterType(input);
 		System.out.println("SplitByCharacterType: " + Arrays.toString(splitByCharacterType));
@@ -51,6 +55,10 @@ public class StringUtilsApi {
 	 * - contains():
 	 * - containsIgnoreCase(): 
 	 * - containsAny():
+	 * 
+	 * - deleteWhitespace()
+	 * 
+	 * - removeStart():
 	 * 
 	 */
 	public static void method() {
@@ -97,6 +105,25 @@ public class StringUtilsApi {
 		System.out.println("LeftPad: " + leftPad);
 		String rightPad = rightPad("123456", 10, "0");
 		System.out.println("RightPad: " + rightPad);
+
+		// join: Nối các phần tử thành chuỗi
+		System.out.println("Join default: " + join("A", "B")); // default
+		// separator kiểu char
+		int[] A1 = { 1, 2, 3, 4 };
+		String[] A2 = { "apple", "banana", "orange" };
+		char separator = '-';
+		System.out.println("Join 1: " + join(A1, separator));
+		System.out.println("Join 2: " + join(A2, separator));
+		
+		// deleteWhitespace: Xóa khoảng trắng
+		str = "abc     d       e           ";
+		System.out.println("DeleteWhitespace: " + deleteWhitespace(str));
+		
+		// removeStart, removeStartIgnoreCase: Xóa một chuỗi khỏi đầu một chuỗi nếu nó tồn tại
+		// removeEnd, removeEndIgnoreCase
+		String input = "Hello World";
+        String prefix = "Hello ";
+        System.out.println("RemoveStart: " + removeStart(input, prefix));
 	}
 
 	public static void main(String[] args) {

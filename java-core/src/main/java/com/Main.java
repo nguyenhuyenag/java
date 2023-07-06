@@ -1,16 +1,13 @@
 package com;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Main {
-	
-	@SafeVarargs
-	public static void processItems(String... items) {
-	    
-	}
 
 	public static void main(String[] args) {
-		String[] arr = {"1", "2"};
-		processItems("1", "2");
-		processItems(arr);
+		String str = "abc     b       c";
+		String deleteWhitespace = StringUtils.deleteWhitespace(str);
+		System.out.println(deleteWhitespace);
 	}
 
 }
