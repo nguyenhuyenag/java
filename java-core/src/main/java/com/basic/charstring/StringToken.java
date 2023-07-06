@@ -6,7 +6,8 @@ public class StringToken {
 
 	public static void main(String[] args) {
 		String property = "C:/WINDOWS/System32/OpenSSH/";
-		StringTokenizer parser = new StringTokenizer(property, "/"); // delim = " " is default
+		String delim = "/"; // delim = " " is default
+		StringTokenizer parser = new StringTokenizer(property, delim); 
 		while (parser.hasMoreTokens()) {
 			System.err.println(parser.nextToken());
 		}
