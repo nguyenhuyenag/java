@@ -7,7 +7,11 @@ import static org.apache.commons.lang3.StringUtils.isAnyEmpty;
 import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.leftPad;
+import static org.apache.commons.lang3.StringUtils.remove;
 import static org.apache.commons.lang3.StringUtils.removeStart;
+import static org.apache.commons.lang3.StringUtils.replace;
+import static org.apache.commons.lang3.StringUtils.replaceEach;
+import static org.apache.commons.lang3.StringUtils.replaceOnce;
 import static org.apache.commons.lang3.StringUtils.rightPad;
 import static org.apache.commons.lang3.StringUtils.splitByCharacterType;
 import static org.apache.commons.lang3.StringUtils.splitByCharacterTypeCamelCase;
@@ -62,68 +66,135 @@ public class StringUtilsApi {
 	 * 
 	 */
 	public static void method() {
-		// isAnyEmpty: Có ít nhất 1 phần tử là empty
+		/**
+		 * isAnyEmpty: Có ít nhất 1 phần tử là empty
+		 */
 		boolean isAnyEmpty = isAnyEmpty("", "AA", null);
 		System.out.println("IsAnyEmpty: " + isAnyEmpty);
 
-		// isNoneEmpty: Có ít nhất 1 phần tử là NOT empty
+		/**
+		 * isNoneEmpty: Có ít nhất 1 phần tử là NOT empty
+		 */
 		boolean isNoneBlank = isNoneBlank("", "AA", null);
 		System.out.println("IsNoneBlank: " + isNoneBlank);
 
-		// isAllEmpty: Tất cả các phần tử đều empty
+		/**
+		 * isAllEmpty: Tất cả các phần tử đều empty
+		 */
 		boolean isAllEmpty = isAllEmpty(null, "", "", null);
 		System.out.println("IsNoneBlank: " + isAllEmpty);
 
-		// equalsAny: Kiểm tra giá trị có bằng với giá trị bất kỳ trong danh sách
+		/**
+		 * equalsAny: Kiểm tra giá trị có bằng với giá trị bất kỳ trong danh sách
+		 */
 		String key = "apple";
 		boolean isEqualsAny = equalsAny(key, "apple", "banana", "orange");
 		System.out.println("EqualsAny: " + isEqualsAny);
 
-		// substringBefore:
+		/**
+		 * substringBefore:
+		 */
 		String str = "Hello, World";
 		String substringBefore = substringBefore(str, ",");
 		System.out.println("SubstringBefore: " + substringBefore); // Hello
-		// substringAfter
+		/**
+		 * substringAfter
+		 */
 		String substringAfter = substringAfter(str, ",");
 		System.out.println("SubstringAfter: " + substringAfter); // World
 
-		// substringBetween: Tìm chuỗi con (đầu tiên) nằm giữa 2 chuỗi
+		/**
+		 * substringBetween: Tìm chuỗi con (đầu tiên) nằm giữa 2 chuỗi
+		 */
 		str = "Hello [World]";
 		String substringBetween = substringBetween(str, "[", "]");
 		System.out.println("SubstringBetween: " + substringBetween);
-		// substringsBetween: Tìm tất cả các chuỗi con nằm giữa 2 chuỗi
+		/**
+		 * substringsBetween: Tìm tất cả các chuỗi con nằm giữa 2 chuỗi
+		 */
 		String[] substringsBetween = substringsBetween("[a][b][c]", "[", "]"); // -> [a, b, c]
 		System.out.println("SubstringsBetween: " + Arrays.toString(substringsBetween));
 
-		// splitByWholeSeparator
+		/**
+		 * splitByWholeSeparator
+		 */
 		str = "Hello---World---Universe";
 		String[] splitByWholeSeparator = splitByWholeSeparator(str, "---"); // Hello, World, Universe
 		System.out.println("SplitByWholeSeparator: " + Arrays.toString(splitByWholeSeparator));
 
-		// leftPad, rightPad: Thêm kí tự vào chuỗi cho đến khi bằng độ dài mong muốn
+		/**
+		 * leftPad, rightPad: Thêm kí tự vào chuỗi cho đến khi bằng độ dài mong muốn
+		 */
 		String leftPad = leftPad("123456", 10, "0");
 		System.out.println("LeftPad: " + leftPad);
 		String rightPad = rightPad("123456", 10, "0");
 		System.out.println("RightPad: " + rightPad);
 
-		// join: Nối các phần tử thành chuỗi
+		/**
+		 * join: Nối các phần tử thành chuỗi
+		 */
 		System.out.println("Join default: " + join("A", "B")); // default
-		// separator kiểu char
+		/**
+		 * separator kiểu char
+		 */
 		int[] A1 = { 1, 2, 3, 4 };
 		String[] A2 = { "apple", "banana", "orange" };
 		char separator = '-';
 		System.out.println("Join 1: " + join(A1, separator));
 		System.out.println("Join 2: " + join(A2, separator));
-		
-		// deleteWhitespace: Xóa khoảng trắng
+
+		/**
+		 * deleteWhitespace: Xóa khoảng trắng
+		 */
 		str = "abc     d       e           ";
 		System.out.println("DeleteWhitespace: " + deleteWhitespace(str));
-		
-		// removeStart, removeStartIgnoreCase: Xóa một chuỗi khỏi đầu một chuỗi nếu nó tồn tại
-		// removeEnd, removeEndIgnoreCase
+
+		/**
+		 * removeStart, removeStartIgnoreCase: Xóa một chuỗi khỏi đầu một chuỗi nếu nó
+		 * tồn tại
+		 * 
+		 * - Tương tự có removeEnd, removeEndIgnoreCase
+		 */
 		String input = "Hello World";
-        String prefix = "Hello ";
-        System.out.println("RemoveStart: " + removeStart(input, prefix));
+		String prefix = "Hello ";
+		System.out.println("RemoveStart: " + removeStart(input, prefix));
+
+		/**
+		 * remove: Loại bỏ chuỗi con khỏi chuỗi khác
+		 * 
+		 * - Tương tự có removeIgnoreCase
+		 */
+		str = "Hello World";
+		System.out.println("Remove: " + remove(str, "o")); // Hell, Wrld
+		System.out.println("Remove: " + remove(str, 'o')); // Hell, Wrld
+
+		/**
+		 * replaceOnce: Thay thế lần đầu tiên xuất hiện của một chuỗi con trong chuỗi
+		 * nguồn
+		 * 
+		 * - Tương tự có replaceOnceIgnoreCase
+		 */
+		String text = "Hello, Hello, World!";
+		String searchString = "Hello";
+		String replacement = "Hi";
+		System.out.println("ReplaceOnce: " + replaceOnce(text, searchString, replacement));
+
+		/**
+		 * replace: Thay thế tối đa n lần
+		 */
+		str = "org.apache.commons.lang3.StringUtils";
+		String replace = replace(str, ".", "_", 3);
+		System.out.println("Replace max: " + replace);
+
+		/**
+		 * replaceEach: Thay thế một mảng các chuỗi con tương ứng bằng một mảng các
+		 * chuỗi khác
+		 */
+		text = "Hello World";
+		String[] searchList = { "Hello", "World" };
+		String[] replacementList = { "Hi", "Java" };
+		String result = replaceEach(text, searchList, replacementList);
+		System.out.println("ReplaceEach: " + result); // Kết quả: "Hi, Java!"
 	}
 
 	public static void main(String[] args) {
