@@ -62,12 +62,12 @@ public class StringUtilsApi {
 	 * - equalsIgnoreCase():
 	 * 
 	 * - indexOf():
-	 * - lastIndexOf():
 	 * - indexOfAny():
+	 * - lastIndexOf():
 	 * 
 	 * - contains():
-	 * - containsIgnoreCase(): 
 	 * - containsAny():
+	 * - containsIgnoreCase(): 
 	 */
 	public static void method() {
 		/**
@@ -249,7 +249,7 @@ public class StringUtilsApi {
 		String defaultStr = "default value";
 		String defaultString = defaultString(input, defaultStr);
 		System.out.println("DefaultString 1: " + defaultString);
-		System.out.println("DefaultString : " + defaultString(input) + "\n"); // -> ""
+		System.out.println("DefaultString 2: " + defaultString(input) + "\n"); // -> ""
 	}
 
 	public static void main(String[] args) {

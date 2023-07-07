@@ -7,8 +7,10 @@ public class Main {
 	public static void main(String[] args) {
 		String str = null;
         String defaultStr = "Default";
-        String result = StringUtils.defaultString(str, defaultStr);
-        System.out.println(result); // Kết quả: "Default String"
+        String defaultIfEmpty = StringUtils.defaultIfEmpty(str, defaultStr);
+        System.out.println(defaultIfEmpty); // Kết quả: "Default String"
+        String defaultIfBlank = StringUtils.defaultIfBlank(str, defaultStr);
+        System.out.println(defaultIfBlank); // Kết quả: "Default String"
 	}
 
 }
