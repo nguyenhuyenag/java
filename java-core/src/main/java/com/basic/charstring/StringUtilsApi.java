@@ -2,6 +2,8 @@ package com.basic.charstring;
 
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.chop;
+import static org.apache.commons.lang3.StringUtils.countMatches;
+import static org.apache.commons.lang3.StringUtils.defaultString;
 import static org.apache.commons.lang3.StringUtils.deleteWhitespace;
 import static org.apache.commons.lang3.StringUtils.equalsAny;
 import static org.apache.commons.lang3.StringUtils.isAllEmpty;
@@ -54,6 +56,8 @@ public class StringUtilsApi {
 	/*-
 	 * - stripAccents(): Xóa dấu (vẫn còn xót "đ")
 	 * 
+	 * - firstNonEmpty, firstNonBlank: Trả về phần tử đầu tiên khác empty hoặc blank
+	 * 
 	 * - equals():
 	 * - equalsIgnoreCase():
 	 * 
@@ -64,11 +68,6 @@ public class StringUtilsApi {
 	 * - contains():
 	 * - containsIgnoreCase(): 
 	 * - containsAny():
-	 * 
-	 * - deleteWhitespace()
-	 * 
-	 * - removeStart():
-	 * 
 	 */
 	public static void method() {
 		/**
@@ -235,6 +234,22 @@ public class StringUtilsApi {
 		String capitalize = capitalize(str);
 		System.out.println("Capitalize: " + str + " -> " + capitalize);
 		System.out.println("Uncapitalize: " + capitalize + " -> " + uncapitalize(capitalize));
+
+		/**
+		 * countMatches: Đếm số lần xuất hiện của một chuỗi
+		 */
+		str = "Hello, World, Hello abc Hello";
+		String sub = "Hello";
+		System.out.println("CountMatches: " + countMatches(str, sub) + "\n");
+
+		/**
+		 * defaultString: Trả về một chuỗi mặc định nếu chuỗi đầu vào là null
+		 */
+		String input = null;
+		String defaultStr = "default value";
+		String defaultString = defaultString(input, defaultStr);
+		System.out.println("DefaultString 1: " + defaultString);
+		System.out.println("DefaultString : " + defaultString(input) + "\n"); // -> ""
 	}
 
 	public static void main(String[] args) {
