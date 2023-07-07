@@ -19,6 +19,7 @@ import static org.apache.commons.lang3.StringUtils.replace;
 import static org.apache.commons.lang3.StringUtils.replaceEach;
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
 import static org.apache.commons.lang3.StringUtils.rightPad;
+import static org.apache.commons.lang3.StringUtils.rotate;
 import static org.apache.commons.lang3.StringUtils.splitByCharacterType;
 import static org.apache.commons.lang3.StringUtils.splitByCharacterTypeCamelCase;
 import static org.apache.commons.lang3.StringUtils.splitByWholeSeparator;
@@ -243,13 +244,23 @@ public class StringUtilsApi {
 		System.out.println("CountMatches: " + countMatches(str, sub) + "\n");
 
 		/**
-		 * defaultString: Trả về một chuỗi mặc định nếu chuỗi đầu vào là null
+		 * - defaultString: Trả về một chuỗi mặc định nếu chuỗi đầu vào là null
+		 * 
+		 * - Tương tự có: defaultIfEmpty, defaultIfBlank
 		 */
 		String input = null;
 		String defaultStr = "default value";
 		String defaultString = defaultString(input, defaultStr);
 		System.out.println("DefaultString 1: " + defaultString);
 		System.out.println("DefaultString 2: " + defaultString(input) + "\n"); // -> ""
+
+		/**
+		 * - rotate: Xoay chuỗi
+		 */
+		str = "ABCDE";
+		int numberOfTimes = 2;
+		System.out.println("Rotate 1: "+str + " -> " + rotate(str, numberOfTimes));
+		System.out.println("Rotate 2: "+str + " -> " + rotate(str, -numberOfTimes));
 	}
 
 	public static void main(String[] args) {
