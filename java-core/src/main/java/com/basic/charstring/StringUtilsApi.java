@@ -39,6 +39,8 @@ import static org.apache.commons.lang3.StringUtils.uncapitalize;
 
 import java.util.Arrays;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class StringUtilsApi {
 
 	public static void splitByCharacter_Type() {
@@ -308,18 +310,28 @@ public class StringUtilsApi {
 		System.out.printf("Difference: (%s, %s) -> %s, Diff index = %d \n\n", s1, s2, difference, index);
 
 		/**
-		 * getCommonPrefix: Tìm tiền tố chung của một danh sách các chuỗi
+		 * - getCommonPrefix: Tìm tiền tố chung của một danh sách các chuỗi
 		 */
 		String[] strings = { "apple", "application", "applet", "app" };
 		String commonPrefix = getCommonPrefix(strings);
 		System.out.println("Common Prefix: " + commonPrefix + "\n");
 
 		/**
-		 * normalizeSpace: Xóa n > 1 khoảng trắng về còn 1 khoảng trắng
+		 * - normalizeSpace: Xóa n > 1 khoảng trắng về còn 1 khoảng trắng
 		 */
 		input = "   Hello    World   ";
 		String normalized = normalizeSpace(input);
-		System.out.printf("NormalizeSpace: '%s' -> '%s'", input, normalized);
+		System.out.printf("NormalizeSpace: '%s' -> '%s' \n\n", input, normalized);
+
+		/**
+		 * - appendIfMissing: Thêm chuỗi con vào cuối một chuỗi nếu chuỗi chưa kết thúc
+		 * bằng chuỗi con đó.
+		 * 
+		 * - Tương tự có prependIfMissing
+		 */
+		input = "Hello World";
+		String appended = StringUtils.appendIfMissing(input, "!");
+		System.out.printf("AppendIfMissing: %s -> %s", input, appended);
 	}
 
 	public static void main(String[] args) {
