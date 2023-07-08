@@ -1,5 +1,6 @@
 package com.basic.charstring;
 
+import static org.apache.commons.lang3.StringUtils.abbreviate;
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.chop;
 import static org.apache.commons.lang3.StringUtils.countMatches;
@@ -18,6 +19,8 @@ import static org.apache.commons.lang3.StringUtils.repeat;
 import static org.apache.commons.lang3.StringUtils.replace;
 import static org.apache.commons.lang3.StringUtils.replaceEach;
 import static org.apache.commons.lang3.StringUtils.replaceOnce;
+import static org.apache.commons.lang3.StringUtils.reverse;
+import static org.apache.commons.lang3.StringUtils.reverseDelimited;
 import static org.apache.commons.lang3.StringUtils.rightPad;
 import static org.apache.commons.lang3.StringUtils.rotate;
 import static org.apache.commons.lang3.StringUtils.splitByCharacterType;
@@ -92,51 +95,51 @@ public class StringUtilsApi {
 		/**
 		 * equalsAny: Kiểm tra giá trị có bằng với giá trị bất kỳ trong danh sách
 		 */
-		String str = "apple";
-		boolean isEqualsAny = equalsAny(str, "apple", "banana", "orange");
+		String input = "apple";
+		boolean isEqualsAny = equalsAny(input, "apple", "banana", "orange");
 		System.out.println("EqualsAny: " + isEqualsAny + "\n");
 
 		/**
 		 * substringBefore:
 		 */
-		str = "Hello, World";
-		String substringBefore = substringBefore(str, ",");
-		System.out.println("SubstringBefore: " + str + " -> " + substringBefore); // Hello
+		input = "Hello, World";
+		String substringBefore = substringBefore(input, ",");
+		System.out.println("SubstringBefore: " + input + " -> " + substringBefore); // Hello
 		/**
 		 * substringAfter
 		 */
-		String substringAfter = substringAfter(str, ",");
-		System.out.println("SubstringAfter: " + str + " -> " + substringAfter + "\n"); // World
+		String substringAfter = substringAfter(input, ",");
+		System.out.println("SubstringAfter: " + input + " -> " + substringAfter + "\n"); // World
 
 		/**
 		 * substringBetween: Tìm chuỗi con (đầu tiên) nằm giữa 2 chuỗi
 		 */
-		str = "Hello [World]";
-		String substringBetween = substringBetween(str, "[", "]");
-		System.out.println("SubstringBetween: " + str + " -> " + substringBetween);
+		input = "Hello [World]";
+		String substringBetween = substringBetween(input, "[", "]");
+		System.out.println("SubstringBetween: " + input + " -> " + substringBetween);
 		/**
 		 * substringsBetween: Tìm tất cả các chuỗi con nằm giữa 2 chuỗi
 		 */
-		str = "[a][b][c]";
-		String[] substringsBetween = substringsBetween(str, "[", "]"); // -> [a, b, c]
-		System.out.println("SubstringsBetween: " + str + " -> " + Arrays.toString(substringsBetween) + "\n");
+		input = "[a][b][c]";
+		String[] substringsBetween = substringsBetween(input, "[", "]"); // -> [a, b, c]
+		System.out.println("SubstringsBetween: " + input + " -> " + Arrays.toString(substringsBetween) + "\n");
 
 		/**
 		 * splitByWholeSeparator
 		 */
-		str = "Hello---World---Universe";
-		String[] splitByWholeSeparator = splitByWholeSeparator(str, "---"); // Hello, World, Universe
+		input = "Hello---World---Universe";
+		String[] splitByWholeSeparator = splitByWholeSeparator(input, "---"); // Hello, World, Universe
 		String output = Arrays.toString(splitByWholeSeparator);
-		System.out.println("SplitByWholeSeparator: " + str + " -> " + output + "\n");
+		System.out.println("SplitByWholeSeparator: " + input + " -> " + output + "\n");
 
 		/**
 		 * leftPad, rightPad: Thêm kí tự vào chuỗi cho đến khi bằng độ dài mong muốn
 		 */
-		str = "12345";
-		String leftPad = leftPad(str, 10, "0");
-		System.out.println("LeftPad: " + str + " -> " + leftPad);
-		String rightPad = rightPad(str, 10, "0");
-		System.out.println("RightPad: " + str + " -> " + rightPad + "\n");
+		input = "12345";
+		String leftPad = leftPad(input, 10, "0");
+		System.out.println("LeftPad: " + input + " -> " + leftPad);
+		String rightPad = rightPad(input, 10, "0");
+		System.out.println("RightPad: " + input + " -> " + rightPad + "\n");
 
 		/**
 		 * join: Nối các phần tử thành chuỗi
@@ -154,25 +157,25 @@ public class StringUtilsApi {
 		/**
 		 * deleteWhitespace: Xóa khoảng trắng
 		 */
-		str = "abc     d       e           ";
-		System.out.println("DeleteWhitespace: " + deleteWhitespace(str) + "\n");
+		input = "abc     d       e           ";
+		System.out.println("DeleteWhitespace: " + deleteWhitespace(input) + "\n");
 
 		/**
 		 * remove: Loại bỏ chuỗi con khỏi chuỗi khác
 		 * 
 		 * - Tương tự có removeIgnoreCase
 		 */
-		str = "Hello World";
-		System.out.println("Remove: " + remove(str, "o")); // Hell, Wrld
+		input = "Hello World";
+		System.out.println("Remove: " + remove(input, "o")); // Hell, Wrld
 		/**
 		 * removeStart, removeStartIgnoreCase: Xóa một chuỗi khỏi đầu một chuỗi nếu nó
 		 * tồn tại
 		 * 
 		 * - Tương tự có removeEnd, removeEndIgnoreCase
 		 */
-		str = "Hello World";
+		input = "Hello World";
 		String prefix = "Hello ";
-		System.out.println("RemoveStart: " + str + " -> " + removeStart(str, prefix) + "\n");
+		System.out.println("RemoveStart: " + input + " -> " + removeStart(input, prefix) + "\n");
 
 		/**
 		 * replaceOnce: Thay thế lần đầu tiên xuất hiện của một chuỗi con trong chuỗi
@@ -180,43 +183,43 @@ public class StringUtilsApi {
 		 * 
 		 * - Tương tự có replaceOnceIgnoreCase
 		 */
-		str = "Hello, Hello, World!";
+		input = "Hello, Hello, World!";
 		String searchString = "Hello";
 		String replacement = "Hi";
-		System.out.println("ReplaceOnce: " + str + " -> " + replaceOnce(str, searchString, replacement));
+		System.out.println("ReplaceOnce: " + input + " -> " + replaceOnce(input, searchString, replacement));
 
 		/**
 		 * - replace: Thay thế tối đa n lần
 		 */
-		str = "org.apache.commons.lang3.StringUtils";
-		String replace = replace(str, ".", "_", 3);
-		System.out.println("Replace max: " + str + " -> " + replace);
+		input = "org.apache.commons.lang3.StringUtils";
+		String replace = replace(input, ".", "_", 3);
+		System.out.println("Replace max: " + input + " -> " + replace);
 
 		/**
 		 * - replaceEach: Thay thế một mảng các chuỗi con tương ứng bằng một mảng các
 		 * chuỗi khác
 		 */
-		str = "Hello World";
+		input = "Hello World";
 		String[] searchList = { "Hello", "World" };
 		String[] replacementList = { "Hi", "Java" };
-		String result = replaceEach(str, searchList, replacementList);
-		System.out.println("ReplaceEach: " + str + " -> " + result + "\n"); // Hi, Java
+		String result = replaceEach(input, searchList, replacementList);
+		System.out.println("ReplaceEach: " + input + " -> " + result + "\n"); // Hi, Java
 
 		/**
 		 * - overlay: Ghi đè 1 chuỗi lên chuỗi khác theo vị trí chỉ định
 		 */
-		str = "Hello World";
+		input = "Hello World";
 		String overlay = "Awesome";
 		int start = 7;
 		int end = 12;
-		result = overlay(str, overlay, start, end);
-		System.out.println("Overlay: " + str + " -> " + result + "\n"); // "Hello, Awesome"
+		result = overlay(input, overlay, start, end);
+		System.out.println("Overlay: " + input + " -> " + result + "\n"); // "Hello, Awesome"
 
 		/**
 		 * - chop: Remove the last character from a String
 		 */
-		str = "Hello, World";
-		System.out.println("Chop: " + str + " -> " + chop(str) + "\n"); // "Hello, Worl"
+		input = "Hello, World";
+		System.out.println("Chop: " + input + " -> " + chop(input) + "\n"); // "Hello, Worl"
 
 		/**
 		 * - repeat: Lặp lại chuỗi n lần
@@ -231,24 +234,24 @@ public class StringUtilsApi {
 		 * 
 		 * - uncapitalize: Ngược lại
 		 */
-		str = "hello wOrld";
-		String capitalize = capitalize(str);
-		System.out.println("Capitalize: " + str + " -> " + capitalize);
+		input = "hello wOrld";
+		String capitalize = capitalize(input);
+		System.out.println("Capitalize: " + input + " -> " + capitalize);
 		System.out.println("Uncapitalize: " + capitalize + " -> " + uncapitalize(capitalize));
 
 		/**
 		 * countMatches: Đếm số lần xuất hiện của một chuỗi
 		 */
-		str = "Hello, World, Hello abc Hello";
+		input = "Hello, World, Hello abc Hello";
 		String sub = "Hello";
-		System.out.println("CountMatches: " + countMatches(str, sub) + "\n");
+		System.out.println("CountMatches: " + countMatches(input, sub) + "\n");
 
 		/**
 		 * - defaultString: Trả về một chuỗi mặc định nếu chuỗi đầu vào là null
 		 * 
 		 * - Tương tự có: defaultIfEmpty, defaultIfBlank
 		 */
-		String input = null;
+		input = null;
 		String defaultStr = "default value";
 		String defaultString = defaultString(input, defaultStr);
 		System.out.println("DefaultString 1: " + defaultString);
@@ -257,10 +260,29 @@ public class StringUtilsApi {
 		/**
 		 * - rotate: Xoay chuỗi
 		 */
-		str = "ABCDE";
+		input = "ABCDE";
 		int numberOfTimes = 2;
-		System.out.println("Rotate 1: "+str + " -> " + rotate(str, numberOfTimes));
-		System.out.println("Rotate 2: "+str + " -> " + rotate(str, -numberOfTimes));
+		System.out.println("Rotate 1: " + input + " -> " + rotate(input, numberOfTimes));
+		System.out.println("Rotate 2: " + input + " -> " + rotate(input, -numberOfTimes) + "\n");
+
+		/**
+		 * - reverse: Đảo chuỗi
+		 * 
+		 * - reverseDelimited: Đảo chuỗi với dấu phân cách
+		 */
+		System.out.println("Reverse: " + input + " -> " + reverse(input));
+		input = "AB;CD;EF";
+		result = reverseDelimited(input, ';');
+		System.out.printf("ReverseDelimited: %s -> %s \n\n", input, result);
+		
+		/**
+		 * abbreviate: Viết tắt 1 chuỗi dựa trên độ dài tối đa
+		 */
+		input = "This is a long sentence that needs to be abbreviated";
+        int maxWidth = 20;
+        result = abbreviate(input, maxWidth);
+        System.out.printf("Abbreviate: %s -> %s \n", input, result);
+
 	}
 
 	public static void main(String[] args) {
