@@ -1,17 +1,22 @@
 package com.basic.charstring;
 
 import static org.apache.commons.lang3.StringUtils.abbreviate;
+import static org.apache.commons.lang3.StringUtils.abbreviateMiddle;
 import static org.apache.commons.lang3.StringUtils.capitalize;
 import static org.apache.commons.lang3.StringUtils.chop;
 import static org.apache.commons.lang3.StringUtils.countMatches;
 import static org.apache.commons.lang3.StringUtils.defaultString;
 import static org.apache.commons.lang3.StringUtils.deleteWhitespace;
+import static org.apache.commons.lang3.StringUtils.difference;
 import static org.apache.commons.lang3.StringUtils.equalsAny;
+import static org.apache.commons.lang3.StringUtils.getCommonPrefix;
+import static org.apache.commons.lang3.StringUtils.indexOfDifference;
 import static org.apache.commons.lang3.StringUtils.isAllEmpty;
 import static org.apache.commons.lang3.StringUtils.isAnyEmpty;
 import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.leftPad;
+import static org.apache.commons.lang3.StringUtils.normalizeSpace;
 import static org.apache.commons.lang3.StringUtils.overlay;
 import static org.apache.commons.lang3.StringUtils.remove;
 import static org.apache.commons.lang3.StringUtils.removeStart;
@@ -274,15 +279,47 @@ public class StringUtilsApi {
 		input = "AB;CD;EF";
 		result = reverseDelimited(input, ';');
 		System.out.printf("ReverseDelimited: %s -> %s \n\n", input, result);
-		
+
 		/**
-		 * abbreviate: Viết tắt 1 chuỗi dựa trên độ dài tối đa
+		 * - abbreviate: Viết tắt 1 chuỗi dựa trên độ dài tối đa
+		 * 
+		 * - abbreviateMiddle: Viết tắt ở giữa 1 chuỗi dựa trên độ dài tối đa
 		 */
 		input = "This is a long sentence that needs to be abbreviated";
-        int maxWidth = 20;
-        result = abbreviate(input, maxWidth);
-        System.out.printf("Abbreviate: %s -> %s \n", input, result);
+		int maxWidth = 20;
+		result = abbreviate(input, maxWidth);
+		System.out.printf("Abbreviate: %s -> %s \n", input, result);
+		String middle = "...";
+		result = abbreviateMiddle(input, middle, maxWidth);
+		System.out.printf("AbbreviateMiddle: %s -> %s \n\n", input, result);
 
+		/**
+		 * - difference: Trả về phần tử khác nhau đầu tiên của hai chuỗi
+		 * 
+		 * - indexOfDifference(s1, s2): Vị trí đầu tiên mà 2 chuỗi đầu vào khác nhau
+		 * 
+		 * - indexOfDifference(s1, s2,...): Vị trí đầu tiên mà các chuỗi đầu vào khác
+		 * nhau
+		 */
+		String s1 = "Hello World";
+		String s2 = "Hello Java";
+		String difference = difference(s1, s2);
+		int index = indexOfDifference(s1, s2);
+		System.out.printf("Difference: (%s, %s) -> %s, Diff index = %d \n\n", s1, s2, difference, index);
+
+		/**
+		 * getCommonPrefix: Tìm tiền tố chung của một danh sách các chuỗi
+		 */
+		String[] strings = { "apple", "application", "applet", "app" };
+		String commonPrefix = getCommonPrefix(strings);
+		System.out.println("Common Prefix: " + commonPrefix + "\n");
+
+		/**
+		 * normalizeSpace: Xóa n > 1 khoảng trắng về còn 1 khoảng trắng
+		 */
+		input = "   Hello    World   ";
+		String normalized = normalizeSpace(input);
+		System.out.printf("NormalizeSpace: '%s' -> '%s'", input, normalized);
 	}
 
 	public static void main(String[] args) {
