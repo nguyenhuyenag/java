@@ -39,7 +39,7 @@ public class ArrayUtilsApi {
 		 */
 		int[] intArr = { 1, 2, 3, 1, 4, 5 };
 		int[] subarray = subarray(intArr, 2, 5);
-		shows("Subarray", intArr, subarray);
+		shows("SubArray", intArr, subarray);
 
 		/**
 		 * - reverse: Đảo mảng
