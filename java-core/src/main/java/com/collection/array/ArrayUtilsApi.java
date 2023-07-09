@@ -1,5 +1,7 @@
 package com.collection.array;
 
+import static org.apache.commons.lang3.ArrayUtils.contains;
+import static org.apache.commons.lang3.ArrayUtils.indexOf;
 import static org.apache.commons.lang3.ArrayUtils.reverse;
 import static org.apache.commons.lang3.ArrayUtils.shift;
 import static org.apache.commons.lang3.ArrayUtils.subarray;
@@ -19,6 +21,7 @@ public class ArrayUtilsApi {
 		System.out.printf("%s: %s -> %s \n\n", method, Arrays.toString(A1), Arrays.toString(A2));
 	}
 
+	@SuppressWarnings("unused")
 	private static void api() {
 		/**
 		 * - subarray: Tạo mảng con
@@ -58,12 +61,22 @@ public class ArrayUtilsApi {
 		 * 
 		 * - Tương tự có lastIndexOf
 		 */
-		int indexOf = ArrayUtils.indexOf(intArr, 3);
-		System.out.println("IndexOf: " + indexOf);
+		int valueToFind = 3;
+		int indexOf = indexOf(intArr, 3);
+		System.out.printf("IndexOf `valueToFind = %d` is `%d` \n\n", valueToFind, indexOf);
 		
 		/**
-		 * - contains
+		 * - contains: Tìm phần tử trong mảng
 		 */
+		boolean contains = contains(intArr, 3);
+		System.out.printf("Contains `valueToFind = %d` is `%s`\n\n", valueToFind, contains);
+		
+		/**
+		 * toPrimitive: Chuyển mảng đối tượng về mảng primitive
+		 */
+		Integer[] integerArray = {1,2,3,4,5};
+		int[] toPrimitive = ArrayUtils.toPrimitive(integerArray);
+		System.out.println("ToPrimitive: Integer[] -> int[]");
 	}
 
 	public static void main(String[] args) {
