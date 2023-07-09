@@ -2,15 +2,22 @@ package com.collection.array;
 
 import static org.apache.commons.lang3.ArrayUtils.contains;
 import static org.apache.commons.lang3.ArrayUtils.indexOf;
+import static org.apache.commons.lang3.ArrayUtils.insert;
+import static org.apache.commons.lang3.ArrayUtils.isEmpty;
+import static org.apache.commons.lang3.ArrayUtils.removeAllOccurences;
 import static org.apache.commons.lang3.ArrayUtils.reverse;
 import static org.apache.commons.lang3.ArrayUtils.shift;
+import static org.apache.commons.lang3.ArrayUtils.shuffle;
 import static org.apache.commons.lang3.ArrayUtils.subarray;
 import static org.apache.commons.lang3.ArrayUtils.swap;
+import static org.apache.commons.lang3.ArrayUtils.toObject;
+import static org.apache.commons.lang3.ArrayUtils.toPrimitive;
 
 import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+@SuppressWarnings("unused")
 public class ArrayUtilsApi {
 
 	public static void show(String method, int[] A1, int[] A2) {
@@ -21,12 +28,16 @@ public class ArrayUtilsApi {
 		System.out.printf("%s: %s -> %s \n\n", method, Arrays.toString(A1), Arrays.toString(A2));
 	}
 
-	@SuppressWarnings("unused")
+	/**
+	 * - isSorted: Kiểm tra 1 mảng đã được sắp xếp theo thứ tự tăng dần hay không
+	 * 
+	 * - isArrayIndexValid(int[], index): Kiểm tra index có thuộc mảng không
+	 */
 	private static void api() {
 		/**
 		 * - subarray: Tạo mảng con
 		 */
-		int[] intArr = { 1, 2, 3, 4, 5 };
+		int[] intArr = { 1, 2, 3, 1, 4, 5 };
 		int[] subarray = subarray(intArr, 2, 5);
 		shows("Subarray", intArr, subarray);
 
@@ -36,6 +47,13 @@ public class ArrayUtilsApi {
 		int[] clone = ArrayUtils.clone(intArr);
 		reverse(clone);
 		shows("Reverse", intArr, clone);
+
+		/**
+		 * shuffle: Trộn mảng
+		 */
+		clone = ArrayUtils.clone(intArr);
+		shuffle(clone);
+		shows("Shuffle", intArr, clone);
 
 		/**
 		 * swap: Đổi vị trị 2 phân tử
@@ -77,10 +95,56 @@ public class ArrayUtilsApi {
 		 * - toObject: Ngược lại
 		 */
 		Integer[] integerArray = { 1, 2, 3, 4, 5 };
-		int[] toPrimitive = ArrayUtils.toPrimitive(integerArray);
-		Integer[] toObject = ArrayUtils.toObject(toPrimitive);
-		System.out.println("ToPrimitive: Integer[] -> int[]");
-		System.out.println("toObject: int[] -> Integer[]");
+		int[] toPrimitive = toPrimitive(integerArray);
+		Integer[] toObject = toObject(toPrimitive);
+		System.out.println("ToObject: int[] -> Integer[]");
+		System.out.println("ToPrimitive: Integer[] -> int[]\n");
+
+		/**
+		 * - isEmpty, isNotEmpty: Check array empty
+		 */
+		System.out.println("Check empty: " + isEmpty(toPrimitive) + "\n");
+
+		/**
+		 * - add, addAll: Thêm phần tử vào cuối mảng
+		 */
+		clone = ArrayUtils.clone(intArr);
+		int[] result = ArrayUtils.addAll(clone, -1, -2);
+		shows("AddAll", intArr, result);
+
+		/**
+		 * - remove: Remove by index
+		 * 
+		 * - removeElement: Remove by value
+		 * 
+		 * - removeAll(int[], v1, v2,...): Remove all v1, v2,...
+		 * 
+		 * - removeAllOccurences(int[], x): Remove all x values in array
+		 */
+		clone = ArrayUtils.clone(intArr);
+		// remove
+		ArrayUtils.remove(clone, 4);
+		show("RemoveByIndex", intArr, clone);
+		// removeElement
+		ArrayUtils.removeElement(clone, 1);
+		System.out.println("RemoveByValue: ");
+		// removeAll
+		ArrayUtils.removeAll(clone, 1);
+		System.out.println("RemoveAll: ");
+		// removeAllOccurences
+		clone = ArrayUtils.clone(intArr);
+		result = removeAllOccurences(clone, 1);
+		shows("RemoveAllOccurences", intArr, result);
+
+		/**
+		 * insert: Chèn phần tử vào vị trí chỉ định
+		 */
+		clone = ArrayUtils.clone(intArr);
+		int index = 1;
+		int inserValue = -11;
+		result = insert(index, clone, inserValue);
+		shows("Insert", intArr, result);
+
 	}
 
 	public static void main(String[] args) {
