@@ -64,19 +64,23 @@ public class ArrayUtilsApi {
 		int valueToFind = 3;
 		int indexOf = indexOf(intArr, 3);
 		System.out.printf("IndexOf `valueToFind = %d` is `%d` \n\n", valueToFind, indexOf);
-		
+
 		/**
 		 * - contains: Tìm phần tử trong mảng
 		 */
 		boolean contains = contains(intArr, 3);
 		System.out.printf("Contains `valueToFind = %d` is `%s`\n\n", valueToFind, contains);
-		
+
 		/**
-		 * toPrimitive: Chuyển mảng đối tượng về mảng primitive
+		 * - toPrimitive: Chuyển mảng đối tượng về mảng primitive
+		 * 
+		 * - toObject: Ngược lại
 		 */
-		Integer[] integerArray = {1,2,3,4,5};
+		Integer[] integerArray = { 1, 2, 3, 4, 5 };
 		int[] toPrimitive = ArrayUtils.toPrimitive(integerArray);
+		Integer[] toObject = ArrayUtils.toObject(toPrimitive);
 		System.out.println("ToPrimitive: Integer[] -> int[]");
+		System.out.println("toObject: int[] -> Integer[]");
 	}
 
 	public static void main(String[] args) {
