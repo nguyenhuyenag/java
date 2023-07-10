@@ -14,6 +14,7 @@ import static org.apache.commons.lang3.StringUtils.indexOfDifference;
 import static org.apache.commons.lang3.StringUtils.isAllEmpty;
 import static org.apache.commons.lang3.StringUtils.isAnyEmpty;
 import static org.apache.commons.lang3.StringUtils.isNoneBlank;
+import static org.apache.commons.lang3.StringUtils.isNumeric;
 import static org.apache.commons.lang3.StringUtils.join;
 import static org.apache.commons.lang3.StringUtils.leftPad;
 import static org.apache.commons.lang3.StringUtils.normalizeSpace;
@@ -331,7 +332,12 @@ public class StringUtilsApi {
 		 */
 		input = "Hello World";
 		String appended = StringUtils.appendIfMissing(input, "!");
-		System.out.printf("AppendIfMissing: %s -> %s", input, appended);
+		System.out.printf("AppendIfMissing: %s -> %s\n\n", input, appended);
+		
+		input = "123";
+		System.out.printf("IsNumeric: %s -> %s\n", input, isNumeric(input));
+		input = "123a";
+		System.out.printf("IsNumeric: %s -> %s", input, isNumeric(input));
 	}
 
 	public static void main(String[] args) {

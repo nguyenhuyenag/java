@@ -16,6 +16,7 @@ import static org.apache.commons.lang3.ArrayUtils.toPrimitive;
 import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 @SuppressWarnings("unused")
 public class ArrayUtilsApi {
@@ -144,7 +145,14 @@ public class ArrayUtilsApi {
 		int inserValue = -11;
 		result = insert(index, clone, inserValue);
 		shows("Insert", intArr, result);
-
+		
+		/**
+		 * min, max: Tìm min, max của phần tử
+		 */
+		int min = NumberUtils.min(intArr);
+		int max = NumberUtils.max(intArr);
+		System.out.println("Min: " + Arrays.toString(intArr) + " -> " + min);
+		System.out.println("Max: " + Arrays.toString(intArr) + " -> " + max);
 	}
 
 	public static void main(String[] args) {
