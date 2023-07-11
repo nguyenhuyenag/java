@@ -4,6 +4,36 @@ import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.Month;
 
+/**
+ * SPECIFIER		APPLIES TO 								OUTPUT
+ * 
+ * %a			Floating point (except BigDecimal) 		Returns a Hex output of floating point number
+ * 
+ * 
+ * %b 			Boolean 								True/False
+ * 
+ * %c 			Character 								Unicode character
+ * 
+ * %d 			Integer 								Decimal integer
+ * 
+ * %e 			Floating point 							a decimal number in scientific notation
+ * 
+ * %f 			Floating point 							decimal number
+ * 
+ * %g 			Floating point 							decimal number, possibly in scientific notation depending on the precision and value
+ * 
+ * %h 			Any type 								Hex String of value from hashCode() method
+ * 	
+ * %n 			None 									Platform-specific line separator
+ * 
+ * %o 			integer 								Octal number
+ * 
+ * %s 			Any type 								String value
+ * 
+ * %t 			Date/Time 								%t is the prefix for Date/Time conversions.
+ * 
+ * %x 			Integer 								Hex string
+ */
 public class StringFormat {
 
 	/*-

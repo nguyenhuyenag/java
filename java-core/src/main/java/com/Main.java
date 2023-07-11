@@ -1,15 +1,26 @@
 package com;
 
-import java.util.Arrays;
-
-import org.apache.commons.lang3.ArrayUtils;
-
 public class Main {
 
 	public static void main(String[] args) {
-		final int[] array = { 0, 1, 2, 3, 4, 5 };
-		int[] result = ArrayUtils.insert(1111, array, -11);
-		System.out.println(Arrays.toString(result));
+		// double input = 123.456;
+		// String pattern  = "%a";
+		
+		// boolean input = true;
+		// String pattern  = "%b";
+		
+		 // char input = 'a';
+		 // String pattern  = "%c";
+		
+		// double input = 123456789;
+		// String pattern  = "%e";
+		
+		double input = 123456789;
+		String pattern  = "%f";
+
+		
+		String output = String.format(pattern, input);
+		System.out.println(output);
 	}
 
 }
