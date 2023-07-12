@@ -32,14 +32,11 @@ public class FormatNumber {
 	public static void usingDecimalFormat() {
 		var dfs = new DecimalFormatSymbols();
 		// System.out.println("CurrencySymbol: " + dfs.getCurrencySymbol());
-		System.out.println("GroupingSeparator: " + dfs.getGroupingSeparator());
-		dfs.setGroupingSeparator(',');
-		
-		DecimalFormat df = new DecimalFormat("###,##0", dfs);
-		System.out.println(df.format(1234567890));
+		System.out.printf("GroupingSeparator: '%s'\n", dfs.getGroupingSeparator());
+		dfs.setGroupingSeparator('.');
 		
 		customFormat("#,###", 1234567890);
-		customFormat("###.##", 1234.56789);		// Làm tròn nếu bên phải nhiều hơn 2 chữ số
+		customFormat("#.##", 1234.56789);		// Làm tròn nếu bên phải nhiều hơn 2 chữ số
 		customFormat("000000.000", 123.78); 	// Tự thêm số 0 vào đầu và cuối cho giống với mẫu
 		customFormat("$###,###.###", 12345.67);
 	}
