@@ -26,20 +26,22 @@ public class SortStringDateTime {
 		  "01/22/2013 06:19",
 		  "01/22/2013 15:13"
 		);
-		DateFormat dfm = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+		DateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
 		Collections.sort(dtStrings, new Comparator<String>() {
 			@Override
-			public int compare(String o1, String o2) {
+			public int compare(String d1, String d2) {
 				try {
-					return dfm.parse(o1).compareTo(dfm.parse(o2));
+					return format.parse(d1).compareTo(format.parse(d2));
 				} catch (ParseException e) {
 					throw new IllegalArgumentException(e);
 				}
 			}
 		});
+		
 		// OR
 		final DateTimeFormatter dfm2 = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm");
 		dtStrings.sort(Comparator.comparing(s -> LocalDateTime.parse(s, dfm2)));
+		
 		// OR
 		// DateTimeFormatter dfm3 = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm");
 		Map<LocalDateTime, String> dateFormatMap = new TreeMap<>();
