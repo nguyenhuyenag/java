@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Test {
+public class DayOfWeekChecker {
 
 	public static String convertToVietnameseDayOfWeek(DayOfWeek dayOfWeek) {
 		String[] daysOfWeekVietnamese = { "Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy" };

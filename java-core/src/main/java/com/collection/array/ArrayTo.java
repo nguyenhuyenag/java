@@ -29,12 +29,14 @@ public class ArrayTo {
 		Collections.addAll(set3, integerArray);
 	}
 
+	// Integer[] -> int[]
 	public static void IntegerArrayToIntArray() {
 		int[] intArray = Arrays.stream(integerArray) //
 				.mapToInt(Integer::intValue) //
 				.toArray();
 	}
 
+	// int[] -> Integer[]
 	public static void intArrayToIntegerArray() {
 		Integer[] integerArray = Arrays.stream(intArray) //
 				.boxed() // nguyên thủy -> đối tượng
