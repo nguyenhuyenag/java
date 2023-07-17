@@ -1,26 +1,35 @@
 package com;
 
+enum MyEnum {
+
+	PULL_UP {
+		@Override
+		public int getValue() {
+			return 1;
+		}
+	},
+	PULL_DOWN {
+		@Override
+		public int getValue() {
+			return 0;
+		}
+	};
+
+	public abstract int getValue();
+
+}
+
 public class Main {
 
 	public static void main(String[] args) {
-		// double input = 123.456;
-		// String pattern  = "%a";
-		
-		// boolean input = true;
-		// String pattern  = "%b";
-		
-		 // char input = 'a';
-		 // String pattern  = "%c";
-		
-		// double input = 123456789;
-		// String pattern  = "%e";
-		
-		double input = 123456789;
-		String pattern  = "%f";
-
-		
-		String output = String.format(pattern, input);
-		System.out.println(output);
+		int myInt = 1;
+		MyEnum myEnum = MyEnum.PULL_DOWN;
+		System.out.println(MyEnum.PULL_DOWN);
+		// Using equals() method
+		if (myEnum.equals(myInt)) {
+			System.out.println("Enum and int are equal");
+		} else {
+			System.out.println("Enum and int are not equal");
+		}
 	}
-
 }
