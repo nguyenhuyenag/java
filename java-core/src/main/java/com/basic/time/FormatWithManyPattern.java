@@ -1,12 +1,12 @@
 package com.basic.time;
 
-import static org.apache.commons.lang3.time.DateUtils.parseDateStrictly;
-
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Date;
+
+import org.apache.commons.lang3.time.DateUtils;
 
 public class FormatWithManyPattern {
 
@@ -20,7 +20,7 @@ public class FormatWithManyPattern {
 	}
 
 	public static void apacheCommonsDateUtils() throws ParseException {
-		Date date = parseDateStrictly("2022-12-29", "yyyy/MM/dd", "dd/MM/yyyy", "yyyy-MM-dd");
+		Date date = DateUtils.parseDateStrictly("2022-12-29", "yyyy/MM/dd", "dd/MM/yyyy", "yyyy-MM-dd");
 		System.out.println(date);
 	}
 

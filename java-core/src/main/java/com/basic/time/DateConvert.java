@@ -13,64 +13,136 @@ import org.apache.commons.lang3.time.DateUtils;
 
 public class DateConvert {
 
-	public static Date toDate(Object dateTimeObject) {
-		if (dateTimeObject instanceof Instant) {
-			Instant instant = (Instant) dateTimeObject;
-			return Date.from(instant);
-		} else if (dateTimeObject instanceof LocalDate) {
-			LocalDate localDate = (LocalDate) dateTimeObject;
-			Instant instant = localDate.atStartOfDay().toInstant(ZoneOffset.UTC);
-			return Date.from(instant);
-		} else if (dateTimeObject instanceof LocalDateTime) {
-			LocalDateTime localDateTime = (LocalDateTime) dateTimeObject;
-			Instant instant = localDateTime.toInstant(ZoneOffset.UTC);
-			return Date.from(instant);
+	private static boolean isType(Object input, Class<?> type) {
+		return type.isInstance(input);
+	}
+
+	private static boolean isDate(Object input) {
+		return isType(input, Date.class);
+	}
+
+	private static boolean isCalendar(Object input) {
+		return isType(input, Calendar.class);
+	}
+
+	private static boolean isInstant(Object input) {
+		return isType(input, Instant.class);
+	}
+
+	private static boolean isLocalDate(Object input) {
+		return isType(input, LocalDate.class);
+	}
+
+	private static boolean isLocalDateTime(Object input) {
+		return isType(input, LocalDateTime.class);
+	}
+
+//	public static Date toDate(Object input) {
+//		if (isInstant(input)) {
+//			Instant instant = (Instant) input;
+//			return Date.from(instant);
+//		} else if (isLocalDate(input)) {
+//			LocalDate localDate = (LocalDate) input;
+//			Instant instant = localDate.atStartOfDay().toInstant(ZoneOffset.UTC);
+//			return Date.from(instant);
+//		} else if (isLocalDateTime(input)) {
+//			LocalDateTime localDateTime = (LocalDateTime) input;
+//			Instant instant = localDateTime.toInstant(ZoneOffset.UTC);
+//			return Date.from(instant);
+//		} else {
+//			throw new IllegalArgumentException("Unsupported DateTime object type");
+//		}
+//	}
+	
+	public static Date toDate(Object input) {
+		switch (getType(input)) {
+			case DATE:
+				return (Date) input;
+			case CALENDAR:
+				Calendar calendar = (Calendar) input;
+				return calendar.getTime();
+			case INSTANT:
+				Instant instant = (Instant) input;
+				return Date.from(instant);
+			case LOCAL_DATE:
+				LocalDate localDate = (LocalDate) input;
+				instant = localDate.atStartOfDay().toInstant(ZoneOffset.UTC);
+				return Date.from(instant);
+			case LOCAL_DATE_TIME:
+				LocalDateTime localDateTime = (LocalDateTime) input;
+				instant = localDateTime.toInstant(ZoneOffset.UTC);
+				return Date.from(instant);
+			default:
+				throw new IllegalArgumentException("Unsupported DateTime object type");
+		}
+	}
+
+	private static Type getType(Object input) {
+		if (isDate(input)) {
+			return Type.DATE;
+		} else if (isCalendar(input)) {
+			return Type.CALENDAR;
+		} else if (isInstant(input)) {
+			return Type.INSTANT;
+		} else if (isLocalDate(input)) {
+			return Type.LOCAL_DATE;
+		} else if (isLocalDateTime(input)) {
+			return Type.LOCAL_DATE_TIME;
 		} else {
 			throw new IllegalArgumentException("Unsupported DateTime object type");
 		}
 	}
 
-	public static Instant toInstant(Object dateTimeObject) {
-		if (dateTimeObject instanceof Date) {
-			Date date = (Date) dateTimeObject;
+	private enum Type {
+		DATE,
+		CALENDAR,
+	    INSTANT,
+	    LOCAL_DATE,
+	    LOCAL_DATE_TIME
+	}
+
+
+	public static Instant toInstant(Object input) {
+		if (isDate(input)) {
+			Date date = (Date) input;
 			return date.toInstant();
-		} else if (dateTimeObject instanceof LocalDate) {
-			LocalDate localDate = (LocalDate) dateTimeObject;
+		} else if (isLocalDate(input)) {
+			LocalDate localDate = (LocalDate) input;
 			return localDate.atStartOfDay().toInstant(ZoneOffset.UTC);
-		} else if (dateTimeObject instanceof LocalDateTime) {
-			LocalDateTime localDateTime = (LocalDateTime) dateTimeObject;
+		} else if (isLocalDateTime(input)) {
+			LocalDateTime localDateTime = (LocalDateTime) input;
 			return localDateTime.toInstant(ZoneOffset.UTC);
 		} else {
 			throw new IllegalArgumentException("Unsupported DateTime object type");
 		}
 	}
 
-	public static LocalDate toLocalDate(Object dateTimeObject) {
-		if (dateTimeObject instanceof Date) {
-			Date date = (Date) dateTimeObject;
+	public static LocalDate toLocalDate(Object input) {
+		if (isDate(input)) {
+			Date date = (Date) input;
 			Instant instant = date.toInstant();
 			return instant.atZone(ZoneOffset.UTC).toLocalDate();
-		} else if (dateTimeObject instanceof Instant) {
-			Instant instant = (Instant) dateTimeObject;
+		} else if (isInstant(input)) {
+			Instant instant = (Instant) input;
 			return instant.atZone(ZoneOffset.UTC).toLocalDate();
-		} else if (dateTimeObject instanceof LocalDateTime) {
-			LocalDateTime localDateTime = (LocalDateTime) dateTimeObject;
+		} else if (isLocalDateTime(input)) {
+			LocalDateTime localDateTime = (LocalDateTime) input;
 			return localDateTime.toLocalDate();
 		} else {
 			throw new IllegalArgumentException("Unsupported DateTime object type");
 		}
 	}
 
-	public static LocalDateTime toLocalDateTime(Object dateTimeObject) {
-		if (dateTimeObject instanceof Date) {
-			Date date = (Date) dateTimeObject;
+	public static LocalDateTime toLocalDateTime(Object input) {
+		if (isDate(input)) {
+			Date date = (Date) input;
 			Instant instant = date.toInstant();
 			return instant.atZone(ZoneOffset.UTC).toLocalDateTime();
-		} else if (dateTimeObject instanceof Instant) {
-			Instant instant = (Instant) dateTimeObject;
+		} else if (isInstant(input)) {
+			Instant instant = (Instant) input;
 			return instant.atZone(ZoneOffset.UTC).toLocalDateTime();
-		} else if (dateTimeObject instanceof LocalDate) {
-			LocalDate localDate = (LocalDate) dateTimeObject;
+		} else if (isLocalDate(input)) {
+			LocalDate localDate = (LocalDate) input;
 			return localDate.atStartOfDay();
 		} else {
 			throw new IllegalArgumentException("Unsupported DateTime object type");
@@ -79,19 +151,19 @@ public class DateConvert {
 
 	public static Calendar toCalendar(Object input) {
 		Calendar calendar = Calendar.getInstance();
-		if (input instanceof Date) {
+		if (isDate(input)) {
 			Date date = (Date) input;
 			calendar.setTime(date);
-		} else if (input instanceof Instant) {
+		} else if (isInstant(input)) {
 			Instant instant = (Instant) input;
 			Date date = Date.from(instant);
 			calendar.setTime(date);
-		} else if (input instanceof LocalDate) {
+		} else if (isLocalDate(input)) {
 			LocalDate ld = (LocalDate) input;
 			Instant instant = ld.atStartOfDay(ZoneId.systemDefault()).toInstant();
 			Date date = Date.from(instant);
 			calendar.setTime(date);
-		} else if (input instanceof LocalDateTime) {
+		} else if (isLocalDateTime(input)) {
 			LocalDateTime ldt = (LocalDateTime) input;
 			Instant instant = ldt.atZone(ZoneId.systemDefault()).toInstant();
 			Date date = Date.from(instant);
@@ -105,18 +177,18 @@ public class DateConvert {
 	/**
 	 * Milliseconds time
 	 */
-	public static long getEpochTime(Object dateTimeObject) {
-		if (dateTimeObject instanceof Date) {
-			Date date = (Date) dateTimeObject;
+	public static long getEpochTime(Object input) {
+		if (isDate(input)) {
+			Date date = (Date) input;
 			Instant instant = date.toInstant();
 			return instant.toEpochMilli();
-		} else if (dateTimeObject instanceof LocalDate) {
-			LocalDate localDate = (LocalDate) dateTimeObject;
+		} else if (isLocalDate(input)) {
+			LocalDate localDate = (LocalDate) input;
 			LocalDateTime localDateTime = localDate.atStartOfDay();
 			Instant instant = localDateTime.toInstant(ZoneOffset.UTC);
 			return instant.toEpochMilli();
-		} else if (dateTimeObject instanceof LocalDateTime) {
-			LocalDateTime localDateTime = (LocalDateTime) dateTimeObject;
+		} else if (isLocalDateTime(input)) {
+			LocalDateTime localDateTime = (LocalDateTime) input;
 			Instant instant = localDateTime.toInstant(ZoneOffset.UTC);
 			return instant.toEpochMilli();
 		} else {

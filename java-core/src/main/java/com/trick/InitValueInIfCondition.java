@@ -7,10 +7,13 @@ public class InitValueInIfCondition {
         if (cs == null || (strLen = cs.length()) == 0) { // <- here
             return true;
         }
-        for (int i = 0; i < strLen; i++) {
-            // 
-        }
+        System.out.println("Length: " + strLen);
         return true;
     }
+	
+	public static void main(String[] args) {
+		String input = "Java123";
+		init(input);
+	}
 	
 }
