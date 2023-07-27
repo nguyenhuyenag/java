@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -53,7 +55,7 @@ public class XMLUtils {
 	/**
 	 * Đọc dữ liệu của 1 tag: <name>Java</name> => Java
 	 */
-	public static String getTagValue(String xml, String parent, String tagName) {
+	public static String getTagText(String xml, String parent, String tagName) {
 		if (StringUtils.isEmpty(xml)) {
 			return "";
 		}
@@ -79,7 +81,7 @@ public class XMLUtils {
 	}
 
 	public static boolean isXMLValid(String xml) {
-		xml = xml.trim().replaceFirst("^([\\W]+)<","<");
+		xml = xml.trim().replaceFirst("^([\\W]+)<", "<");
 		try (StringReader reader = new StringReader(xml)) {
 			SAXParserFactory.newInstance() //
 					.newSAXParser() //
@@ -129,17 +131,27 @@ public class XMLUtils {
 //		}
 //	}
 
-	public static String getStructAndTextOfTag(String xml, String tagName) {
+	/**
+	 * Đọc dữ liệu của 1 tag: <name>Java</name> => <name>Java</name>
+	 */
+	public static String getTagContent(String xml, String tagName) {
+//		if (StringUtils.isEmpty(xml) || StringUtils.isEmpty(tagName)) {
+//			return "";
+//		}
+//		String start = "<" + tagName; // + ">";
+//		String end = "</" + tagName + ">";
+//		String between = StringUtils.substringBetween(xml, start, end);
+//		if (StringUtils.isEmpty(between)) {
+//			return "";
+//		}
+//		return start + between + end;
 		if (StringUtils.isEmpty(xml) || StringUtils.isEmpty(tagName)) {
 			return "";
 		}
-		String start = "<" + tagName; // + ">";
+		String start = "<" + tagName;
 		String end = "</" + tagName + ">";
 		String between = StringUtils.substringBetween(xml, start, end);
-		if (StringUtils.isEmpty(between)) {
-			return "";
-		}
-		return start + between + end;
+		return StringUtils.defaultString(start) + between + StringUtils.defaultString(end);
 	}
 
 	public static void extractValue() {
@@ -162,12 +174,14 @@ public class XMLUtils {
 	}
 
 	public static void main(String[] args) throws XPathExpressionException {
-		// Path path = Paths.get(PathUtils.HOME, "file/test.xml");
-		// String xml = FileUtils.readFile(path);
+		Path path = Paths.get(PathUtils.HOME, "file/hoadon.xml");
+		String xml = FileUtils.readFile(path);
 		// System.out.println(xml);
 		// String s = getStructAndTextOfTag(xml, "SignatureProperties");
-		// System.out.println(s);
-		extractValue();
+		// String s = getTagText(xml, "TTChung", "TTKhac");
+		String s = getTagContent(xml, "TTChung");
+		System.out.println(s);
+		// extractValue();
 	}
 
 }
