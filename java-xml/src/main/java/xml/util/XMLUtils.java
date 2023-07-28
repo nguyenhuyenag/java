@@ -24,58 +24,29 @@ import org.xml.sax.SAXException;
 
 public class XMLUtils {
 
-//	public static String getTagValue2(String xml, String parent, String tagName) {
-//		if (StringUtils.isEmpty(xml)) {
-//			return "";
-//		}
-//		// xml = xml.trim().replaceFirst("^([\\W]+)<","<"); // "Content is not allowed
-//		// in prolog"
-//		try (StringReader sr = new StringReader(xml)) {
-//			Document doc = DocumentBuilderFactory.newInstance() //
-//					.newDocumentBuilder() //
-//					.parse(new InputSource(sr));
-//			doc.getDocumentElement().normalize();
-//			NodeList nList = doc.getElementsByTagName(parent);
-//			for (int i = 0; i < nList.getLength(); i++) {
-//				Node node = nList.item(i);
-//				if (node.getNodeType() == Node.ELEMENT_NODE) {
-//					Element el = (Element) node;
-//					Node tagNode = el.getElementsByTagName(tagName).item(0);
-//					if (tagNode != null) {
-//						return tagNode.getTextContent().trim();
-//					}
-//				}
-//			}
-//		} catch (ParserConfigurationException | SAXException | IOException e) {
-//			e.printStackTrace();
-//		}
-//		return "";
-//	}
-
 	/**
 	 * Đọc dữ liệu của 1 tag: <name>Java</name> => Java
 	 */
-	public static String getTagText(String xml, String parent, String tagName) {
-		if (StringUtils.isEmpty(xml)) {
-			return "";
-		}
-		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
-			Document doc = DocumentBuilderFactory.newInstance() //
-					.newDocumentBuilder() //
-					.parse(new InputSource(is));
-			NodeList nList = doc.getElementsByTagName(parent);
-			for (int i = 0; i < nList.getLength(); i++) {
-				Node node = nList.item(i);
-				if (node.getNodeType() == Node.ELEMENT_NODE) {
-					Element el = (Element) node;
-					Node tagNode = el.getElementsByTagName(tagName).item(0);
-					if (tagNode != null) {
-						return tagNode.getTextContent().trim();
+	public static String getTagText(String xml, String parentTagName, String tagName) {
+		if (StringUtils.isNotEmpty(xml)) {
+			try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+				Document doc = DocumentBuilderFactory.newInstance() //
+						.newDocumentBuilder() //
+						.parse(new InputSource(is));
+				NodeList parentTag = doc.getElementsByTagName(parentTagName);
+				for (int i = 0; i < parentTag.getLength(); i++) {
+					Node node = parentTag.item(i);
+					if (node.getNodeType() == Node.ELEMENT_NODE) {
+						Element el = (Element) node;
+						NodeList tagNodes = el.getElementsByTagName(tagName);
+	                    if (tagNodes.getLength() > 0) {
+	                        return StringUtils.trim(tagNodes.item(0).getTextContent());
+	                    }
 					}
 				}
+			} catch (ParserConfigurationException | SAXException | IOException e) {
+				e.printStackTrace();
 			}
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
 		}
 		return "";
 	}
@@ -131,6 +102,34 @@ public class XMLUtils {
 //		}
 //	}
 
+//	public static String getTagValue2(String xml, String parent, String tagName) {
+//	if (StringUtils.isEmpty(xml)) {
+//		return "";
+//	}
+//	// xml = xml.trim().replaceFirst("^([\\W]+)<","<"); // "Content is not allowed
+//	// in prolog"
+//	try (StringReader sr = new StringReader(xml)) {
+//		Document doc = DocumentBuilderFactory.newInstance() //
+//				.newDocumentBuilder() //
+//				.parse(new InputSource(sr));
+//		doc.getDocumentElement().normalize();
+//		NodeList nList = doc.getElementsByTagName(parent);
+//		for (int i = 0; i < nList.getLength(); i++) {
+//			Node node = nList.item(i);
+//			if (node.getNodeType() == Node.ELEMENT_NODE) {
+//				Element el = (Element) node;
+//				Node tagNode = el.getElementsByTagName(tagName).item(0);
+//				if (tagNode != null) {
+//					return tagNode.getTextContent().trim();
+//				}
+//			}
+//		}
+//	} catch (ParserConfigurationException | SAXException | IOException e) {
+//		e.printStackTrace();
+//	}
+//	return "";
+//}
+
 	/**
 	 * Đọc dữ liệu của 1 tag: <name>Java</name> => <name>Java</name>
 	 */
@@ -155,11 +154,11 @@ public class XMLUtils {
 	}
 
 	public static void extractValue() {
-		String xmlString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<int xmlns=\"http://tempuri.org/\">1279872209</int>";
+		String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<int xmlns=\"http://tempuri.org/\">1279872209</int>";
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
-			try (ByteArrayInputStream input = new ByteArrayInputStream(xmlString.getBytes())) {
+			try (ByteArrayInputStream input = new ByteArrayInputStream(xml.getBytes())) {
 				Document doc = builder.parse(input);
 				// Get the int element
 				NodeList intNodes = doc.getElementsByTagName("int");
@@ -178,8 +177,8 @@ public class XMLUtils {
 		String xml = FileUtils.readFile(path);
 		// System.out.println(xml);
 		// String s = getStructAndTextOfTag(xml, "SignatureProperties");
-		// String s = getTagText(xml, "TTChung", "TTKhac");
-		String s = getTagContent(xml, "TTChung");
+		String s = getTagText(xml, "TTChung", "THDon");
+		// String s = getTagContent(xml, "TTChung");
 		System.out.println(s);
 		// extractValue();
 	}
