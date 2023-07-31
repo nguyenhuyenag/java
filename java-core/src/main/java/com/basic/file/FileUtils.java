@@ -45,25 +45,31 @@ public class FileUtils {
 	}
 
 	/**
-	 * Tạo file, nếu đường dẫn (thư mục cha) không tồn tại thì tạo đường dẫn xong sẽ
-	 * tạo file
+	 * Create an empty file
 	 */
-	public static boolean createFile(Path path) {
-		if (path == null) {
-			System.out.println("Path `" + path + "` does't exists!");
-			return false;
+	public static Path createFile(Path path) {
+		if (PathUtils.exist(path)) {
+			try {
+				org.apache.commons.io.FileUtils.touch(path.toFile());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		Path parent = path.getParent();
-		if (PathUtils.isNotExist(parent)) {
-			PathUtils.createDirectories(parent);
+		return path;
+	}
+
+	public static Path createFileFromString(Path path, String contents) {
+		if (PathUtils.exist(path)) {
+			try {
+				// FileUtils.write(file, "", "UTF-8", false);
+				// writeByteArrayToFile(file, byte[] data, boolean append)
+				org.apache.commons.io.FileUtils //
+						.writeStringToFile(path.toFile(), contents, "UTF-8");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		try {
-			// Files.createFile(p);
-			return path.toFile().createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return false;
+		return path;
 	}
 
 	/**
@@ -155,7 +161,7 @@ public class FileUtils {
 	 */
 	public static Path writeByteArrayToFile(Path path, byte[] bytes, boolean append) {
 		if (PathUtils.isNotExist(path)) {
-			FileUtils.createFile(path);
+			// FileUtils.createFile(path);
 		}
 		try {
 			if (append) {
@@ -242,7 +248,7 @@ public class FileUtils {
 	 */
 	public static boolean writeTextToFile(Path path, Collection<? extends CharSequence> contents, boolean append) {
 		if (PathUtils.isNotExist(path)) {
-			FileUtils.createFile(path);
+			// FileUtils.createFile(path);
 		}
 		try {
 			if (!append) {
@@ -482,7 +488,8 @@ public class FileUtils {
 		try {
 			Path newfile = Paths.get(path.getParent().toString(), newname + "." + getFileExtension(path.toFile()));
 			Files.move(path, path.resolveSibling(newfile));
-			// Files.move(path, path.resolveSibling(newfile), StandardCopyOption.REPLACE_EXISTING);
+			// Files.move(path, path.resolveSibling(newfile),
+			// StandardCopyOption.REPLACE_EXISTING);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -541,7 +548,7 @@ public class FileUtils {
 	}
 
 	public static void main(String[] args) {
-		
+
 	}
 
 }

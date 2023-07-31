@@ -147,6 +147,28 @@ public class FileService {
 //		attr = Files.readAttributes(file, DosFileAttributes.class);
 //		printAttributes(attr);
 //	}
+	
+	/**
+	 * Tạo file, nếu đường dẫn (thư mục cha) không tồn tại thì tạo đường dẫn xong sẽ
+	 * tạo file
+	 */
+	public static boolean createFile(Path path) {
+		if (path == null) {
+			System.out.println("Path `" + path + "` does't exists!");
+			return false;
+		}
+		Path parent = path.getParent();
+		if (PathUtils.isNotExist(parent)) {
+			PathUtils.createDirectories(parent);
+		}
+		try {
+			// Files.createFile(p);
+			return path.toFile().createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 	public static void fileAttributes() {
 		try {
