@@ -1,23 +1,20 @@
 package com;
 
 import java.io.IOException;
-
-import org.apache.commons.io.FilenameUtils;
+import java.util.Optional;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-//		Path path = Paths.get("C:", "/temp", "test.txt");
-//		System.out.println(path.normalize());
-//		FileUtils.touch(path.toFile());
-//		System.out.println("Pathhhhhhhhhhh: "+PathUtils.current());
-//		File currentWorkingDir = FileUtils.getUserDirectory();
-//        System.out.println("Current Working Directory: " + currentWorkingDir.getAbsolutePath());
-		
-		String basePath = "/path/to";
-        String filenameToAdd = "file.txt";
-        
-        String concatenatedPath = FilenameUtils.concat(basePath, filenameToAdd);
-        System.out.println("Concatenated Path: " + concatenatedPath);
+		Optional<String> valueOptional = Optional.of("Hello");
+
+        // Sử dụng map() để biến đổi giá trị trong Optional từ kiểu String sang kiểu Integer
+        Optional<String> lengthOptional = valueOptional.map(str -> str + "123");
+
+        if (lengthOptional.isPresent()) {
+            System.out.println("Length of the value: " + lengthOptional.get());
+        } else {
+            System.out.println("No value found.");
+        }
 	}
 }
