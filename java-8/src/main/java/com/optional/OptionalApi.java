@@ -8,24 +8,30 @@ import com.util.User;
 /*-
  * - empty(): Tạo 1 Optional rỗng
  * 
- * - of(T): Tạo một Optional, nếu giá trị truyền vào null -> NullPointerException
  * 
- * - ofNullable(T): Tạo 1 Optional của T, nếu giá trị T null thì trả về empty()
+ * - of(T): Tạo một Optional, nếu T == null thì ném ra NullPointerException
+ * 
+ * 
+ * - ofNullable(T): Tạo 1 Optional, nếu T == null thì trả về empty()
+ * 
  * 
  * - orElse(): Cung cấp một giá trị mặc định khi Optional rỗng (truyền trực tiếp)
  * - orElseGet(): Cung cấp một giá trị mặc định khi Optional rỗng (bằng Supplier)
  * 
+ * 
  * - orElseThrow(): Trả về giá trị nếu có hoặc ném ra NoSuchElementException nếu rỗng
  * - orElseThrow(Supplier): Tương tự như trên nhưng ném ra Supplier<Exception> nếu rỗng
  * 
+ * 
  * - isEmpty(): Kiểm tra Optional có rỗng hay không
+ * 
  * 
  * - isPresent(): Kiểm tra Optional có chứa giá trị không
  * - ifPresent(): Làm gì đó nếu Optional có giá trị
  * - ifPresentOrElse(): Thực hiện 1 hành động nếu Optional có giá trị và 1 hành động khác nếu rỗng
  * 
- * - stream(): Chuyển đổi Optional thành Stream
  * 
+ * - stream(): Chuyển đổi Optional thành Stream
  */
 @SuppressWarnings("unused")
 public class OptionalApi {
