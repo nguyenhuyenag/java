@@ -8,7 +8,22 @@ import org.apache.commons.io.FileUtils;
 /**
  * - contentEquals(file1, file2): So sánh nội dung 2 file
  * 
- * - copyDirectory(srcDir, destDir): Copy toàn bộ nội dung từ srcDir sang destDir 
+ * - copyDirectory(srcDir, destDir): Copy toàn bộ nội dung từ srcDir sang destDir
+ * 
+ * - readFileToByteArray(): Đọc file thành thành mảng byte
+ * 
+ * - readFileToString(): Đọc file thành thành string
+ * 
+ * - readLines(): Đọc file thành thành string
+ * 
+ * - sizeOfDirectory(): Tính toán kích thước của một thư mục
+ * 
+ * - writeStringToFile(file, data, charset, boolean append): Ghi chuỗi vào file
+ * 
+ * - writeByteArrayToFile(file, byte[] data): Ghi mảng byte vào file
+ * 
+ * - writeLines(file, Collection<?> lines, boolean): Ghi 1 collection vào file
+ * 
  */
 public class FileUtilsApache {
 
