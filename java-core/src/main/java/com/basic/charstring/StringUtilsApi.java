@@ -42,6 +42,22 @@ import java.util.Arrays;
 
 import org.apache.commons.lang3.StringUtils;
 
+/*-
+ * - stripAccents(): Xóa dấu (vẫn còn xót "đ")
+ * 
+ * - firstNonEmpty, firstNonBlank: Trả về phần tử đầu tiên khác empty hoặc blank
+ * 
+ * - equals():
+ * - equalsIgnoreCase():
+ * 
+ * - indexOf():
+ * - indexOfAny():
+ * - lastIndexOf():
+ * 
+ * - contains():
+ * - containsAny():
+ * - containsIgnoreCase(): 
+ */
 public class StringUtilsApi {
 
 	public static void splitByCharacter_Type() {
@@ -65,22 +81,6 @@ public class StringUtilsApi {
 		System.out.println("SplitByCharacterType: " + Arrays.toString(splitByCharacterType));
 	}
 
-	/*-
-	 * - stripAccents(): Xóa dấu (vẫn còn xót "đ")
-	 * 
-	 * - firstNonEmpty, firstNonBlank: Trả về phần tử đầu tiên khác empty hoặc blank
-	 * 
-	 * - equals():
-	 * - equalsIgnoreCase():
-	 * 
-	 * - indexOf():
-	 * - indexOfAny():
-	 * - lastIndexOf():
-	 * 
-	 * - contains():
-	 * - containsAny():
-	 * - containsIgnoreCase(): 
-	 */
 	public static void method() {
 		/**
 		 * isAnyEmpty: Có ít nhất 1 phần tử là empty
