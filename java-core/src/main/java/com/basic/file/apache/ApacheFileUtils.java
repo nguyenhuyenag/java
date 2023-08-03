@@ -1,4 +1,4 @@
-package com.basic.file;
+package com.basic.file.apache;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ import org.apache.commons.io.FileUtils;
  * - writeLines(file, Collection<?> lines, boolean): Ghi 1 collection vào file
  * 
  */
-public class FileUtilsApache {
+public class ApacheFileUtils {
 
 	/**
 	 * Xóa toàn bộ nội dung trong thư mục (trừ chính nó) được chỉ định
