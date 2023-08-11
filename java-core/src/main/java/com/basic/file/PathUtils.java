@@ -47,14 +47,8 @@ public class PathUtils {
 	/**
 	 * Tạo thư mục
 	 */
-	public static boolean createDirectories(Path dir) {
-		try {
-			Files.createDirectories(dir);
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return false;
+	public static Path createDirectories(Path dir) throws IOException {
+		return Files.createDirectories(dir);
 	}
 
 	/**

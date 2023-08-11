@@ -158,11 +158,11 @@ public class FileService {
 			return false;
 		}
 		Path parent = path.getParent();
-		if (PathUtils.isNotExist(parent)) {
-			PathUtils.createDirectories(parent);
-		}
 		try {
-			// Files.createFile(p);
+			if (PathUtils.isNotExist(parent)) {
+				PathUtils.createDirectories(parent);
+			}
+			// Files.createFile(path);
 			return path.toFile().createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -172,7 +172,7 @@ public class FileService {
 
 	public static void fileAttributes() {
 		try {
-			Path file = Paths.get(PathUtils.PROJECT_DIR, "file/test.xml");
+			Path file = Paths.get(PathUtils.PROJECT_DIR, "file", "test.xml");
 			BasicFileAttributes attr = Files.readAttributes(file, BasicFileAttributes.class);
 			System.out.println("Create time: " + attr.creationTime());
 			System.out.println("Size: " + attr.size());
