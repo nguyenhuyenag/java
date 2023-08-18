@@ -58,7 +58,7 @@ import org.apache.commons.lang3.StringUtils;
  * - containsAny():
  * - containsIgnoreCase(): 
  */
-public class StringUtilsApi {
+public class ApacheStringUtils {
 
 	public static void splitByCharacter_Type() {
 		String input = "Hello123! wo1412rld";
