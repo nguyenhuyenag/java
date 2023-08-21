@@ -9,6 +9,7 @@ public class MethodUtils {
 		return clazz.getDeclaredMethods();
 	}
 
+	// Get all method in MethodClazz.class
 	public static void showAllNames() {
 		Method[] methods = methodOf(MethodClazz.class);
 		for (Method m : methods) {
