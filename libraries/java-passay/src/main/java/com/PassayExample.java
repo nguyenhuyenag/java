@@ -35,8 +35,13 @@ public class PassayExample {
 		// Rule 3.d: At least one special character
 		rules.add(new CharacterRule(EnglishCharacterData.Special, 1));
 
+		// Set rules
 		PasswordValidator validator = new PasswordValidator(rules);
-		PasswordData password = new PasswordData("Microsoft@123");
+		
+		PasswordData password = new PasswordData();
+		password.setPassword("Microsoft@123");
+		password.setPassword("1");
+		
 		RuleResult result = validator.validate(password);
 
 		if (result.isValid()) {
