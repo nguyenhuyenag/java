@@ -5,7 +5,6 @@ import org.passay.PasswordData;
 import org.passay.PasswordValidator;
 import org.passay.RuleResult;
 import org.passay.RuleResultDetail;
-import org.passay.RuleResultMetadata;
 
 public class BasicSample {
 
@@ -20,11 +19,6 @@ public class BasicSample {
 		System.out.println(ruleResultDetail.getErrorCode());
 		System.out.println(ruleResultDetail.getParameters().get("minimumLength"));
 		System.out.println(ruleResultDetail.getParameters().get("maximumLength"));
-
-		Integer lengthCount = validate //
-				.getMetadata() //
-				.getCounts() //
-				.get(RuleResultMetadata.CountCategory.Length);
 	}
 
 }

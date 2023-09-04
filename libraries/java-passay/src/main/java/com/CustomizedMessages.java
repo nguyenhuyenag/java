@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import org.passay.CharacterRule;
-import org.passay.EnglishCharacterData;
+import org.apache.commons.lang3.SystemUtils;
 import org.passay.LengthRule;
 import org.passay.MessageResolver;
 import org.passay.PasswordData;
@@ -16,7 +15,6 @@ import org.passay.PasswordValidator;
 import org.passay.PropertiesMessageResolver;
 import org.passay.Rule;
 import org.passay.RuleResult;
-import org.passay.WhitespaceRule;
 
 /*-
  * - File `messages.properties`
@@ -56,18 +54,18 @@ public class CustomizedMessages {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		List<Rule> rules = new ArrayList<>();
 		rules.add(new LengthRule(8, 16));
-		rules.add(new WhitespaceRule());
-		rules.add(new CharacterRule(EnglishCharacterData.UpperCase, 1));
-		rules.add(new CharacterRule(EnglishCharacterData.LowerCase, 1));
-		rules.add(new CharacterRule(EnglishCharacterData.Digit, 1));
-		rules.add(new CharacterRule(EnglishCharacterData.Special, 1));
+//		rules.add(new WhitespaceRule());
+//		rules.add(new CharacterRule(EnglishCharacterData.UpperCase, 1));
+//		rules.add(new CharacterRule(EnglishCharacterData.LowerCase, 1));
+//		rules.add(new CharacterRule(EnglishCharacterData.Digit, 1));
+//		rules.add(new CharacterRule(EnglishCharacterData.Special, 1));
 
 		Properties props = new Properties();
-		props.load(new FileInputStream("E:/Test/messages.properties"));
+		props.load(new FileInputStream(SystemUtils.getUserDir() + "/resources/messages.properties"));
 		MessageResolver resolver = new PropertiesMessageResolver(props);
 
 		PasswordValidator validator = new PasswordValidator(resolver, rules);
-		PasswordData password = new PasswordData("microsoft@123");
+		PasswordData password = new PasswordData("m");
 		RuleResult result = validator.validate(password);
 		if (result.isValid()) {
 			System.out.println("Password validated.");
