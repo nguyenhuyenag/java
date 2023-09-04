@@ -17,8 +17,9 @@ public class AllowedCharacter {
 	}
 
 	public static void example_1() {
-		// Rule: Password should contains only a, b and c
+		// Password should contains only a, b and c
 		Rule rule1 = new AllowedCharacterRule(new char[] { 'a', 'b', 'c' });
+
 		// 8 and 16 characters
 		Rule rule2 = new LengthRule(8, 16);
 
