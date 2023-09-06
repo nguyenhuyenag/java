@@ -14,8 +14,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class User {
 
-	private int age;
 	private String name;
+	private int age;
 
 	public boolean hasFieldNull() {
 		return Stream.of(name, age).anyMatch(Objects::isNull);

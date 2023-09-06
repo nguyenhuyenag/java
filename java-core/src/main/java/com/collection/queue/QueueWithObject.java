@@ -54,7 +54,7 @@ public class QueueWithObject {
 		Comparator<User> cpr = Comparator.comparing(User::getName); // auto sort by name
 		PriorityQueue<User> queue = new PriorityQueue<>(cpr);
 		for (int i = 1; i <= 8; i++) {
-			User u = new User(RandomUtils.getInt(1, 9), RandomUtils.getAlphabet().toUpperCase());
+			User u = new User(RandomUtils.getAlphabet().toUpperCase(), RandomUtils.getInt(1, 9));
 			queue.offer(u);
 			System.out.println(u + " => " + queue);
 			TimeUnit.SECONDS.sleep(1);
