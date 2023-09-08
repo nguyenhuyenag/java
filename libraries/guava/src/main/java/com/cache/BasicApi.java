@@ -12,9 +12,13 @@ import com.google.common.cache.LoadingCache;
  * - get(key): Trả về giá trị tương ứng với khóa `key`. Hoặc nếu `key` không tồn
  * tại và không có lỗi trong quá trình tải dữ liệu thì: key(k) = put(k, load(k))
  * 
- * - getUnchecked(): Tương tự get(k) nhưng sẽ bỏ qua lỗi
+ * - getUnchecked(k): Tương tự get(k) nhưng sẽ bỏ qua lỗi
+ * 
+ * - getIfPresent(k): Trả về giá trị nếu key tồn tại, nếu không trả về null 
  * 
  * - getAll():
+ * 
+ * - invalidate(k): Xóa entry theo key
  * 
  * - maximumSize(n): Kích thước tối đa của cache. Khi dữ liệu thêm vào vượt quá n thì 
  * 					 sẽ dùng các cách sau đển quản lý
@@ -50,6 +54,11 @@ public class BasicApi {
 
 		System.out.println("getIfPresent: " + cache.getIfPresent("first"));
 		System.out.println("getIfPresent: " + cache.getIfPresent("forth"));
+		
+		cache.invalidate("second");
+		System.out.println("Current cache: " + cache.asMap());
+		
+		cache.invalidateAll();
 	}
 
 }
