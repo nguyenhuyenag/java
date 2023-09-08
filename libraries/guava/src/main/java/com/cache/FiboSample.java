@@ -6,7 +6,7 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
-public class BasicSample {
+public class FiboSample {
 
 	private static LoadingCache<Integer, Long> fibCache = CacheBuilder.newBuilder()
 			.build(CacheLoader.from(n -> calculateFibonacciWithCache(n)));
