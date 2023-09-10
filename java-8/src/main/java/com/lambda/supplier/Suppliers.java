@@ -22,9 +22,9 @@ public class Suppliers {
 	 * Dùng Supplier để tạo một đối tượng ngẫu nhiên của lớp Integer
 	 */
 	public static void main(String[] args) {
+		// Hàm nextInt() trả về kiểu `int` nên ta khai báo là Supplier<Integer>
 		Supplier<Integer> randomInt = () -> ThreadLocalRandom.current().nextInt();
-		int randomNumber = randomInt.get();
-		System.out.println(randomNumber);
+		System.out.println(randomInt.get());
 	}
 
 }

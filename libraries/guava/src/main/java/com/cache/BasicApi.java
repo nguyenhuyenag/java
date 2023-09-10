@@ -20,6 +20,8 @@ import com.google.common.cache.LoadingCache;
  * 
  * - invalidate(k): Xóa entry theo key
  * 
+ * - invalidateAll(k): Xóa toàn bộ cache
+ * 
  * - maximumSize(n): Kích thước tối đa của cache. Khi dữ liệu thêm vào vượt quá n thì 
  * 					 sẽ dùng các cách sau đển quản lý
  * 
@@ -33,14 +35,29 @@ import com.google.common.cache.LoadingCache;
  */
 public class BasicApi {
 
+	/**
+	 * Hàm load cơ bản
+	 */
+	public static CacheLoader<String, String> basicLoader() {
+		return new CacheLoader<String, String>() {
+			@Override
+			public String load(String key) {
+				return key.toUpperCase();
+			}
+		};
+	}
+
+	/**
+	 * Hàm load sử dụng lambda
+	 */
+	public static CacheLoader<String, String> basic2Loader() {
+		return CacheLoader.from((String k) -> k.toString());
+	}
+
 	private static LoadingCache<String, String> cache = CacheBuilder.newBuilder() //
 			.maximumSize(3) //
-			.build(new CacheLoader<String, String>() {
-				@Override
-				public String load(String key) {
-					return key.toUpperCase();
-				}
-			});
+			// .build(basicLoader());
+			.build(basic2Loader());
 
 	public static void main(String[] args) throws ExecutionException {
 		String[] arr = { "first", "second", "third" };
@@ -54,11 +71,12 @@ public class BasicApi {
 
 		System.out.println("getIfPresent: " + cache.getIfPresent("first"));
 		System.out.println("getIfPresent: " + cache.getIfPresent("forth"));
-		
+
 		cache.invalidate("second");
 		System.out.println("Current cache: " + cache.asMap());
-		
+
 		cache.invalidateAll();
+		System.out.println("Current cache: " + cache.asMap());
 	}
 
 }

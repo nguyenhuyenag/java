@@ -6,7 +6,8 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
 /**
- * Expire after last access: Cache sẽ tồn tại N phút (giây,tháng,...) kể từ lần truy cập cuối cùng
+ * - expireAfterAccess(): Cache sẽ tồn tại N phút (hoặc giây, tháng,...) kể
+ * từ lần truy cập cuối cùng
  */
 public class ExpireAfterAccess {
 
