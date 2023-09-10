@@ -6,7 +6,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 
 /**
- * - expireAfterAccess(): Cache sẽ tồn tại N phút (hoặc giây, tháng,...) kể
+ * - expireAfterAccess(): Cache sẽ bị xóa sau một khoảng thời gian nhất định kể
  * từ lần truy cập cuối cùng
  */
 public class ExpireAfterAccess {
@@ -28,7 +28,7 @@ public class ExpireAfterAccess {
 
 		// Truy cập lại giá trị từ cache
 		String valueAfterExpiration = cache.getIfPresent("key1");
-		System.out.println("Value 1 after expiration: " + valueAfterExpiration); // In ra: "Value 1 after expiration:
+		System.out.println("Value 1 after expiration: " + valueAfterExpiration);
 	}
 
 }
