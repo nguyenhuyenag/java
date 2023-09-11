@@ -1,4 +1,4 @@
-package com.basic.io;
+package com.basic.io.file;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -7,6 +7,8 @@ import java.nio.channels.FileChannel;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
+
+import com.basic.io.PathUtils;
 
 public class ReadRangeFile {
 

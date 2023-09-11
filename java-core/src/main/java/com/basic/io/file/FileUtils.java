@@ -1,7 +1,10 @@
-package com.basic.io;
+package com.basic.io.file;
 
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,6 +20,8 @@ import java.util.stream.Stream;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import com.basic.io.PathUtils;
 
 import common.util.Base64Utils;
 import common.util.Predicates;
@@ -545,6 +550,15 @@ public class FileUtils {
 		} catch (IOException e) {
 			System.err.format("I/O error when copying file");
 		}
+	}
+	
+	@SuppressWarnings({ "unused", "resource" })
+	public static void fileTo() throws IOException {
+		// File -> InputStream
+		File initialFile = new File("src/main/resources/sample.txt");
+		InputStream targetStream = new FileInputStream(initialFile);
+		InputStream targetStream2 = new DataInputStream(new FileInputStream(initialFile));
+		InputStream targetStream3 = org.apache.commons.io.FileUtils.openInputStream(initialFile);
 	}
 
 	public static void main(String[] args) {

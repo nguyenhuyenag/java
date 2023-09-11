@@ -1,4 +1,4 @@
-package com.basic.io;
+package com.basic.io.file;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Scanner;
 
 import javax.swing.filechooser.FileSystemView;
+
+import com.basic.io.PathUtils;
 
 public class FileService {
 
