@@ -10,11 +10,11 @@ import com.google.common.cache.LoadingCache;
  * - put(k, v): Thêm dữ liệu vào cache
  * 
  * - get(key): Trả về giá trị tương ứng với khóa `key`. Hoặc nếu `key` không tồn
- * tại và không có lỗi trong quá trình tải dữ liệu thì: key(k) = put(k, load(k))
+ * 			   tại và không có lỗi trong quá trình tải dữ liệu thì: key(k) = put(k, load(k))
  * 
  * - getUnchecked(k): Tương tự get(k) nhưng sẽ bỏ qua lỗi
  * 
- * - getIfPresent(k): Trả về giá trị nếu key tồn tại, nếu không trả về null 
+ * - getIfPresent(k): Trả về giá trị nếu key tồn tại, nếu không trả về `null` 
  * 
  * - getAll():
  * 
@@ -25,13 +25,16 @@ import com.google.common.cache.LoadingCache;
  * - maximumSize(n): Kích thước tối đa của cache. Khi dữ liệu thêm vào vượt quá n thì 
  * 					 sẽ dùng các cách sau đển quản lý
  * 
- * 		+ LRU (Least Recently Used): Mục cũ nhất (ít sử dụng nhất) sẽ bị loại bỏ trước.
+ * 		+ LRU (Least Recently Used): Mục cũ nhất (ít sử dụng nhất) sẽ bị loại bỏ trước
  * 
- * 		+ LFU (Least Frequently Used): Mục ít sử dụng nhất sẽ bị loại bỏ trước.
+ * 		+ LFU (Least Frequently Used): Mục ít sử dụng nhất sẽ bị loại bỏ trước
  * 
- * 		+ FIFO (First In, First Out): Mục đầu tiên được thêm vào sẽ bị loại bỏ trước.
+ * 		+ FIFO (First In, First Out): Mục đầu tiên được thêm vào sẽ bị loại bỏ trước
  * 
  * 		+ Weighted Size: Mục có trọng lượng lớn nhất (nếu bạn đã cấu hình weigher) sẽ bị loại bỏ trước
+ * 
+ * - Cache là đồng bộ (synchronized), các hoạt động truy cập cache (read/write) được bảo vệ bằng khóa (lock) 
+ *   để đảm bảo tính nhất quán trong môi trường đa luồng
  */
 public class BasicApi {
 

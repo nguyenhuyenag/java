@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Base64;
 
-import com.basic.file.FileUtils;
+import com.basic.io.FileUtils;
 
 public class Base64Utils {
 

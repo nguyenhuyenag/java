@@ -1,4 +1,4 @@
-package com.collection.multimap;
+package com.collection.map;
 
 import java.util.Collection;
 
@@ -6,7 +6,7 @@ import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
 
 /**
- * - How to Store Duplicate Keys in a Map in Java?
+ * - How to store duplicate keys in a Map in Java?
  */
 public class MultiMap {
 
