@@ -49,16 +49,6 @@ public class StringApi {
 	}
 
 	/**
-	 * Chuyển mảng thành String
-	 */
-	public static void arrayToString() {
-		String[] arr = { "Java", "C++", "C#", "Python" };
-		System.out.println(Arrays.toString(arr));
-		System.out.println(String.join(" ", arr));
-		System.out.println(StringUtils.join(arr, " "));
-	}
-
-	/**
 	 * So sánh chuỗi
 	 */
 	public static void stringComparator() {

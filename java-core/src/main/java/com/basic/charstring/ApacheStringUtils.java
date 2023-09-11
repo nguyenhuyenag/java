@@ -64,8 +64,7 @@ public class ApacheStringUtils {
 		String input = "Hello123! wo1412rld";
 
 		// Không tính khoảng trắng
-		// String regex =
-		// "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=\\W)(?=\\w)|(?<=\\w)(?=\\W)";
+		// String regex = "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=\\W)(?=\\w)|(?<=\\w)(?=\\W)";
 
 		// Kể cả khoảng trắng
 		String regex = "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=\\W)(?=\\w)|(?<=\\w)(?=\\W)|(?<=\\s)(?=\\S)|(?<=\\S)(?=\\s)";
