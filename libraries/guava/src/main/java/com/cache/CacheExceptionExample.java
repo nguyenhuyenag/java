@@ -13,13 +13,11 @@ public class CacheExceptionExample {
 
 	public static void ex1() throws ExecutionException {
 		try {
-			// Trường hợp 1: Dữ liệu không tồn tại trong cache và CacheLoader ném ra ngoại
-			// lệ
+			// Trường hợp 1: Dữ liệu không tồn tại trong cache và CacheLoader ném ra ngoại lệ
 			String value = cache.get("key1", () -> {
 				throw new RuntimeException("Something went wrong!");
 			});
 		} catch (UncheckedExecutionException e) {
-			// Xử lý ngoại lệ
 			Throwable cause = e.getCause();
 			System.err.println("Error: " + cause.getMessage()); // In ra thông báo lỗi
 		}
