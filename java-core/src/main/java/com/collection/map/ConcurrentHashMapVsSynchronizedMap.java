@@ -10,15 +10,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * - Tạo class ConcurrentHashMapVsSynchronizedHashMap.java
- * 
- * - Tạo object HashTable, SynchronizedMap và ConcurrentHashMap
+ * - Tạo HashTable, SynchronizedMap và ConcurrentHashMap
  * 
  * - Thêm mới và truy xuất 1 triệu entries với Map
  * 
  * - Đo lường thời gian bắt đầu và kết thúc => milliseconds
  * 
- * - Sử dụng ExecutorService để chạy 10 luồng(threads) song song
+ * - Sử dụng ExecutorService để chạy 10 threads song song
  */
 @SuppressWarnings("unused")
 public class ConcurrentHashMapVsSynchronizedMap {
@@ -30,16 +28,16 @@ public class ConcurrentHashMapVsSynchronizedMap {
 	public static Map<String, Integer> concurrentHashMap = null;
 
 	public static void main(String[] args) throws InterruptedException {
-		// Test with Hashtable Object
-		hashTable = new Hashtable<String, Integer>();
+		// Test with Hashtable
+		hashTable = new Hashtable<>();
 		performTest(hashTable);
 
-		// Test with synchronizedMap Object
-		synchronizedMap = Collections.synchronizedMap(new HashMap<String, Integer>());
+		// Test with synchronizedMap
+		synchronizedMap = Collections.synchronizedMap(new HashMap<>());
 		performTest(synchronizedMap);
 
-		// Test with ConcurrentHashMap Object
-		concurrentHashMap = new ConcurrentHashMap<String, Integer>();
+		// Test with ConcurrentHashMap
+		concurrentHashMap = new ConcurrentHashMap<>();
 		performTest(concurrentHashMap);
 	}
 
@@ -53,11 +51,9 @@ public class ConcurrentHashMapVsSynchronizedMap {
 				executorService.execute(new Runnable() {
 					@Override
 					public void run() {
-						for (int i = 0; i < 1000000; i++) {
+						for (int i = 0; i < 1_000_000; i++) {
 							Integer randomNumber = (int) Math.ceil(Math.random() * 100000);
-							// Retrieve value. Only for test
 							Integer value = testMap.get(String.valueOf(randomNumber));
-							// Put value
 							testMap.put(String.valueOf(randomNumber), randomNumber);
 						}
 					}

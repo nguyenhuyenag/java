@@ -54,7 +54,6 @@ public class MapApi {
 		scores.computeIfAbsent("C", k -> 22);
 		scores.computeIfAbsent("D", k -> 33);
 		System.out.println("ComputeIfAbsent: " + scores);
-		
 	}
 
 	public static void main(String[] args) {

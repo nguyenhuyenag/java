@@ -1,11 +1,9 @@
-package com.collection;
+package com.collection.map;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 
 /**
  * Set + Function = Map
@@ -13,18 +11,18 @@ import com.google.common.collect.ImmutableMap;
 public class SetFunctionMap {
 
 	public static void main(String[] args) {
-		List<String> keys = ImmutableList.of("one", "two", "three");
+		List<String> keys = List.of("one", "two", "three");
 		Function<String, Integer> valueFunction = key -> key.length();
 		Map<String, Integer> keyToLengthMap = buildMap(keys, valueFunction);
 		System.out.println(keyToLengthMap);
 	}
 
 	private static <K, V> Map<K, V> buildMap(Iterable<K> keys, Function<? super K, V> valueFunction) {
-		ImmutableMap.Builder<K, V> builder = ImmutableMap.builder();
+		Map<K, V> builder = new HashMap<>();
 		for (K key : keys) {
 			builder.put(key, valueFunction.apply(key));
 		}
-		return builder.build();
+		return builder;
 	}
 
 }
