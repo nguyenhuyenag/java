@@ -18,14 +18,15 @@
 		
 	- Shows outline					- Ctrl + O
 	
-	- Shows type hierarchy			- Ctrl + T	
+	- Shows type hierarchy			- Ctrl + T (xem 1 interface được implement bởi những class nào)
 	
 	- Run current file				- Ctrl + F11
 	
 	- Find block '{...}'			- Ctrl + Shift + P
 	
-	- Find references				- Ctrl + Shift + G
-									  Click to method name -> Ctrl + Shift + G
+	- Find references				- Ctrl + Shift + G (những nơi gọi đến hàm này,...)
+								
+								  Click to method name -> Ctrl + Shift + G
 	
 	- Open quick refactor menu		- Alt + Shift + T
 	
