@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -28,7 +30,7 @@ public class JsonUtils {
 	private JsonUtils() {
 		MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
-
+	
 	/**
 	 * Object to JSON String
 	 * 
@@ -56,6 +58,14 @@ public class JsonUtils {
 		GsonBuilder builder = new GsonBuilder();
 		Gson gson = builder.enableComplexMapKeySerialization().create();
 		return gson.fromJson(jsonString, type);
+	}
+	
+	// GitHubUser resource = RetrieveUtil.retrieveResourceFromResponse(response, GitHubUser.class);
+	public static <T> T retrieveResourceFromResponse(HttpResponse response, Class<T> clazz) throws IOException {
+		String jsonFromResponse = EntityUtils.toString(response.getEntity());
+		ObjectMapper mapper = new ObjectMapper() //
+				.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		return mapper.readValue(jsonFromResponse, clazz);
 	}
 
 	public static com.fasterxml.jackson.databind.JsonNode toJsonNode(String jsonString) {
