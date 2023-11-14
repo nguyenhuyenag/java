@@ -22,8 +22,8 @@ import com.google.zxing.common.BitMatrix;
 public class WiFiQRCodeGenerator {
 
 	public static void main(String[] args) {
-		String ssid = "YourSSID";
-		String password = "YourPassword";
+		String ssid 		= "YourSSID";
+		String password 	= "YourPassword";
 		String securityType = "WPA"; // Thay đổi loại bảo mật nếu cần (WPA, WEP, Open)
 
 		String filePath = SystemUtils.USER_DIR + "/output/WiFi_QRCode.png";
@@ -52,4 +52,5 @@ public class WiFiQRCodeGenerator {
 		Path path = FileSystems.getDefault().getPath(filePath);
 		MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
 	}
+
 }
