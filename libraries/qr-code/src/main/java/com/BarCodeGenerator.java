@@ -17,20 +17,17 @@ import com.google.zxing.common.BitMatrix;
 
 public class BarCodeGenerator {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws WriterException, IOException {
 		String barcodeData = "123456789012";
 		String filePath = SystemUtils.USER_DIR + "/output/EAN13_Barcode.png";
 
-		try {
-			generateEAN13Barcode(barcodeData, filePath);
-			// generateEAN13Barcode2(barcodeData, filePath);
-			System.out.println("Mã vạch đã được tạo thành công.");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		generateEAN13Barcode(barcodeData, filePath);
+		// generateEAN13Barcode2(barcodeData, filePath);
+		System.out.println("Mã vạch đã được tạo thành công.");
 	}
-	
-	protected static void generateEAN13Barcode(String barcodeData, String filePath) throws WriterException, IOException {
+
+	protected static void generateEAN13Barcode(String barcodeData, String filePath)
+			throws WriterException, IOException {
 		int width = 300;
 		int height = 150;
 		BitMatrix bitMatrix = new MultiFormatWriter().encode(barcodeData, BarcodeFormat.EAN_13, width, height);
@@ -53,11 +50,7 @@ public class BarCodeGenerator {
 		}
 
 		File file = new File(filePath);
-		try {
-			ImageIO.write(bufferedImage, "png", file);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		ImageIO.write(bufferedImage, "png", file);
 	}
 
 }
