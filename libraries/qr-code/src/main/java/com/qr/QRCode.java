@@ -23,8 +23,7 @@ public class QRCode {
 	    BitMatrix matrix = qrCodeWriter.encode(data, BarcodeFormat.QR_CODE, width, height);
 
 	    // Write to file imaged
-	    String outputFile = SystemUtils.USER_DIR +  "/output/qr_code.png";
-	    Path path = Paths.get(outputFile);
+	    Path path = Paths.get(SystemUtils.USER_DIR, "output", "qr_code.png");
 	    MatrixToImageWriter.writeToPath(matrix, "PNG", path);
 	    
 	    System.out.println("OK");

@@ -29,13 +29,13 @@ public class VietQR {
 		httpPost.setHeader("x-api-key", "e97a6eb8-eed5-471d-8e63-ab4f396b7862");
 
 		Map<String, String> params = Map.of( //
-				"acqId", "970424", //
-				"amount", "123456", // Tong so tien thanh toan
-				"addInfo", "Thong tin chuyen khoan", // Thong tin chuyen khoan
-				"format", "text", //
-				"template", "compact2", //
-				"accountNo", "113366668888", //
-				"accountName", "QUY VAC XIN PHONG CHONG COVID" //
+			"acqId", "970424", //
+			"amount", "123456", // Tong so tien thanh toan
+			"addInfo", "Thong tin chuyen khoan", // Thong tin chuyen khoan
+			"format", "text", //
+			"template", "compact2", //
+			"accountNo", "113366668888", //
+			"accountName", "QUY VAC XIN PHONG CHONG COVID" //
 		);
 
 		String jsonPayload = new ObjectMapper().writeValueAsString(params);
