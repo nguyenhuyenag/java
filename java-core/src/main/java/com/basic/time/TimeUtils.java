@@ -18,15 +18,15 @@ public class TimeUtils {
 
 	}
 
-	public static final long ONE_SECONDS = Duration.ofSeconds(1).toMillis();
-	public static final long ONE_MINUTES = TimeUnit.MINUTES.toMillis(1);
-	public static final long ONE_HOURS = 60 * ONE_MINUTES;
-	public static final long ONE_DAYS = 24 * ONE_HOURS;
-	public static final long ONE_MONTHS = 30 * ONE_DAYS;
+	public static final long ONE_SECONDS 		= Duration.ofSeconds(1).toMillis();
+	public static final long ONE_MINUTES 		= TimeUnit.MINUTES.toMillis(1);
+	public static final long ONE_HOURS 			= 60 * ONE_MINUTES;
+	public static final long ONE_DAYS 			= 24 * ONE_HOURS;
+	public static final long ONE_MONTHS 		= 30 * ONE_DAYS;
 
-	public static final String HHMMSS = "HH:mm:ss";
-	public static final String YYYYMMDD = "yyyy-MM-dd";
-	public static final String YYYYMMDDHHMMSS = "yyyy-MM-dd HH:mm:ss";
+	public static final String HHMMSS 			= "HH:mm:ss";
+	public static final String YYYYMMDD 		= "yyyy-MM-dd";
+	public static final String YYYYMMDDHHMMSS 	= "yyyy-MM-dd HH:mm:ss";
 
 	/**
 	 * Get current date by pattern yyyy-MM-dd HH:mm:ss
