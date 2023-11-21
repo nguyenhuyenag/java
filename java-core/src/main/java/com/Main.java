@@ -1,21 +1,23 @@
 package com;
 
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.lang3.time.StopWatch;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.stream.Stream;
 
 public class Main {
 
-	public static void main(String[] args) {
-		final StopWatch watch = new StopWatch();
-		watch.start();
-		try {
-			TimeUnit.SECONDS.sleep(2);
-		} catch (final InterruptedException ex) {
+	public static void main(String[] args) throws IOException {
+		int depth = Integer.MAX_VALUE;
+		String folderPath = "";
+		try (Stream<Path> paths = Files.find(
+		    Path.of(folderPath), 
+		    depth, 
+		    (path, attr) -> {
+		      return attr.isRegularFile() && path.toString().endsWith(".pdf");  
+		    })) {
+		  paths.forEach(System.out::println);
 		}
-		System.out.println(watch.getTime(TimeUnit.SECONDS));
-		System.out.println(watch.getTime());
-		watch.stop();
 	}
 
 }
