@@ -38,7 +38,7 @@ public class TryWithResources {
 		}
 	}
 
-	public void newTryWithResource() throws FileNotFoundException {
+	public static void newTryWithResource() throws FileNotFoundException {
 		final Scanner scanner = new Scanner(new File("testRead.txt"));
 		PrintWriter writer = new PrintWriter(new File("testWrite.txt"));
 		try (scanner; writer) {
@@ -49,6 +49,7 @@ public class TryWithResources {
 	public static void main(String[] args) throws IOException {
 		// beforeJava9();
 		formJava9();
+		newTryWithResource();
 	}
 
 }

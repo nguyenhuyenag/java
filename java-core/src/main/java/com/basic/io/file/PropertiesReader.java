@@ -54,8 +54,8 @@ public class PropertiesReader {
 		if (!resource.exists()) {
 			LOG.info("File '{}' not found!", fileName);
 		} else {
-			// try (InputStream inputStream = resource.getInputStream()) { // (1)
-			try (InputStream inputStream = new FileInputStream(resource)) { // (2)
+			// try (InputStream inputStream = resource.getInputStream()) { 		//	(1)
+			try (InputStream inputStream = new FileInputStream(resource)) { 	// 	(2)
 				Properties properties = new Properties();
 				properties.load(inputStream);
 				properties.forEach((key, value) -> fileContent.put((String) key, value));
