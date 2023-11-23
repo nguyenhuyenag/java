@@ -92,9 +92,13 @@ public class JsonUtils {
 
 	/**
 	 * JSON to List Object
+	 * 
+	 * List<Employee> employeeList = objectMapper.readValue(file, new TypeReference<>(){});
+	 * 
+	 * Map<String, Object> employee = objectMapper.readValue(file, new TypeReference<>(){});
 	 */
 	public static <T> List<T> toList(String jsonStringArray, Class<T> classT) {
-		// return MAPPER.readValue(json, new TypeReference<List<T>>() {
+		// return MAPPER.readValue(json, new TypeReference<List<T>>(){})
 		List<T> list = new ArrayList<>();
 		org.json.JSONArray jsonArray = new JSONArray(jsonStringArray);
 		for (Object json : jsonArray) {
