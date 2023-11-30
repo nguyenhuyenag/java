@@ -1,10 +1,10 @@
-package com.collection.list;
+package com.collection.join;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JoinList {
+public class ListJoin {
 
 	/*-
 	 * - delimiter	: chuỗi ký tự phân tách các phần tử

@@ -5,7 +5,13 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-public class ArrayCollection {
+public class ArrayApi {
+	
+	private static String print(String[]... args) {
+		return Arrays.stream(args) //
+				.map(Arrays::deepToString) //
+				.collect(Collectors.joining(" + "));
+	}
 
 	// So sánh mảng
 	public static void compareArray() {
@@ -35,12 +41,6 @@ public class ArrayCollection {
 		System.out.println(Arrays.toString(copiedArray));
 	}
 
-	private static String print(String[]... args) {
-		return Arrays.stream(args) //
-				.map(Arrays::deepToString) //
-				.collect(Collectors.joining(" + "));
-	}
-
 	// Gộp mảng
 	public static void joinArray() {
 		String[] arr1 = { "a", "b", "c" };
@@ -49,7 +49,7 @@ public class ArrayCollection {
 		System.out.println(print(arr1, arr2) + " = " + print(join));
 	}
 
-	public static void ArraysApi() {
+	public static void arraysApi() {
 		int[] arr = new int[5]; // {0, 0, 0, 0, 0}
 		
 		// fill
@@ -79,7 +79,7 @@ public class ArrayCollection {
 	}
 
 	public static void main(String[] args) {
-		ArraysApi();
+		arraysApi();
 		// joinArray();
 		// copyArray();
 		// compareArray();

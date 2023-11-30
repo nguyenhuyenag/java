@@ -1,10 +1,10 @@
-package com.collection.list;
+package com.collection.join;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ListToString {
+public class ListJoinString {
 
 	public static String join1(List<String> list, String delimiter) {
 		StringBuilder sb = new StringBuilder();
@@ -20,11 +20,11 @@ public class ListToString {
 	}
 
 	public static String join2(List<String> list, String delimiter) {
-		return list.stream().collect(Collectors.joining(String.valueOf(delimiter)));
+		return list.stream().collect(Collectors.joining(delimiter));
 	}
 
 	public static String join3(List<String> list, String delimiter) {
-		return String.join(String.valueOf(delimiter), list);
+		return String.join(delimiter, list);
 	}
 
 	public static void main(String[] args) {

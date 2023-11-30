@@ -12,6 +12,7 @@ public class InitList {
 		List<Integer> list = IntStream.rangeClosed(1, 10) //
 				.boxed() //
 				.collect(Collectors.toList());
+		
 		while (list.size() > 0) {
 			int i = ThreadLocalRandom.current().nextInt(0, (list.size() - 1) + 1);
 			System.out.println(list.get(i));
