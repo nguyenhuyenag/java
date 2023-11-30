@@ -33,18 +33,6 @@ public class Different {
 		return Stream.concat(listOfAnotInB.stream(), listOfBnotInA.stream()).collect(Collectors.toList());
 	}
 	
-	public List<Integer> xor2(final List<Integer> collA, final List<Integer> collB) {
-		List<Integer> collC = new ArrayList<>();
-		collC.addAll(collA);
-		collC.addAll(collB);
-		return collC.stream().filter(t -> {
-			if (collA.contains(t) || collB.contains(t)) {
-				return false;
-			}
-			return true;
-		}).collect(Collectors.toList());
-	}
-
 	public static void test() {
 		List<Integer> listOne = Arrays.asList(1, 2, 3, 4, 5, 6);
 		List<Integer> listTwo = Arrays.asList(3, 4, 5, 6, 7, 8, 9);
