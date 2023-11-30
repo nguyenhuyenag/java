@@ -6,8 +6,14 @@ public class ArrayJoin {
 
 	public static void main(String[] args) {
 		String[] arr = { "a", "b", "c", "d" };
-		String join = StringUtils.join(arr, "-");
-		System.out.println(join);
+		
+		// Java 8
+		String joined1 = String.join(",", arr);
+		System.out.println(joined1);
+		
+		// Apache
+		String joined2 = StringUtils.join(arr, "-");
+		System.out.println(joined2);
 	}
 
 }

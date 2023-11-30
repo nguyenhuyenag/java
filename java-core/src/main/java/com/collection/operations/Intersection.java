@@ -1,33 +1,36 @@
-package com.collection;
+package com.collection.operations;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.CollectionUtils;
 
 /*-
+ * AND - Intersection of Two Collections
+ * 
+ * Collection		Elements
+ * 	   A			[9, 8, 5, 4, 7]
+ * 	   B			[1, 3, 99, 4, 7]
+ * 	A AND B			[4, 7]
+ */
+
+/*-
  * - Tìm giao của 2 Collection
  * 
- * 0 có trong listA, có trong listB => giữa lại
- * 2 có trong listA, có trong listB => giữ lại
- * 4 có trong listA, không có trong listB => xóa
+ * 0 có trong listA, có trong listB 		=> giữa lại
+ * 2 có trong listA, có trong listB 		=> giữ lại
+ * 4 có trong listA, không có trong listB 	=> xóa
  * 
  * Kết quả = [0, 2]
  */
 public class Intersection {
 
-	static List<Integer> listA = new ArrayList<>(Arrays.asList(0, 2, 4));
-	static List<Integer> listB = new ArrayList<>(Arrays.asList(0, 1, 2, 3));
+	public static List<Integer> listA = new ArrayList<>(Arrays.asList(0, 2, 4));
+	public static List<Integer> listB = new ArrayList<>(Arrays.asList(0, 1, 2, 3));
 
-	/*-
-	 * Xóa những phần tử của A không có trong B
-	 *	0 có trong listA, có trong listB => giữa lại
-	 * 	2 có trong listA, có trong listB => giữ lại
-	 * 	4 có trong listA, không có trong listB => xóa
-	 * 	=> kết quả là [0, 2]
-	 */
 	public static void useRetainAll() {
 		listA.retainAll(listB);
 	}
@@ -51,6 +54,14 @@ public class Intersection {
 	// apache commons
 	public static void useApacheCommons() {
 		CollectionUtils.intersection(listA, listB);
+	}
+
+	public List<Integer> intersection(final List<Integer> collA, final List<Integer> collB) {
+		List<Integer> intersects = collA.stream().filter(collB::contains).collect(Collectors.toList());
+		if (!intersects.isEmpty()) {
+			return intersects;
+		}
+		return Collections.emptyList();
 	}
 
 	public static void main(String[] args) {
