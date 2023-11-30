@@ -59,4 +59,5 @@ public class LoopMap {
 		System.out.println(Collections.min(map.keySet()));
 		System.out.println(Collections.max(map.values()));
 	}
+	
 }
