@@ -1,8 +1,8 @@
-package com.collection.join;
+package com.collection.array;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class ArrayJoin {
+public class ArrayToString {
 
 	public static void main(String[] args) {
 		String[] arr = { "a", "b", "c", "d" };

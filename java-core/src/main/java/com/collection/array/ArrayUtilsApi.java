@@ -123,15 +123,19 @@ public class ArrayUtilsApi {
 		 * - removeAllOccurences(int[], x): Remove all x values in array
 		 */
 		clone = ArrayUtils.clone(intArr);
+		
 		// remove
 		ArrayUtils.remove(clone, 4);
 		show("RemoveByIndex", intArr, clone);
+		
 		// removeElement
 		ArrayUtils.removeElement(clone, 1);
 		System.out.println("RemoveByValue: ");
+		
 		// removeAll
 		ArrayUtils.removeAll(clone, 1);
 		System.out.println("RemoveAll: ");
+		
 		// removeAllOccurences
 		clone = ArrayUtils.clone(intArr);
 		result = removeAllOccurences(clone, 1);

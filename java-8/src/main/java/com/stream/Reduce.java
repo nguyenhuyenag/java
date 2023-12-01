@@ -3,17 +3,18 @@ package com.stream;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * T result = stream.reduce(T identity, BinaryOperator<T> accumulator);
+/*-
+ * 	
+ * 		T result = stream.reduce(T identity, BinaryOperator<T> accumulator);
  * 
  * Với:
  * 
- * - identity -> Giá trị khởi tạo của phép tính tổng hợp. Nó là giá ban đầu của
- * reduction operation. Mặc khác nó cũng là giá trị mặc định khi Stream rỗng.
+ * + identity 	 -> Giá trị khởi tạo của phép tính tổng hợp. Nó là giá ban đầu của
+ * 				 	reduction operation. Mặc khác nó cũng là giá trị mặc định khi Stream rỗng.
  * 
- * - accumulator -> Hàm tích luỹ, được thực hiện trên từng phần tử của Stream.
- * Hàm này có kiểu dữ liệu là BiFunction<T, ? super U, T> với T là kiểu dữ liệu
- * của phần tử trong Stream, và U là kiểu dữ liệu của identity.
+ * + accumulator -> Hàm tích luỹ, được thực hiện trên từng phần tử của Stream.
+ * 					Hàm này có kiểu dữ liệu là BiFunction<T, ? super U, T> với T là kiểu dữ liệu
+ * 					của phần tử trong Stream, và U là kiểu dữ liệu của identity.
  */
 public class Reduce {
 

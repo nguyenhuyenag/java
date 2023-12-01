@@ -17,21 +17,21 @@ public class StreamMatch {
 	 * anyMatch -> TRUE nếu có ít nhất 1 phần tử thỏa điều kiện
 	 */
 	public static boolean anyMatch(int[] arr, int key) {
-		return IntStream.of(arr).anyMatch(x -> x == key);
+		return IntStream.of(arr).anyMatch(t -> t == key);
 	}
 
 	/**
 	 * allMatch -> TRUE nếu tất cả các phần tử thỏa điều kiện
 	 */
 	public static boolean allMatch(int[] arr, int key) {
-		return IntStream.of(arr).allMatch(x -> x == key);
+		return IntStream.of(arr).allMatch(t -> t == key);
 	}
 
 	/**
 	 * noneMatch -> TRUE nếu tất cả các phần tử không thỏa điều kiện
 	 */
 	public static boolean noneMatch(int[] arr, int key) {
-		return IntStream.of(arr).noneMatch(x -> x % key == 0);
+		return IntStream.of(arr).noneMatch(t -> t % key == 0);
 	}
 
 	public static boolean findString(String[] array, String key) {

@@ -36,14 +36,17 @@ public class StreamOperations {
 		System.out.println(names);
 	}
 
+	// sort with multiple value 
 	public static void sortMiltipleValue(List<User> list) {
-		Comparator<User> comparing = Comparator.comparing(User::getName) //
+		Comparator<User> comparing = Comparator //
+				.comparing(User::getName) //
 				.thenComparing(Comparator.comparing(User::getAge));
 		list.sort(comparing);
 		// list.stream().sorted(comparing); // <- Return a new list
 		System.out.println(list);
 	}
 
+	// reverse list
 	public static void reverse(List<User> list) {
 		Collections.reverse(list);
 		System.out.println(list);
