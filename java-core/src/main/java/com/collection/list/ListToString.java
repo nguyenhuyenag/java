@@ -38,6 +38,8 @@ public class ListToString {
 
 		String result8 = list.stream().collect(Collectors.joining("_", "PREFIX^", "^SUFFIX"));
 		System.out.println(result8);
+		
+		// Dùng StringJoiner đối với prefix, suffix
 	}
 
 	public static void main(String[] args) {
