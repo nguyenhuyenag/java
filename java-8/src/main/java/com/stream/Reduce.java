@@ -5,7 +5,11 @@ import java.util.List;
 
 /*-
  * 	
- * 		T result = stream.reduce(T identity, BinaryOperator<T> accumulator);
+ *		T result = stream.reduce(T identity, BinaryOperator<T> accumulator);
+ * 
+ * 		<U> U reduce(U identity, 
+ *            			BiFunction<U,? super T,U> accumulator, 
+ *            			BinaryOperator<U> combiner);
  * 
  * Với:
  * 
@@ -26,6 +30,7 @@ public class Reduce {
 					System.out.println("subtotal: " + subtotal + ", element: " + element);
 					return subtotal + element;
 				});
+		
 		System.out.println("Sum: " + result);
 	}
 
@@ -37,6 +42,7 @@ public class Reduce {
 					System.out.println("Max: " + max + ", element: " + element);
 					return Math.max(max, element);
 				});
+		
 		// Optional<Integer> max = numbers.stream().reduce(Integer::max);
 		System.out.println("Max: " + result);
 	}

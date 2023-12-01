@@ -1,5 +1,8 @@
 package com.stream;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -27,6 +30,14 @@ public class StreamPrimitive {
 	public static void convert4() {
 		String input = "abcd";
 		Stream<Character> mapToObj = input.chars().mapToObj(c -> (char) c);
+	}
+
+	public void streamFromFile() {
+		try (Stream<String> lines = Files.lines(Paths.get(""))) {
+			lines.forEach(t -> System.out.println(t));
+		} catch (IOException e) {
+			
+		}
 	}
 
 }
