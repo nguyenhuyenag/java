@@ -2,9 +2,9 @@ package com.basic.enums;
 
 import java.util.EnumMap;
 
-public class EnumMapApi {
+public class EnumCollectionMap {
 
-	enum Days {
+	private enum Days {
 		MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
 	}
 

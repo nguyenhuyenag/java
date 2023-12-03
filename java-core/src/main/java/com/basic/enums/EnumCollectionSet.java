@@ -2,7 +2,7 @@ package com.basic.enums;
 
 import java.util.EnumSet;
 
-public class EnumSetApi {
+public class EnumCollectionSet {
 
 	enum Days {
 		MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY

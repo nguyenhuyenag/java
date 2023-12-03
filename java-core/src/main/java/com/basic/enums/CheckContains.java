@@ -14,11 +14,11 @@ public class CheckContains {
 	@AllArgsConstructor
 	public enum DayOfWeek {
 
-		MONDAY(2, "Thứ hai"), //
-		TUESDAY(3, "Thứ ba"), //
+		MONDAY(2, "Thứ hai"), 	//
+		TUESDAY(3, "Thứ ba"), 	//
 		WEDNESDAY(4, "Thứ tư"), //
 		THURSDAY(5, "Thứ năm"), //
-		FRIDAY(6, "Thứ sáu"), //
+		FRIDAY(6, "Thứ sáu"), 	//
 		SATURDAY(7, "Thứ bảy"), //
 		SUNDAY(8, "Chủ nhật");
 

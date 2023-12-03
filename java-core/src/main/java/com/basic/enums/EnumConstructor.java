@@ -1,8 +1,8 @@
-package com;
+package com.basic.enums;
 
 import java.io.IOException;
 
-public class Main {
+public class EnumConstructor {
 	
 	enum Level {
 	    INFO(1, "Informative message", 0x00aa00),
