@@ -38,7 +38,6 @@ public class EnumCollectionSet {
 		// Xóa một ngày nghỉ khỏi EnumSet
 		daysOff.remove(Days.SUNDAY);
 		System.out.println("Updated days off: " + daysOff);
-
 	}
 
 }
