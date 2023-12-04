@@ -1,4 +1,4 @@
-package com.interfaces.function;
+package com.iterface.function;
 
 import java.util.List;
 import java.util.function.Function;

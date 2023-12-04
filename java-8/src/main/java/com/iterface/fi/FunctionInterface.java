@@ -1,4 +1,4 @@
-package com.interfaces.fi;
+package com.iterface.fi;
 
 @FunctionalInterface
 interface StringUtils {

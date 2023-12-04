@@ -1,4 +1,4 @@
-package com.interfaces;
+package com.iterface;
 
 interface Samsung {
 

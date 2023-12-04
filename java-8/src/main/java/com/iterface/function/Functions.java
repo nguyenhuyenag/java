@@ -1,4 +1,4 @@
-package com.interfaces.function;
+package com.iterface.function;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
