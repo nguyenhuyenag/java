@@ -107,16 +107,6 @@ public class FileService {
 //		}
 //	}
 
-	public static void readFileUseScanner(String file) {
-		try (Scanner scanner = new Scanner(new File(file))) {
-			while (scanner.hasNext()) {
-				System.out.println(scanner.nextLine());
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 //	public static void setReadOnly() {
 //		File file = new File("file/data.txt");
 //		file.setReadOnly();
@@ -149,28 +139,52 @@ public class FileService {
 //		attr = Files.readAttributes(file, DosFileAttributes.class);
 //		printAttributes(attr);
 //	}
-	
+
+	public static void readFileUseScanner(String file) {
+		try (Scanner scanner = new Scanner(new File(file))) {
+			while (scanner.hasNext()) {
+				System.out.println(scanner.nextLine());
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * Tạo file, nếu đường dẫn (thư mục cha) không tồn tại thì tạo đường dẫn xong sẽ
 	 * tạo file
 	 */
-	public static boolean createFile(Path path) {
-		if (path == null) {
-			System.out.println("Path `" + path + "` does't exists!");
-			return false;
-		}
-		Path parent = path.getParent();
+	public static Path createFile(Path path) {
 		try {
-			if (PathUtils.isNotExist(parent)) {
-				PathUtils.createDirectories(parent);
+			if (path != null) {
+				Path parent = path.getParent();
+				if (!Files.exists(parent)) {
+					Files.createDirectories(parent);
+				}
+				return Files.createFile(path);
 			}
-			// Files.createFile(path);
-			return path.toFile().createNewFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
+//	public static boolean createFile(Path path) {
+//		if (path == null) {
+//			System.out.println("Path `" + path + "` does't exists!");
+//			return false;
+//		}
+//		Path parent = path.getParent();
+//		try {
+//			if (PathUtils.isNotExist(parent)) {
+//				PathUtils.createDirectories(parent);
+//			}
+//			// Files.createFile(path);
+//			return path.toFile().createNewFile();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return false;
+//	}
 
 	public static void fileAttributes() {
 		try {
@@ -185,12 +199,12 @@ public class FileService {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void desktopPath() {
-		String desktopPath = System.getProperty("user.home") + File.separator +"Desktop";
+		String desktopPath = System.getProperty("user.home") + File.separator + "Desktop";
 		System.out.println(desktopPath);
 		System.out.println(Files.exists(Paths.get(desktopPath)));
-		
+
 		FileSystemView view = FileSystemView.getFileSystemView();
 		File file = view.getHomeDirectory();
 		desktopPath = file.getPath();
