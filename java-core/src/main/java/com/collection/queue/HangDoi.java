@@ -37,19 +37,21 @@ import java.util.Queue;
 public class HangDoi {
 
 	/**
-	 * Ví dụ hàng đợi
+	 * Ví dụ hàng đợi ưu tiên
 	 */
 	public static void main(String[] args) {
 		int[] nums = { 3, 2, 1, 5, 6, 4 };
 		// new PriorityQueue<>(Collections.reverseOrder());
-		Queue<Integer> queue = new PriorityQueue<>(); // Hàng đợi ưu tiên
+		Queue<Integer> queue = new PriorityQueue<>(); // Hàng đợi ưu tiên kiểu INT nên phần tử nhỏ nhất luôn ở đầu
+		// Thêm phần tử
 		for (int e : nums) {
 			queue.add(e);
-			// queue.offer(e);
 			System.out.println(queue);
 		}
-		// System.out.println(queue.peek());
-		// System.out.println(queue.element());
+		// Get phần tử
+		while (queue.size() > 0) {
+			System.out.println(queue.poll());
+		}
 	}
 
 }
