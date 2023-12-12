@@ -14,39 +14,42 @@ import java.util.Queue;
  * 
  * 		+ Vị trí phần từ được chèn phụ thuộc vào loại hàng đợi và độ ưu tiên của phần tử đó.
  * 
+ *  	+ Có 2 class cài đặt interface Queue là PriorityQueue (hàng đợi ưu tiên) và LinkedList.
+ * 
  * - Các phương thức của Queue
- * 												|
+ *
+ *    ------------------------------------------|-------------------------------------------
  * 		- add(e)								|	- offer(e)
  * 												|
  * 			+ Exception nếu hàng đợi hết chỗ	|		+ Trả về false nếu hàng đợi hết chỗ
- * 												|
+ * 	  ------------------------------------------|-------------------------------------------
  * 		- remove()								|	- poll()
  * 												|
- * 			+ Lấy ra và xóa phần tử đầu hàng	|		+ //
- * 												|			
+ * 			+ Lấy ra và xóa phần tử đầu hàng	|		+ Lấy ra và xóa phần tử đầu hàng
  * 			+ Exception nếu hàng đợi rỗng		|		+ Trả về null nếu hàng đợi rỗng
- * 												|
+ * 	  ------------------------------------------|-------------------------------------------
  * 		- element()								|	- peek()
  * 												|	
- * 			+ Lấy ra nhưng không xóa			|		+ //
-												|
+ * 			+ Lấy ra nhưng không xóa			|		+ Lấy ra nhưng không xóa
  *          + Exception nếu hàng đợi rỗng		|		+ Trả về null nếu hàng đợi rỗng
- *   											|
- *   
- *   - Có hai class cài đặt interface Queue là LinkedList và PriorityQueue (hàng đợi ưu tiên).
+ *    ------------------------------------------|-------------------------------------------
  */
-public class QueueApi {
+public class HangDoi {
 
+	/**
+	 * Ví dụ hàng đợi
+	 */
 	public static void main(String[] args) {
-		int[] A = {3, 2, 1, 5, 6, 4};
-		Queue<Integer> queue = new PriorityQueue<>();
-		for (int el : A) {
-			queue.add(el);
-			// queue.offer(el);
+		int[] nums = { 3, 2, 1, 5, 6, 4 };
+		// new PriorityQueue<>(Collections.reverseOrder());
+		Queue<Integer> queue = new PriorityQueue<>(); // Hàng đợi ưu tiên
+		for (int e : nums) {
+			queue.add(e);
+			// queue.offer(e);
 			System.out.println(queue);
 		}
-		System.out.println(queue.element());
 		// System.out.println(queue.peek());
+		// System.out.println(queue.element());
 	}
 
 }
