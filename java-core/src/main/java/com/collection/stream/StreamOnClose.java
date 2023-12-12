@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-public class StreamClose {
+public class StreamOnClose {
 
 	static Path path = Paths.get("D:/TS24Corp");
 
@@ -28,8 +28,8 @@ public class StreamClose {
 	}
 	
 	public static void main(String[] args) {
-		autoClose();
-		// notAutoClose();
+		// autoClose();
+		notAutoClose();
 	}
 
 }
