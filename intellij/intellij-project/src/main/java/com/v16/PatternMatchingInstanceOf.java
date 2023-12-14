@@ -13,8 +13,7 @@ public class PatternMatchingInstanceOf {
 
 	public static void oldStyle() {
 		Object obj = new Object();
-		if (obj instanceof Journaldev) {
-			Journaldev jd = (Journaldev) obj;
+		if (obj instanceof Journaldev jd) {
 			System.out.println(jd.getAuthor());
 		}
 	}

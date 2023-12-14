@@ -13,8 +13,8 @@ import java.util.stream.Stream;
 
 public class HandlingResponseBody {
 
-	private static HttpClient client = HttpClient.newHttpClient();
-	private static HttpRequest request = HttpRequest.newBuilder() //
+	private static final HttpClient client = HttpClient.newHttpClient();
+	private static final HttpRequest request = HttpRequest.newBuilder() //
 			.uri(URI.create("https://reqres.in/api/users/2")) //
 			.build();
 

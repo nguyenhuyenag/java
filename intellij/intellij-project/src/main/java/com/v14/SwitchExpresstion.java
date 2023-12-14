@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
   - Yield isn’t a new keyword in Java. It’s just used in switch expressions
   
     // Ternary operator
-	var isMonday = day == Day.Monday ? true : false;
+	var isMonday = (day == Day.Monday ? true : false);
 
 	// Switch expression
 	var isMonday = switch (day) {

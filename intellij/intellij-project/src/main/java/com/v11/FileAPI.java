@@ -11,7 +11,7 @@ public class FileAPI {
 	// Files.readString(path, StandardCharsets.UTF_8);
 	public static void main(String[] args) throws IOException {
 		Path file = File.createTempFile("tempFile", ".tmp").toPath();
-		System.out.println(file.toString());
+		System.out.println(file);
 		try {
 			String content = "Welcome to TutorialsPoint";
 			Path tempFilePath = Files.writeString(file, content);
