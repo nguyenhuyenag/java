@@ -81,27 +81,19 @@ public class ApacheStringUtils {
 	}
 
 	public static void method() {
-		/**
-		 * isAnyEmpty: Có ít nhất 1 phần tử là empty
-		 */
+		// isAnyEmpty: Có ít nhất 1 phần tử là empty
 		boolean isAnyEmpty = isAnyEmpty("", "AA", null);
 		System.out.println("IsAnyEmpty: " + isAnyEmpty + "\n");
 
-		/**
-		 * isNoneEmpty: Có ít nhất 1 phần tử là NOT empty
-		 */
+		// isNoneEmpty: Có ít nhất 1 phần tử là NOT empty
 		boolean isNoneBlank = isNoneBlank("", "AA", null);
 		System.out.println("IsNoneBlank: " + isNoneBlank + "\n");
 
-		/**
-		 * isAllEmpty: Tất cả các phần tử đều empty
-		 */
+		// isAllEmpty: Tất cả các phần tử đều empty
 		boolean isAllEmpty = isAllEmpty(null, "", "", null);
 		System.out.println("IsNoneBlank: " + isAllEmpty + "\n");
 
-		/**
-		 * equalsAny: Kiểm tra giá trị có bằng với giá trị bất kỳ trong danh sách
-		 */
+		// equalsAny: Kiểm tra giá trị có bằng với giá trị bất kỳ trong danh sách
 		String input = "apple";
 		boolean isEqualsAny = equalsAny(input, "apple", "banana", "orange");
 		System.out.println("EqualsAny: " + isEqualsAny + "\n");
