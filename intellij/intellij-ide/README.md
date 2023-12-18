@@ -6,17 +6,33 @@
 
 - Phím tắt
     
-	+ sou
+	- sou/sout/soutv  + tab					System.out.println();
+	
+	- ps..									public static
+	
+		psvm								Tạo hàm main()
     
-	+ sout  + tab             System.out.println();
+	- fori
     
-	+ soutv + tab             sout + biến gần nhất
+	- Ctrl + J                				Mở bảng gõ tắt
+	
+	- Ctrl + F                				Tìm kiếm
+	
+	- Alt + Enter (khối code)				Tạo import static
+	
+	- Shift + Alt + Up/Down    				Move code up/down
     
-	+ fori
-    
-	+ Ctrl + J                Mở bảng gõ tắt
-    
-	+ Ctrl + Alt + O          Xóa các import không sử dụng
+	- Ctrl + Alt + O          				Xóa các import không sử dụng
+	
+	- Ctrl + Alt + L          				Format code
+	
+	  Ctrl + Alt + Shift + L   				Format code 
+	
+	- Ctrl + Alt + V						Tạo biến cục bộ 
+	
+	- Ctrl + Alt + F						Tạo biến global (nằm ngoài method)
+	
+	- Ctrl + Shift + N						Find file / open resource
 	
 - Open project
 
