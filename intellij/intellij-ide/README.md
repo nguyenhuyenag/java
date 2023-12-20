@@ -43,3 +43,8 @@
 - Tắt kiểm tra chính tả
 
 	Preferences > Settings > Editor > Inspections > Proofreading > typo (uncheck)
+
+- Xóa <p> khi format code
+
+	Settings -> Editor -> Code Style
+  	     -> Java -> JavaDoc tab, and then uncheck Generate "<p>" on empty lines
