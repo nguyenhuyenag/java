@@ -46,5 +46,14 @@
 
 - Xóa <p> khi format code
 
-	Settings -> Editor -> Code Style
-  	     -> Java -> JavaDoc tab, and then uncheck Generate "<p>" on empty lines
+	Settings -> Editor -> Code Style -> Java 
+	
+			 -> JavaDoc tab, and then uncheck Generate "<p>" on empty lines
+
+- Ẩn đường dẫn của project trong 'Project'
+
+	+ Link: https://stackoverflow.com/a/40909474
+	
+	+ Main Menu > Help > Edit Custom Properties... | Thêm vào 
+	
+		project.tree.structure.show.url=false
