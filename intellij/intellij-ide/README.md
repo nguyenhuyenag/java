@@ -13,6 +13,8 @@
 		psvm								Tạo hàm main()
     
 	- fori
+	
+	- F3									Search
     
 	- Ctrl + J                				Mở bảng gõ tắt
 	
@@ -21,6 +23,8 @@
 	- Alt + Enter (khối code)				Tạo import static
 	
 	- Shift + Alt + Up/Down    				Move code up/down
+	
+	- Ctrl + Alt + B          				Mở nhanh 1 hàm
     
 	- Ctrl + Alt + O          				Xóa các import không sử dụng
 	
