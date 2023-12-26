@@ -7,7 +7,7 @@ import java.util.TreeSet;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class StringApi {
+public class StringTools {
 
 	/**
 	 * Viết hoa chữ cái đầu tiên
@@ -23,11 +23,11 @@ public class StringApi {
 	/**
 	 * Xóa ký tự tại vị trí index
 	 */
-	public static String deleteIndex(String s, int index) {
-		if (index < 0 || index > s.length()) {
+	public static String deleteIndex(String input, int index) {
+		if (index < 0 || index > input.length()) {
 			throw new StringIndexOutOfBoundsException("String index out of range");
 		}
-		return s.substring(0, index) + s.substring(index + 1);
+		return input.substring(0, index) + input.substring(index + 1);
 	}
 
 	/**
@@ -60,8 +60,6 @@ public class StringApi {
 
 	/**
 	 * String => char[], byte[]
-	 * 
-	 * @see ASCII
 	 */
 	public static void toByteOrChar() {
 		String str = "Java";

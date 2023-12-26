@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class CollectionToString {
 
-	private static String[] arr = { "Java", "C", "PHP", "Python" };
+	private static final String[] arr = { "Java", "C", "PHP", "Python" };
 
 	/**
 	 * Array -> String
