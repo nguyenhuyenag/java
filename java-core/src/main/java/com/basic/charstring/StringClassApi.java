@@ -19,6 +19,9 @@ public class StringClassApi {
         // getBytes(): Chuyển thành mảng byte (mã unicode)
         System.out.println("getBytes: " + Arrays.toString(s1.getBytes()));
 
+        // toCharArray():
+        System.out.println("toCharArray: " + Arrays.toString(s1.toCharArray()));
+
         // compareTo(): So sánh 2 chuỗi:
         compare();
 
@@ -46,8 +49,32 @@ public class StringClassApi {
         // matches(): Kiểm tra xem chuỗi có khớp với một biểu thức chính quy
         matches();
 
-        // repeat(): Lặp chuỗi n lần
+        // repeat(): Lặp chuỗi
         System.out.println("repeat: " + "xyz".repeat(3));
+
+        // replace(): Thay thế chuỗi
+        replace();
+
+        // substring():
+        substring();
+    }
+
+    /**
+     * STRING METHOD
+     */
+    public static void substring() {
+        // Cắt từ vị trí i đến cuối chuỗi
+        System.out.println("substring: " + s1.substring(5));
+        System.out.println("substring: " + s1.substring(5, 10));
+        System.out.println("substring: " + s1.subSequence(5, s1.length()));
+    }
+
+    public static void replace() {
+        String s = "1yz1yz1yz";
+        System.out.println("replaceFirst: " + s.replaceFirst("y", "0"));
+        System.out.println("replace: " + s.replace('x', '1'));
+        // Dùng cho biểu thức chính quy
+        System.out.println("replaceAll: " + s.replaceAll("\\d", "0"));
     }
 
     public static void matches() {
