@@ -1,9 +1,8 @@
 package com.basic.charstring;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
-
-import static java.lang.String.copyValueOf;
 
 public class StringClassApi {
 
@@ -17,6 +16,9 @@ public class StringClassApi {
         // chars(): Trả về luồng các mã unicode của các ký tự
         chars();
 
+        // getBytes(): Chuyển thành mảng byte (mã unicode)
+        System.out.println("getBytes: " + Arrays.toString(s1.getBytes()));
+
         // compareTo(): So sánh 2 chuỗi:
         compare();
 
@@ -28,6 +30,56 @@ public class StringClassApi {
 
         // copyValueOf(): Tạo chuỗi từ mảng ký tự
         copyValueOf();
+
+        // endsWith(): Kiểm tra xem chuỗi có kết thúc bằng một chuỗi con nào đó
+        System.out.println("endsWith: " + s1.endsWith("ing"));
+
+        // indent(): Thụt đầu dòng
+        indent();
+
+        // indexOf(): Vị trí của chuỗi hoặc ký tự trong chuỗi khác
+        indexOf();
+
+        // join(): Ghép 'nhiều chuỗi, mảng, Collections<? extends CharSequence>' thành chuỗi
+        join();
+
+        // matches(): Kiểm tra xem chuỗi có khớp với một biểu thức chính quy
+        matches();
+
+        // repeat(): Lặp chuỗi n lần
+        System.out.println("repeat: " + "xyz".repeat(3));
+    }
+
+    public static void matches() {
+        String email = "example@email.com";
+        boolean isEmail = email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}");
+        System.out.println("matches (email): " + isEmail);
+    }
+
+    public static void join() {
+        System.out.println("join: " + String.join("-", "A", "B", "C"));
+        System.out.println("join: " + String.join("*", List.of("A", "B", "C", "D")));
+    }
+
+    /**
+     * indexOf(int ch)
+     * indexOf(int ch, int fromIndex)
+     * <p>
+     * lastIndexOf()
+     */
+    public static void indexOf() {
+        int idx1 = s1.indexOf('i');
+        System.out.println("indexOf (1st): " + idx1);
+        System.out.println("indexOf (2nd): " + s1.indexOf("i", idx1 + 1));
+        System.out.println("lastIndexOf: " + s1.lastIndexOf("i"));
+    }
+
+    public static void indent() {
+        String originalString = "This is a\nmulti-line\nstring.";
+        // Sử dụng phương thức indent() để thụt lề mỗi dòng
+        String indentedString = originalString.indent(4);
+        // In ra chuỗi ban đầu và chuỗi đã thụt lề
+        System.out.println("\nindent:\n" + indentedString);
     }
 
     /**
