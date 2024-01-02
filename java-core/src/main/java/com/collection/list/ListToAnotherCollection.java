@@ -10,7 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("unused")
-public class ListToAnotherColecction {
+public class ListToAnotherCollection {
 
 	static List<String> list = Arrays.asList("a", "b", "c");
 
@@ -21,9 +21,10 @@ public class ListToAnotherColecction {
 		Object[] arr4 = list.toArray();
 	}
 
-	public static void toArrayInt() {
+	public static void toIntArray() {
 		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
 		int[] arr = list.stream().mapToInt(t -> t).toArray();
+		int[] arr2 = list.stream().mapToInt(Integer::intValue).toArray();
 	}
 
 	public static void toMap() {
