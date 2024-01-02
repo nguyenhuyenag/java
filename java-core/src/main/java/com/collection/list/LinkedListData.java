@@ -1,0 +1,45 @@
+package com.collection.list;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+
+/**
+ * LinkedList là hàng đợi 2 đầu
+ */
+public class LinkedListData {
+
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<>(Arrays.asList(1, 5, 2, 4));
+
+        // Insert by index
+        list.add(2, 3);
+        System.out.println("insert (3): " + list + "\n");
+
+
+        // Chèn đầu, chèn cuối
+        list.addFirst(0);
+        System.out.println("addFirst: " + list);
+        list.addLast(5);
+        System.out.println("addLast: " + list + "\n");
+
+        /**
+         * Get dữ liệu nhưng không xóa
+         */
+        // Phần tử đầu tiên: getFirst -> Exeption nếu list rỗng
+        System.out.println("getFirst = " + list + " -> " + list.getFirst());
+        System.out.println("getLast = " + list + " -> " + list.getLast());
+        // Cuối cùng: peek -> null nếu list rỗng
+        System.out.println("peek = " + list + " -> " + list.peek());
+        System.out.println("peekFirst = " + list + " -> " + list.peekFirst());
+        System.out.println("peekLast = " + list + " -> " + list.peekLast() + "\n");
+
+
+        // indexOf và lastIndexOf
+        System.out.println("indexOf (5) = " + list + " -> " + list.indexOf(5));
+        System.out.println("lastIndexOf (5) = " + list + " -> " + list.lastIndexOf(5) + "\n");
+
+
+
+    }
+
+}
