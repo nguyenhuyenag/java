@@ -26,20 +26,27 @@ public class LinkedListData {
          * Get dữ liệu nhưng không xóa
          */
         // Phần tử đầu tiên: getFirst -> Exeption nếu list rỗng
-        System.out.println("getFirst = " + list + " -> " + list.getFirst());
-        System.out.println("getLast = " + list + " -> " + list.getLast());
+        System.out.println("getFirst: " + list + " -> " + list.getFirst());
+        System.out.println("getLast: " + list + " -> " + list.getLast());
         // Cuối cùng: peek -> null nếu list rỗng
-        System.out.println("peek = " + list + " -> " + list.peek());
-        System.out.println("peekFirst = " + list + " -> " + list.peekFirst());
-        System.out.println("peekLast = " + list + " -> " + list.peekLast() + "\n");
+        System.out.println("peek: " + list + " -> " + list.peek());
+        System.out.println("peekFirst: " + list + " -> " + list.peekFirst());
+        System.out.println("peekLast: " + list + " -> " + list.peekLast() + "\n");
 
 
         // indexOf và lastIndexOf
-        System.out.println("indexOf (5) = " + list + " -> " + list.indexOf(5));
-        System.out.println("lastIndexOf (5) = " + list + " -> " + list.lastIndexOf(5) + "\n");
+        System.out.println("indexOf (5): " + list + " -> " + list.indexOf(5));
+        System.out.println("lastIndexOf (5): " + list + " -> " + list.lastIndexOf(5) + "\n");
 
 
-
+        /**
+         * Get và xóa dữ liệu
+         */
+        // Get & remove first item: -> null nếu list rỗng
+        System.out.println("poll = " + list.poll() + ", list = " + list);
+        System.out.println("pollLast = " + list.pollLast() + ", list = " + list);
+        // -> NoSuchElementException nếu list rỗng
+        System.out.println("pop = " + list.pop() + ", list = " + list);
     }
 
 }
