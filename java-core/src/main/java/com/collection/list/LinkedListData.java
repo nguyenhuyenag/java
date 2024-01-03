@@ -11,19 +11,21 @@ public class LinkedListData {
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<>(Arrays.asList(1, 5, 2, 4));
 
-        // Insert by index
+        /**
+         * INSERT DATA:
+         *      add(index, value)
+         *      addFirst()
+         *      addLast()
+         */
         list.add(2, 3);
         System.out.println("insert (3): " + list + "\n");
-
-
-        // Chèn đầu, chèn cuối
         list.addFirst(0);
         System.out.println("addFirst: " + list);
         list.addLast(5);
         System.out.println("addLast: " + list + "\n");
 
         /**
-         * Get dữ liệu nhưng không xóa
+         * GET BUT DON'T REMOVE
          */
         // Phần tử đầu tiên: getFirst -> Exeption nếu list rỗng
         System.out.println("getFirst: " + list + " -> " + list.getFirst());
@@ -43,10 +45,18 @@ public class LinkedListData {
          * Get và xóa dữ liệu
          */
         // Get & remove first item: -> null nếu list rỗng
-        System.out.println("poll = " + list.poll() + ", list = " + list);
-        System.out.println("pollLast = " + list.pollLast() + ", list = " + list);
+        System.out.println("poll -> " + list.poll() + ", list = " + list);
+        System.out.println("pollLast -> " + list.pollLast() + ", list = " + list);
         // -> NoSuchElementException nếu list rỗng
-        System.out.println("pop = " + list.pop() + ", list = " + list);
+        System.out.println("pop -> " + list.pop() + ", list = " + list);
+
+        /**
+         * Xóa dữ liệu:
+         *  remove()         =       removeFirst()
+         *  remove(int)      ->      remove by index
+         *  removeLast()     ->      Remove the last element
+         */
+        System.out.println("remove -> " + list.remove(0) + ", list = " + list);
     }
 
 }
