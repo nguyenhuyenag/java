@@ -1,6 +1,6 @@
 package com;
 
-public class Main {
+public class MainCore {
 
     public static void main(String[] args) throws Exception {
 
