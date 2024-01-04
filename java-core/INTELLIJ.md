@@ -10,8 +10,7 @@
 	
 	- ps..									public static
 	
-		psvm								Tạo hàm main()
-    
+		main, psvm							Tạo hàm main()
 
 	- fori
 	
