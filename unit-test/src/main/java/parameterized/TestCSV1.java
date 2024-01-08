@@ -11,10 +11,9 @@ public class TestCSV1 {
 		return a + b;
 	}
 
-	@ParameterizedTest
+	@ParameterizedTest(name = "{0} + {1} = {2}")
 	@CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
 	public void test(int a, int b, int result) {
-		// System.out.println(a + " + "  + b + " = " + result);
 		assertEquals(result, sum(a, b));
 	}
 

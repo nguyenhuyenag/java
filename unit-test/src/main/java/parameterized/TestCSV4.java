@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * Xem thêm: SumStringsAsNumbers.java
  */
-public class TestCSV31 {
+public class TestCSV4 {
 
     public static String leftPad(String str, int maxLen) {
         int numZeros = Math.max(0, maxLen - str.length());

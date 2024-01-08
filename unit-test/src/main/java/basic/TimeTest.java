@@ -16,11 +16,11 @@ public class TimeTest {
 	@Test
 	public void whenAssertingTimeout_thenNotExceeded() {
 		Assertions.assertTimeout( //
-				Duration.ofSeconds(2), //
-				() -> {
-					// code that requires less then 2 minutes to execute
+				Duration.ofSeconds(2), () -> {
+					// code that requires less than 2 minutes to execute
 					Thread.sleep(1000);
-				});
+				}
+		);
 	}
 
 }

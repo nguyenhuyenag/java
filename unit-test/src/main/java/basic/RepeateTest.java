@@ -6,7 +6,7 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 
-public class DoTest {
+public class RepeateTest {
 
 	public int sum(int a, int b) {
 		return a + b;
