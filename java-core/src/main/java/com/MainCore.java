@@ -1,7 +1,6 @@
 package com;
 
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
 public class MainCore {
 
@@ -42,12 +41,8 @@ public class MainCore {
         System.out.println("-------------------");
     }
 
-    public static void main(String[] args) {
-        int[][] matrix = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
-        };
+    public static void mai1n(String[] args) {
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
         printMatrix(matrix);
 
@@ -55,6 +50,14 @@ public class MainCore {
 
         printMatrix(matrix);
 
+    }
+
+    public static void main(String[] args) {
+        Set<List<Integer>> set = new HashSet<>();
+        set.add(Arrays.asList(1, 2, 3));
+        set.add(Arrays.asList(1, 2, 3));
+        set.add(Arrays.asList(1, 2, 3));
+        System.out.println("set = " + set);
     }
 
 }

@@ -13,7 +13,8 @@ public class TestCSV1 {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
-	void test(int a, int b, int result) {
+	public void test(int a, int b, int result) {
+		// System.out.println(a + " + "  + b + " = " + result);
 		assertEquals(result, sum(a, b));
 	}
 

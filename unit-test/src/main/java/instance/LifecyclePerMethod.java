@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @TestInstance(Lifecycle.PER_METHOD)
 public class LifecyclePerMethod {
 
@@ -34,17 +36,17 @@ public class LifecyclePerMethod {
 
 	@Test
 	void test1() {
-		Assertions.assertEquals(2, 2);
+		assertEquals(2, 2);
 	}
 	
 	@Test
 	void test2() {
-		Assertions.assertEquals(true, true);
+		assertEquals(true, true);
 	}
 	
 	@Test
 	void test3() {
-		Assertions.assertEquals(true, false);
+		assertEquals(true, false);
 	}
 
 }
