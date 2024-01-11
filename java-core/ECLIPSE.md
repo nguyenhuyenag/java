@@ -30,7 +30,6 @@
 	
 
 	- Breadcrumb					+ Right-click on file > Show in Breadcrumb
-	
 									+ Right-click on the breadcrumb bar > Hide Breadcrumb
 	
 
@@ -41,7 +40,6 @@
 	
 
 	- Find references				+ Ctrl + Shift + G (những nơi gọi đến hàm này,...)
-								
 								  	+ Click to method name -> Ctrl + Shift + G
 								  	
 
@@ -49,32 +47,26 @@
 
 
 	- Rename						+ Alt + Shift + R
-									
 									+ Right click -> Refactor -> Rename...
 		
 
 	- Create a Javadoc				+ Shift + Alt + J
-								  	  
 								  	+ Từ dòng trên tên hàm gõ `/**` + Enter
 
 
 	- Open Javadoc					+ F2	
-									
 									+ Shift + F2 (open on browser)
 	
 
 	- Open method					+ F3
-									
 									+ Click to method name -> F3
 		
 
 	- Word Wrap						+ Alt + Shift + Y
-								  	
 								  	+ Window -> Editor -> Toggle word wrap
 								  
 
 	- Expand/Collapse package		+ Right Arrow	--> Expand
-									
 									+ Left Arrow 	--> Collapse
 	
 
