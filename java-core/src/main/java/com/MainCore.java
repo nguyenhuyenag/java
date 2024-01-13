@@ -1,5 +1,6 @@
 package com;
 
+import java.sql.Array;
 import java.util.*;
 
 public class MainCore {
@@ -50,8 +51,48 @@ public class MainCore {
 //        printMatrix(matrix);
 //    }
 
-    public static void main(String[] args) {
+//    public static int countCommonElements(char[] array1, char[] array2) {
+//        Set<Character> set1 = new HashSet<>();
+//        Set<Character> set2 = new HashSet<>();
+//        for (int i = 0; i < array1.length; i++) {
+//            set1.add(array1[i]);
+//            set2.add(array2[i]);
+//        }
+//        set1.retainAll(set2);
+//        return set1.size();
+//    }
 
+    // chuyển t thành s
+    public static int minSteps(String s, String t) {
+        char[] arr1 = s.toCharArray();
+        char[] arr2 = t.toCharArray();
+        // Arrays.sort(arr1);
+        // Arrays.sort(arr2);
+        int[] mark = new int[26];
+
+        for (char ch : arr1) {
+            mark[ch - 'a']++;
+        }
+
+        for (char ch : arr2) {
+            mark[ch - 'a']--;
+        }
+
+        int count = Arrays.stream(mark).filter(v -> v > 0).sum();
+
+        System.out.println(count);
+
+        System.out.println("array1 = " + Arrays.toString(arr1));
+        System.out.println("array2 = " + Arrays.toString(arr2));
+        System.out.println(Arrays.toString(mark));
+
+        return 1;
+    }
+
+    public static void main(String[] args) {
+        // minSteps("bab", "aba");
+        // minSteps("leetcode", "practice");
+        minSteps("anagram", "mangaar");
     }
 
 }
