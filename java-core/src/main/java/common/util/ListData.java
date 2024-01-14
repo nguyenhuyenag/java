@@ -13,7 +13,7 @@ public class ListData {
         list.add(new User("Tran", 27));
         list.add(new User("Nguyet", 22));
         list.add(new User("Trang", 21));
-        list.add(new User("Lac", 26));
+        list.add(new User("Lac", 25));
         return list;
     }
 }
