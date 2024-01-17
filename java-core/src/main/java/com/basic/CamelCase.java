@@ -12,7 +12,7 @@ public class CamelCase {
 		return CaseUtils.toCamelCase(str, false, new char[] { '_' });
 	}
 
-	public static void main(String[] args) {
+	public static void test() {
 		List<String> keys = Arrays.asList("opened_by", "ticket_owner", "close_reason", "full_name");
 		List<String> fields = Arrays.asList("openedBy", "ticketOwner", "closeReason");
 		keys.forEach(t -> {
@@ -20,6 +20,11 @@ public class CamelCase {
 				System.out.println(t);
 			}
 		});
+	}
+
+	public static void main(String[] args) {
+		String s = "unique number of occurrences";
+		System.out.println("s = " + toCamel(s));
 	}
 
 }
