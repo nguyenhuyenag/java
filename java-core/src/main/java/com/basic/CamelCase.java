@@ -23,7 +23,7 @@ public class CamelCase {
 	}
 
 	public static void main(String[] args) {
-		String s = "unique number of occurrences";
+		String s = "Construct the max number with given sum of digits";
 		System.out.println("s = " + toCamel(s));
 	}
 
