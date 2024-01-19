@@ -16,7 +16,9 @@ public class ArrayTo {
 	private static Integer[] integerArray = { 1, 2, 3, 4, 5 };
 
 	public static void toList() {
+		// int[] -> List
 		List<Integer> list1 = Arrays.stream(intArray).boxed().collect(Collectors.toList());
+		// Integer -> List
 		List<Integer> list2 = Arrays.asList(integerArray);
 		List<Integer> list3 = new ArrayList<>(Arrays.asList(integerArray));
 		List<Integer> list4 = Arrays.stream(integerArray).collect(Collectors.toList());
