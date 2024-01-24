@@ -9,23 +9,27 @@ import java.util.Set;
 
 public class LoopMap {
 
+	// forEach()
 	public static void loopByForEach(Map<String, Integer> map) {
 		map.forEach((k, v) -> System.out.println(k + " => " + v));
 	}
 
+	// keySet()
 	public static void loopByKeySet(Map<String, Integer> map) {
 		Set<String> listKey = map.keySet();
 		listKey.forEach(k -> System.out.println(k + " => " + map.get(k)));
 	}
 
-	public static void loopByEntry(Map<String, Integer> map) {
-		Set<Entry<String, Integer>> entrys = map.entrySet();
-		entrys.forEach(e -> System.out.println(e.getKey() + " => " + e.getValue()));
-	}
-
+	// values()
 	public static void loopByCollection(Map<String, Integer> map) {
 		Collection<Integer> values = map.values();
 		System.out.println(values);
+	}
+
+	// entrySet()
+	public static void loopByEntry(Map<String, Integer> map) {
+		Set<Entry<String, Integer>> entrys = map.entrySet();
+		entrys.forEach(e -> System.out.println(e.getKey() + " => " + e.getValue()));
 	}
 
 	public static void checkKeyInMap(Map<String, Integer> map, String key) {

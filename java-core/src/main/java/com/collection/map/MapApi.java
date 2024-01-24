@@ -36,6 +36,8 @@ public class MapApi {
 	 * 
 	 * - replace(k, v): Cập nhập giá trị của 1 entry
 	 * - replace(k, v, v0): Cập nhập giá trị của 1 entry đúng giá trị k, v
+	 *
+     * - wordCountMap.replaceAll((key, value) -> value * 2); // Nhân đôi giá trị
 	 */
 	public static void mapApi() {
 		Map<String, Integer> scores = new HashMap<>();
