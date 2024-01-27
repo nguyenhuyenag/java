@@ -60,3 +60,9 @@
 	+ Main Menu > Help > Edit Custom Properties... | Thêm vào 
 	
 		project.tree.structure.show.url=false
+
+- Run devtools
+	
+  + Settings > Advanced Settings > Allow auto-make to start ...
+  
+			 > Build, Execution... > Compiler > Build project auto...
