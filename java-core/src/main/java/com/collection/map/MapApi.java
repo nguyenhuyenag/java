@@ -1,6 +1,8 @@
 package com.collection.map;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MapApi {
@@ -67,13 +69,28 @@ public class MapApi {
 
         // Nếu k không tồn tại sẽ lỗi, do đó phải kiểm tra tồn tại của k hoặc v
         // map.compute("ten", (k, v) -> v * v); // Error
-        map.compute("ten1", (k, v) -> v == null ? 1_000 : v * v );
+        map.compute("ten1", (k, v) -> v == null ? 1_000 : v * v);
         System.out.println("After: " + map);
+    }
+
+    public static void mapWithCollectionValue() {
+        String[] arr = {"a", "c", "c", "a", "b", "c"};
+        // <value, list_index>
+        Map<String, List<Integer>> groupMap = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            // groupMap.computeIfAbsent(arr[i], k -> new ArrayList<>()).add(i);
+            groupMap.computeIfAbsent(arr[i], k -> {
+                System.out.println("k = " + k);
+                return new ArrayList<>();
+            }).add(i);
+        }
+        System.out.println("GroupMap = " + groupMap);
     }
 
     public static void main(String[] args) {
         // mapApi();
-        compute();
+        // compute();
+        mapWithCollectionValue();
     }
 
 }
