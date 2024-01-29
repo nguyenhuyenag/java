@@ -2,20 +2,22 @@ package com;
 
 public class MainCore {
 
+//    public static String findOrigial(String s) {
+//        StringBuilder result = new StringBuilder();
+//        int[] mark = new int[26];
+//        for (char c : s.toCharArray()) {
+//            mark[c - 'a']++;
+//        }
+//        for (int i = 0; i < 26; i++) {
+//            if (mark[i] > 0) {
+//                result.append(String.valueOf((char) (i + 'a')).repeat(mark[i]));
+//            }
+//        }
+//        return result.toString();
+//    }
+
     public static void main(String[] args) {
-        System.out.println("Main starting...");
-
-        // Đăng ký một shutdown hook
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            // Thực hiện công việc sau khi hàm main kết thúc
-            System.out.println("Shutdown hook is running...");
-        }));
-
-        // Tiếp tục thực hiện các công việc trong hàm main
-        System.out.println("Main function is continuing...");
-
-        // Kết thúc hàm main
-        System.out.println("Main ending.");
+        // findOrigial("caaaaba");
     }
 
 }
