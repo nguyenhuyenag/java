@@ -70,7 +70,7 @@ public class StreamMethod {
      * dropWhile(): Bỏ qua các phần tử từ đầu Stream cho đến khi điều kiện test thành FALSE
      * (hoặc giữa lại các phần tử từ vị trí thỏa mãn điều kiện test)
      *
-     * [___________Skip___________dropWhile___________Get___________]
+     * [_______Skip_______dropWhile(test=false)_______Get_______]
      */
     public static void dropWhile() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
@@ -84,7 +84,7 @@ public class StreamMethod {
      * Khi điều kiện test thành FALSE hàm takeWhile() sẽ dừng và trả về luồng chứa các phần
      * từ thỏa mãn điều kiện trước đó
      *
-     * [___________Get___________takeWhile___________Skip___________]
+     * [_______Get_______takeWhile(test=false)_______Skip_______]
      */
     public static void takeWhile() {
         Stream<Integer> numbers = Stream.of(1, 2, 3, -4, -5, 6, 7);
