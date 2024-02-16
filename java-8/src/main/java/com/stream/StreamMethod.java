@@ -8,6 +8,8 @@ import com.util.User;
 
 public class StreamMethod {
 
+    static int i = 0;
+
     // skip(): Bỏ qua k phần tử đầu tiên
     public static void skip(List<User> list) {
         list.stream().skip(5).forEach(System.out::println);
@@ -65,14 +67,30 @@ public class StreamMethod {
 
     /**
      * Java 9+
-     * dropWhile(): Loại bỏ các phần tử từ đầu cho đến phần tử thỏa điều kiện test
+     * dropWhile(): Bỏ qua các phần tử từ đầu Stream cho đến khi điều kiện test thành FALSE
      * (hoặc giữa lại các phần tử từ vị trí thỏa mãn điều kiện test)
+     *
+     * [___________Skip___________dropWhile___________Get___________]
      */
     public static void dropWhile() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        // Loại bỏ những phần tử < 5 tính từ đầu
+        // Loại bỏ những phần tử < 5 tính từ đầu Stream
         List<Integer> filter = numbers.stream().dropWhile(t -> t < 5).toList();
-        System.out.println("filter: " + filter);
+        System.out.println("dropWhile: " + filter);
+    }
+
+    /**
+     * takeWhile(): Lấy các phần tử từ đầu Stream cho đến phần tử không thỏa điều kiện test.
+     * Khi điều kiện test thành FALSE hàm takeWhile() sẽ dừng và trả về luồng chứa các phần
+     * từ thỏa mãn điều kiện trước đó
+     *
+     * [___________Get___________takeWhile___________Skip___________]
+     */
+    public static void takeWhile() {
+        Stream<Integer> numbers = Stream.of(1, 2, 3, -4, -5, 6, 7);
+        // Lấy ra các số nguyên dương đầu tiên
+        List<Integer> filter = numbers.takeWhile(t -> t > 0).toList();
+        System.out.println("takeWhile: " + filter);
     }
 
     // filter(): Lọc dữ liệu
@@ -130,6 +148,31 @@ public class StreamMethod {
         squaredNumbers.forEach(System.out::println);
     }
 
+    /**
+     * Có 2 loại
+     */
+    public static void reduce() {
+        // Không có giá trị khởi tạo
+        List<String> strings = List.of("one", "two", "three", "four", "five");
+        Optional<String> reduceds = strings.stream()
+                .reduce((acc, item) -> {
+                    System.out.println(++i);
+                    System.out.println("acc = " + acc);
+                    System.out.println("item = " + item);
+                    return acc + "-" + item;
+                });
+        System.out.println("reduceds: " + reduceds.get());
+
+        // Có giá trị khởi tạo
+        String reduce = strings.stream()
+                .reduce("", (acc, item) -> {
+                    System.out.println("acc = " + acc);
+                    System.out.println("item = " + item);
+                    return acc + " | " + item;
+                });
+        System.out.println("reduce: " + reduce);
+    }
+
     public static void main(String[] args) {
         // reverse(list);
 
@@ -143,9 +186,11 @@ public class StreamMethod {
         // match(list);
         // distinct();
         // dropWhile();
+        takeWhile();
         // map();
         // min_max(list);
-        peek();
+        // peek();
+        // reduce();
 
 
 //		// Stream.reduce()
