@@ -17,32 +17,32 @@ import lombok.Setter;
 @AllArgsConstructor
 public class User {
 
-	private String name;
-	private int age;
+    private String name;
+    private int age;
 
-	public static int compareByNameThenAge(User u1, User u2) {
-		if (u1.name.equals(u2.name)) {
-			return u1.age - u2.age;
-		}
-		return u1.name.compareTo(u2.name);
-	}
+    public int compareByNameThenAge(User u1, User u2) {
+        if (u1.name.equals(u2.name)) {
+            return u1.age - u2.age;
+        }
+        return u1.name.compareTo(u2.name);
+    }
 
-	public static List<User> init() {
-		List<User> list = new ArrayList<>();
-		list.add(new User("Jame", 5));
-		list.add(new User("Aman", 5));
-		list.add(new User("Rahul", 40));
-		list.add(new User("Dan", 27));
-		list.add(new User("Dan", 17));
-		list.add(new User("Shekhar", 26));
-		list.add(new User("Amitabh", 20));
-		list.add(new User("Shahrukh", 18));
-		return list;
-	}
+    public static List<User> sampleUsers() {
+        List<User> list = new ArrayList<>();
+        list.add(new User("Jame", 5));
+        list.add(new User("Aman", 5));
+        list.add(new User("Rahul", 40));
+        list.add(new User("Dan", 27));
+        list.add(new User("Dan", 17));
+        list.add(new User("Shekhar", 26));
+        list.add(new User("Amitabh", 20));
+        list.add(new User("Shahrukh", 18));
+        return list;
+    }
 
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-	}
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+    }
 
 }

@@ -78,7 +78,8 @@ public class OptionalApi {
 		});
 		// Change
 		System.out.println("After ifPresent(): " + optionalValue.get());
-		Optional<User> optionalUser = Optional.of(new User("James", 20));
+		User u = new User("James", 20);
+		Optional<User> optionalUser = Optional.of(u);
 		optionalUser.ifPresent(value -> {
 			value.setAge(22);
 		});
