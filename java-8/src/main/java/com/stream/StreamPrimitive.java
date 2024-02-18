@@ -22,8 +22,7 @@ public class StreamPrimitive {
 
 	// String -> IntStream
 	public static void convert3() {
-		String input = "abcd";
-		IntStream chars = input.chars();
+		IntStream chars = "abcd".chars();
 	}
 
 	// String -> Stream<Character>

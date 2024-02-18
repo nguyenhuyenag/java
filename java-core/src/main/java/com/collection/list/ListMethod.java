@@ -7,7 +7,21 @@ import java.util.List;
 /**
  * Các phương thức trong List
  */
-public class ListApi {
+public class ListMethod {
+
+    /**
+     * remove(int index): Remove by index
+     *
+     * remove(Object o): Remove by value
+     */
+    public static void remove() {
+        List<Integer> list = new ArrayList<>(Arrays.asList(2, 1, 2, 2, 3, 4, 5));
+        int v1 = 2;
+        Integer v2 = 2;
+        Integer remove = list.remove(v1);
+        boolean remove1 = list.remove(v2);
+        System.out.println("list = " + list);
+    }
 
     // Cập nhật giá trị của List<List<Integer>>
     public static void updateInnerListValue() {
@@ -19,7 +33,8 @@ public class ListApi {
     }
 
     public static void main(String[] args) {
-        updateInnerListValue();
+        remove();
+        // updateInnerListValue();
     }
 
 }
