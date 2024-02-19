@@ -13,13 +13,13 @@ import java.util.Deque;
  *    
  *  - Dequeue có thể thêm hoặc xóa các phần tử từ cả hai đầu.
  *  
- *  - Các lớp cài đặt Dequeue Interface là LinkedList và ArrayDeque.
+ *  - Các lớp cài đặt Dequeue là LinkedList và ArrayDeque.
  *  
- *  - ArrayDeque nhanh hơn lớp Stack khi được sử dụng như một ngăn xếp (Stack) và nhanh hơn lớp
- *    LinkedList khi được sử dụng như một hàng đợi (Queue).
+ *  	+ ArrayDeque nhanh hơn lớp Stack khi được sử dụng như một ngăn xếp (Stack) và nhanh hơn lớp
+ *        LinkedList khi được sử dụng như một hàng đợi (Queue).
  *    
- *  - Hiệu suất của ArrayDeque đôi khi được coi là tốt nhất trong Collection Framework. Nó cho
- *    phép thực hiện O(1) để chèn, loại bỏ và truy xuất 
+ *  	+ Hiệu suất của ArrayDeque đôi khi được coi là tốt nhất trong Collection Framework. Nó cho
+ *        phép thực hiện O(1) để chèn, loại bỏ và truy xuất
  * 
  * 		|----------------------|------|-------------------|-----------------------------------------|
  * 		|   Thao tác		   |	  |	Ném ra ngoại lệ	  |	Trả về giá trị cụ thể (null hoặc false) |

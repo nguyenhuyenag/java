@@ -61,6 +61,10 @@
 	
 		project.tree.structure.show.url=false
 
+- Ẩn thư mục trong Project View
+
+	+ Click phải vào thư mục > Make Directory as > Excluded
+
 - Run devtools
 	
   + Settings > Advanced Settings > Allow auto-make to start ...

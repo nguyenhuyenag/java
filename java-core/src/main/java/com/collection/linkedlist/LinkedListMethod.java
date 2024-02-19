@@ -3,7 +3,6 @@ package com.collection.linkedlist;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.ListIterator;
 
 /**
  * Những điểm cần ghi nhớ về LinkedList:
@@ -16,11 +15,11 @@ import java.util.ListIterator;
  * queue (hàng đợi).
  * 
  * - Các phần tử trong LinkedList có thể không nằm liên tục nhau trong bộ nhớ.
- * Nó là một liên kết có tính hai chiều. Mỗi phần tử trong danh sách giữ một
+ * Nó là một liên kết có tính 2 chiều. Mỗi phần tử trong danh sách giữ một
  * tham chiếu đến phần tử đằng trước nó và tham chiếu đến phần tử ngay sau nó.
  */
 @SuppressWarnings("unused")
-public class LinkedListApi {
+public class LinkedListMethod {
 
 	public static void main(String[] args) {
 		LinkedList<Integer> list = new LinkedList<>(Arrays.asList(1, 2, 3, 4, 5));

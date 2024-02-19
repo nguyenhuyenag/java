@@ -1,6 +1,6 @@
 package com.basic.number;
 
-public class IntegerApi {
+public class IntegerMethod {
 
 	public static void main(String[] args) {
 		int n = 25;
@@ -14,7 +14,6 @@ public class IntegerApi {
 		System.out.println("Cơ số bất kỳ: " + radix);
 		// Cơ số bất kỳ về số nguyên không dấu
 		System.out.println("Ngược lại: " + Integer.parseUnsignedInt(radix, 2));
-		
 
 		System.out.println("Đếm bit số '1': " + Integer.bitCount(n));
 	}

@@ -114,14 +114,4 @@ public class CollectionMethod {
         unmodifiableCollection();
     }
 
-//	public static void method() {
-//		// Collections.copy(null, null);
-//		// Collections.fill(list, obj);
-//		// Collections.frequency(c, o);  // trả về số lần một phần tử có mặt trong tập hợp
-//		// Collections.indexOfSubList(source, target);
-//		// Collections.lastIndexOfSubList(source, target);
-//		// Collections.shuffle(list);
-//		// Collections.swap(list, i, j);
-//	}
-
 }
