@@ -65,6 +65,10 @@
 
 	+ Click phải vào thư mục > Make Directory as > Excluded
 
+- Live Templates (tạo nhanh hàm, vòng lặp,...)
+
+	+ Settings > Editor > Live Templates > ...
+
 - Run devtools
 	
   + Settings > Advanced Settings > Allow auto-make to start ...
