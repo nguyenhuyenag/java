@@ -1,4 +1,4 @@
-package com.basic.charstring;
+package com.basic.strings;
 
 import com.thedeanda.lorem.Lorem;
 import com.thedeanda.lorem.LoremIpsum;

@@ -1,4 +1,4 @@
-package com.basic.charstring;
+package com.basic.strings;
 
 import java.util.Arrays;
 import java.util.List;

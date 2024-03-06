@@ -1,4 +1,4 @@
-package com.basic.charstring;
+package com.basic.strings;
 
 import org.apache.commons.lang3.StringUtils;
 

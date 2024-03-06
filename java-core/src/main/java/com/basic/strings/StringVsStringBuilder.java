@@ -1,4 +1,4 @@
-package com.basic.charstring;
+package com.basic.strings;
 
 @SuppressWarnings("unused")
 public class StringVsStringBuilder {
