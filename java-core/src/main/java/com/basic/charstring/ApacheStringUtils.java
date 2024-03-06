@@ -161,7 +161,7 @@ public class ApacheStringUtils {
 
 		/**
 		 * remove: Loại bỏ chuỗi con khỏi chuỗi khác
-		 * 
+		 *
 		 * - Tương tự có removeIgnoreCase
 		 */
 		input = "Hello World";
@@ -169,7 +169,7 @@ public class ApacheStringUtils {
 		/**
 		 * removeStart, removeStartIgnoreCase: Xóa một chuỗi khỏi đầu một chuỗi nếu nó
 		 * tồn tại
-		 * 
+		 *
 		 * - Tương tự có removeEnd, removeEndIgnoreCase
 		 */
 		input = "Hello World";
@@ -179,7 +179,7 @@ public class ApacheStringUtils {
 		/**
 		 * replaceOnce: Thay thế lần đầu tiên xuất hiện của một chuỗi con trong chuỗi
 		 * nguồn
-		 * 
+		 *
 		 * - Tương tự có replaceOnceIgnoreCase
 		 */
 		input = "Hello, Hello, World!";
@@ -222,7 +222,7 @@ public class ApacheStringUtils {
 
 		/**
 		 * - repeat: Lặp lại chuỗi n lần
-		 * 
+		 *
 		 * - repeat(String, String, int): Repeat với dấu phân cách
 		 */
 		System.out.println("Repeat: " + repeat("Hello", 3));
@@ -230,7 +230,7 @@ public class ApacheStringUtils {
 
 		/**
 		 * - capitalize: Viết hoa chữ cái đầu tiên
-		 * 
+		 *
 		 * - uncapitalize: Ngược lại
 		 */
 		input = "hello wOrld";
@@ -247,7 +247,7 @@ public class ApacheStringUtils {
 
 		/**
 		 * - defaultString: Trả về một chuỗi mặc định nếu chuỗi đầu vào là null
-		 * 
+		 *
 		 * - Tương tự có: defaultIfEmpty, defaultIfBlank
 		 */
 		input = null;
@@ -266,7 +266,7 @@ public class ApacheStringUtils {
 
 		/**
 		 * - reverse: Đảo chuỗi
-		 * 
+		 *
 		 * - reverseDelimited: Đảo chuỗi với dấu phân cách
 		 */
 		System.out.println("Reverse: " + input + " -> " + reverse(input));
@@ -276,7 +276,7 @@ public class ApacheStringUtils {
 
 		/**
 		 * - abbreviate: Viết tắt 1 chuỗi dựa trên độ dài tối đa
-		 * 
+		 *
 		 * - abbreviateMiddle: Viết tắt ở giữa 1 chuỗi dựa trên độ dài tối đa
 		 */
 		input = "This is a long sentence that needs to be abbreviated";
@@ -289,9 +289,9 @@ public class ApacheStringUtils {
 
 		/**
 		 * - difference: Trả về phần tử khác nhau đầu tiên của hai chuỗi
-		 * 
+		 *
 		 * - indexOfDifference(s1, s2): Vị trí đầu tiên mà 2 chuỗi đầu vào khác nhau
-		 * 
+		 *
 		 * - indexOfDifference(s1, s2,...): Vị trí đầu tiên mà các chuỗi đầu vào khác
 		 * nhau
 		 */
@@ -318,17 +318,29 @@ public class ApacheStringUtils {
 		/**
 		 * - appendIfMissing: Thêm chuỗi con vào cuối một chuỗi nếu chuỗi chưa kết thúc
 		 * bằng chuỗi con đó.
-		 * 
+		 *
 		 * - Tương tự có prependIfMissing
 		 */
 		input = "Hello World";
 		String appended = StringUtils.appendIfMissing(input, "!");
 		System.out.printf("AppendIfMissing: %s -> %s\n\n", input, appended);
-		
+
 		input = "123";
 		System.out.printf("IsNumeric: %s -> %s\n", input, isNumeric(input));
 		input = "123a";
 		System.out.printf("IsNumeric: %s -> %s", input, isNumeric(input));
+
+		/**
+		 * Right trim, left trim
+		 */
+		String s = "Hello";
+		s1 = "     Hello";
+		s2 = "Hello     ";
+		s1 = StringUtils.stripEnd(s1,null);
+		s2 = StringUtils.stripStart(s2,null);
+		System.out.println("\n\nTrim left and right:");
+		System.out.println("s = s1 -> " + s.equals(s1));
+		System.out.println("s = s2 -> " + s.equals(s2));
 	}
 
 	public static void main(String[] args) {
