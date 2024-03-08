@@ -16,7 +16,7 @@ public class IntegerMethod {
 		System.out.println("Ngược lại: " + Integer.parseUnsignedInt(radix, 2));
 
 		System.out.println("Đếm bit số '1': " + Integer.bitCount(n));
-		System.out.println("Đảo bit: " + Integer.reverse(n));
+		System.out.println("Đảo nhị phân: " + Integer.reverse(n));
 	}
 
 }
