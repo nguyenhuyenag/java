@@ -22,8 +22,12 @@ public class PriorityQueueSample {
 	 * removeIf(Predicate):	Xóa những phần tử thỏa mãn điều kiện test
 	 */
     public static void main(String[] args) throws InterruptedException {
-        // new PriorityQueue<>(Collections.reverseOrder());
-        Queue<Integer> queue = new PriorityQueue<>();
+		/*-
+		 * - Hàng đợi ưu tiên theo tiêu chí nào đó
+		 *
+		 * 		Queue<Integer> q = new PriorityQueue<>(Comparator.comparingInt(...));
+		 */
+		Queue<Integer> queue = new PriorityQueue<>();
         Collections.addAll(queue, 6, 3, 1, 0, 5, 6);
 		queue.remove(6);
         while (!queue.isEmpty()) {
