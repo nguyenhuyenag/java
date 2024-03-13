@@ -91,17 +91,22 @@
 
 		+ Không thể kế thừa class final
 
-# TreeMap
+# Map
 
-	- TreeMap KHÔNG cho phép bất kỳ key nào là null và nhưng có thể có nhiều giá trị null
-	
-	- TreeMap tự động sắp xếp các phần tăng dần theo key 
-	
-# LinkedHashMap
+    + TreeMap
 
-	- LinkedHashMap có thể có 1 key là null và nhiều giá trị null
+	    - TreeMap KHÔNG cho phép bất kỳ key nào là null và nhưng có thể có nhiều giá trị null
+	    - TreeMap tự động sắp xếp các phần tăng dần theo key 
 	
-	- LinkedHashMap duy trì các phần tử theo thứ tự chèn
+    + LinkedHashMap
+
+	    - LinkedHashMap có thể có 1 key là null và nhiều giá trị null
+	    - LinkedHashMap duy trì các phần tử theo thứ tự chèn
+    
+    + HashMap & Hashtable
+
+        - Hashtable không cho phép chứa key-value null, còn HashMap thì có 
+        - Hashtable là thread-safe, còn HashMap thì không (phải dùng ConcurrentHashMap)
 	
 # Exception
 
