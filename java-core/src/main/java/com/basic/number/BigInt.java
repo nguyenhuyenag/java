@@ -17,15 +17,15 @@ public class BigInt {
 
         // Cộng
         BigInteger sum = n1.add(n2);
-        System.out.println("Sum: "+sum);
+        System.out.println("Cộng: "+sum);
 
         // Trừ
         BigInteger subtract = n1.subtract(n2);
-        System.out.println("Minus: " + subtract);
+        System.out.println("Trừ: " + subtract);
 
         // Nhân
         BigInteger multiply = n1.multiply(n1);
-        System.out.println("Multiply: " + multiply);
+        System.out.println("Nhân: " + multiply);
 
         // Chia thường
 
