@@ -71,6 +71,7 @@
 # This (đối tượng hiện tại của class)
 
 	- Không thể dùng this hay super() trong phương thức static do phương thức static không gắn với đối tượng, nên không có this.
+    - This là từ khóa do đó không thể gán `this = giá_trị_nào_đó`
 		
 # Final
 
