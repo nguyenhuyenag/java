@@ -162,31 +162,34 @@
 
 	- Một method có thể nhận tối đa 255 tham số, tuy nhiên mặc định chứa một tham số this nên chính xác sẽ còn 254.
 
-# Pass by value & Pass by reference
+# Kiểu tham chiếu và tham chiếu (pass by value & pass by reference)
 
-	Khi các tham số đầu vào của một method là:
+    - Tham trị
+        + Kiểu thường dùng cho các kiểu nguyên thủy: int, long, byte, char,...
+        + Khi truyền biến vào method thì sẽ method sẽ chỉ nhận giá trị không nhận địa chỉ biến
+          (copy giá trị vào ô nhớ khác), do đó mọi thay đổi bên trong sẽ không ảnh hưởng đến biến ở bên ngoài.
+    
+    - Tham chiếu
+        + Trong Java các biến của kiểu class (đối tượng) đều là tham chiếu
+        + Khi truyền biến vào method tức là truyền địa chỉ ô nhớ vào method, do đó mọi thay đổi bên trong đều sẽ
+          ảnh hướng đến biến ở bên ngoài
 
-		- Pass-by-value: Method sẽ tạo bản sao của tham số truyền vào và hoạt động trên chúng. Mọi thay đổi trên bản sao này không ảnh hưởng đến giá trị ban đầu. 
-	
-		- Pass-by-reference: Method sẽ thao tác trên cùng một object. Điều này có nghĩa là khi method thay đổi giá trị của tham số thì giá trị của chúng tại nơi gọi cũng thay đổi theo.
-
-		- Trong java luôn luôn là pass-by-value
-	
-		- Tham số reference object: Các object sau khi khởi tạo đều được lưu trữ trong heap. Những object này sẽ được tham chiếu bởi các biến reference khác nhau. Hay nói cách khác các biến này sẽ lưu trữ địa chỉ của các object mà chúng tham chiếu. Các biến reference này được lưu trữ trong trong vùng nhớ Stack. Khi một biến reference (địa chỉ của object) được truyền vào tham số của method thì một bản sao chép của chúng được tạo ra và lưu vào Stack. Chúng có cùng địa chỉ đến object được lưu trong heap. Khi ta thao tác trên biến reference thì sẽ ảnh hưởng đến object được lưu trong heap
-	
-				public static void todo(User u1) {
-					u1.setName("Java2");
+				public void newName(User u1) {
+					u1.setName("Java_2024");
 				}
 			
-				User u = new User(25, "Java");
-				todo(u);
-				System.out.println(u.getName()); // = Java2
+				User u = new User("Java");
+				newName(u);
+				u.getName() -> "Java_2024"
+        
+        - Kiểu mảng int[], char[] cũng là tham chiếu (ví dụ int[] arr = new int[5] thì biến arr sẽ là 
+          một tham chiếu (hoặc con trỏ) đến mảng đó trong bộ nhớ, không phải là một bản sao của mảng) 
 	
 # Stack & Heap
 
 	- Các biến nguyên thủy được lưu trực tiếp trong stack
 	
-	- Các biến của object sau khi khởi tạo sẽ được lưu trong heap
+	- Các biến của Object sau khi khởi tạo sẽ được lưu trong heap
 	
 	- Stack
 	
