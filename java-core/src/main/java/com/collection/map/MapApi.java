@@ -8,9 +8,9 @@ import java.util.Map;
 public class MapApi {
 
     /*-
-     * - put(k, v) ~ addOrUpdate: Thêm mới entry hoặc cập nhật giá trị của một entry
-     * đã tồn tại. Hàm trả về giá trị cũ của entry với key đã được cập nhật (nếu có).
-     * Nếu key chưa tồn tại, phương thức trả về `null`.
+     * - put(k, v) ~ addOrUpdate: Thêm mới hoặc cập nhật giá trị của key:
+     *    + Nếu key chưa tồn tại put(k,v) trả về `null`.
+     *    + Nếu key đã tồn tại (k, v1) thì sẽ cập nhật v2 và trả về v1.
      *
      * - putIfAbsent(k, v) ~ addIfNotExist: Chỉ thêm mới entry khi key chưa tồn tại
      * trong Map. Hàm trả về giá trị hiện tại của entry với key đã tồn tại, hoặc giá
