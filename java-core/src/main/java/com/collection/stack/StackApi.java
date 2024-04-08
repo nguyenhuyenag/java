@@ -1,6 +1,7 @@
 package com.collection.stack;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Stack;
 
 /**
@@ -8,38 +9,55 @@ import java.util.Stack;
  *
  * Các phương thức của Stack
  *
- * 	push()		-> 	Thêm phần từ vào đầu stack
- * 	peek() 		-> 	Lấy ra nhưng không xóa phần từ ở đầu stack
- * 	pop() 		-> 	Lấy ra và xóa phần từ ở đầu stack
- * 	search()	->	Trả về vị trí của phần từ cần tìm hoặc -1 nếu không có
- * 	empty()		->	Kiểm tra stack rỗng
+ * push()		-> 	Thêm phần từ vào đầu stack
+ * peek() 		-> 	Lấy ra nhưng không xóa phần từ ở đầu stack
+ * pop() 		-> 	Lấy ra và xóa phần từ ở đầu stack
+ * search()	->	Trả về vị trí của phần từ cần tìm hoặc -1 nếu không có
+ * empty()		->	Kiểm tra stack rỗng
  */
 public class StackApi {
 
-	public static void stackApi() {
-		Stack<Integer> stack = new Stack<>();
-		stack.addAll(Arrays.asList(1, 2, 1, 3));
+    // Duyệt stack từ dưới lên (trái -> phải)
+    public static void forLoop() {
+        Stack<Integer> stack = new Stack<>();
+        Collections.addAll(stack, 0, 1, 2, 5, 3, 4, 5);
+        stack.forEach(System.out::println);
+    }
 
-		// Thêm phần tử vào đỉnh
-		stack.push(0);
+    public static void stackApi() {
+        Stack<Integer> stack = new Stack<>();
+        Collections.addAll(stack, 0, 1, 2, 5, 3, 4, 5);
 
-		// Lấy & xóa phần tử ở đỉnh, EmptyStackException nếu stack rỗng
-		stack.pop();
+        System.out.println("Stack: " + stack);
 
-		// Tương tự pop() nhưng không xóa
-		stack.peek();
+        // Duyệt stack từ dưới lên
+        // forLoop();
 
-		// Kiểm tra stack rỗng
-		stack.empty();
+        // Thêm phần tử vào đỉnh
+        stack.push(0); // stack.add(1)
 
-		// Trả về vị trí gần đỉnh nhất của phần tử cần tìm, -1 nếu không tìm thấy
-		stack.search(1);
+        // Insert at index
+        stack.add(0, 1000);
 
-		System.out.println(stack);
-	}
+        // Lấy giá trị của phần tử ở đỉnh
+        stack.peek();
 
-	public static void main(String[] args) {
-		stackApi();
-	}
+        // Lấy & xóa phần tử ở đỉnh, EmptyStackException nếu stack rỗng
+        stack.pop();
+
+        // Kiểm tra stack rỗng
+        stack.empty();
+
+        // Tìm vị trí tính từ đỉnh (bắt đầu từ 1) của phần tử cần tìm. Trả về -1 nếu không tìm thấy
+        int keySearch = 5;
+        System.out.println("Search: " + stack.search(keySearch));
+
+        stack.add(1);
+
+    }
+
+    public static void main(String[] args) {
+        stackApi();
+    }
 
 }
