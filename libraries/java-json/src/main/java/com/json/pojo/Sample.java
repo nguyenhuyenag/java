@@ -22,6 +22,14 @@ public class Sample implements Serializable {
 	@JsonProperty("execute_time")
 	private Date executeTime;
 
+	@JsonProperty("ngaygui_hoadon")
+	private Date ngayguiHoadon;
+
+	@JsonProperty("ngaygui_tct")
+	private Date ngayguiTct;
+
+	private Timestamp ngaycapnhat;
+
 	@JsonProperty("id_user")
 	private String idUser;
 
@@ -39,14 +47,6 @@ public class Sample implements Serializable {
 
 	@JsonProperty("mathdiep_thamchieu")
 	private String mathdiepThamchieu;
-
-	private Timestamp ngaycapnhat;
-
-	@JsonProperty("ngaygui_hoadon")
-	private Date ngayguiHoadon;
-
-	@JsonProperty("ngaygui_tct")
-	private Date ngayguiTct;
 
 	@JsonProperty("noidung_gui")
 	private String noidungGui;
