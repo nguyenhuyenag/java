@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -25,44 +26,58 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FormatDatetime implements PrettyJson {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class FormatDatetime {
 
-	private String name;
-	private Date date;
+    private String name;
+    private Date date;
 
-	// (1)
-	// @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-	// (2)
-	@JsonFormat(pattern = "yyyy/MM/dd")
-	@JsonSerialize(using = LocalDateSerializer.class)
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	private LocalDate localDate;
+    // (1)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    // (2)
+    // @JsonFormat(pattern = "dd/MM/yyyy")
+    // @JsonSerialize(using = LocalDateSerializer.class)
+    // @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate localDate;
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime localDateTime;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    private LocalDateTime localDateTime;
 
-	/**
-	 * Mặc định Jackson sẽ chuyển Date sang Timestamp (long) tính từ 1-1-1970 UTC
-	 * khi serialize sang Json
-	 */
-	public static void main(String[] args) throws ParseException, JsonProcessingException {
-		SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
-		FormatDatetime bean = FormatDatetime.builder()
-				.name("Jame")
-				.date(new Date())
-				.localDate(LocalDate.now())
-				.localDateTime(LocalDateTime.now())
-				.build();
+    /**
+     * Mặc định Jackson sẽ chuyển Date sang Timestamp (long) tính từ 1-1-1970 UTC
+     * khi serialize sang Json
+     */
+    public static void basicDateWithoutFormat() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        FormatDatetime bean = FormatDatetime.builder()
+                .date(new Date())
+                .build();
+        System.out.println(mapper.writeValueAsString(bean));
+    }
 
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.registerModule(new JavaTimeModule());
+    public static void basicDateFormat() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setDateFormat(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss"));
+        FormatDatetime bean = FormatDatetime.builder()
+                .date(new Date())
+                .build();
+        System.out.println(mapper.writeValueAsString(bean));
+    }
 
-		System.out.println("Without format: ");
-		System.out.println(mapper.writeValueAsString(bean));
+    public static void localDateWithoutFormat() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        FormatDatetime bean = FormatDatetime.builder()
+                .localDate(LocalDate.now())
+                .localDateTime(LocalDateTime.now())
+                .build();
+        System.out.println(mapper.writeValueAsString(bean));
+    }
 
-		System.out.println("Format: ");
-		// mapper.setDateFormat(df);
-		System.out.println(mapper.writeValueAsString(bean));
-	}
+    public static void main(String[] args) throws ParseException, JsonProcessingException {
+        basicDateWithoutFormat();
+        basicDateFormat();
+        localDateWithoutFormat();
+    }
 
 }
