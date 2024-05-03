@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-public class ArrayApi {
+public class ArraysApi {
 	
 	private static String print(String[]... args) {
 		return Arrays.stream(args) //
@@ -24,20 +24,19 @@ public class ArrayApi {
 
 	// Sao chép mảng
 	public static void copyArray() {
-		Integer[] arr = { 1, 2, 3, 4, 5, 2, 4, 1, 0, 5, 5 };
+		int[] arr = { 1, 2, 3, 4, 5, 2, 4, 1, 0, 5, 5 };
 
-		// Use Arrays.copyOf()
-		Integer[] copyOf = Arrays.copyOf(arr, 5);
-		Integer[] copyOfRange = Arrays.copyOfRange(arr, 0, 3);
+		int[] copyOf = Arrays.copyOf(arr, 5); // Nếu mảng đã cho không đủ sẽ thêm số 0
+		int[] copyOfRange = Arrays.copyOfRange(arr, 0, 3);
 		System.out.println(Arrays.toString(copyOf));
 		System.out.println(Arrays.toString(copyOfRange));
 
 		// Use Object.clone()
-		Integer[] copyArr2 = arr.clone();
+		int[] copyArr2 = arr.clone();
 		System.out.println(Arrays.toString(copyArr2));
 
 		// Use Java 8 stream
-		Integer[] copiedArray = Arrays.stream(arr).toArray(Integer[]::new);
+		Integer[] copiedArray = Arrays.stream(arr).boxed().toArray(Integer[]::new);
 		System.out.println(Arrays.toString(copiedArray));
 	}
 
