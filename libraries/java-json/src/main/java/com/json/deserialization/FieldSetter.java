@@ -1,4 +1,4 @@
-package com.json.parse;
+package com.json.deserialization;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,4 +1,4 @@
-package com.json.parse;
+package com.json.deserialization;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;

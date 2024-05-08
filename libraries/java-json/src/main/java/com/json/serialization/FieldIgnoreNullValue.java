@@ -1,4 +1,4 @@
-package com.json.create;
+package com.json.serialization;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
