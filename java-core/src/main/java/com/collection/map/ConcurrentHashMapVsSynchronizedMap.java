@@ -48,14 +48,11 @@ public class ConcurrentHashMapVsSynchronizedMap {
 			long startTime = System.nanoTime();
 			ExecutorService executorService = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 			for (int j = 0; j < THREAD_POOL_SIZE; j++) {
-				executorService.execute(new Runnable() {
-					@Override
-					public void run() {
-						for (int i = 0; i < 1_000_000; i++) {
-							Integer randomNumber = (int) Math.ceil(Math.random() * 100000);
-							Integer value = testMap.get(String.valueOf(randomNumber));
-							testMap.put(String.valueOf(randomNumber), randomNumber);
-						}
+				executorService.execute(() -> {
+					for (int i1 = 0; i1 < 1_000_000; i1++) {
+						Integer randomNumber = (int) Math.ceil(Math.random() * 100000);
+						Integer value = testMap.get(String.valueOf(randomNumber));
+						testMap.put(String.valueOf(randomNumber), randomNumber);
 					}
 				});
 			}
