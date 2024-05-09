@@ -1,9 +1,5 @@
 package collection.queue;
 
-import java.util.Collections;
-import java.util.PriorityQueue;
-import java.util.Queue;
-
 /*-
  * - Queue (hàng đợi): Hoạt động theo cơ chế FIFO (firt in first out)
  * 
