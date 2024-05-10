@@ -21,13 +21,16 @@ public class TreeMapExample {
 
         drawlines();
         System.out.println("Cắt Map từ đầu đến E:");
+
         // subMap trong khoảng [0, E), [0, E]
         System.out.println("\t[0, E): " + treeMap.headMap("seven"));
         System.out.println("\t[0, E]: " + treeMap.headMap("seven", true));
         System.out.println("Cắt Map từ E đến cuối:");
+
         // subMap trong khoảng [E, end], (E, end]
         System.out.println("\t[E, end]: " + treeMap.tailMap("six"));
         System.out.println("\t(E, end]: " + treeMap.tailMap("six", false));
+
         // Cắt map bất kỳ
         System.out.println("Cắt một đoạn bất kỳ:");
         System.out.println("\t[M, N): " + treeMap.subMap("five", "six"));
@@ -36,10 +39,12 @@ public class TreeMapExample {
 
         drawlines();
         // Tương tự có: higherKey(), higherEntry(), lowerKey(), lowerEntry()
-        System.out.println("Tìm chặn trê, chặn dưới của một key: ");
+        System.out.println("Tìm chặn trên, chặn dưới của một key: ");
+
         // ceilingKey(): Key (Entry) nhỏ nhất >= X
         System.out.println("Key nhỏ nhất >= 'one': " + treeMap.ceilingKey("one"));
         System.out.println("Entry nhỏ nhất có key >= 'one': {" + treeMap.ceilingEntry("one") + "}");
+
         // floorKey(): Key (Entry) lớn nhất <= X
         System.out.println("Key lớn nhất <= 'six': " + treeMap.floorKey("six"));
         System.out.println("Entry lớn nhất có key <= 'six': {" + treeMap.floorEntry("six") + "}");
