@@ -9,7 +9,9 @@ public class PairClass {
         Integer key = entry.getKey();
         String value = entry.getValue();
         System.out.println("key = " + key + ", value = " + value);
-        AbstractMap.SimpleImmutableEntry<Integer, String> entry2 = new AbstractMap.SimpleImmutableEntry<>(1, "one");
+
+        AbstractMap.SimpleImmutableEntry<Integer, String> entry2 =
+                new AbstractMap.SimpleImmutableEntry<>(1, "one");
     }
 
 }

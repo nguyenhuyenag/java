@@ -11,25 +11,15 @@ import common.util.MapsUtils;
 public class MapComparable {
 
 	public static <K extends Comparable<K>, V> Comparator<Entry<K, V>> keyComparatorPreJava8() {
-		return new Comparator<Entry<K, V>>() {
-			@Override
-			public int compare(Entry<K, V> e1, Entry<K, V> e2) {
-				return e1.getKey().compareTo(e2.getKey());
-			}
-		};
+		return Entry.comparingByKey();
 	}
 
 	public static <K extends Comparable<K>, V> Comparator<Entry<K, V>> keyComparatorReversePreJava8() {
-		return new Comparator<Entry<K, V>>() {
-			@Override
-			public int compare(Entry<K, V> e1, Entry<K, V> e2) {
-				return e2.getKey().compareTo(e1.getKey());
-			}
-		};
+		return (e1, e2) -> e2.getKey().compareTo(e1.getKey());
 	}
 
 	public static <K extends Comparable<K>, V> Comparator<Entry<K, V>> keyComparatorWithLambda() {
-		return (e1, e2) -> e1.getKey().compareTo(e2.getKey());
+		return Entry.comparingByKey();
 	}
 
 	public static <K extends Comparable<K>, V> Comparator<Entry<K, V>> keyComparatorReverseWithLambda() {
@@ -37,15 +27,15 @@ public class MapComparable {
 	}
 
 	public static <K extends Comparable<? super K>, V> Comparator<Entry<K, V>> keyComparatorWithMapEntry() {
-		return Map.Entry.<K, V>comparingByKey();
+		return Map.Entry.comparingByKey();
 	}
 
 	public static <K extends Comparable<? super K>, V> Comparator<Entry<K, V>> keyComparatorReverseWithMapEntry() {
-		return Map.Entry.<K, V>comparingByKey(Comparator.reverseOrder());
+		return Map.Entry.comparingByKey(Comparator.reverseOrder());
 	}
 
 	public static <K, V extends Comparable<V>> Comparator<Entry<K, V>> valueComparator() {
-		return (e1, e2) -> e1.getValue().compareTo(e2.getValue());
+		return Entry.comparingByValue();
 	}
 
 	public static <K, V extends Comparable<V>> Comparator<Entry<K, V>> valueComparatorReverse() {
