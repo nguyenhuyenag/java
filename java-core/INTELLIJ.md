@@ -67,7 +67,9 @@
 
 - Live Templates (tạo nhanh hàm, vòng lặp,...)
 
-	+ Settings > Editor > Live Templates > ...
+	+ Settings > Editor > Live Templates > ... 
+			
+	  Chọn thêm Applicable in Java... trước khi hoàn thành
 
 - Run devtools
 	
