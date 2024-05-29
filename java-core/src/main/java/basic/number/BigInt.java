@@ -49,6 +49,14 @@ public class BigInt {
         BigInteger pow = n1.pow(2);
         System.out.println("Pow: " + pow);
 
+        /**
+         * BigInteger & Binary string
+         */
+        String binary = "10101011";
+        // Nhị phân -> BigInteger
+        BigInteger number = new BigInteger(binary, 2);
+        // BigInteger -> Nhị phân
+        System.out.println("number = " + number.toString(2));
     }
 
 }
