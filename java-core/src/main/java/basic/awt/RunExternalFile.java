@@ -8,7 +8,7 @@ public class RunExternalFile {
 
 	public static void runExternalFile() throws InterruptedException {
 		String filePath = "D:/Dev/Projects/Github/dev/git/git_pull_all.bat";
-		filePath = "D:\\Dev\\Projects\\Github\\java/README.md";
+		filePath = "D:\\Dev\\Projects\\Github\\java/JAVA.md";
 		try {
 			File file = new File(filePath);
 			if (Desktop.isDesktopSupported()) {

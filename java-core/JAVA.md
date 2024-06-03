@@ -111,17 +111,19 @@
 	
 # Exception
 
-	- Có 2 loại là: Checked Exception và Runtime Exception (Unchecked Exception)
+	- Có 2 loại là: Runtime Exception (Unchecked Exception) và Checked Exception
 	
-	- Checked exception là lỗi trong quá trình biên dịch
+	+ Runtime exception -> là lỗi trong lúc mình thực thi chương trình. Đa phần xảy ra lỗi do dữ liệu không hợp lệ 
+    trong quá trình tương tác với chương trình
 
-		+ FileNotFoundException,...
-	
-	- Runtime exception là lỗi trong lúc mình thực thi chương trình. Đa phần xảy ra lỗi do dữ liệu không hợp lệ trong quá trình tương tác với chương trình
+		+ ArrayIndexOutOfBoundsException, ClassCastException, ArithmeticException (lỗi chia cho 0), NullPointerException ...
 
-		+ ArrayIndexOutOfBoundsException, lỗi chia cho 0,...
+	+ Checked exception -> là lỗi trong quá trình biên dịch, việc kiểm tra được thực hiện ngay thời điểm compile time, 
+    một số IDE sẽ giúp chúng ta bằng cách hiển thị lỗi cú pháp.
 
-	- Oracle: Nếu một exception xảy ra mà người dùng có thể khắc phục được thì sử dụng checked exception, còn nếu không thể thì sử dụng unchecked exception
+		+ IOException, FileNotFoundException,InterruptedException, InterruptedException...
+
+	- Oracle: Nếu một exception xảy ra mà người dùng có thể khắc phục được thì sử dụng checked exception, còn nếu không thể thì sử dụng unchecked exception.
 	
 # Throw vs Throws
 
