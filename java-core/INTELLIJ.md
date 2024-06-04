@@ -80,3 +80,9 @@
 - File encoding
 	
 	+ Setting > Editor > File Encoding
+
+- Ẩn thư mục hoặc file trong project view
+
+	+ File > Settings > Editor > File Types > Ignored Files & Folders
+	
+		Thêm *.settings chẳng hạn
