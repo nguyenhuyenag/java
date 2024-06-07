@@ -65,6 +65,12 @@
 
 	+ Click phải vào thư mục > Make Directory as > Excluded
 
+- Ẩn thư mục hoặc file trong project view
+
+	+ File > Settings > Editor > File Types > Ignored Files & Folders
+
+	  Thêm *.settings chẳng hạn
+
 - Live Templates (tạo nhanh hàm, vòng lặp,...)
 
 	+ Settings > Editor > Live Templates > ... 
@@ -80,9 +86,3 @@
 - File encoding
 	
 	+ Setting > Editor > File Encoding
-
-- Ẩn thư mục hoặc file trong project view
-
-	+ File > Settings > Editor > File Types > Ignored Files & Folders
-	
-		Thêm *.settings chẳng hạn
