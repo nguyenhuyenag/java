@@ -46,30 +46,6 @@ public class MainCore {
         }
     }
 
-    public static String readResourcesFile() throws IOException, URISyntaxException {
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-
-        // System.out.println("loader.toString() = " + loader.getResource());
-//        try (InputStream inputStream = loader.getResourceAsStream("main/java/resources/" + fileName)) {
-//            if (inputStream == null) {
-//                throw new FileNotFoundException("File " + fileName + " doesn't exist!");
-//            }
-//            return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-//        }
-
-        // Use a known resource in the classpath, such as the root directory or a known file
-        URL resource = loader.getResource("");
-
-        if (resource != null) {
-            // Convert the URL to a URI and then to a Path
-            String path = Path.of(resource.toURI()).toAbsolutePath().toString();
-
-            // Print the path
-            System.out.println("Current ClassLoader path: " + path);
-        }
-        return "";
-    }
-
     /*
         System.getProperty("user.dir") -> Lấy đường dẫn của
      */
@@ -88,6 +64,28 @@ public class MainCore {
             target = new File(target).getParent();
             System.out.println("Thư mục chứa file MainCore: " + target);
         }
+    }
+
+    public static void readResourcesFile() throws IOException {
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        String fileName = "data.txt";
+        try (InputStream is = loader.getResourceAsStream("main/java/resources/" + fileName)) {
+            if (is == null) {
+                throw new FileNotFoundException("File " + fileName + " doesn't exist!");
+            }
+            String content = new String(is.readAllBytes());
+            System.out.println("content = " + content);
+        }
+//        // Use a known resource in the classpath, such as the root directory or a known file
+//        URL resource = loader.getResource("");
+//
+//        if (resource != null) {
+//            // Convert the URL to a URI and then to a Path
+//            String path = Path.of(resource.toURI()).toAbsolutePath().toString();
+//
+//            // Print the path
+//            System.out.println("Current ClassLoader path: " + path);
+//        }
     }
 
     public static void main(String[] args) throws Exception {
