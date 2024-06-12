@@ -127,13 +127,13 @@
 	
 # Throw vs Throws
 
-		Throw										Throws
+    Throw										Throws
 	- Ném một exception cụ thể					- Khai báo các exception của một method
 	- Checked exception không được ném ra 		- Ném ra checked exception ngay cả khi chỉ sử dụng throws
 	  nếu chỉ sử dụng throw
 	- Không thể throw nhiều exception			- Có thể throw nhiều exception (dùng dấu phẩy)
-	- Throw được dùng bên trong method 		- Throws được dùng chung với phần khai báo của method
-	- Sau throw là một new instance			- Sau throws là một hoặc nhiều class
+	- Throw được dùng bên trong method 		    - Throws được dùng chung với phần khai báo của method
+	- Sau throw là một new instance			    - Sau throws là một hoặc nhiều class
 	
 	=> Tóm lại, "throw" được sử dụng để tạo và ném ngoại lệ, trong khi "throws" được sử dụng để khai báo rằng một phương thức có thể ném ra một hoặc nhiều loại ngoại lệ và truyền trách nhiệm xử lý ngoại lệ cho phương thức gọi.
 	
