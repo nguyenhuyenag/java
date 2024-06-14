@@ -1,7 +1,9 @@
 package basic.io.file;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -209,6 +211,29 @@ public class FileService {
 		File file = view.getHomeDirectory();
 		desktopPath = file.getPath();
 		System.out.println(desktopPath);
+	}
+
+	// Read file using ClassLoader
+	public static void readResourcesFile() throws IOException {
+		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		String fileName = "data.txt";
+		try (InputStream is = loader.getResourceAsStream("main/java/resources/" + fileName)) {
+			if (is == null) {
+				throw new FileNotFoundException("File " + fileName + " doesn't exist!");
+			}
+			String content = new String(is.readAllBytes());
+			System.out.println("content = " + content);
+		}
+//        // Use a known resource in the classpath, such as the root directory or a known file
+//        URL resource = loader.getResource("");
+//
+//        if (resource != null) {
+//            // Convert the URL to a URI and then to a Path
+//            String path = Path.of(resource.toURI()).toAbsolutePath().toString();
+//
+//            // Print the path
+//            System.out.println("Current ClassLoader path: " + path);
+//        }
 	}
 
 	// File size
