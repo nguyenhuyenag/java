@@ -26,10 +26,11 @@ public class NIOApi {
 	}
 
 	public static void find() throws IOException {
+		// @formatter:off
 		int depth = Integer.MAX_VALUE;
 		try (Stream<Path> paths = Files.find(
 				Path.of("folder_path"), 
-				depth, 
+				depth,
 				(path, attr) -> {
 					return attr.isRegularFile() && path.toString().endsWith(".pdf");
 				}
@@ -37,6 +38,7 @@ public class NIOApi {
 		) {
 			paths.forEach(System.out::println);
 		}
+		// @formatter:on
 	}
 	
 	public static void main(String[] args) throws Exception {
