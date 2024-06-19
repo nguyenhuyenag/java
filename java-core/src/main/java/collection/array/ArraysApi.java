@@ -48,16 +48,18 @@ public class ArraysApi {
 		System.out.println(print(arr1, arr2) + " = " + print(join));
 	}
 
-	public static void arraysApi() {
-		int[] arr = new int[5]; // {0, 0, 0, 0, 0}
-		
+	public static void setValue() {
+		int[] arr = new int[10]; // = {0, 0, 0, 0, 0,...}
+
 		// fill
 		Arrays.fill(arr, -1);
+		// Arrays.fill(arr, fromIndex, toIndex, value);
 		System.out.println("Fill: " + Arrays.toString(arr) + "\n");
 
 		// setAll, parallelSetAll -> Lặp qua index của mảng
 		int[] arr2 = { 1, 0, 2, 2 };
 		Arrays.setAll(arr2, index -> arr2[index] * arr2[index]);
+		// Arrays.setAll(arr2, p -> p > 9 ? 0 : p);
 		System.out.println("SetAll: " + Arrays.toString(arr2) + "\n");
 
 		// parallelPrefix
@@ -69,7 +71,9 @@ public class ArraysApi {
 			return left + right;
 		});
 		System.out.println("End: " + Arrays.toString(arr3));
-		
+	}
+
+	public static void arraysApi() {
 		// mismatch -> Tìm vị trí đầu tiên mà hai mảng không khớp (khác nhau)
 		int[] array1 = {1, 2, 3, 4, 5};
 		int[] array2 = {1, 2, 3, 6, 5};
@@ -78,9 +82,10 @@ public class ArraysApi {
 	}
 
 	public static void main(String[] args) {
-		arraysApi();
+		// arraysApi();
 		// joinArray();
 		// copyArray();
 		// compareArray();
+		setValue();
 	}
 }
