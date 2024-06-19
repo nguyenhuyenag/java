@@ -12,7 +12,7 @@ import java.util.Stack;
  * push()		-> 	Thêm phần từ vào đầu stack
  * peek() 		-> 	Lấy ra nhưng không xóa phần từ ở đầu stack
  * pop() 		-> 	Lấy ra và xóa phần từ ở đầu stack
- * search()	->	Trả về vị trí của phần từ cần tìm hoặc -1 nếu không có
+ * search()	    ->	Trả về vị trí của phần từ cần tìm hoặc -1 nếu không có
  * empty()		->	Kiểm tra stack rỗng
  */
 public class StackApi {

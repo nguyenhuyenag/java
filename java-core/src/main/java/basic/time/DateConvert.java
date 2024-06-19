@@ -13,6 +13,14 @@ import org.apache.commons.lang3.time.DateUtils;
 
 public class DateConvert {
 
+	private enum Type {
+		DATE,
+		CALENDAR,
+		INSTANT,
+		LOCAL_DATE,
+		LOCAL_DATE_TIME
+	}
+
 	private static boolean isType(Object input, Class<?> type) {
 		return type.isInstance(input);
 	}
@@ -37,23 +45,6 @@ public class DateConvert {
 		return isType(input, LocalDateTime.class);
 	}
 
-//	public static Date toDate(Object input) {
-//		if (isInstant(input)) {
-//			Instant instant = (Instant) input;
-//			return Date.from(instant);
-//		} else if (isLocalDate(input)) {
-//			LocalDate localDate = (LocalDate) input;
-//			Instant instant = localDate.atStartOfDay().toInstant(ZoneOffset.UTC);
-//			return Date.from(instant);
-//		} else if (isLocalDateTime(input)) {
-//			LocalDateTime localDateTime = (LocalDateTime) input;
-//			Instant instant = localDateTime.toInstant(ZoneOffset.UTC);
-//			return Date.from(instant);
-//		} else {
-//			throw new IllegalArgumentException("Unsupported DateTime object type");
-//		}
-//	}
-	
 	public static Date toDate(Object input) {
 		switch (getType(input)) {
 			case DATE:
@@ -92,15 +83,6 @@ public class DateConvert {
 			throw new IllegalArgumentException("Unsupported DateTime object type");
 		}
 	}
-
-	private enum Type {
-		DATE,
-		CALENDAR,
-	    INSTANT,
-	    LOCAL_DATE,
-	    LOCAL_DATE_TIME
-	}
-
 
 	public static Instant toInstant(Object input) {
 		if (isDate(input)) {
