@@ -5,74 +5,110 @@ import java.util.concurrent.*;
 
 public class SomeTest {
 
-    private static CopyOnWriteArraySet<Integer> poolIds = new CopyOnWriteArraySet<>();
+    // => java.util.ConcurrentModificationException
+    public static void test1() {
+        final int N = 1_000;
+        List<Integer> list = new ArrayList<>();
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+        for (int i = 1; i < N; i++) {
+            executor.submit(() -> {
+                list.add(ThreadLocalRandom.current().nextInt());
+            });
+        }
+        executor.shutdown();
+        try {
+            // Đợi cho tất cả các nhiệm vụ hoàn thành hoặc hết thời gian chờ
+            if (!executor.awaitTermination(1, TimeUnit.MINUTES)) {
+                executor.shutdownNow(); // Buộc dừng nếu các nhiệm vụ không hoàn thành trong thời gian chờ
+            }
+        } catch (InterruptedException e) {
+            executor.shutdownNow(); // Buộc dừng nếu bị gián đoạn
+            Thread.currentThread().interrupt(); // Khôi phục trạng thái gián đoạn
+        }
+
+        // Chờ cho tất cả các nhiệm vụ hoàn thành trong vòng 1 phút
+        try {
+            if (!executor.awaitTermination(1, TimeUnit.MINUTES)) {
+                executor.shutdownNow(); // Buộc dừng nếu không hoàn thành trong thời gian chờ
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("list = " + list);
+    }
+
+    // Thread safe
+    public static void test2() {
+        final int N = 1_000;
+        CopyOnWriteArrayList<Integer> list = new CopyOnWriteArrayList<>();
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+        for (int i = 1; i < N; i++) {
+            executor.submit(() -> {
+                list.add(ThreadLocalRandom.current().nextInt());
+            });
+        }
+        executor.shutdown();
+        try {
+            // Đợi cho tất cả các nhiệm vụ hoàn thành hoặc hết thời gian chờ
+            if (!executor.awaitTermination(1, TimeUnit.MINUTES)) {
+                executor.shutdownNow(); // Buộc dừng nếu các nhiệm vụ không hoàn thành trong thời gian chờ
+            }
+        } catch (InterruptedException e) {
+            executor.shutdownNow(); // Buộc dừng nếu bị gián đoạn
+            Thread.currentThread().interrupt(); // Khôi phục trạng thái gián đoạn
+        }
+
+        // Chờ cho tất cả các nhiệm vụ hoàn thành trong vòng 1 phút
+        try {
+            if (!executor.awaitTermination(1, TimeUnit.MINUTES)) {
+                executor.shutdownNow(); // Buộc dừng nếu không hoàn thành trong thời gian chờ
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("list = " + list);
+    }
 
     /**
-     * Chia mảng thành n mảng con
+     * Sử dụng ConcurrentLinkedQueue để quản lý hàng đợi các yêu cầu trong một hệ thống đa luồng.
+     * Thêm 10 yêu cầu vào hàng đợi từ nhiều luồng và xử lý các yêu cầu này từ một luồng khác
      */
-    public static <T> List<List<T>> splitList(List<T> list, int n) {
-        List<List<T>> result = new ArrayList<>();
-        int partitionSize = list.size() / n;    // Dự đoán kích thước 1 list con
-        int remaining = list.size() % n;    // Phần dư
-        int currentIndex = 0;
-        for (int i = 0; i < n; i++) {
-            int subListSize = partitionSize;    // Kích thước 1 list con thực tế
-            if (remaining > 0) {
-                remaining--;
-                subListSize++;
-            }
-            // int subListSize = partitionSize + (remaining-- > 0 ? 1 : 0);
-            result.add(list.subList(currentIndex, currentIndex + subListSize));
-            currentIndex += subListSize;
+    public static void test3() {
+        ConcurrentLinkedQueue<String> requests = new ConcurrentLinkedQueue<>();
+        ExecutorService producerExecutor = Executors.newFixedThreadPool(2);
+        ExecutorService consumerExecutor = Executors.newSingleThreadExecutor();
+
+        // Thêm yêu cầu vào hàng đợi từ nhiều luồng
+        for (int i = 0; i < 10; i++) {
+            final int requestId = i;
+            producerExecutor.submit(() -> {
+                String request = "Request " + requestId;
+                requests.add(request);
+                System.out.println("Thêm: " + request);
+            });
         }
-        return result;
+
+        producerExecutor.shutdown();
+
+        while (!producerExecutor.isTerminated()) {}
+
+        // Xử lý yêu cầu từ hàng đợi
+        consumerExecutor.submit(() -> {
+            while (!requests.isEmpty()) {
+                String request = requests.poll();
+                System.out.println("Xử lý: " + request);
+            }
+        });
+
+        consumerExecutor.shutdown();
     }
 
     public static void main(String[] args) {
-        // Init dataList
-        Map<Integer, Boolean> map = new LinkedHashMap<>();
-        for (int i = 1; i <= 10_000; i++) {
-            map.put(i, false);
-        }
-
-        // Get the first 1000 keys from map -> dataList
-        List<Integer> dataList = new ArrayList<>(1000);
-        int count = 0;
-        for (int key : map.keySet()) {
-            if (count == 1000) {
-                break;
-            }
-            dataList.add(key);
-            count++;
-        }
-
-        var splitData = splitList(dataList, 4);
-
-        System.out.println("dataList = " + dataList);
-
-        // Chia làm làm 4 và đẩy vào 4 thread để xử lý
-        ExecutorService executor = Executors.newFixedThreadPool(4);
-        splitData.forEach(d ->
-            executor.submit(() -> {
-
-            })
-        );
-//        executor.shutdown();
-//        while (!executor.isTerminated()) {
-//        }
+        // test1();
+        // test2();
+        test3();
     }
-
-//        // Set & List => Có thể remove() khi đang duyệt?
-//    public static void test1() {
-//        // CopyOnWriteArrayList<Integer> list = new CopyOnWriteArrayList<>();
-//        CopyOnWriteArraySet<Integer> list = new CopyOnWriteArraySet<>();
-//        Collections.addAll(list, 1, 1, 2, 3, 4, 5);
-//        // System.out.println(Arrays.toString(list.toArray()));
-//        for (int x : list) {
-//            if (x == 2) {
-//                list.remove(x);
-//            }
-//        }
-//    }
 
 }
