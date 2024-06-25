@@ -20,8 +20,8 @@ import org.openjdk.jmh.annotations.State;
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class BenchMarkTest {
 
-    private final int M = 10_000;
-    private final int N = 10_000;
+    private final int M = 20_000;
+    private final int N = 20_000;
 
     public static void main(String[] args) throws Exception {
         org.openjdk.jmh.Main.main(args);
