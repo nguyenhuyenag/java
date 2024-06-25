@@ -1,5 +1,6 @@
 package jmh;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.Benchmark;
@@ -8,7 +9,6 @@ import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 
 /**
@@ -20,19 +20,15 @@ import org.openjdk.jmh.annotations.State;
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class BenchMarkTest {
 
-    private final int M = 20_000;
-    private final int N = 20_000;
+    private final int M = 1000;
+    private final int N = 1000;
 
     public static void main(String[] args) throws Exception {
         org.openjdk.jmh.Main.main(args);
     }
 
-//    @Setup
-//    public void setup() {
-//    }
-
     @Benchmark
-    public void fill2D() {
+    public void method1() {
         int[][] matrix = new int[M][N];
         for (int i = 0; i < M * N; i++) {
             int row = i / N;
@@ -42,12 +38,20 @@ public class BenchMarkTest {
     }
 
     @Benchmark
-    public void nestedLoop() {
+    public void method2() {
         int[][] matrix = new int[M][N];
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) {
                 matrix[i][j] = -1;
             }
+        }
+    }
+
+    @Benchmark
+    public void method3() {
+        int[][] matrix = new int[M][N];
+        for (int[] row : matrix) {
+            Arrays.fill(row, -1);
         }
     }
 
