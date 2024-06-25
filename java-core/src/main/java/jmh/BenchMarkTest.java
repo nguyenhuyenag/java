@@ -32,7 +32,7 @@ public class BenchMarkTest {
 //    }
 
     @Benchmark
-    public void test1() {
+    public void fill2D() {
         int[][] matrix = new int[M][N];
         for (int i = 0; i < M * N; i++) {
             int row = i / N;
@@ -42,7 +42,7 @@ public class BenchMarkTest {
     }
 
     @Benchmark
-    public void test2() {
+    public void nestedLoop() {
         int[][] matrix = new int[M][N];
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) {
