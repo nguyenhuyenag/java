@@ -33,10 +33,6 @@ public class JsonUtils {
 	
 	/**
 	 * Object to JSON String
-	 * 
-	 * @param <T>    generic type
-	 * @param object Java object
-	 * @return JSON
 	 */
 	public static String toJSON(Object object) {
 		if (object != null) {
