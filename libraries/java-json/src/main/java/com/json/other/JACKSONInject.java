@@ -1,4 +1,4 @@
-package com.json.preview;
+package com.json.other;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;

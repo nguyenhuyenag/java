@@ -1,4 +1,4 @@
-package com.json.preview;
+package com.json.other;
 
 import java.io.IOException;
 import java.util.LinkedList;

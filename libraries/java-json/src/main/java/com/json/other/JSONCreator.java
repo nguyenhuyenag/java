@@ -1,4 +1,4 @@
-package com.json.preview;
+package com.json.other;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
