@@ -318,11 +318,11 @@ public class ApacheStringUtils {
         /**
          * Right trim, left trim
          */
-        String s = "Hello";
-        s1 = "     Hello";
-        s2 = "Hello     ";
-        s1 = StringUtils.stripEnd(s1, null);
-        s2 = StringUtils.stripStart(s2, null);
+        String s    = "Hello";
+        s1          = "     Hello";
+        s2          = "Hello     ";
+        s1          = StringUtils.stripEnd(s1, null);
+        s2          = StringUtils.stripStart(s2, null);
         System.out.println("\n\nTrim left and right:");
         System.out.println("s = s1 -> " + s.equals(s1));
         System.out.println("s = s2 -> " + s.equals(s2));
