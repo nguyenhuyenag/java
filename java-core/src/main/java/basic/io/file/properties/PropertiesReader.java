@@ -1,15 +1,13 @@
 package basic.io.file.properties;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -87,6 +85,38 @@ public class PropertiesReader {
 			}
 		}
 		return fileContent;
+	}
+
+	/*
+		Read Properties for UTF8 encoding
+	 */
+	public static Map<String, String> loadProperties(final File file) {
+		Map<String, String> propertiesMap = new HashMap<>();
+
+		if (file == null) {
+			log.error("File must be non-null");
+			return propertiesMap;
+		}
+
+		if (!file.exists()) {
+			log.error("File {} not found", file.getName());
+			return propertiesMap;
+		}
+
+		Properties properties = new Properties();
+		try (InputStreamReader in = new InputStreamReader(Files.newInputStream(file.toPath()), StandardCharsets.UTF_8)) {
+			properties.load(in);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		Set<String> keys = properties.stringPropertyNames();
+		if (keys != null) {
+			for (String key : keys) {
+				propertiesMap.put(key, properties.getProperty(key));
+			}
+		}
+		return propertiesMap;
 	}
 
 	public static void main(String[] args) throws IOException {
