@@ -10,33 +10,31 @@ import java.util.Properties;
 import java.util.Set;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ClassPathResource;
 
 @Slf4j
 public class PropertiesReader {
 	
 	// private static final Logger LOG = LoggerFactory.getLogger(PropertiesReader.class);
-	
-	private static final Map<String, String> FIELD_REQUIRED = new HashMap<>();
 
-    static {
-        Resource resource = new ClassPathResource("field-required.properties");
-        if (resource.exists()) {
-            try (InputStream input = resource.getInputStream()) {
-                Properties properties = new Properties();
-                properties.load(input);
-                for (String key : properties.stringPropertyNames()) {
-                    FIELD_REQUIRED.put(key, properties.getProperty(key));
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Có thể thay bằng logging framework để ghi log thay vì sử dụng e.printStackTrace()
-            }
-        }
-    }
-	
+	/*
+		private static final Map<String, String> FIELD_REQUIRED = new HashMap<>();
+
+		static {
+			Resource resource = new ClassPathResource("field-required.properties");
+			if (resource.exists()) {
+				try (InputStream input = resource.getInputStream()) {
+					Properties properties = new Properties();
+					properties.load(input);
+					for (String key : properties.stringPropertyNames()) {
+						FIELD_REQUIRED.put(key, properties.getProperty(key));
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+					// Có thể thay bằng logging framework để ghi log thay vì sử dụng e.printStackTrace()
+				}
+			}
+		}
+	*/
 	private final static String HOME = System.getProperty("user.dir");
 	
 	public static void createFile() {
