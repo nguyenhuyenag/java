@@ -1,6 +1,6 @@
 package basic.enums;
 
-public class ArithmeticFunction {
+public class EnumAbstract {
 
     private enum Operation {
         add {
