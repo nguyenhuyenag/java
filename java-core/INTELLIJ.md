@@ -21,9 +21,16 @@
 	
 	- Ctrl + F                				Tìm kiếm
 	
+	
 	- Alt + Enter (khối code)				Tạo import static
 	
+	- Alt + 1								Tắt project view bên trái
+	
+	- Alt + Insert							Mở bảng Generate (getter, setter,...)
+	
+	
 	- Shift + Alt + Up/Down    				Move code up/down
+	
 	
 	- Ctrl + Alt + B          				Mở nhanh 1 hàm
     
@@ -38,6 +45,8 @@
 	- Ctrl + Alt + F						Tạo biến global (nằm ngoài method)
 	
 	- Ctrl + Shift + N						Find file / open resource
+
+	- Ctrl + Tab (nhấn giữ) 				Chuyển đổi giữa các tab
 	
 - Open project
 
