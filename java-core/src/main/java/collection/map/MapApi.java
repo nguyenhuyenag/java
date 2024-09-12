@@ -16,6 +16,8 @@ public class MapApi {
         trong Map. Hàm trả về giá trị hiện tại của entry với key đã tồn tại, hoặc giá
         trị mới được cung cấp nếu key chưa tồn tại.
 
+        - merge("key", "newValue", (oldValue, newValue) -> oldValue + "_" + newValue);
+
         - getOrDefault(k, v): Trả về phần tử của key được chỉ định. Nếu key không tồn
         tại sẽ trả về default value mà chúng ta truyền vào.
 
@@ -40,7 +42,7 @@ public class MapApi {
         - replace(k, v):     Cập nhập giá trị của 1 entry
         - replace(k, v, v0): Cập nhập giá trị của 1 entry đúng giá trị k, v
 
-        - wordCountMap.replaceAll((key, value) -> value  2); // Nhân đôi giá trị
+        - Map.replaceAll((key, value) -> value  2); // Nhân đôi giá trị
     */
     public static void mapApi() {
         Map<String, Integer> scores = new HashMap<>();
