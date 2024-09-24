@@ -3,6 +3,10 @@
 
 - Phím tắt Eclipse & IntelliJ: https://www.cloudflight.io/en/blog/intellij-idea-and-eclipse-shortcuts/
 
+- IMPORTANT: Một số project khi mở nó ở trong 1 project có thể sẽ gây lỗi FileNotFound:
+
+	+ Ví dụ mở project spring-boot-mvc ở một workspace khác lỗi do không tìm được [/WEB-INF/tiles.xml]
+
 - Bảng gõ tắt: Setting > Keymap
 
 - Phím tắt
