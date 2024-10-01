@@ -25,6 +25,7 @@
 	
 	- Ctrl + F                				Tìm kiếm
 	
+	- Ctrl + Numpad (+, -)                	Thu gọn long text hoặc method	
 	
 	- Alt + Enter (khối code)				Tạo import static
 	
