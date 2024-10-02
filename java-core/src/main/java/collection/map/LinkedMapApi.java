@@ -3,9 +3,6 @@ package collection.map;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/*
-
- */
 public class LinkedMapApi {
 
     public static void main(String[] args) {

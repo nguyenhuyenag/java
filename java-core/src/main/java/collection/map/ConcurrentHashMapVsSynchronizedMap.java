@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
  * 
  * - Sử dụng ExecutorService để chạy 10 threads song song
  */
-@SuppressWarnings("unused")
 public class ConcurrentHashMapVsSynchronizedMap {
 
 	public final static int THREAD_POOL_SIZE = 10;
