@@ -57,6 +57,9 @@ public class StringClassApi {
 
         // substring():
         substring();
+
+        //
+        valueOf();
     }
 
     /**
@@ -126,6 +129,12 @@ public class StringClassApi {
     public static void chars() {
         IntStream chars = s1.chars();
         System.out.println("chars: " + Arrays.toString(chars.toArray()));
+    }
+
+    // parse 1 một phần của chuỗi ký tự thành string
+    public static void valueOf() {
+        char[] chars = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
+        System.out.println(String.valueOf(chars, 6, 5));  // Output: World
     }
 
     /**
