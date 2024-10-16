@@ -1,4 +1,4 @@
-package common.util;
+package collection.map;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -62,7 +62,7 @@ public class MapsUtils {
 	private static <K, V extends Comparable<V>> Map<K, V> sortByValue(Map<K, V> map, boolean asc) {
 		Map<K, V> linked = new LinkedHashMap<>();
 		map.entrySet().stream() //
-				.sorted(asc == true ? valueComparing() : valueComparingReverse()) //
+				.sorted(asc ? valueComparing() : valueComparingReverse()) //
 				.forEach(e -> linked.put(e.getKey(), e.getValue()));
 		return linked;
 	}
