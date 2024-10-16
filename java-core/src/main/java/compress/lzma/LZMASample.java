@@ -3,6 +3,7 @@ package compress.lzma;
 import org.apache.commons.compress.compressors.lzma.LZMACompressorInputStream;
 import org.apache.commons.compress.compressors.lzma.LZMACompressorOutputStream;
 import org.apache.commons.compress.utils.FileNameUtils;
+import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -80,34 +81,77 @@ public class LZMASample {
 //        return byteArrayOutputStream.toByteArray(); // ok
 //    }
 
-    public static byte[] compressByteArray(byte[] inputData) throws IOException {
-        // Wrap the output stream with LZMACompressorOutputStream to compress data
+//    private static void transferData(InputStream inputStream, OutputStream outputStream) throws IOException {
+//        int len;
+//        byte[] buffer = new byte[1024];
+//        while ((len = inputStream.read(buffer)) != -1) {
+//            outputStream.write(buffer, 0, len);
+//        }
+//    }
+//
+//    public static byte[] compressByteArray(byte[] inputData) throws IOException {
+//        // Wrap the output stream with LZMACompressorOutputStream to compress data
+//        try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//             LZMACompressorOutputStream lzmaOutputStream = new LZMACompressorOutputStream(byteArrayOutputStream);
+//             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(inputData)) {
+//            byte[] buffer = new byte[1024]; // Buffer for reading the input data in chunks
+//            int len;
+//            while ((len = byteArrayInputStream.read(buffer)) != -1) {
+//                lzmaOutputStream.write(buffer, 0, len);
+//            }
+//            // Ensure the stream is fully flushed
+//            lzmaOutputStream.finish();  // Explicitly finish the compression
+//            return byteArrayOutputStream.toByteArray();
+//        }
+//    }
+//
+//    // Utility method to decompress a byte array from LZMA format
+//    private static byte[] decompressByteArray(byte[] compressedData) throws IOException {
+//        try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(compressedData);
+//             LZMACompressorInputStream lzmaInputStream = new LZMACompressorInputStream(byteArrayInputStream);
+//             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();) {
+//            byte[] buffer = new byte[1024];
+//            int len;
+//            // Read from the LZMA stream and write to the output stream
+//            while ((len = lzmaInputStream.read(buffer)) != -1) {
+//                byteArrayOutputStream.write(buffer, 0, len);
+//            }
+//            // Return the decompressed byte array
+//            return byteArrayOutputStream.toByteArray();
+//        }
+//    }
+
+    // Hàm chung để xử lý đọc từ InputStream và ghi vào OutputStream
+//    private static void transferData(InputStream inputStream, OutputStream outputStream) throws IOException {
+//        int len;
+//        byte[] buffer = new byte[8192];  // Bộ đệm lớn hơn để tối ưu hiệu suất
+//        while ((len = inputStream.read(buffer)) != -1) {
+//            outputStream.write(buffer, 0, len);
+//        }
+//    }
+
+    // Hàm chung để xử lý đọc từ InputStream và ghi vào OutputStream
+    private static void transferData(InputStream inputStream, OutputStream outputStream) throws IOException {
+        IOUtils.copy(inputStream, outputStream);
+    }
+
+    // Hàm nén dữ liệu bằng LZMA
+    public static byte[] compressByteArray(byte[] data) throws IOException {
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
              LZMACompressorOutputStream lzmaOutputStream = new LZMACompressorOutputStream(byteArrayOutputStream);
-             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(inputData)) {
-            byte[] buffer = new byte[1024]; // Buffer for reading the input data in chunks
-            int len;
-            while ((len = byteArrayInputStream.read(buffer)) != -1) {
-                lzmaOutputStream.write(buffer, 0, len);
-            }
-            // Ensure the stream is fully flushed
-            lzmaOutputStream.finish();  // Explicitly finish the compression
+             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data)) {
+            transferData(byteArrayInputStream, lzmaOutputStream);
+            lzmaOutputStream.finish();
             return byteArrayOutputStream.toByteArray();
         }
     }
 
-    // Utility method to decompress a byte array from LZMA format
-    private static byte[] decompressByteArray(byte[] compressedData) throws IOException {
-        try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(compressedData);
+    // Hàm giải nén dữ liệu LZMA
+    public static byte[] decompressByteArray(byte[] data) throws IOException {
+        try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data);
              LZMACompressorInputStream lzmaInputStream = new LZMACompressorInputStream(byteArrayInputStream);
-             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();) {
-            byte[] buffer = new byte[1024];
-            int len;
-            // Read from the LZMA stream and write to the output stream
-            while ((len = lzmaInputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, len);
-            }
-            // Return the decompressed byte array
+             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
+            transferData(lzmaInputStream, byteArrayOutputStream);
             return byteArrayOutputStream.toByteArray();
         }
     }
@@ -127,7 +171,7 @@ public class LZMASample {
     public static void main(String[] args) throws IOException {
         String path = "C:/Users/huyennv/Desktop/ts24pro_mobile";
 
-        String inputFile = path + "/0309478306999-333-HDLD.pdf";
+        String inputFile = path + "/ts24pro_mobile.txt";
 
         String format = FileNameUtils.getExtension(inputFile);
         String compressedLzma = path + "/compressed-" + format + ".lzma";
