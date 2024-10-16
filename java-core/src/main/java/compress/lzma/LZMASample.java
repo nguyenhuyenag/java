@@ -1,4 +1,4 @@
-package common.util.lzma;
+package compress.lzma;
 
 import org.apache.commons.compress.compressors.lzma.LZMACompressorInputStream;
 import org.apache.commons.compress.compressors.lzma.LZMACompressorOutputStream;

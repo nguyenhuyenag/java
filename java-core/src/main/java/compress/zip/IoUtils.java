@@ -1,4 +1,4 @@
-package common.util.zip;
+package compress.zip;
 
 import java.io.Closeable;
 import java.io.IOException;

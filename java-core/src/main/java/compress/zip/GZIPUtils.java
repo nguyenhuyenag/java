@@ -1,4 +1,4 @@
-package common.util.zip;
+package compress.zip;
 //package com.util;
 //
 //import java.io.ByteArrayInputStream;
