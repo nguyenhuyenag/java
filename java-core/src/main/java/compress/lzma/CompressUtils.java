@@ -18,7 +18,7 @@ public class CompressUtils {
         String format = FileNameUtils.getExtension(destination);
         try (OutputStream out = Files.newOutputStream(destination);
              BufferedOutputStream buffer = new BufferedOutputStream(out);
-             CompressorOutputStream compressor = new CompressorStreamFactory()
+             CompressorOutputStream<?> compressor = new CompressorStreamFactory()
                      .createCompressorOutputStream(format, buffer)) {
             IOUtils.copy(Files.newInputStream(file), compressor);
         }
