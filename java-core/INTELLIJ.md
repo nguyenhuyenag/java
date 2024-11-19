@@ -17,7 +17,7 @@
 	
 		main, psvm							Tạo hàm main()
 
-	- fori
+    - fori									Tạo nhanh vòng lặp for
 	
 	- F3									Search
     
@@ -31,11 +31,9 @@
 	
 	- Alt + 1								Tắt project view bên trái
 	
-	- Alt + Insert							Mở bảng Generate (getter, setter,...)
-	
+	- Alt + Insert							Mở bảng generate (tạo getter, setter,...)
 	
 	- Shift + Alt + Up/Down    				Move code up/down
-	
 	
 	- Ctrl + Alt + B          				Mở nhanh 1 hàm
     
