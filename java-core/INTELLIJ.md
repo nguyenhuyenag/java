@@ -1,4 +1,3 @@
-
 # IntelliJ
 
 - Phím tắt Eclipse & IntelliJ: https://www.cloudflight.io/en/blog/intellij-idea-and-eclipse-shortcuts/
@@ -77,11 +76,11 @@
 
 	+ Click phải vào thư mục > Make Directory as > Excluded
 
-- Ẩn thư mục hoặc file trong project view
+- Ẩn file / thư mục trong project view
 
 	+ File > Settings > Editor > File Types > Ignored Files & Folders
 
-	  Thêm *.settings chẳng hạn
+	  Ví dụ `*.settings` chẳng hạn
 
 - Live Templates (tạo nhanh hàm, vòng lặp,...)
 
