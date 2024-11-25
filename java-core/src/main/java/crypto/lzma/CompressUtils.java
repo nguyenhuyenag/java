@@ -1,4 +1,4 @@
-package compress.lzma;
+package crypto.lzma;
 
 import org.apache.commons.compress.compressors.CompressorException;
 import org.apache.commons.compress.compressors.CompressorInputStream;

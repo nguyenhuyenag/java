@@ -1,4 +1,4 @@
-package compress.zip;
+package crypto.lz4;
 
 import java.nio.charset.StandardCharsets;
 
@@ -32,7 +32,7 @@ public class LZ4Utils {
 	}
 
 	public static void main(String[] args) {
-		String xml = "<TTChung><PBan>2.0.0</PBan><MSo>01/ĐKTĐ-HĐĐT</MSo><Ten>Nhận</Ten><LDKUNhiem>2</LDKUNhiem><CQTQLy>Chi cục thuế Quận 4</CQTQLy><MCQTQLy>70107</MCQTQLy><NLHe>Phòng kiểm thử</NLHe><DCLHe>285/94B, Xã Thới Tam Thôn, Huyện Hóc Môn, Tp. Hồ Chí Minh</DCLHe><DTLHe>1234567890</DTLHe><DDanh>Chi cục thuế Quận 4</DDanh><NLap>2021-10-19</NLap></TTChung>";
+		String xml = "";
 		String zip = compressToString(xml);
 		System.out.println("Encode: " + zip);
 		System.out.println("Decode: " + decompressToString(zip));
