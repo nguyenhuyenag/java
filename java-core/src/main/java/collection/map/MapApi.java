@@ -1,9 +1,6 @@
 package collection.map;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MapApi {
 
@@ -90,10 +87,23 @@ public class MapApi {
         System.out.println("GroupMap = " + groupMap);
     }
 
+    public static void mapWithCollectionValue_2() {
+        // @formatter:off
+        String[] keys = {"key 1", "key 2", "key 3"};
+        String[] vals = {"value 1", "value 2", "value 3"};
+        Map<String, StringJoiner> map = new HashMap<>();
+        for (int i = 0; i < keys.length; i++) {
+            map.computeIfAbsent(keys[i], v -> new StringJoiner(", "))
+               .add(vals[i]);
+        }
+        // @formatter:on
+    }
+
     public static void main(String[] args) {
         // mapApi();
         // compute();
-        mapWithCollectionValue();
+        // mapWithCollectionValue();
+        mapWithCollectionValue_2();
     }
 
 }
