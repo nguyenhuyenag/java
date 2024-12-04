@@ -29,13 +29,13 @@ public class DesEcbUtils {
         return new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), ALGORITHM);
     }
 
-    private static String cryptoHelper(int cipherMode, String data) {
+    private static String cryptoHelper(int cipherMode, byte[] data) {
         try {
-            SecretKey secretKey = generateKey(Base64Utils.decodeToString(DES_ECB_SECRET_KEY));
             Cipher cipher = Cipher.getInstance(TRANSFORMATION);
-            cipher.init(cipherMode, secretKey);
+            SecretKey secretKey = generateKey(Base64Utils.decodeToString(DES_ECB_SECRET_KEY));
 
-            return executeCipher(cipher, cipherMode, secretKey, data);
+            cipher.init(cipherMode, secretKey);
+            return executeCipher(cipher, cipherMode, data);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException e) {
             log.error("DES/ECB {} failed. Error: {}",
                     cipherMode == Cipher.ENCRYPT_MODE ? "encryption" : "decryption", e.getMessage());
@@ -43,12 +43,14 @@ public class DesEcbUtils {
         return "";
     }
 
-    public static String encrypt(String data) {
+    public static String encrypt(String base64) {
+        byte[] data = Base64Utils.decodeToByte(base64);
         return cryptoHelper(Cipher.ENCRYPT_MODE, data);
     }
 
-    public static String decrypt(String encryptedData) {
-        return cryptoHelper(Cipher.DECRYPT_MODE, encryptedData);
+    public static String decrypt(String base64) {
+        byte[] data = Base64Utils.decodeToByte(base64);
+        return cryptoHelper(Cipher.DECRYPT_MODE, data);
     }
 
 }

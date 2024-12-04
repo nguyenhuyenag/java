@@ -5,38 +5,39 @@ import lombok.extern.slf4j.Slf4j;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 @Slf4j
 public class CryptoUtils {
 
-    public static String executeCipher(Cipher cipher, int cipherMode, SecretKey secretKey, String data) {
-        String mode = "";
+    public static String executeCipher(Cipher cipher, int cipherMode, byte[] data) {
+        String cryptoMode = "";
         try {
-            if (cipher == null || secretKey == null) {
-                log.error("Cipher or SecretKey is null");
+            if (cipher == null) {
+                log.error("Cipher is null");
                 return "";
             }
-            byte[] result;
+            if (data == null) {
+                log.error("Data is null");
+                return "";
+            }
             switch (cipherMode) {
                 case Cipher.ENCRYPT_MODE:
-                    mode = "Encryption";
-                    result = cipher.doFinal(data.getBytes(StandardCharsets.UTF_8));
-                    return Base64.getEncoder().encodeToString(result);
+                    cryptoMode = "Encryption";
+                    break;
 
                 case Cipher.DECRYPT_MODE:
-                    mode = "Decryption";
-                    result = cipher.doFinal(Base64.getDecoder().decode(data));
-                    return new String(result, StandardCharsets.UTF_8);
+                    cryptoMode = "Decryption";
+                    break;
 
                 default:
-                    log.error("Invalid cipher mode: {}", cipherMode);
+                    log.error("Invalid cipher cryptoMode: {}", cipherMode);
                     return "";
             }
+            byte[] result = cipher.doFinal(data);
+            return Base64.getEncoder().encodeToString(result);
         } catch (IllegalBlockSizeException | BadPaddingException e) {
-            log.error("{} with {} failed. Error: {}", mode, cipher.getAlgorithm(), e.getMessage());
+            log.error("{} with {} failed. Error: {}", cryptoMode, cipher.getAlgorithm(), e.getMessage());
         }
         return "";
     }

@@ -1,5 +1,6 @@
 package crypto.aes;
 
+import crypto.util.Base64Utils;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.crypto.Cipher;
@@ -23,7 +24,7 @@ public class AesUtils {
     private static final String AES_SECRET_KEY = "HStamiaNIACkeTURnAlBeresTabLylAO";
     private static final String AES_ENCRYPTION_IV = "VGumLqshd4kVkg7C";
 
-    private static SecretKey generateKey(final String key) {
+    private static SecretKey generateKey(String key) {
         if (key == null) {
             log.error("AES secret key is null.");
             return null;
@@ -36,15 +37,15 @@ public class AesUtils {
         return new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), ALGORITHM);
     }
 
-    private static IvParameterSpec generateIv(String parameterIv) {
-        if (parameterIv == null || parameterIv.length() != 16) {
+    private static IvParameterSpec generateIv(String iv) {
+        if (iv == null || iv.length() != 16) {
             log.error("IvParameter must be 16 bytes long.");
             return null;
         }
-        return new IvParameterSpec(parameterIv.getBytes(StandardCharsets.UTF_8));
+        return new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8));
     }
 
-    private static String cryptoHelper(int cipherMode, String data) {
+    private static String cryptoHelper(int cipherMode, byte[] data) {
         try {
             Cipher cipher = Cipher.getInstance(TRANSFORMATION);
             SecretKey secretKey = generateKey(AES_SECRET_KEY);
@@ -56,7 +57,7 @@ public class AesUtils {
             }
 
             cipher.init(cipherMode, secretKey, iv);
-            return executeCipher(cipher, cipherMode, secretKey, data);
+            return executeCipher(cipher, cipherMode, data);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException |
                  InvalidAlgorithmParameterException e) {
             log.error("AES {} failed. Error: {}",
@@ -65,12 +66,14 @@ public class AesUtils {
         return "";
     }
 
-    public static String encrypt(String data) {
+    public static String encrypt(String base64) {
+        byte[] data = Base64Utils.decodeToByte(base64);
         return cryptoHelper(Cipher.ENCRYPT_MODE, data);
     }
 
-    public static String decrypt(String encryptData) {
-        return cryptoHelper(Cipher.DECRYPT_MODE, encryptData);
+    public static String decrypt(String base64) {
+        byte[] data = Base64Utils.decodeToByte(base64);
+        return cryptoHelper(Cipher.DECRYPT_MODE, data);
     }
 
 }
