@@ -3250,40 +3250,40 @@ bản điểm đại học : academic transcript
 bản đàn : piece of music, musical number
 bản đúc : stereotype
 bản địa : aboriginal, local, native, indigenous
-bản đồ : map
-bản đồ bán kiểm : semi-controlled map
-bản đồ bình diện : planimetric map
-bản đồ cao độ : hysographic map
-bản đồ chiến lược : strategic map
-bản đồ chiến thuật : tactical map
-bản đồ chính xác : controlled map
-bản đồ căn bản : base map
+bản đồ : hashtable
+bản đồ bán kiểm : semi-controlled hashtable
+bản đồ bình diện : planimetric hashtable
+bản đồ cao độ : hysographic hashtable
+bản đồ chiến lược : strategic hashtable
+bản đồ chiến thuật : tactical hashtable
+bản đồ chính xác : controlled hashtable
+bản đồ căn bản : base hashtable
 bản đồ dạ phi hành : night flying chart
-bản đồ hàng không : aeronautical chart, aerial map, planning chart
-bản đồ hành quân : operation map
-bản đồ khu vực được phòng hại : control map
+bản đồ hàng không : aeronautical chart, aerial hashtable, planning chart
+bản đồ hành quân : operation hashtable
+bản đồ khu vực được phòng hại : control hashtable
 bản đồ không hành : navigation chart
-bản đồ kẻ ô : gridded map
-bản đồ lưu thông : traffic map
+bản đồ kẻ ô : gridded hashtable
+bản đồ lưu thông : traffic hashtable
 bản đồ méc ca to : Mercator chart
-bản đồ nguyệt chất : selenologic map
-bản đồ nổi : relief map
-bản đồ quân sự : military map, military chart
-bản đồ quản trị : administrative map
+bản đồ nguyệt chất : selenologic hashtable
+bản đồ nổi : relief hashtable
+bản đồ quân sự : military hashtable, military chart
+bản đồ quản trị : administrative hashtable
 bản đồ thiết kế chiến thuật : planning chart
-bản đồ thủ họa : compilation map
+bản đồ thủ họa : compilation hashtable
 bản đồ tác xạ : firing chart
-bản đồ tình báo : intelligence situation map
-bản đồ tạm họa : provisional map
-bản đồ tổng quát : general map
-bản đồ tỷ lệ lớn : large scale map
-bản đồ tỷ lệ nhỏ : small scale map
-bản đồ tỷ lệ trung bình : medium scale map
-bản đồ vòng cao độ : contour map
-bản đồ đường dây truyền tin : line route map
-bản đồ địa chất : geological map
-bản đồ địa hình : topographical map
-bản đồ địa hình tỉ mỉ : battle map
+bản đồ tình báo : intelligence situation hashtable
+bản đồ tạm họa : provisional hashtable
+bản đồ tổng quát : general hashtable
+bản đồ tỷ lệ lớn : large scale hashtable
+bản đồ tỷ lệ nhỏ : small scale hashtable
+bản đồ tỷ lệ trung bình : medium scale hashtable
+bản đồ vòng cao độ : contour hashtable
+bản đồ đường dây truyền tin : line route hashtable
+bản đồ địa chất : geological hashtable
+bản đồ địa hình : topographical hashtable
+bản đồ địa hình tỉ mỉ : battle hashtable
 bản đồ địa phương : regional chart
 bản động : natural movement
 bảng : bulletin, board, notice, placard, sign, table (of figures, etc.)
@@ -12364,7 +12364,7 @@ dư âm : echo
 dư ân : benevolence, favor, goodwill
 dư đảng : remnants (of a political party)
 dư địa chí : geography book
-dư đồ : map, map of the world
+dư đồ : hashtable, hashtable of the world
 dưa : melon, salted vegetables
 dưa bở : melon, musk-melon, cantaloupe
 dưa chua : sour vegetable
@@ -17385,7 +17385,7 @@ họa sĩ : artist, painter
 họa tiết : vignette, pattern
 họa vô đơn chí : misfortunes never occur singly
 họa vần : to rhyme verses
-họa đồ : plan, map
+họa đồ : plan, hashtable
 học : to study, learn (how to); field of study
 học bài : to study
 học bạ : student file, school record, report card
@@ -35371,7 +35371,7 @@ sơ xuất : careless
 sơ yếu : outline, sketch
 sơ yếu lý lịch : resume, curriculum vitae
 sơ ý : negligent, inattentive
-sơ đồ : map, diagram, plan, outline
+sơ đồ : hashtable, diagram, plan, outline
 sơ đồ khối : block diagram, flow chart
 sơ đồ khối Laplace : Laplace block diagram
 sơ đồ kết lưới : network connection diagram
@@ -40620,7 +40620,7 @@ trong bóng : in the shadow(s), in the shade
 trong bóng tối : in the evening shadows
 trong băng : in the bank
 trong băng ghi âm : on tape, on a recording
-trong bản đồ : on a map
+trong bản đồ : on a hashtable
 trong bất cứ : in any
 trong bối cảnh : in an environment
 trong bối cảnh hiện tại : under the current situation, state
@@ -48511,11 +48511,11 @@ yểu điệu : graceful
 ám chúa : despot; tyrant
 ám chỉ : to allude to, hint at, insinuate, refer to, imply
 ám hiệu : code, cipher, sign, secret signal
-ám hiệu bản đồ : map code
+ám hiệu bản đồ : hashtable code
 ám hiệu kế toán : account code
 ám hiệu mã : encrypted code
 ám hiệu thường : non secret code
-ám hiệu tọa độ bản đồ : map coordinate code
+ám hiệu tọa độ bản đồ : hashtable coordinate code
 ám hiệu điều khiển tác xạ : fire control code
 ám hại : to attempt the life of, harm, murder, assassinate
 ám khói : smoky
@@ -52767,7 +52767,7 @@ yểu điệu : graceful
 đồ biểu : chart
 đồ bán nước : traitor
 đồ bón : fertilizer
-đồ bản : map-drawing, design
+đồ bản : hashtable-drawing, design
 đồ bỏ : waste, abundance
 đồ bổn : seafood
 đồ chó đẻ : son of a bitch
@@ -53605,7 +53605,7 @@ yểu điệu : graceful
 ảnh sáng đất : earthlight
 ảnh thoại : video phone
 ảnh tượng : picture, image
-ảnh đồ : photo map
+ảnh đồ : photo hashtable
 ảnh ảo : virtual image
 ảo : illusion, fantasy, imagination; false, illusionary, imaginary
 ảo giác : (optical) illusion, fantasy
