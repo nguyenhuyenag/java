@@ -16,20 +16,20 @@ public class CompressUtils {
 
     public static void compressFile(Path file, Path destination) throws CompressorException, IOException {
         String format = FileNameUtils.getExtension(destination);
-        try (OutputStream out = Files.newOutputStream(destination);
-             BufferedOutputStream buffer = new BufferedOutputStream(out);
+        try (OutputStream os = Files.newOutputStream(destination);
+             BufferedOutputStream bos = new BufferedOutputStream(os);
              CompressorOutputStream<?> compressor = new CompressorStreamFactory()
-                     .createCompressorOutputStream(format, buffer)) {
+                     .createCompressorOutputStream(format, bos)) {
             IOUtils.copy(Files.newInputStream(file), compressor);
         }
     }
 
     public static void decompress(Path file, Path destination) throws CompressorException, IOException {
-        try (InputStream in = Files.newInputStream(file);
-             BufferedInputStream inputBuffer = new BufferedInputStream(in);
+        try (InputStream is = Files.newInputStream(file);
+             BufferedInputStream bis = new BufferedInputStream(is);
              OutputStream out = Files.newOutputStream(destination);
              CompressorInputStream decompressor = new CompressorStreamFactory()
-                     .createCompressorInputStream(inputBuffer)) {
+                     .createCompressorInputStream(bis)) {
             IOUtils.copy(decompressor, out);
         }
     }
