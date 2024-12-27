@@ -12,14 +12,13 @@ interface Samsung {
 
 }
 
-/**
- * - Là phương thức cho phép định nghĩa một phần thân của phương thức trong
- * interface
- * 
- * - Có thể sử dụng trực tiếp hoặc override lại default method ()
- * 
- * - Khi Super class & Interface có cùng phương thức thì class con sẽ lấy phương
- * thức của super class
+/*-
+ 	- Là phương thức cho phép định nghĩa một phần thân của phương thức trong interface.
+
+ 	- Có thể sử dụng trực tiếp hoặc override lại default method.
+
+ 	- Khi Super class & Interface có cùng phương thức thì class con sẽ lấy phương thức
+ 	của super class.
  */
 public class DefaultMethod implements Samsung {
 
