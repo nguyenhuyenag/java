@@ -1,33 +1,20 @@
 //package jmh;
 //
-//import org.openjdk.jmh.annotations.Benchmark;
-//import org.openjdk.jmh.annotations.BenchmarkMode;
-//import org.openjdk.jmh.annotations.Fork;
-//import org.openjdk.jmh.annotations.Measurement;
-//import org.openjdk.jmh.annotations.Mode;
-//import org.openjdk.jmh.annotations.OutputTimeUnit;
-//import org.openjdk.jmh.annotations.Scope;
-//import org.openjdk.jmh.annotations.Setup;
-//import org.openjdk.jmh.annotations.State;
-//import org.openjdk.jmh.annotations.Warmup;
+//import org.openjdk.jmh.annotations.*;
 //
 //import java.util.concurrent.TimeUnit;
 //
-//@Fork(1)
+//@Fork(3)
 //@State(Scope.Benchmark)
 //@BenchmarkMode(Mode.AverageTime)
-//@OutputTimeUnit(TimeUnit.MILLISECONDS)
+//@OutputTimeUnit(TimeUnit.NANOSECONDS)
 //@Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 //@Measurement(iterations = 10, time = 500, timeUnit = TimeUnit.MILLISECONDS)
-//public class IndexOfAndContainsPerfTest {
+//public class IndexOfAndContainsTest {
 //
+//    private String str;
 //    private char c;
 //    private String s;
-//    private String str;
-//
-//    public static void main(String[] args) throws Exception {
-//        org.openjdk.jmh.Main.main(args);
-//    }
 //
 //    @Setup
 //    public void setup() {

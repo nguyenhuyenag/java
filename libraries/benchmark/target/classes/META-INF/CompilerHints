@@ -1,0 +1,13 @@
+dontinline,*.*_all_jmhStub
+dontinline,*.*_avgt_jmhStub
+dontinline,*.*_sample_jmhStub
+dontinline,*.*_ss_jmhStub
+dontinline,*.*_thrpt_jmhStub
+inline,jmh/StringConcatenation.usingAdditionOperator
+inline,jmh/StringConcatenation.usingConcat
+inline,jmh/StringConcatenation.usingFormat
+inline,jmh/StringConcatenation.usingJoin
+inline,jmh/StringConcatenation.usingStreamAPI
+inline,jmh/StringConcatenation.usingStringBuffer
+inline,jmh/StringConcatenation.usingStringBuilder
+inline,jmh/StringConcatenation.usingStringJoiner
