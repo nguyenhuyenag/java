@@ -42,7 +42,6 @@ public class FunctionInterface {
         System.out.println("useLambda(): " + useLambda());
         System.out.println("withoutLambda(): " + withoutLambda());
         System.out.println("methodReference(): " + methodReference());
-
     }
 
 }

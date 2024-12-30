@@ -3,8 +3,8 @@ package com.iterface.fp.predicate;
 import java.util.function.Predicate;
 
 /*-
- * boolean test(): Trả về true nếu đối số đầu vào khớp với biến predicate (điều kiện
- * kiểm tra), nếu không trả về false
+	test(): Trả về true nếu đối số đầu vào khớp với biến predicate (điều kiện
+ 	kiểm tra), nếu không trả về false.
  */
 public class Predicates {
 

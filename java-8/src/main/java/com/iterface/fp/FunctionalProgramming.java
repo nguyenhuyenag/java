@@ -1,8 +1,8 @@
 package com.iterface.fp;
 
 /*-
- 	Lập trình hướng hàm là đưa hành vi vào hàm, mục đích của nó là đưa hành vi vào
- 	hàm. Hay nói cách khác là đưa thêm các đoạn code vào hàm như là một parameter.
+ 	Lập trình hướng hàm là đưa hành vi vào hàm. Hay nói cách khác là đưa thêm
+ 	các đoạn code vào hàm như là một parameter.
  */
 public class FunctionalProgramming {
 

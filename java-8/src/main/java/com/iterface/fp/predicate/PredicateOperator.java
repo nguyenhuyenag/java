@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-// And, Or, Negate (phủ định)
+/*
+	And, Or, Negate (phủ định)
+ */
 public class PredicateOperator {
 
 	private static List<String> list = Arrays.asList("Java", "Quora", "C", "C#", "PHP");
