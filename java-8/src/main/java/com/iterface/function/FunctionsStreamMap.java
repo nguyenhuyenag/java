@@ -3,10 +3,10 @@ package com.iterface.function;
 import java.util.List;
 import java.util.function.Function;
 
-/**
- * - Stream.map(Function mapper)
- * 
- * - Function mapper là hàm ánh xạ (mapping function)
+/*-
+	+ Stream.map(Function mapper)
+
+	+ Function mapper là hàm ánh xạ (mapping function).
  */
 public class FunctionsStreamMap {
 

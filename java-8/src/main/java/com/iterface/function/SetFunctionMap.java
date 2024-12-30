@@ -6,8 +6,8 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/**
- * Set + Function = Map
+/*-
+ 	Set + Function = Map
  */
 public class SetFunctionMap {
 
