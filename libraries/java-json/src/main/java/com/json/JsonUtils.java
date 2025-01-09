@@ -24,56 +24,55 @@ import com.google.gson.GsonBuilder;
 
 public class JsonUtils {
 
-	// private static final Gson GSON = new Gson();
-	private static final ObjectMapper MAPPER = new ObjectMapper();
+    // private static final Gson GSON = new Gson();
+    private static final ObjectMapper MAPPER = new ObjectMapper();
 
-	private JsonUtils() {
-		MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-	}
-	
-	/**
-	 * Object to JSON String
-	 */
-	public static String toJSON(Object object) {
-		if (object != null) {
-			try {
-				return MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(object);
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
-			}
-		}
-		return "";
-	}
+    private JsonUtils() {
+        MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
 
-	/**
-	 * JSON to Object
-	 * 
-	 * @return Java object
-	 */
-	public static <T> T toObject(String jsonString, Type type) {
-		GsonBuilder builder = new GsonBuilder();
-		Gson gson = builder.enableComplexMapKeySerialization().create();
-		return gson.fromJson(jsonString, type);
-	}
-	
-	// GitHubUser resource = RetrieveUtil.retrieveResourceFromResponse(response, GitHubUser.class);
-	public static <T> T retrieveResourceFromResponse(HttpResponse response, Class<T> clazz) throws IOException {
-		String jsonFromResponse = EntityUtils.toString(response.getEntity());
-		ObjectMapper mapper = new ObjectMapper() //
-				.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		return mapper.readValue(jsonFromResponse, clazz);
-	}
+    /*-
+        Object to JSON String
+     */
+    public static String toJSON(Object object) {
+        if (object != null) {
+            try {
+                return MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        }
+        return "";
+    }
 
-	public static com.fasterxml.jackson.databind.JsonNode toJsonNode(String jsonString) {
-		try {
-			return MAPPER.readTree(jsonString);
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    /**
+     * JSON to Object
+     *
+     * @return Java object
+     */
+    public static <T> T toObject(String jsonString, Type type) {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.enableComplexMapKeySerialization()
+                .create();
+        return gson.fromJson(jsonString, type);
+    }
+
+    // GitHubUser resource = RetrieveUtil.retrieveResourceFromResponse(response, GitHubUser.class);
+    public static <T> T retrieveResourceFromResponse(HttpResponse response, Class<T> clazz) throws IOException {
+        String jsonFromResponse = EntityUtils.toString(response.getEntity());
+        ObjectMapper mapper = new ObjectMapper() //
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        return mapper.readValue(jsonFromResponse, clazz);
+    }
+
+    public static com.fasterxml.jackson.databind.JsonNode toJsonNode(String jsonString) {
+        try {
+            return MAPPER.readTree(jsonString);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 //	/**
 //	 * Convert JSON string to JSONObject
@@ -86,77 +85,77 @@ public class JsonUtils {
 //		return new JSONObject(jsonString);
 //	}
 
-	/**
-	 * JSON to List Object
-	 * 
-	 * List<Employee> employeeList = objectMapper.readValue(file, new TypeReference<>(){});
-	 * 
-	 * Map<String, Object> employee = objectMapper.readValue(file, new TypeReference<>(){});
-	 */
-	public static <T> List<T> toList(String jsonStringArray, Class<T> classT) {
-		// return MAPPER.readValue(json, new TypeReference<List<T>>(){})
-		List<T> list = new ArrayList<>();
-		org.json.JSONArray jsonArray = new JSONArray(jsonStringArray);
-		for (Object json : jsonArray) {
-			T t = new Gson().fromJson(json.toString(), classT);
-			list.add(t);
-		}
-		return list;
-	}
+    /*-
+        JSON to List Object
 
-	// List to JSON array
-	public static String toJSONArray(List<?> list) {
-		JSONArray jarr = new JSONArray(list);
-		return jarr.toString();
-	}
+        List<Employee> employeeList = objectMapper.readValue(file, new TypeReference<>(){});
 
-	/**
-	 * Colection to JSON
-	 */
-	public static <T> String collectionToJson(Collection<T> list) {
-		// return GSON.toJson(list);
-		try {
-			return MAPPER.writeValueAsString(list);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
+        Map<String, Object> employee = objectMapper.readValue(file, new TypeReference<>(){});
+     */
+    public static <T> List<T> toList(String jsonStringArray, Class<T> classT) {
+        // return MAPPER.readValue(json, new TypeReference<List<T>>(){})
+        List<T> list = new ArrayList<>();
+        org.json.JSONArray jsonArray = new JSONArray(jsonStringArray);
+        for (Object json : jsonArray) {
+            T t = new Gson().fromJson(json.toString(), classT);
+            list.add(t);
+        }
+        return list;
+    }
 
-	/**
-	 * InputStream to Object
-	 */
-	public static <T> T readValue(InputStream is, Class<T> type) {
-		if (is != null) {
-			try {
-				return MAPPER.readValue(is, type);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
+    // List to JSON array
+    public static String toJSONArray(List<?> list) {
+        JSONArray jarr = new JSONArray(list);
+        return jarr.toString();
+    }
 
-	/**
-	 * Map<String, String> asMap = asType(s);
-	 */
-	public static Map<String, String> asMap(String json) {
-		if (StringUtils.isNotEmpty(json)) {
-			try {
-				return MAPPER.readValue(json, new TypeReference<Map<String, String>>() {
-				});
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return Collections.emptyMap();
-	}
+    /*-
+        Collection to JSON
+     */
+    public static <T> String collectionToJson(Collection<T> list) {
+        // return GSON.toJson(list);
+        try {
+            return MAPPER.writeValueAsString(list);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
-	/**
-	 * Convert InputStream to JsonObject
-	 * 
-	 * @see {@link JsonObject#getBoolean("fieldname")}
-	 */
+    /**
+     * InputStream to Object
+     */
+    public static <T> T readValue(InputStream is, Class<T> type) {
+        if (is != null) {
+            try {
+                return MAPPER.readValue(is, type);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Map<String, String> asMap = asType(s);
+     */
+    public static Map<String, String> asMap(String json) {
+        if (StringUtils.isNotEmpty(json)) {
+            try {
+                return MAPPER.readValue(json, new TypeReference<Map<String, String>>() {
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return Collections.emptyMap();
+    }
+
+//	/**
+//	 * Convert InputStream to JsonObject
+//	 *
+//	 * @see {@link JsonObject#getBoolean("fieldname")}
+//	 */
 //	public static javax.json.JsonObject toJsonObject(InputStream is) {
 //		if (is != null) {
 //			try (javax.json.JsonReader jsonReader = Json.createReader(is)) {
@@ -194,10 +193,10 @@ public class JsonUtils {
 //		return xmlToJSON(file.toPath());
 //	}
 
-	public static void main(String[] args) {
-		String s = "{\"id\":\"9221041e-d9ff-43f8-a894-2fe58905b8f9\",\"app_name\":\"TKTX\",\"date\":\"2023-05-10 08:46:01\",\"request_type\":3,\"taxnumber\":\"0309478306888\",\"val\":0,\"state\":\"1\",\"message\":\"pepsicoca113@gmail.com\",\"json\":null}";
-		Map<String, String> asMap = asMap(s);
-		System.out.println(asMap);
-	}
+    public static void main(String[] args) {
+        String s = "{\"id\":\"9221041e-d9ff-43f8-a894-2fe58905b8f9\",\"app_name\":\"TKTX\",\"date\":\"2023-05-10 08:46:01\",\"request_type\":3,\"taxnumber\":\"0309478306888\",\"val\":0,\"state\":\"1\",\"message\":\"pepsicoca113@gmail.com\",\"json\":null}";
+        Map<String, String> asMap = asMap(s);
+        System.out.println(asMap);
+    }
 
 }

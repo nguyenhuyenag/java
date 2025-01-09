@@ -12,7 +12,7 @@ public class JSONParser {
 
 	public static void main(String[] args) throws IOException {
 		Path path = Paths.get("./file/data.json");
-		String jsonString = Files.readString(path);
+		String jsonString = new String(Files.readAllBytes(path));
 
 		// System.out.println(jsonString);
 		JSONObject jsonObject = new JSONObject(jsonString);
