@@ -15,7 +15,6 @@ public class DisableAnnotations implements PrettyJson {
 	public int id;
 	public String name;
 
-	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws JsonProcessingException {
 		DisableAnnotations bean = new DisableAnnotations(1, null);
 

@@ -19,7 +19,7 @@ public class ChangeFieldName {
 	private String name;
 
 	// @JsonProperty annotation to indicate the property name in JSON
-	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {
+	public static void main(String[] args) throws JsonProcessingException {
 		String json = "{\"_id\": 12, \"name\": \"Green\"}";
 		ChangeFieldName bean = new ObjectMapper() //
 				.readerFor(ChangeFieldName.class) //
