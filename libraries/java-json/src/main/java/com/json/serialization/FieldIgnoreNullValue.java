@@ -22,7 +22,7 @@ public class FieldIgnoreNullValue implements PrettyJson {
 	private String address;
 
 	/*-
-	 * Trong spring boot: spring.jackson.default-property-inclusion=non_null
+		Trong spring boot: spring.jackson.default-property-inclusion=non_null
 	 */
 	public static void main(String[] args) throws JsonProcessingException {
 		FieldIgnoreNullValue bean = new FieldIgnoreNullValue(2023, null, "");

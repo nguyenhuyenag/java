@@ -18,7 +18,7 @@ public class FieldAlias {
 	private String firstName;
 	private String lastName;
 
-	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {
+	public static void main(String[] args) throws JsonProcessingException {
 		String json = "{\"f_name\": \"John\", \"lastName\": \"Green\"}";
 
 		FieldAlias bean = new ObjectMapper() //

@@ -9,19 +9,19 @@ import com.json.PrettyJson;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-@JsonPropertyOrder({ "name", "id" }) // sắp xếp field
+@JsonPropertyOrder({"name", "id"}) // sắp xếp field
 public class DisableAnnotations implements PrettyJson {
 
-	public int id;
-	public String name;
+    public int id;
+    public String name;
 
-	public static void main(String[] args) throws JsonProcessingException {
-		DisableAnnotations bean = new DisableAnnotations(1, null);
+    public static void main(String[] args) throws JsonProcessingException {
+        DisableAnnotations bean = new DisableAnnotations(1, null);
 
-		 ObjectMapper objectMapper = new ObjectMapper();
-		 objectMapper.disable(MapperFeature.USE_ANNOTATIONS); // disable all Jackson annotations
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.disable(MapperFeature.USE_ANNOTATIONS); // disable all Jackson annotations
 
-		System.out.println(bean.toJSON(objectMapper));
-	}
+        System.out.println(bean.toJSON(objectMapper));
+    }
 
 }

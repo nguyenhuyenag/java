@@ -18,7 +18,7 @@ public class JSONCreator {
 		this.name = name;
 	}
 
-	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {
+	public static void main(String[] args) throws JsonProcessingException {
 		String json = "{\"id\":1000, \"theName\":\"Jackson\"}";
 		JSONCreator bean = new ObjectMapper() //
 				.readerFor(JSONCreator.class) //

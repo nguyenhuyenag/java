@@ -17,7 +17,7 @@ public class IgnoreJsonField implements PrettyJson {
 	private String name;
 	private String address;
 
-	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {
+	public static void main(String[] args) throws JsonProcessingException {
 		String json = "{\"name\": \"John\", \"address\": \"USA\", \"age\": 25}";
 
 		IgnoreJsonField bean = new ObjectMapper() //
