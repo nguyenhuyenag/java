@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TemplateSMSs>
+	<TemplateSMS>
+		<ID>1096041</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,150} P.Ben
+			Nghe, Q.1. Anh/Chi vui long den dung gio de hoi nghi dien ra thanh
+			cong</TEMPLATE>
+		<SOKYTU>134</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>1</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096042</ID>
+		<TEMPLATE>TS24Corp tang ban voucher {A,50} tri gia {B,20} VND cho hoa
+			don {B,20} VND khi mua sam tu ngay {A,20}. Chi tiet vui long lien he
+			(028) 3866 4188. Xem uu dai: web.ts24.com.vn{C,200}</TEMPLATE>
+		<SOKYTU>190</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>5</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096043</ID>
+		<TEMPLATE>Ban da dang ky thanh cong hoi nghi {A,100} truc tuyen vao
+			luc {A,50} do TS24Corp to chuc. De buoi hoi nghi dien ra hieu qua,
+			vui long tai &amp; cai dat ung dung Zoom de tham du.</TEMPLATE>
+		<SOKYTU>177</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>2</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096044</ID>
+		<TEMPLATE>Ban da dang ky tham du hoi nghi {A,100} vao luc {A,100} to
+			chuc tai {A,100}. Anh/Chi vui long den dung gio de hoi nghi dien ra
+			thanh cong.</TEMPLATE>
+		<SOKYTU>144</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>3</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096045</ID>
+		<TEMPLATE>TS24Corp tang ban dich vu Dich vu {A,80}. Chi tiet vui long
+			lien he (028) 3866 4188. Xem uu dai: web.ts24.com.vn{C,250}
+		</TEMPLATE>
+		<SOKYTU>123</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>2</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096046</ID>
+		<TEMPLATE>{A,100} se het han vao {A,50}, Chi tiet vui long lien he
+			(028) 3866 4188 line 3. Xem uu dai: web.ts24.com.vn{C,200}</TEMPLATE>
+		<SOKYTU>121</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>3</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096047</ID>
+		<TEMPLATE>TB: Dam bao suc khoe truoc dich Covid-19, hoi nghi HDDT tai
+			CSED chuyen sang hoi nghi truc tuyen luc {A,30} tren ung dung Zoom.
+			Link hoi nghi https://www.web.ts24.com.vn/{C,200}. Xin cao loi va cam
+			on!</TEMPLATE>
+		<SOKYTU>205</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>2</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096048</ID>
+		<TEMPLATE>Chu ky so cua ban se het han su dung vao {A,100}, vui long
+			lien he voi TS24 de gia han dich vu, hoac bo qua thong bao nay neu da
+			gia han. Chi tiet vui long lien he (028) 3866 4188 line 3. Xem uu
+			dai: web.ts24.com.vn/{C,200}</TEMPLATE>
+		<SOKYTU>227</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>2</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096049</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,30} vao
+			luc {A,30} do Cong ty Co phan TS24 to chuc. De buoi hoi nghi dien ra
+			hieu qua Anh/Chi vui long tai va cai dat ung dung Zoom tren may tinh/
+			laptop.</TEMPLATE>
+		<SOKYTU>208</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>2</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096050</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {D,250}.
+			Anh/Chi vui long den dung gio de hoi nghi dien ra thanh cong
+		</TEMPLATE>
+		<SOKYTU>118</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>1</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096051</ID>
+		<TEMPLATE>Kinh gui Quy khach hang,
+			TS24 - TaxOnline xin thong bao: To khai thue Quy khach gui hien co phat
+			sinh loi.Quy khach vui long vao Lich su giao dich trong TaxOnline
+			kiem tra va gui lai de tranh phat sinh cham nop. Quy khach can ho tro
+			them vui long gui email vao hotro@ts24.com.vn. Neu da gui lai thanh
+			cong vui long qua bo qua tin nhan nay.
+			Tran trong Cam on!
+		</TEMPLATE>
+		<SOKYTU>358</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>0</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096052</ID>
+		<TEMPLATE>{A,100} xac nhan thu tien thanh cong. So tien: {B,10} VND.
+			Xem Phieu thu &amp; Bien lai:
+			http://hcm1.salute.vn/view-invoice/{C,100}. LH:{A,50}.</TEMPLATE>
+		<SOKYTU>147</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>4</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096053</ID>
+		<TEMPLATE>Ban da dang ky tham du Lop hoc {A,100} vao luc {A,100} to
+			chuc tai {A,100}. Anh/Chi vui long den som de lop hoc dien ra dung
+			gio.</TEMPLATE>
+		<SOKYTU>135</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>3</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096054</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,150}. De
+			buoi hoi nghi dien ra hieu qua Anh/Chi vui long {A,100}.</TEMPLATE>
+		<SOKYTU>119</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>2</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096056</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,150} P.Ben
+			Nghe, Q.1. Anh/Chi vui long den dung gio de hoi nghi dien ra thanh
+			cong</TEMPLATE>
+		<SOKYTU>134</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>1</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096057</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,150}. De
+			buoi hoi nghi dien ra hieu qua Anh/Chi vui long {A,100}.</TEMPLATE>
+		<SOKYTU>119</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>2</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096058</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,150}
+			P.{A,20}, Q.{A,20}. Anh/Chi vui long den dung gio de hoi nghi dien ra
+			thanh cong</TEMPLATE>
+		<SOKYTU>141</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>3</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096059</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,150}. De
+			buoi hoi nghi dien ra hieu qua Anh/Chi vui long {A,100}.</TEMPLATE>
+		<SOKYTU>119</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>2</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096060</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,250}. De
+			buoi hoi nghi dien ra hieu qua Anh/Chi vui long {A,100}.</TEMPLATE>
+		<SOKYTU>119</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>2</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096061</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,150}
+			P.{A,20}, Q.{A,20}. Anh/Chi vui long den dung gio de hoi nghi dien ra
+			thanh cong</TEMPLATE>
+		<SOKYTU>141</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>3</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+	<TemplateSMS>
+		<ID>1096062</ID>
+		<TEMPLATE>Xin cam on Anh/Chi da dang ky tham du hoi nghi {A,250}.
+			Anh/Chi vui long den dung gio de hoi nghi dien ra thanh cong
+		</TEMPLATE>
+		<SOKYTU>118</SOKYTU>
+		<NHAN>TS24corp</NHAN>
+		<SOTHAMBIEN>1</SOTHAMBIEN>
+		<TT>Actived</TT>
+	</TemplateSMS>
+</TemplateSMSs>
