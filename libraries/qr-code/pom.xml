@@ -48,6 +48,12 @@
             <artifactId>javase</artifactId>
             <version>${zxing.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.eatthepath/java-otp -->
+        <dependency>
+            <groupId>com.eatthepath</groupId>
+            <artifactId>java-otp</artifactId>
+            <version>0.4.0</version>
+        </dependency>
         <!-- End QR -->
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
