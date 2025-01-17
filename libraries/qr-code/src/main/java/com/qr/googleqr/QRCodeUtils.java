@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Base64;
 
+/*
+    https://github.com/oril-software/2fa-google-authenticator-java
+ */
 @Slf4j
 public class QRCodeUtils {
 
