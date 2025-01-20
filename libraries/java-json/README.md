@@ -13,3 +13,8 @@
 		public void setName(String name) {
 		    this.name = name;
 		}
+
+    + Hoặc dùng GSON
+
+		@SerializedName("template_id")
+	    private String templateId;
