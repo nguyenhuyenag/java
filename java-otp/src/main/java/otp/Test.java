@@ -13,6 +13,7 @@ import java.security.InvalidKeyException;
 import java.security.Key;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -98,6 +99,9 @@ public class Test {
         Base32 base32 = new Base32();
         String encodedKey = base32.encodeToString(key.getEncoded());
         System.out.println("Secret Key (Base32): " + encodedKey);
+
+        encodedKey = Base64.getEncoder().encodeToString(key.getEncoded());
+        System.out.println("Secret Key (Base64): " + encodedKey);
 
 
         final Instant now = Instant.now();
