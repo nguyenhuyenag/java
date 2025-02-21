@@ -40,7 +40,7 @@ public class Test {
             return false;
         }
         byte[] decodedKey = new Base32().decode(secretKey);
-        Key key = new SecretKeySpec(decodedKey, "HmacSHA1");
+        Key key = new SecretKeySpec(decodedKey, "HmacSHA1"); // Hoặc HmacSHA256, HmacSHA512
         try {
             int generatedOtp = totp.generateOneTimePassword(key, Instant.now());
             return generatedOtp == Integer.parseInt(otpCode);
