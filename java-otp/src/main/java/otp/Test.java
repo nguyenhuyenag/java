@@ -16,18 +16,20 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
+/*
+    Không thể sử dụng mã OTP từ Duration.ofSeconds(30) để xác thực với hàm sử dụng Duration.ofSeconds(60)
+ */
 @Slf4j
 public class Test {
 
     private static final TimeBasedOneTimePasswordGenerator totp = new TimeBasedOneTimePasswordGenerator();
 
-    private static int convertSecretKeyToOtp(String secretKey) {
+    private static int toIntOtp(String secretKey) {
         byte[] decodedKey = new Base32().decode(secretKey);
         Key key = new SecretKeySpec(decodedKey, "HmacSHA1");
         try {
-            // Mặc định là 30s
             TimeBasedOneTimePasswordGenerator totpGenerator //
-                    = new TimeBasedOneTimePasswordGenerator(Duration.ofSeconds(60));
+                    = new TimeBasedOneTimePasswordGenerator(Duration.ofSeconds(30));
             return totpGenerator.generateOneTimePassword(key, Instant.now());
         } catch (InvalidKeyException | NumberFormatException e) {
             log.error("Error verifyOtp: {}", e.getMessage(), e);
@@ -80,7 +82,7 @@ public class Test {
 //        return false;
 //    }
 
-    public static void main(String[] args) throws Exception {
+    public static void test2() throws Exception {
 //        String secretKey = "MSLUIOU6YWPR7KEF";
 //        while (true) {
 //            System.out.println("otp = " + convertSecretKeyToOtp(secretKey));
@@ -109,6 +111,14 @@ public class Test {
 
         System.out.println("Current password: " + totp.generateOneTimePasswordString(key, now));
         System.out.println("Future password:  " + totp.generateOneTimePasswordString(key, later));
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        String secretKey = "WE5B5AO2WJT352AW";
+        while (true) {
+            System.out.println("otp: " + toIntOtp(secretKey));
+            TimeUnit.SECONDS.sleep(2);
+        }
     }
 
 }
