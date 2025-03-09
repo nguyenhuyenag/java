@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
@@ -21,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+@Slf4j
 public class JsonUtils {
 
     // private static final Gson GSON = new Gson();
@@ -38,7 +40,7 @@ public class JsonUtils {
             try {
                 return MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(object);
             } catch (JsonProcessingException e) {
-                e.printStackTrace();
+                log.error("Failed to convert object to JSON: {}", object, e);
             }
         }
         return "";
@@ -68,7 +70,7 @@ public class JsonUtils {
         try {
             return MAPPER.readTree(jsonString);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            log.error("Failed to convert object to JSON: {}", e.getMessage(), e);
         }
         return null;
     }
@@ -116,7 +118,7 @@ public class JsonUtils {
         try {
             return MAPPER.writeValueAsString(list);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            log.error("Failed to convert object to JSON: {}", e.getMessage(), e);
         }
         return "";
     }
@@ -129,7 +131,7 @@ public class JsonUtils {
             try {
                 return MAPPER.readValue(is, type);
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("Failed to read value from InputStream for type: {}", type.getName(), e);
             }
         }
         return null;
@@ -144,7 +146,7 @@ public class JsonUtils {
                 return MAPPER.readValue(json, new TypeReference<Map<String, String>>() {
                 });
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error("Failed to convert object to JSON: {}", e.getMessage(), e);
             }
         }
         return Collections.emptyMap();
