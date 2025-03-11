@@ -1,10 +1,9 @@
 package com.csv.model;
 
 import com.opencsv.bean.CsvBindByName;
-import lombok.Data;
 
-@Data
-public class LogEntry {
+@lombok.Data
+public class Data {
 
     @CsvBindByName(column = "Timestamp")
     private String timestamp;
