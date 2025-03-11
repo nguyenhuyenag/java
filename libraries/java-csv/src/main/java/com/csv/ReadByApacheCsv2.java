@@ -36,7 +36,7 @@ public class ReadByApacheCsv2 {
                         ", Severity: " + severity +
                         ", State: " + state);
             }
-        } catch (IOException e) {
+        } catch (IOException ignored) {
 
         }
     }
