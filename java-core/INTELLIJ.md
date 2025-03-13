@@ -97,3 +97,12 @@
 - File encoding
 	
 	+ Setting > Editor > File Encoding
+
+- Environment variables
+
+	+ Run | Edit Configurations > Modify options -> Choose Environment Variables > Edit ...
+
+		KEY		:	  Value
+	
+		${KEY}
+    
