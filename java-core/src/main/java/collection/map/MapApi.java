@@ -99,11 +99,34 @@ public class MapApi {
         // @formatter:on
     }
 
+    public static void mergerAndGetOrDefault() {
+        int[] nums = {3, 2, 3, 2, 2, 2};
+
+        // (1) Cách thông thường
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        /*
+            (2) Cách dùng merge
+                - Nếu num chưa có trong counter, nó sẽ được thêm vào với giá trị 1.
+                - Nếu num đã tồn tại, giá trị của nó sẽ được cập nhật bằng cách cộng thêm 1
+         */
+        Map<Integer, Integer> counter = new HashMap<>();
+        for (int num : nums) {
+            // counter.merge(num, 1, Integer::sum);
+            counter.merge(num, 1, (oldValue, newValue) -> oldValue + newValue);
+        }
+        System.out.println(counter);
+    }
+
     public static void main(String[] args) {
         // mapApi();
         // compute();
         // mapWithCollectionValue();
-        mapWithCollectionValue_2();
+        // mapWithCollectionValue_2();
+        mergerAndGetOrDefault();
     }
 
 }
