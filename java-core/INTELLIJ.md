@@ -6,6 +6,10 @@
 
 	+ Ví dụ mở project spring-boot-mvc ở một workspace khác lỗi do không tìm được [/WEB-INF/tiles.xml]
 
+- Show main menu
+
+	+ Ctrl + Shift + A > Tìm kiếm 'Main Menu' trong Actions
+
 - Bảng gõ tắt: Setting > Keymap
 
 - Phím tắt
