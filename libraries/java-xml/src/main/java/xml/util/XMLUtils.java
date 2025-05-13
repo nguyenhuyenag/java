@@ -14,6 +14,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.xpath.XPathExpressionException;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -22,48 +23,51 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class XMLUtils {
+@Slf4j
+public class XmlUtils {
 
-	/**
-	 * Đọc dữ liệu của 1 tag: <name>Java</name> => Java
-	 */
-	public static String getTagText(String xml, String parentTagName, String tagName) {
-		if (StringUtils.isNotEmpty(xml)) {
-			try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
-				Document doc = DocumentBuilderFactory.newInstance() //
-						.newDocumentBuilder() //
-						.parse(new InputSource(is));
-				NodeList parentTag = doc.getElementsByTagName(parentTagName);
-				for (int i = 0; i < parentTag.getLength(); i++) {
-					Node node = parentTag.item(i);
-					if (node.getNodeType() == Node.ELEMENT_NODE) {
-						Element el = (Element) node;
-						NodeList tagNodes = el.getElementsByTagName(tagName);
-	                    if (tagNodes.getLength() > 0) {
-	                        return StringUtils.trim(tagNodes.item(0).getTextContent());
-	                    }
-					}
-				}
-			} catch (ParserConfigurationException | SAXException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return "";
-	}
+    // private static final Logger log = LoggerFactory.getLogger(XMLUtils.class);
 
-	public static boolean isXMLValid(String xml) {
-		xml = xml.trim().replaceFirst("^([\\W]+)<", "<");
-		try (StringReader reader = new StringReader(xml)) {
-			SAXParserFactory.newInstance() //
-					.newSAXParser() //
-					.getXMLReader() //
-					.parse(new InputSource(reader));
-			return true;
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
+    /**
+     * Đọc dữ liệu của 1 tag: <name>Java</name> => Java
+     */
+    public static String getTagText(String xml, String parentTagName, String tagName) {
+        if (StringUtils.isNotEmpty(xml)) {
+            try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
+                Document doc = DocumentBuilderFactory.newInstance() //
+                        .newDocumentBuilder() //
+                        .parse(new InputSource(is));
+                NodeList parentTag = doc.getElementsByTagName(parentTagName);
+                for (int i = 0; i < parentTag.getLength(); i++) {
+                    Node node = parentTag.item(i);
+                    if (node.getNodeType() == Node.ELEMENT_NODE) {
+                        Element el = (Element) node;
+                        NodeList tagNodes = el.getElementsByTagName(tagName);
+                        if (tagNodes.getLength() > 0) {
+                            return StringUtils.trim(tagNodes.item(0).getTextContent());
+                        }
+                    }
+                }
+            } catch (ParserConfigurationException | SAXException | IOException e) {
+                // log.error("Error parsing XML: {}", e.getMessage());
+            }
+        }
+        return "";
+    }
+
+    public static boolean isXMLValid(String xml) {
+        xml = xml.trim().replaceFirst("^([\\W]+)<", "<");
+        try (StringReader reader = new StringReader(xml)) {
+            SAXParserFactory.newInstance() //
+                    .newSAXParser() //
+                    .getXMLReader() //
+                    .parse(new InputSource(reader));
+            return true;
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            // e.printStackTrace();
+        }
+        return false;
+    }
 
 //	protected static String getTagValue(String xml, String tagName) {
 //		try (InputStream is = new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8))) {
@@ -130,10 +134,10 @@ public class XMLUtils {
 //	return "";
 //}
 
-	/**
-	 * Đọc dữ liệu của 1 tag: <name>Java</name> => <name>Java</name>
-	 */
-	public static String getTagContent(String xml, String tagName) {
+    /**
+     * Đọc dữ liệu của 1 tag: <name>Java</name> => <name>Java</name>
+     */
+    public static String getTagContent(String xml, String tagName) {
 //		if (StringUtils.isEmpty(xml) || StringUtils.isEmpty(tagName)) {
 //			return "";
 //		}
@@ -144,43 +148,62 @@ public class XMLUtils {
 //			return "";
 //		}
 //		return start + between + end;
-		if (StringUtils.isEmpty(xml) || StringUtils.isEmpty(tagName)) {
-			return "";
-		}
-		String start = "<" + tagName;
-		String end = "</" + tagName + ">";
-		String between = StringUtils.substringBetween(xml, start, end);
-		return StringUtils.defaultString(start) + between + StringUtils.defaultString(end);
-	}
+        if (StringUtils.isEmpty(xml) || StringUtils.isEmpty(tagName)) {
+            return "";
+        }
+        String start = "<" + tagName;
+        String end = "</" + tagName + ">";
+        String between = StringUtils.substringBetween(xml, start, end);
+        return StringUtils.defaultString(start) + between + StringUtils.defaultString(end);
+    }
 
-	public static void extractValue() {
-		String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<int xmlns=\"http://tempuri.org/\">1279872209</int>";
-		try {
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			try (ByteArrayInputStream input = new ByteArrayInputStream(xml.getBytes())) {
-				Document doc = builder.parse(input);
-				// Get the int element
-				NodeList intNodes = doc.getElementsByTagName("int");
-				Element intElement = (Element) intNodes.item(0);
-				// Get the value of the int element
-				String intValue = intElement.getTextContent();
-				System.out.println("Value of int tag: " + intValue);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public static void extractValue() {
+        String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<int xmlns=\"http://tempuri.org/\">1279872209</int>";
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            try (ByteArrayInputStream input = new ByteArrayInputStream(xml.getBytes())) {
+                Document doc = builder.parse(input);
+                // Get the int element
+                NodeList intNodes = doc.getElementsByTagName("int");
+                Element intElement = (Element) intNodes.item(0);
+                // Get the value of the int element
+                String intValue = intElement.getTextContent();
+                System.out.println("Value of int tag: " + intValue);
+            }
+        } catch (Exception e) {
+            // e.printStackTrace();
+        }
+    }
 
-	public static void main(String[] args) throws XPathExpressionException {
-		Path path = Paths.get(PathUtils.HOME, "file/hoadon.xml");
-		String xml = FileUtils.readFile(path);
-		// System.out.println(xml);
-		// String s = getStructAndTextOfTag(xml, "SignatureProperties");
-		String s = getTagText(xml, "TTChung", "THDon");
-		// String s = getTagContent(xml, "TTChung");
-		System.out.println(s);
-		// extractValue();
-	}
+    // Tìm kiếm 1 tag trong xml: <name>Java</name> hoặc <name/>
+    public static boolean searchNode(String xml, String tagName) {
+        if (xml == null || xml.isEmpty()) {
+            return false;
+        }
+        try (StringReader characterStream = new StringReader(xml);) {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(new InputSource(characterStream));
+            NodeList nodes = doc.getElementsByTagName(tagName);
+            if (nodes.getLength() > 0) {
+                return true;
+            }
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            // log.error("Error parsing XML: {}", e.getMessage());
+        }
+        return false;
+    }
+
+    public static void main(String[] args) throws Exception {
+        Path path = Paths.get(PathUtils.HOME, "file/hoadon.xml");
+        String xml = FileUtils.readFile(path);
+        // System.out.println(xml);
+        // String s = getStructAndTextOfTag(xml, "SignatureProperties");
+        String s = getTagText(xml, "TTChung", "THDon");
+        // String s = getTagContent(xml, "TTChung");
+        System.out.println(s);
+        // extractValue();
+    }
 
 }
