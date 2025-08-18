@@ -10,6 +10,8 @@
 
 	+ Ctrl + Shift + A > Tìm kiếm 'Main Menu' trong Actions
 
+	+ View > Appearance > Show Main Menu ...
+
 - Bảng gõ tắt: Setting > Keymap
 
 - Phím tắt
