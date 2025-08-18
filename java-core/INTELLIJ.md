@@ -8,9 +8,9 @@
 
 - Show main menu
 
-	+ Ctrl + Shift + A > Tìm kiếm 'Main Menu' trong Actions
-
 	+ View > Appearance > Show Main Menu ...
+
+	+ Ctrl + Shift + A > Tìm kiếm 'Main Menu' trong Actions
 
 - Bảng gõ tắt: Setting > Keymap
 
