@@ -56,6 +56,8 @@
 
 	- Ctrl + Tab (nhấn giữ) 				Chuyển đổi giữa các tab
 	
+	- Ctrl + I								Implements method
+	
 - Open project
 
 	+ Cửa sổ hiện tại: 	File > New > Module from Existing...
