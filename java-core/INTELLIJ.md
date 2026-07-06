@@ -9,12 +9,11 @@
 - Show main menu
 
 	+ View > Appearance > Show Main Menu ...
-
 	+ Ctrl + Shift + A > Tìm kiếm 'Main Menu' trong Actions
 
 - Bảng gõ tắt: Setting > Keymap
 
-- Phím tắt
+- Phím tắt nhanh
     
 	- sou/sout/soutv  + tab					System.out.println();
 	
@@ -64,6 +63,12 @@
 	
 	+ Cửa sổ mới: 		File > New > project from Existing Sources...
 
+- Word-wrap / Soft-wrap
+
+	+ Settings > Editor > General > Tìm group Soft Wrap
+
+		Soft-wrap these files: *.md; *.txt; *.py; *.java (dùng dấu ;)
+
 - Tắt kiểm tra chính tả
 
 	Preferences > Settings > Editor > Inspections > Proofreading > typo (uncheck)
@@ -110,7 +115,7 @@
 
 	+ Run | Edit Configurations > Modify options -> Choose Environment Variables > Edit ...
 
-		KEY		:	  Value
+		KEY		:		Value
 	
 		${KEY}
     
