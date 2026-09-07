@@ -39,7 +39,9 @@
 	
 	- Shift + Alt + Up/Down    				Move code up/down
 	
-	- Ctrl + Alt + B          				Mở nhanh 1 hàm
+	- Ctrl + B                 				Trỏ đến Service (interface)
+
+	- Ctrl + Alt + B           				Mở nhanh hàm → Trỏ đến class Impl của Service
     
 	- Ctrl + Alt + O          				Xóa các import không sử dụng
 	
