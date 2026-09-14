@@ -23,7 +23,9 @@
 
     - fori									Tạo nhanh vòng lặp for
 	
-	- F3									Search
+	- F3									Search file
+  
+	- Double Shift							Search anything
     
 	- Ctrl + J                				Mở bảng gõ tắt
 	
