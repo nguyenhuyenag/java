@@ -4,9 +4,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
-    - LinkedHashMap: Lưu trữ các entry theo thứ tự chèn (insertion order) hoặc thứ tự truy cập (access order). Với accessOrder = true, mỗi lần get() hoặc put() một key, entry đó sẽ được di chuyển xuống cuối danh sách. Điều này cho phép ta dễ dàng xác định phần tử ít được sử dụng gần đây nhất (LRU) — chính là entry ở đầu danh sách.
+    - LinkedHashMap: Lưu trữ các entry theo thứ tự chèn (insertion order) hoặc thứ tự truy cập (access order).
+    - Với accessOrder = true, mỗi lần get() hoặc put() một key, entry đó sẽ được di chuyển xuống cuối danh sách.
+    => Điều này cho phép ta dễ dàng xác định phần tử ít được sử dụng gần đây nhất (LRU) — chính là entry ở đầu danh sách.
 
-    Ngoài ra, LinkedHashMap cung cấp method removeEldestEntry() để ta override, tự động xóa entry cũ nhất khi vượt quá capacity
+    Ngoài ra, LinkedHashMap cung cấp method removeEldestEntry() để ta override, tự động xóa entry cũ nhất khi vượt quá capacity.
  */
 public class LRUCache<K, V> extends LinkedHashMap<K, V> {
 
