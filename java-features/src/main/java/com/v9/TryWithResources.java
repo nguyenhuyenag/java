@@ -40,7 +40,7 @@ public class TryWithResources {
 
 	public static void newTryWithResource() throws FileNotFoundException {
 		final Scanner scanner = new Scanner(new File("testRead.txt"));
-		PrintWriter writer = new PrintWriter(new File("testWrite.txt"));
+		PrintWriter writer = new PrintWriter("testWrite.txt");
 		try (scanner; writer) {
 			// omitted
 		}
